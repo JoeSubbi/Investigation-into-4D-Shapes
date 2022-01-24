@@ -11,37 +11,41 @@
 
 %==============================================================================
 %% METADATA
-\title{Level 4 Project Report Template}
-\author{John H. Williamson}
-\date{September 14, 2018}
+\title{Level 4 Project: An Investigation of How Best to Represent a Cross Section of a 4 Dimensional Objects}
+\author{Joe Subbiani}
+\date{March 18, 2022}
 
 \maketitle
 
 %==============================================================================
 %% ABSTRACT
 \begin{abstract}
-    Every abstract follows a similar pattern. Motivate; set aims; describe work; explain results.
+    %Every abstract follows a similar pattern. Motivate; set aims; describe work; explain results.
+    %\vskip 0.5em
+    %``XYZ is bad. This project investigated ABC to determine if it was! better. ABC used XXX and YYY to implement ZZZ. This is particularly interesting as XXX and YYY have never been used together. It was found that ABC was 20\% better than XYZ, though it caused rabies in half of subjects.''
+    4 Dimensional space is a mathematical concept that cannot be visualised in its entirety by humans. Several paradigms exist to visualise 4 Dimensional objects in 3D, but a viewer will only be able to see a fraction of a 4D object at one time.
     \vskip 0.5em
-    ``XYZ is bad. This project investigated ABC to determine if it was better. 
-    ABC used XXX and YYY to implement ZZZ. This is particularly interesting as XXX and YYY have
-    never been used together. It was found that  
-    ABC was 20\% better than XYZ, though it caused rabies in half of subjects.''
+    Ray marching over signed distance functions were used in order to render 3D cross sections of a wide range of simple 4D shapes.
+    Using 3D cross sections of 4D objects provides a platform to develop extended visualisations to provide a user with more information about a 4D object. Such extensions have been explored in other literature. This paper aims to evaluate the effectiveness of a series of ways to representing 3D cross sections of 4D objects; each representation providing the user with extra information in order to help them interpret and manipulate the object they are handling.
+    
 \end{abstract}
 
 %==============================================================================
+%% ACKNOWLEDGEMENTS
+\renewcommand{\abstractname}{Acknowledgements}
+\begin{abstract}
+    I would like to thank my supervisor, Dr. John Williamson for the constant support and advice throughout the project, within and outside of the weekly meetings. Thanks to his guidance and support, I was able to take this project as far as I have, and fully explore the complexities of the fourth dimension.
+\end{abstract}
+%==============================================================================
 
 % EDUCATION REUSE CONSENT FORM
-% If you consent to your project being shown to future students for educational purposes
-% then insert your name and the date below to  sign the education use form that appears in the front of the document. 
-% You must explicitly give consent if you wish to do so.
-% If you sign, your project may be included in the Hall of Fame if it scores particularly highly.
-%
-% Please note that you are under no obligation to sign 
-% this declaration, but doing so would help future students.
-%
-%\def\consentname {My Name} % your full name
-%\def\consentdate {20 March 2018} % the date you agree
-%
+% If you consent to your project being shown to future students for educational purposes then insert your name and the date below to  sign the education use form that appears in the front of the document. You must explicitly give consent if you wish to do so. If you sign, your project may be included in the Hall of Fame if it scores particularly highly.
+
+% Please note that you are under no obligation to sign  this declaration, but doing so would help future students.
+
+\def\consentname {Dominic Joe Subbiani} % your full name
+\def\consentdate {24 January 2022} % the date you agree
+
 \educationalconsent
 
 
@@ -51,369 +55,254 @@
 %==============================================================================
 %% Notes on formatting
 %==============================================================================
-% The first page, abstract and table of contents are numbered using Roman numerals and are not
-% included in the page count. 
-%
-% From now on pages are numbered
-% using Arabic numerals. Therefore, immediately after the first call to \chapter we need the call
-% \pagenumbering{arabic} and this should be called once only in the document. 
-%
+% The first page, abstract and table of contents are numbered using Roman numerals and are not included in the page count. 
+
+% From now on pages are numbered using Arabic numerals. Therefore, immediately after the first call to \chapter we need the call \pagenumbering{arabic} and this should be called once only in the document. 
+
 % Do not alter the bibliography style.
-%
-% The first Chapter should then be on page 1. You are allowed 40 pages for a 40 credit project and 30 pages for a 
-% 20 credit report. This includes everything numbered in Arabic numerals (excluding front matter) up
-% to but excluding the appendices and bibliography.
-%
+
+% The first Chapter should then be on page 1. You are allowed 40 pages for a 40 credit project and 30 pages for a 20 credit report. This includes everything numbered in Arabic numerals (excluding front matter) up to but excluding the appendices and bibliography.
+
 % You must not alter text size (it is currently 10pt) or alter margins or spacing.
-%
-%
+
 %==================================================================================================================================
-%
+
 % IMPORTANT
-% The chapter headings here are **suggestions**. You don't have to follow this model if
-% it doesn't fit your project. Every project should have an introduction and conclusion,
-% however. 
-%
+% The chapter headings here are **suggestions**. You don't have to follow this model if it doesn't fit your project. Every project should have an introduction and conclusion, however. 
+
 %==================================================================================================================================
 \chapter{Introduction}
 
 % reset page numbering. Don't remove this!
 \pagenumbering{arabic} 
 
-
-Why should the reader care about what are you doing and what are you actually doing?
-\section{Guidance}
+\section{The Fourth Dimension}
 
 \textbf{Motivate} first, then state the general problem clearly. 
 
-\section{Writing guidance}
-\subsection{Who is the reader?}
+math concept  
 
-This is the key question for any writing. Your reader:
+cannot see it  
 
-\begin{itemize}
-    \item
-    is a trained computer scientist: \emph{don't explain basics}.
-    \item
-    has limited time: \emph{keep on topic}.
-    \item
-    has no idea why anyone would want to do this: \emph{motivate clearly}
-    \item
-    might not know \emph{anything} about your project in particular:
-    \emph{explain your project}.
-    \item
-    but might know precise details and check them: \emph{be precise and
-    strive for accuracy.}
-    \item
-    doesn't know or care about you: \emph{personal discussions are
-    irrelevant}.
-\end{itemize}
+\section{Opportunities for Exploration}
 
-Remember, you will be marked by your supervisor and one or more members
-of staff. You might also have your project read by a prize-awarding
-committee or possibly a future employer. Bear that in mind.
+texturing objects
 
-\subsection{References and style guides}
-There are many style guides on good English writing. You don't need to
-read these, but they will improve how you write.
+methods of rotating objects
 
-\begin{itemize}
-    \item
-    \emph{How to write a great research paper} \cite{Pey17} (\textbf{recommended}, even though you aren't writing a research paper)
-    \item
-    \emph{How to Write with Style} \cite{Von80}. Short and easy to read. Available online.
-    \item
-    \emph{Style: The Basics of Clarity and Grace} \cite{Wil09} A very popular modern English style guide.
-    \item
-    \emph{Politics and the English Language} \cite{Orw68}  A famous essay on effective, clear writing in English.
-    \item
-    \emph{The Elements of Style} \cite{StrWhi07} Outdated, and American, but a classic.
-    \item
-    \emph{The Sense of Style} \cite{Pin15} Excellent, though quite in-depth.
-\end{itemize}
+viewing objects from different perspectives
 
-\subsubsection{Citation styles}
+attempting to abstract the rotation of an object to something that can be visualised a bit clearer
 
-\begin{itemize}
-\item If you are referring to a reference as a noun, then cite it as: ``\citet{Orw68} discusses the role of language in political thought.''
-\item If you are referring implicitly to references, use: ``There are many good books on writing \citep{Orw68, Wil09, Pin15}.''
-\end{itemize}
+trying to better visualise the object in its entirety
 
-There is a complete guide on good citation practice by Peter Coxhead available here: \url{http://www.cs.bham.ac.uk/~pxc/refs/index.html}. 
-If you are unsure about how to cite online sources, please see this guide: \url{https://student.unsw.edu.au/how-do-i-cite-electronic-sources}.
+\section{Motivation}
 
-\subsection{Plagiarism warning}
+comes with a series of interesting problems
 
-\begin{highlight_title}{WARNING}
-    
-    If you include material from other sources without full and correct attribution, you are commiting plagiarism. The penalties for plagiarism are severe.
-    Quote any included text and cite it correctly. Cite all images, figures, etc. clearly in the caption of the figure.
-\end{highlight_title}
+what is the benefit of trying to teach people about it?
 
+\section{Aims}
+
+develop and test a series of extensions to taking a cross section of a 4D object and seeing what is more intuitive/easier to use
 
 %==================================================================================================================================
 \chapter{Background}
-What did other people do, and how is it relevant to what you want to do?
-\section{Guidance}
-\begin{itemize}    
-    \item
-      Don't give a laundry list of references.
-    \item
-      Tie everything you say to your problem.
-    \item
-      Present an argument.
-    \item Think critically; weigh up the contribution of the background and put it in context.    
-    \item
-      \textbf{Don't write a tutorial}; provide background and cite
-      references for further information.
-\end{itemize}
+
+\section{Representations of the Fourth Dimension}
+
+stereo graphic projection
+
+light from center of ball
+
+cross sections
+
+\section{Building a 4D Object}
+
+\subsection{Mesh Based Rendering}
+
+\subsection{Ray Marching Shaders}
+
+\section{Rotating a 4D Object}
+
+\subsection{The Problem}
+
+quaternions leave dimension
+
+\subsection{The Rotor}
+
+geometric algebra
+
+\section{Interaction and Direct Manipulation}
+
+\subsection{Methods of Interaction in 3D}
+
+\subsection{Methods of Interaction in 4D}
 
 %==================================================================================================================================
-\chapter{Analysis/Requirements}
+\chapter{Analysis and Requirements}
+
+self defined project with the goal of teaching people about abstract mathematical concepts
+
+\section{Problem Specification}
+
+teach people, and develop something suited to teaching people
+
+\section{Limitations}
+
+time to develop
+
+time per user to experiment\\
+ - quantity of quality
+
+\section{Prioritisation Using MoSCoW}
+
+explanation of MoSCoW
+
+\subsection*{Must Have}
+
+be able to render multiple 4D shapes
+
+multiple extensions to a 3d cross section of 4d space
+
+create a tutorial video to teach and explain 4d
+ - must cover the geometry
+ - must cover the rotation
+
+\subsection*{Should Have}
+
+be able to interact with them in 4D directly
+
+multiple tests to evaluate a persons understanding
+
+\subsection*{Could Have}
+
+multiple methods of direct interaction/manipulation
+
+%===
+
 What is the problem that you want to solve, and how did you arrive at it?
-\section{Guidance}
-Make it clear how you derived the constrained form of your problem via a clear and logical process. 
 
 %==================================================================================================================================
 \chapter{Design}
-How is this problem to be approached, without reference to specific implementation details? 
-\section{Guidance}
-Design should cover the abstract design in such a way that someone else might be able to do what you did, but with a different language or library or tool.
+
+\section{Tutorial}
+
+requirements for teaching
+
+ - explain 4D space, why it cannot be visualised
+ - explain 4D rotation in relation to 2D and 3D rotation
+
+\section{Experiment}
+
+requirements for testing
+
+ - be able to understand the shapes
+ - be able to interpret the rotation of a shapes
+ - be able to manipulate a shape
 
 %==================================================================================================================================
 \chapter{Implementation}
-What did you do to implement this idea, and what technical achievements did you make?
-\section{Guidance}
-You can't talk about everything. Cover the high level first, then cover important, relevant or impressive details.
+
+\section{Building 4D Objects With Ray Marching}
+
+shapes defined with signed distance functions
+
+relative to the camera - slice is based on W coordinate of camera based
+
+algorithm
+
+\subsection{Derivation of 4D Shapes}
 
 
+\section{Extending 3 Dimensional Cross Sections - Representing 4D Objects}
 
-\section{General points}
+timeline: simple - ellyptical version
+ - ellypitcal adds more information, but not as intuitive as straight line\\
+onionskin - similar to timeline, but not very intuitive for users unfamiliar with 4D\\
+multi-view: polyvision\\
+abstraction of 4D rotation using 3D rotation - does not extend well to n dimensions unlike all other propersitions
 
-These points apply to the whole dissertation, not just this chapter.
+\section{Rotation of a 4D Vector}
 
+initial manual derivation
 
+sympy and galgebra
 
-\subsection{Figures}
-\emph{Always} refer to figures included, like Figure \ref{fig:relu}, in the body of the text. Include full, explanatory captions and make sure the figures look good on the page.
-You may include multiple figures in one float, as in Figure \ref{fig:synthetic}, using \texttt{subcaption}, which is enabled in the template.
+equations
 
+\section{Methods of Rotation}
 
+\subsection{Swipe Based Input - Rotation About The Global Axes}
 
-% Figures are important. Use them well.
-\begin{figure}
-    \centering
-    \includegraphics[width=0.5\linewidth]{images/relu.pdf}    
+intuitive\\
+does not define "how rotated" 4D axes are relative to the local coordinates of the shape
 
-    \caption{In figure captions, explain what the reader is looking at: ``A schematic of the rectifying linear unit, where $a$ is the output amplitude,
-    $d$ is a configurable dead-zone, and $Z_j$ is the input signal'', as well as why the reader is looking at this: 
-    ``It is notable that there is no activation \emph{at all} below 0, which explains our initial results.'' 
-    \textbf{Use vector image formats (.pdf) where possible}. Size figures appropriately, and do not make them over-large or too small to read.
-    }
+\subsection{4D Grab Ball - Rotation About The Local Axes}
 
-    % use the notation fig:name to cross reference a figure
-    \label{fig:relu} 
-\end{figure}
+idea\\
+progress\\
+why it failed
 
+\section{Texturing Ray Marched Objects}
 
-\begin{figure}
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{images/synthetic.png}
-        \caption{Synthetic image, black on white.}
-        \label{fig:syn1}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=\textwidth]{images/synthetic_2.png}
-        \caption{Synthetic image, white on black.}
-        \label{fig:syn2}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-    %(or a blank line to force the subfigure onto a new line)    
-    \caption{Synthetic test images for edge detection algorithms. \subref{fig:syn1} shows various gray levels that require an adaptive algorithm. \subref{fig:syn2}
-    shows more challenging edge detection tests that have crossing lines. Fusing these into full segments typically requires algorithms like the Hough transform.
-    This is an example of using subfigures, with \texttt{subref}s in the caption.
-    }\label{fig:synthetic}
-\end{figure}
+normal based projection
 
-\clearpage
+\section{Building the Experiment}
 
-\subsection{Equations}
+\subsection{}
 
-Equations should be typeset correctly and precisely. Make sure you get parenthesis sizing correct, and punctuate equations correctly 
-(the comma is important and goes \textit{inside} the equation block). Explain any symbols used clearly if not defined earlier. 
+\subsection{Data Collection}
 
-For example, we might define:
-\begin{equation}
-    \hat{f}(\xi) = \frac{1}{2}\left[ \int_{-\infty}^{\infty} f(x) e^{2\pi i x \xi} \right],
-\end{equation}    
-where $\hat{f}(\xi)$ is the Fourier transform of the time domain signal $f(x)$.
+SimpleJSON
 
-\subsection{Algorithms}
-Algorithms can be set using \texttt{algorithm2e}, as in Algorithm \ref{alg:metropolis}.
-
-% NOTE: line ends are denoted by \; in algorithm2e
-\begin{algorithm}
-    \DontPrintSemicolon
-    \KwData{$f_X(x)$, a probability density function returing the density at $x$.\; $\sigma$ a standard deviation specifying the spread of the proposal distribution.\;
-    $x_0$, an initial starting condition.}
-    \KwResult{$s=[x_1, x_2, \dots, x_n]$, $n$ samples approximately drawn from a distribution with PDF $f_X(x)$.}
-    \Begin{
-        $s \longleftarrow []$\;
-        $p \longleftarrow f_X(x)$\;
-        $i \longleftarrow 0$\;
-        \While{$i < n$}
-        {
-            $x^\prime \longleftarrow \mathcal{N}(x, \sigma^2)$\;
-            $p^\prime \longleftarrow f_X(x^\prime)$\;
-            $a \longleftarrow \frac{p^\prime}{p}$\;
-            $r \longleftarrow U(0,1)$\;
-            \If{$r<a$}
-            {
-                $x \longleftarrow x^\prime$\;
-                $p \longleftarrow f_X(x)$\;
-                $i \longleftarrow i+1$\;
-                append $x$ to $s$\;
-            }
-        }
-    }
-    
-\caption{The Metropolis-Hastings MCMC algorithm for drawing samples from arbitrary probability distributions, 
-specialised for normal proposal distributions $q(x^\prime|x) = \mathcal{N}(x, \sigma^2)$. The symmetry of the normal distribution means the acceptance rule takes the simplified form.}\label{alg:metropolis}
-\end{algorithm}
-
-\subsection{Tables}
-
-If you need to include tables, like Table \ref{tab:operators}, use a tool like https://www.tablesgenerator.com/ to generate the table as it is
-extremely tedious otherwise. 
-
-\begin{table}[]
-    \caption{The standard table of operators in Python, along with their functional equivalents from the \texttt{operator} package. Note that table
-    captions go above the table, not below. Do not add additional rules/lines to tables. }\label{tab:operators}
-    %\tt 
-    \rowcolors{2}{}{gray!3}
-    \begin{tabular}{@{}lll@{}}
-    %\toprule
-    \textbf{Operation}    & \textbf{Syntax}                & \textbf{Function}                            \\ %\midrule % optional rule for header
-    Addition              & \texttt{a + b}                          & \texttt{add(a, b)}                                    \\
-    Concatenation         & \texttt{seq1 + seq2}                    & \texttt{concat(seq1, seq2)}                           \\
-    Containment Test      & \texttt{obj in seq}                     & \texttt{contains(seq, obj)}                           \\
-    Division              & \texttt{a / b}                          & \texttt{div(a, b) }  \\
-    Division              & \texttt{a / b}                          & \texttt{truediv(a, b) } \\
-    Division              & \texttt{a // b}                         & \texttt{floordiv(a, b)}                               \\
-    Bitwise And           & \texttt{a \& b}                         & \texttt{and\_(a, b)}                                  \\
-    Bitwise Exclusive Or  & \texttt{a \textasciicircum b}           & \texttt{xor(a, b)}                                    \\
-    Bitwise Inversion     & \texttt{$\sim$a}                        & \texttt{invert(a)}                                    \\
-    Bitwise Or            & \texttt{a | b}                          & \texttt{or\_(a, b)}                                   \\
-    Exponentiation        & \texttt{a ** b}                         & \texttt{pow(a, b)}                                    \\
-    Identity              & \texttt{a is b}                         & \texttt{is\_(a, b)}                                   \\
-    Identity              & \texttt{a is not b}                     & \texttt{is\_not(a, b)}                                \\
-    Indexed Assignment    & \texttt{obj{[}k{]} = v}                 & \texttt{setitem(obj, k, v)}                           \\
-    Indexed Deletion      & \texttt{del obj{[}k{]}}                 & \texttt{delitem(obj, k)}                              \\
-    Indexing              & \texttt{obj{[}k{]}}                     & \texttt{getitem(obj, k)}                              \\
-    Left Shift            & \texttt{a \textless{}\textless b}       & \texttt{lshift(a, b)}                                 \\
-    Modulo                & \texttt{a \% b}                         & \texttt{mod(a, b)}                                    \\
-    Multiplication        & \texttt{a * b}                          & \texttt{mul(a, b)}                                    \\
-    Negation (Arithmetic) & \texttt{- a}                            & \texttt{neg(a)}                                       \\
-    Negation (Logical)    & \texttt{not a}                          & \texttt{not\_(a)}                                     \\
-    Positive              & \texttt{+ a}                            & \texttt{pos(a)}                                       \\
-    Right Shift           & \texttt{a \textgreater{}\textgreater b} & \texttt{rshift(a, b)}                                 \\
-    Sequence Repetition   & \texttt{seq * i}                        & \texttt{repeat(seq, i)}                               \\
-    Slice Assignment      & \texttt{seq{[}i:j{]} = values}          & \texttt{setitem(seq, slice(i, j), values)}            \\
-    Slice Deletion        & \texttt{del seq{[}i:j{]}}               & \texttt{delitem(seq, slice(i, j))}                    \\
-    Slicing               & \texttt{seq{[}i:j{]}}                   & \texttt{getitem(seq, slice(i, j))}                    \\
-    String Formatting     & \texttt{s \% obj}                       & \texttt{mod(s, obj)}                                  \\
-    Subtraction           & \texttt{a - b}                          & \texttt{sub(a, b)}                                    \\
-    Truth Test            & \texttt{obj}                            & \texttt{truth(obj)}                                   \\
-    Ordering              & \texttt{a \textless b}                  & \texttt{lt(a, b)}                                     \\
-    Ordering              & \texttt{a \textless{}= b}               & \texttt{le(a, b)}                                     \\
-    % \bottomrule
-    \end{tabular}
-    \end{table}
-\subsection{Code}
-
-Avoid putting large blocks of code in the report (more than a page in one block, for example). Use syntax highlighting if possible, as in Listing \ref{lst:callahan}.
-
-\begin{lstlisting}[language=python, float, caption={The algorithm for packing the $3\times 3$ outer-totalistic binary CA successor rule into a 
-    $16\times 16\times 16\times 16$ 4 bit lookup table, running an equivalent, notionally 16-state $2\times 2$ CA.}, label=lst:callahan]
-    def create_callahan_table(rule="b3s23"):
-        """Generate the lookup table for the cells."""        
-        s_table = np.zeros((16, 16, 16, 16), dtype=np.uint8)
-        birth, survive = parse_rule(rule)
-
-        # generate all 16 bit strings
-        for iv in range(65536):
-            bv = [(iv >> z) & 1 for z in range(16)]
-            a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p = bv
-
-            # compute next state of the inner 2x2
-            nw = apply_rule(f, a, b, c, e, g, i, j, k)
-            ne = apply_rule(g, b, c, d, f, h, j, k, l)
-            sw = apply_rule(j, e, f, g, i, k, m, n, o)
-            se = apply_rule(k, f, g, h, j, l, n, o, p)
-
-            # compute the index of this 4x4
-            nw_code = a | (b << 1) | (e << 2) | (f << 3)
-            ne_code = c | (d << 1) | (g << 2) | (h << 3)
-            sw_code = i | (j << 1) | (m << 2) | (n << 3)
-            se_code = k | (l << 1) | (o << 2) | (p << 3)
-
-            # compute the state for the 2x2
-            next_code = nw | (ne << 1) | (sw << 2) | (se << 3)
-
-            # get the 4x4 index, and write into the table
-            s_table[nw_code, ne_code, sw_code, se_code] = next_code
-
-        return s_table
-
-\end{lstlisting}
+Email - challenges\\
+Copy \& Paste - challenges
 
 %==================================================================================================================================
 \chapter{Evaluation} 
-How good is your solution? How well did you solve the general problem, and what evidence do you have to support that?
 
-\section{Guidance}
-\begin{itemize}
-    \item
-        Ask specific questions that address the general problem.
-    \item
-        Answer them with precise evidence (graphs, numbers, statistical
-        analysis, qualitative analysis).
-    \item
-        Be fair and be scientific.
-    \item
-        The key thing is to show that you know how to evaluate your work, not
-        that your work is the most amazing product ever.
-\end{itemize}
+\section{Aims} 
 
-\section{Evidence}
-Make sure you present your evidence well. Use appropriate visualisations, reporting techniques and statistical analysis, as appropriate.
+\section{Experimental Design}
 
-If you visualise, follow the basic rules, as illustrated in Figure \ref{fig:boxplot}:
-\begin{itemize}
-\item Label everything correctly (axis, title, units).
-\item Caption thoroughly.
-\item Reference in text.
-\item \textbf{Include appropriate display of uncertainty (e.g. error bars, Box plot)}
-\item Minimize clutter.
-\end{itemize}
+\subsection{Preliminary Research}
 
-See the file \texttt{guide\_to\_visualising.pdf} for further information and guidance.
+what is the best way to explain concepts\\
+try teach some friends the basics and see what explanations work best
 
-\begin{figure}
-    \centering
-    \includegraphics[width=1.0\linewidth]{images/boxplot_finger_distance.pdf}    
+the best ways to teach people about geometry\\
+ - reference that paper about 5 stages or something
 
-    \caption{Average number of fingers detected by the touch sensor at different heights above the surface, averaged over all gestures. Dashed lines indicate
-    the true number of fingers present. The Box plots include bootstrapped uncertainty notches for the median. It is clear that the device is biased toward 
-    undercounting fingers, particularly at higher $z$ distances.
-    }
+between users experiment
+ - test user with every representation
 
-    % use the notation fig:name to cross reference a figure
-    \label{fig:boxplot} 
-\end{figure}
+\subsection{Repeated Preliminary Experiments}
+
+build system\\
+test it\\
+improvements\\
+
+Need to provide clear explanations of concepts early on
+
+provide time to play with object before tests to learn controls and behaviour
+
+\subsection{Tasks and Parameters}
+
+shape match\\
+ - all shapes\\
+ - diffuse texture - patterns give it away\\
+rotation match\\
+ - not diffuse texture and no sphere - no surface imperfections and can be impossible to tell if certain rotations occuring\\
+ - 1-2 4D rotations and occasionally 3d rotations\\
+pose match\\
+ - randomly oriented match shape
+
+random order of representations
+
+\subsection{Limitations}
+
+\section{Results}
 
 
 %==================================================================================================================================
