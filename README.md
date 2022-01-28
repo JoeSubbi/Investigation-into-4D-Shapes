@@ -20,8 +20,4 @@ The slides for the presentation summarising the `4D Shapes` project, and the dat
 
 ## `status_report/`
 
-?
-
-## `summer/`
-
-?
+Progress report of the project up until Christmas 2021 (Semester 1) including plan for development after Christmas (Semester 2)
