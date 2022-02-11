@@ -11,7 +11,7 @@
 
 %==============================================================================
 %% METADATA
-\title{Level 4 Project: An Investigation of How Best to Represent a Cross Section of a 4 Dimensional Objects}
+\title{Level 4 Project: An Investigation of How Best to Represent a Cross Section of 4 Dimensional Objects}
 \author{Joe Subbiani}
 \date{March 18, 2022}
 
@@ -23,10 +23,10 @@
     %Every abstract follows a similar pattern. Motivate; set aims; describe work; explain results.
     %\vskip 0.5em
     %``XYZ is bad. This project investigated ABC to determine if it was! better. ABC used XXX and YYY to implement ZZZ. This is particularly interesting as XXX and YYY have never been used together. It was found that ABC was 20\% better than XYZ, though it caused rabies in half of subjects.''
-    4 Dimensional space is a mathematical concept that cannot be visualised in its entirety by humans. Several paradigms exist to visualise 4 Dimensional objects in 3D, but a viewer will only be able to see a fraction of a 4D object at one time.
+    Four dimensional space is a mathematical concept that cannot be visualised in its entirety by humans. Several paradigms exist to visualise four dimensional objects in 3D, but a viewer will only be able to see a fraction of a 4D object at one time.
     \vskip 0.5em
-    Ray marching over signed distance functions were used in order to render 3D cross sections of a wide range of simple 4D shapes.
-    Using 3D cross sections of 4D objects provides a platform to develop extended visualisations to provide a user with more information about a 4D object. Such extensions have been explored in other literature. This paper aims to evaluate the effectiveness of a series of ways to representing 3D cross sections of 4D objects; each representation providing the user with extra information in order to help them interpret and manipulate the object they are handling.
+    Ray marching over signed distance functions provide a quick method of rendering 3D cross sections of a wide range of primitive 4D shapes.
+    3D cross sections of 4D objects provides a platform to develop extended visualisations to provide a user with more information about a 4D object. Such extensions have been explored in other literature. This paper aims to evaluate the effectiveness of a series of extensions to 3D cross sections of 4D objects; each representation providing the user with more information in order to help them interpret and manipulate the object they are handling.
     
 \end{abstract}
 
@@ -78,50 +78,69 @@
 
 \section{The Fourth Dimension}
 
-\textbf{Motivate} first, then state the general problem clearly. 
-
-math concept  
-
-cannot see it  
+The world is described as three dimensional Euclidean space. Three axes, conventionally labeled \(x\), \(y\) and \(z\), define the three degrees of translational freedom an entity can move within. All three axes that make up Euclidean space exist perpendicular to each other. four dimensional space is the mathematical concept where a fourth perpendicular axes, conventionally labeled \(w\), exists perpendicular to all of the other three dimensional axes. It is impossible to visualise four dimensions in its entirety and often has to be abstracted to an analogues 3D - 2D example to reason and understand the behaviour of four dimensional entities. 
 
 \section{Opportunities for Exploration}
 
-texturing objects
-
-methods of rotating objects
-
-viewing objects from different perspectives
-
-attempting to abstract the rotation of an object to something that can be visualised a bit clearer
-
-trying to better visualise the object in its entirety
+Handling four dimensional space presents a number of opportunities and challenges that come with the desire to explore, interpret and manipulate higher dimensional objects. The most immediate challenge is that of being able to manipulate a four dimensional object. Rotating an object is a non trivial challenge and the most common method of rotation in 3D cannot be extended to higher dimensions. There are several ways in which users can interact with 3D objects. Another non-trivial challenge is finding intuitive ways in which a user can manipulate a 4D object through a two dimensional user interface.
+\vskip 0.5em
+To understand the orientation of an object, a user needs to be able to differentiate similar faces of that object from each other. Colour, patterns and textures can be applied to an object in order to assist in comprehending the current status of an object in comparison to an otherwise visually similar counterpart. An example of this is a cube rotated 90 degrees (\(\frac{\pi}{2}\) radians) and the same cube rotated by 270 degrees (\(\frac{3\pi}{2}\) radians).
+\vskip 0.5em
+In this paper several methods will be applied in an attempt to provide more information about a four dimensional object. Such methods include: viewing the object from other angles, attempts to visualise the object in its entirety, and abstractions of the rotation of an object in order to help understand higher dimensional rotations.
 
 \section{Motivation}
 
-comes with a series of interesting problems
+\textbf{Motivate} first, then state the general problem clearly. 
+
+Three dimensional space, on the surface, is very neat. There are three degrees of translational freedom expressed by the three axes \(x\), \(y\) and \(z\). There are three degrees of rotation that are most commonly expressed as rotations about each axis. 
+%
+This supposed tidiness has resulted in misconceptions that are rooted in to society such that nearly every digital 3D system is built upon a mathematically impure foundation. 
+%
+In practice the misconceptions do not matter, and the mathematics is still sound. However it is interesting nonetheless that
+
+comes with a series of interesting problems 
 
 what is the benefit of trying to teach people about it?
 
+applications of 4d
+\citep{zhou_visualization_1991}
+
 \section{Aims}
 
-develop and test a series of extensions to taking a cross section of a 4D object and seeing what is more intuitive/easier to use
+% wide range of 4 Dimensional shape. variety of ways to display. As such the usability of each representation will be experimentally validated in order to find the most intuitive and effective way to represent higher dimensional shapes. The accuracy of which the user can identify these properties and act accordingly will be measured against the representation being shown to them.
+
+As per the motivation for this project; an effective tutorial must be compiled together in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects must be developed and have the capability to showcase a wide variety of 4D shapes. Research into intuitive methods of user interaction should be explored, and a system to rotate an object without gimbal lock should be employed.
+\vskip 0.5em
+An evaluation will be conducting into what aspects of a shape are most important when trying to interpret higher dimensional geometry, using a series of tests that evaluate the understanding of the geometry, how its cross section changes under rotation, as well as a users ability to manipulate the shape.
 
 %==================================================================================================================================
 \chapter{Background}
 
 \section{Representations of the Fourth Dimension}
 
+There are many ways to represent the fourth dimension. Arguably the most intuitive understanding is that of a 3D cross section.
+
 stereo graphic projection
 
 light from center of ball
 
-cross sections
+\subsection{Extensions to the 3D Cross Section}
+
+\citep{kageyama_visualization_2015}
+
+\citep{matsumoto_polyvision_2019}
 
 \section{Building a 4D Object}
 
 \subsection{Mesh Based Rendering}
 
+\citep{bosch_n-dimensional_2020}
+\citep{tianli_4d_2018}
+
 \subsection{Ray Marching Shaders}
+
+\citep{quilez_distance_nodate}
+\citep{the_art_of_code_ray_2018}
 
 \section{Rotating a 4D Object}
 
@@ -129,15 +148,33 @@ cross sections
 
 quaternions leave dimension
 
+\citep{bosch_lets_nodate}
+
 \subsection{The Rotor}
 
-geometric algebra
+\citep{bosch_4d_2011}
+\citep{slehar_clifford_2014}
+
+%\citep{mathoma_geometric_2017}
 
 \section{Interaction and Direct Manipulation}
 
 \subsection{Methods of Interaction in 3D}
 
+local, grab ball driven
+
+global, swipe gestures (often multi-touch)
+
+\citep{shoemake_arcball_1994}
+
 \subsection{Methods of Interaction in 4D}
+
+\citep{murata_interactive_2000}
+\citep{kageyama_keyboard-based_2005}
+
+\section{Teaching and Evaluation}
+
+\citep{safrankova_van_2012}
 
 %==================================================================================================================================
 \chapter{Analysis and Requirements}
