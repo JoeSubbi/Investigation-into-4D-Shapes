@@ -2,16 +2,14 @@
 
 \documentclass{l4proj}
 
-    
-%
 % put any additional packages here
-%
+\usepackage{amsmath}
 
 \begin{document}
 
 %==============================================================================
 %% METADATA
-\title{Level 4 Project: An Investigation of How Best to Represent a Cross Section of 4 Dimensional Objects}
+\title{Level 4 Project: An Investigation of How Best to Extend a Cross Section of 4 Dimensional Objects}
 \author{Joe Subbiani}
 \date{March 18, 2022}
 
@@ -23,10 +21,15 @@
     %Every abstract follows a similar pattern. Motivate; set aims; describe work; explain results.
     %\vskip 0.5em
     %``XYZ is bad. This project investigated ABC to determine if it was! better. ABC used XXX and YYY to implement ZZZ. This is particularly interesting as XXX and YYY have never been used together. It was found that ABC was 20\% better than XYZ, though it caused rabies in half of subjects.''
+
     Four dimensional space is a mathematical concept that cannot be visualised in its entirety by humans. Several paradigms exist to visualise four dimensional objects in 3D, but a viewer will only be able to see a fraction of a 4D object at one time.
     \vskip 0.5em
     Ray marching over signed distance functions provide a quick method of rendering 3D cross sections of a wide range of primitive 4D shapes.
     3D cross sections of 4D objects provides a platform to develop extended visualisations to provide a user with more information about a 4D object. Such extensions have been explored in other literature. This paper aims to evaluate the effectiveness of a series of extensions to 3D cross sections of 4D objects; each representation providing the user with more information in order to help them interpret and manipulate the object they are handling.
+    \vskip 0.5em
+
+    TODO: Results of Experiment
+    It was found that ...
     
 \end{abstract}
 
@@ -78,7 +81,7 @@
 
 \section{The Fourth Dimension}
 
-The world is described as three dimensional Euclidean space. Three axes, conventionally labeled \(x\), \(y\) and \(z\), define the three degrees of translational freedom an entity can move within. All three axes that make up Euclidean space exist perpendicular to each other. four dimensional space is the mathematical concept where a fourth perpendicular axes, conventionally labeled \(w\), exists perpendicular to all of the other three dimensional axes. It is impossible to visualise four dimensions in its entirety and often has to be abstracted to an analogues 3D - 2D example to reason and understand the behaviour of four dimensional entities. 
+The world is described as three dimensional Euclidean space, conventionally referred to as $\mathbb{R}^3$. Three axes, conventionally labeled \(x\), \(y\) and \(z\), define the three degrees of translational freedom an entity can move within. All three axes that make up Euclidean space exist perpendicular to each other. Four dimensional space, conventionally referred to as $\mathbb{R}^4$, is the mathematical concept where a fourth perpendicular axes, conventionally labeled \(w\), exists perpendicular to all of the other three dimensional axes. It is impossible to visualise four dimensions in its entirety and often has to be abstracted to an analogues 3D - 2D example to reason and understand the behaviour of four dimensional entities. 
 
 \section{Opportunities for Exploration}
 
@@ -102,7 +105,7 @@ comes with a series of interesting problems
 
 what is the benefit of trying to teach people about it?
 
-applications of 4d
+TODO: Discuss the applications of 4d
 \citep{zhou_visualization_1991}
 
 \section{Aims}
@@ -144,13 +147,26 @@ light from center of ball
 
 \section{Rotating a 4D Object}
 
-\subsection{The Problem}
+In $\mathbb{R}^3$ there are three degrees of rotational freedom. As there are three axes, the method of rotating an object has commonly been considered as rotating about an axis. However, in $\mathbb{R}^4$ there are six degrees of rotational freedom, despite there only being four axes. Instead, rotation must be considered as a rotation about a plane formed by two axes. Therefore the six planes of rotation in $\mathbb{R}^4$ would be \(xy\), \(xz\), \(yz\), \(xw\), \(yw\) and \(zw\).
 
-quaternions leave dimension
+\subsection{The Problems with Rotation}
 
-\citep{bosch_lets_nodate}
+Rotating an object in $\mathbb{R}^2$ is somewhat trivial. Given a vector $V_{xy}$ rotating about an origin point within the \(xy\) plane, the vector will follow a circular path dictated by the following 2D rotation matrix:
+% 2D Rotation Matrix
+$$V_{xy}' = V_{xy}\begin{bmatrix}
+  cos \theta & - sin \theta \\
+  sin \theta & cos \theta
+\end{bmatrix}$$
+%
+Rotating an object in a space greater than two dimensions immediately becomes a non-trivial problem due to it being non-commutative. In dimensions greater than $\mathbb{R}^2$, rotation matrices can be composed into a homogeneous rotation matrix. Multiplying a vector with a such a matrix will perform a rotation but will likely encounter gimbal lock. Gimbal lock occurs when rotating an object considers each plane of rotation as independent from one another. As a result, if a particular plane becomes parallel with another, a degree of rotation is lost and the vector being rotated will not change as expected.
+\vskip 0.5em
+Introducing the quaternion: The quaternion is an extension of the complex number system. A quaternion has 4 components: \(x\), \(y\) and \(z\) which describe the axis of rotation, and \(w\) which describes the amount of rotation. Quaternions do not suffer from gimbal lock and can be applied to each other to perform several rotations in series.
+\vskip 0.5em
+Quaternions have a problem: They consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
 
 \subsection{The Rotor}
+
+TODO: Discuss the Rotor
 
 \citep{bosch_4d_2011}
 \citep{slehar_clifford_2014}
