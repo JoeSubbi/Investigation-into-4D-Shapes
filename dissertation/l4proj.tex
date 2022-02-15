@@ -166,10 +166,23 @@ Quaternions have a problem: They consider rotations as a rotation about an axis.
 
 \subsection{The Rotor}
 
-TODO: Discuss the Rotor
+Geometric Algebra, often referred to as Clifford Algebra, is a field of mathematics describing vector space. Vector space is populated by multivectors, graded by their vector components. Most notably, multivectors are defined by their associative, distributive and anti-commutative properties \citep{baker_maths_nodate}.
+A grade zero multivector is a scalar number. a grade one multivector is just a vector. Grade two multivectors are known as bivectors, which build the foundation for the rotor. A trivector is a grade 3 multivector forming a parallelepiped from 3 vectors. Finally in $\mathbb{R}^4$ there is what is known as a pseudo-scalar.
+\vskip 0.5em
+A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\), and has, alongside its orientation in space defined by it's vector components, two important properties: The direction of rotation, from \(a\) to \(b\), and an area, dictated by the parallelogram formed by its two vector components as illustrated by \citet{slehar_clifford_2014}. A bivector in the reverse direction, i.e from \(b\) to \(a\) fulfills the anti-commutative property such that $b_{ba} = -b_{ab}$.
+\vskip 0.5em
+As mentioned above, a rotation should be considered as a rotation about a plane. A bivector defines the plane for a vector to rotate about. As demonstrated by \citet{mathoma_geometric_2017}, a rotor can rotate a vector following the principle that a double reflection forms a rotation \citep{mathoma_geometric_2016-2}.
+\vskip 0.5em
+In a given vector space greater than $\mathbb{R}^2$, a multivector greater than grade zero can be projected onto the vector space basis blades. A basis blade is a the plane formed parallel to two perpendicular axes. The \(xy\) blade is often referred to as $e_{xy}$ or $e_{01}$. Therefore a bivector in $\mathbb{R}^3$ can be decomposed into three projections onto the $e_{xy}$, $e_{xz}$ and $e_{yz}$ planes; and a bivector in $\mathbb{R}^4$ can be decomposed into 6 elements.
+\vskip 0.5em
+TODO: Geometric Product to rotate an object
 
 \citep{bosch_4d_2011}
-\citep{slehar_clifford_2014}
+
+TODO: Similarities between Quaternion and Rotor
+\citep{bosch_code_nodate}
+
+%clifford algebra
 
 %\citep{mathoma_geometric_2017}
 
