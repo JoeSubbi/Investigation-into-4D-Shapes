@@ -135,12 +135,19 @@ light from center of ball
 
 \section{Building a 4D Object}
 
+Rendering three dimensional shapes on a 2D screen is an art that has evolved over time and ranging several disciplines. When Tron released in 1982, computers were not powerful enough to render triangle meshes in real time; as is the standard for 3D rendering nowadays. 
+Similar films of that era, such as Dune 1984 or Star Wars the Original Trilogy often used a mix of practical effects and physically modifying the film. The team behind tron, however, opted to take advantage of machines to do some heavy lifting. In-spite of the technological limitations the team were able build a system to combine and render simple but smooth primitive objects. They used a system called Ray Marching \citep{sheppard_tron_2010}.
+\vskip 0.5em
+Today, it is standard to use triangle meshes to build and even render complex models in real time; and not just for film, but for real time interactive media such as video games.
+A mesh consists of vertices, edges and faces. A vertex being a point on the surface of an object that edges connect to. A face is formed by a closed loop of edges. Generally, a face will be made up of three vertices and three edges, creating the most simple 2D shape: A triangle; which form the surface of a 3D mesh.
+
 \subsection{Mesh Based Rendering}
 
-\citep{bosch_n-dimensional_2020}
-\citep{tianli_4d_2018}
+Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which render 4 dimensional objects using a mesh.
 
 \subsection{Ray Marching Shaders}
+
+Despite of advancements in, ray marching has not lost its place in the world. Whilst less intuitive and approachable than mesh based rendering, ...
 
 \citep{quilez_distance_nodate}
 \citep{the_art_of_code_ray_2018}
@@ -164,22 +171,24 @@ Introducing the quaternion: The quaternion is an extension of the complex number
 \vskip 0.5em
 Quaternions have a problem: They consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
 
-\subsection{The Rotor}
+\subsection{Geometric Algebra and The Rotor}
 
 Geometric Algebra, often referred to as Clifford Algebra, is a field of mathematics describing vector space. Vector space is populated by multivectors, graded by their vector components. Most notably, multivectors are defined by their associative, distributive and anti-commutative properties \citep{baker_maths_nodate}.
 A grade zero multivector is a scalar number. a grade one multivector is just a vector. Grade two multivectors are known as bivectors, which build the foundation for the rotor. A trivector is a grade 3 multivector forming a parallelepiped from 3 vectors. Finally in $\mathbb{R}^4$ there is what is known as a pseudo-scalar.
 \vskip 0.5em
-A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\), and has, alongside its orientation in space defined by it's vector components, two important properties: The direction of rotation, from \(a\) to \(b\), and an area, dictated by the parallelogram formed by its two vector components as illustrated by \citet{slehar_clifford_2014}. A bivector in the reverse direction, i.e from \(b\) to \(a\) fulfills the anti-commutative property such that $b_{ba} = -b_{ab}$.
+A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\), and has, alongside its orientation in space defined by it's vector components, two important properties: The direction of rotation, from \(a\) to \(b\), and an area, dictated by the parallelogram formed by its two vector components as illustrated by \citet{slehar_clifford_2014}. A bivector in the reverse direction, i.e from \(b\) to \(a\) fulfills the anti-commutative property such that $b_{ba} = -b_{ab}$. 
+% TODO: Wedge Product similar to Cross Product
 \vskip 0.5em
 As mentioned above, a rotation should be considered as a rotation about a plane. A bivector defines the plane for a vector to rotate about. As demonstrated by \citet{mathoma_geometric_2017}, a rotor can rotate a vector following the principle that a double reflection forms a rotation \citep{mathoma_geometric_2016-2}.
 \vskip 0.5em
 In a given vector space greater than $\mathbb{R}^2$, a multivector greater than grade zero can be projected onto the vector space basis blades. A basis blade is a the plane formed parallel to two perpendicular axes. The \(xy\) blade is often referred to as $e_{xy}$ or $e_{01}$. Therefore a bivector in $\mathbb{R}^3$ can be decomposed into three projections onto the $e_{xy}$, $e_{xz}$ and $e_{yz}$ planes; and a bivector in $\mathbb{R}^4$ can be decomposed into 6 elements.
 \vskip 0.5em
-TODO: Geometric Product to rotate an object
-
-\citep{bosch_4d_2011}
-
+It is possible to multiply multivectors using the geometric product; a combination of the inner and outer product. Multiplying a vector \(v\) by a rotor \(R\) and it's reverse \(R^\dagger\) will rotate vector about the bivector component of the rotor.
+%
+$$ v' = R v R^\dagger $$
+%
 TODO: Similarities between Quaternion and Rotor
+\citep{bosch_lets_nodate}
 \citep{bosch_code_nodate}
 
 %clifford algebra
@@ -290,6 +299,9 @@ multi-view: polyvision\\
 abstraction of 4D rotation using 3D rotation - does not extend well to n dimensions unlike all other propersitions
 
 \section{Rotation of a 4D Vector}
+
+\citep{bosch_4d_2011}
+\citep{bosch_code_nodate}
 
 initial manual derivation
 
