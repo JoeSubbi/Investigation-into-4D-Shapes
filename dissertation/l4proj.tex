@@ -129,9 +129,25 @@ light from center of ball
 
 \subsection{Extensions to the 3D Cross Section}
 
-\citep{kageyama_visualization_2015}
+Through simple discussion with peers, 3D cross section of a four dimensional objects appear to be a far more intuitive concept to grasp compared to ... 
+%
+TODO: Compared to the other representations:
+%
+given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
+\vskip 0.5em
+An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed.
+\vskip 0.5em
+Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. For example: displaying several 2D circles that circularly increase and decrease in size besides one another provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere. 
 
-\citep{matsumoto_polyvision_2019}
+TODO: Figure of several cross sections
+
+\citet{kageyama_visualization_2015} proposed such a system that displays several cross sections of a 4D object along an ovular path, in order to try and provide a viewer with more information about the object.
+
+Another interesting extension which arguably provides the user with more information about an object, is being able to view said object from other angles. For example: take a cone that is extended upwards to a point. From the top, a cross section of the object will appear as a circle. However from a side on perspective, the object will appear as a triangle.
+
+TODO: Figure of multi-view
+
+\citet{matsumoto_polyvision_2019} proposed \textit{Polyvision}, a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
 
 \section{Building a 4D Object}
 
@@ -143,11 +159,20 @@ A mesh consists of vertices, edges and faces. A vertex being a point on the surf
 
 \subsection{Mesh Based Rendering}
 
-Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which render 4 dimensional objects using a mesh.
+Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which render four dimensional objects using a mesh. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells. The most basic cell is the tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. A pentachoron, also known as a hyper-tetrahedron or a 5-cell; the mesh of which is of course consists of 5 tetrahedral sub-meshes, each consisting of 4 triangles.
+\vskip 0.5em
+Mesh based rendering allows the creation of very complex higher dimensional objects
+
+TODO: tianli used Unity, Bosch created his own physics engine\\
+TODO: The complexities revolve around cross section
 
 \subsection{Ray Marching Shaders}
 
 Despite of advancements in, ray marching has not lost its place in the world. Whilst less intuitive and approachable than mesh based rendering, ...
+
+TODO: quilez actiely exploring ray marching for change\\
+TODO: similar techniques used for volumetric rendering\\
+TODO: foundation for ray tracing which is becoming increasingly popular\\
 
 \citep{quilez_distance_nodate}
 \citep{the_art_of_code_ray_2018}
@@ -190,10 +215,6 @@ $$ v' = R v R^\dagger $$
 TODO: Similarities between Quaternion and Rotor
 \citep{bosch_lets_nodate}
 \citep{bosch_code_nodate}
-
-%clifford algebra
-
-%\citep{mathoma_geometric_2017}
 
 \section{Interaction and Direct Manipulation}
 
@@ -427,6 +448,8 @@ Typical inclusions in the appendices are:
 \item User manuals, and any guides to starting/running the software.
 
 \end{itemize}
+
+TODO: PDF of Google Forms Questionnaire
 
 \textbf{Don't include your source code in the appendices}. It will be
 submitted separately.
