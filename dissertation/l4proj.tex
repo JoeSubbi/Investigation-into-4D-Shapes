@@ -93,20 +93,17 @@ In this paper several methods will be applied in an attempt to provide more info
 
 \section{Motivation}
 
-\textbf{Motivate} first, then state the general problem clearly. 
+% first, motivate then state the general problem clearly. 
 
-Three dimensional space, on the surface, is very neat. There are three degrees of translational freedom expressed by the three axes \(x\), \(y\) and \(z\). There are three degrees of rotation that are most commonly expressed as rotations about each axis. 
+Three dimensional space is very neat. There are three degrees of translational freedom expressed by the three axes \(x\), \(y\) and \(z\). There are a further three degrees of rotational freedom that are most commonly expressed as rotations about each axis. 
+This supposed tidiness has lead to misconceptions that are so heavily rooted in the average persons understanding of geometry such that nearly every digital 3D system is built upon a mathematically impure foundation. 
 %
-This supposed tidiness has resulted in misconceptions that are rooted in to society such that nearly every digital 3D system is built upon a mathematically impure foundation. 
+In the 3D world, these misconceptions do not matter, and the mathematics is still sound. Quaternions, the most common method of controlling or interpreting rotation, is heavily used in gyroscopic devices, interactive digital 3D environments, animation and robotics. More abstract practices such as mathematics and physics, however, need to consider geometry in higher dimensional spaces.
+\vskip 0.5em
+A variety of fields within science and engineering utilise the visualisation of higher dimensional spaces to tackle a variety of problems. For any problem defined in \(n\) dimensional space, to understand it more intuitively, it is often suitable to reduce the dimensionality of the problem. However, when a problem is reduced to $\mathbb{R}^3$ or $\mathbb{R}^2$ it may become somewhat trivial. Visualisation of 4D objects can often server as the "bridge from the 'trivial cases' to the 'nontrivial cases'", \citep{zhou_visualization_1991}. Such problems that utilise the visualisation of four dimensional space include: understanding differential geometry, collision detection, analysis of 3D objects in motion, and scalar-fields in 3D space; among others. \citep{zhou_visualization_1991}
+\vskip 0.5em
 %
-In practice the misconceptions do not matter, and the mathematics is still sound. However it is interesting nonetheless that
-
-comes with a series of interesting problems 
-
-what is the benefit of trying to teach people about it?
-
-TODO: Discuss the applications of 4d
-\citep{zhou_visualization_1991}
+TODO: what is the benefit of trying to teach people about it?\\
 
 \section{Aims}
 
@@ -114,7 +111,11 @@ TODO: Discuss the applications of 4d
 
 As per the motivation for this project; an effective tutorial must be compiled together in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects must be developed and have the capability to showcase a wide variety of 4D shapes. Research into intuitive methods of user interaction should be explored, and a system to rotate an object without gimbal lock should be employed.
 \vskip 0.5em
-An evaluation will be conducting into what aspects of a shape are most important when trying to interpret higher dimensional geometry, using a series of tests that evaluate the understanding of the geometry, how its cross section changes under rotation, as well as a users ability to manipulate the shape.
+An evaluation will be conducted into what aspects of a shape are most important when trying to interpret higher dimensional geometry. 
+%
+This will be evaluated through a series of extensions to a three dimensional cross sections of four dimensional objects; each of which will focus on a different aspect of geometry. 
+%
+These representations will be experimentally evaluated using a series of tests that each focus on a different aspect of geometry, and how a cross section of a four dimensional object changes under rotation, as well as a users ability to manipulate the shape.
 
 %==================================================================================================================================
 \chapter{Background}
@@ -159,18 +160,23 @@ A mesh consists of vertices, edges and faces. A vertex being a point on the surf
 
 \subsection{Mesh Based Rendering}
 
-Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which render four dimensional objects using a mesh. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells. The most basic cell is the tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. A pentachoron, also known as a hyper-tetrahedron or a 5-cell; the mesh of which is of course consists of 5 tetrahedral sub-meshes, each consisting of 4 triangles.
+Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. The most basic cell is the tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object besides the hyper-sphere. The mesh of a pentachoron of course consists of 5 tetrahedral sub-meshes (cells).
 \vskip 0.5em
-Mesh based rendering allows the creation of very complex higher dimensional objects
+Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, as well as the rendering of a four dimensional world. On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software built for two and three dimensions.
+\vskip 0.5em
+There are two main drawbacks to mesh based rendering: The time taken to construct 4D objects, and the complexity of translating four dimensional geometry to 3D. 
+%
+Simple 4D Platonic solids \citep{parker_things_2014} such as the hyper-tetrahedron (5-cell), hyper-cube (8-cell) and hyper-octahedron (16-cell) are fairly trivial. Developing complex shapes such as a the hyper-dodecahedron (120-cell) or the hyper-iscosahedron (600-cell) becomes a complex task. This complexity only increase when trying to develop more complex shapes such as a hyper-sphere, torus or cone, which are smooth and, on a mathematical level, have infinitely many faces.
 
-TODO: tianli used Unity, Bosch created his own physics engine\\
-TODO: The complexities revolve around cross section
+TODO: The complexities revolve around cross section and time to develop a shape
+\citep{tianli_2d_2018}
 
 \subsection{Ray Marching Shaders}
 
-Despite of advancements in, ray marching has not lost its place in the world. Whilst less intuitive and approachable than mesh based rendering, ...
+Despite of advancements in computational power and rendering capabilities, ray marching has not lost its place in the world.
+Whilst less intuitive and approachable than mesh based rendering, ...
 
-TODO: quilez actiely exploring ray marching for change\\
+TODO: quilez actively exploring ray marching for change\\
 TODO: similar techniques used for volumetric rendering\\
 TODO: foundation for ray tracing which is becoming increasingly popular\\
 
@@ -183,14 +189,14 @@ In $\mathbb{R}^3$ there are three degrees of rotational freedom. As there are th
 
 \subsection{The Problems with Rotation}
 
-Rotating an object in $\mathbb{R}^2$ is somewhat trivial. Given a vector $V_{xy}$ rotating about an origin point within the \(xy\) plane, the vector will follow a circular path dictated by the following 2D rotation matrix:
+Rotating an object in $\mathbb{R}^2$ is somewhat trivial. Given a vector $v_{xy}$ rotating about an origin point within the \(xy\) plane, the vector will follow a circular path dictated by the following 2D rotation matrix:
 % 2D Rotation Matrix
-$$V_{xy}' = V_{xy}\begin{bmatrix}
+$$v_{xy}' = v_{xy}\begin{bmatrix}
   cos \theta & - sin \theta \\
   sin \theta & cos \theta
 \end{bmatrix}$$
 %
-Rotating an object in a space greater than two dimensions immediately becomes a non-trivial problem due to it being non-commutative. In dimensions greater than $\mathbb{R}^2$, rotation matrices can be composed into a homogeneous rotation matrix. Multiplying a vector with a such a matrix will perform a rotation but will likely encounter gimbal lock. Gimbal lock occurs when rotating an object considers each plane of rotation as independent from one another. As a result, if a particular plane becomes parallel with another, a degree of rotation is lost and the vector being rotated will not change as expected.
+Rotating an object in a space greater than two dimensions immediately becomes a nontrivial problem due to its non-commutativity. In dimensions greater than $\mathbb{R}^2$, rotation matrices can be composed into a homogeneous rotation matrix. Multiplying a vector with a such a matrix will produce a rotated vector, but doing so will likely encounter gimbal lock. Gimbal lock occurs when rotating an object considers each plane of rotation as independent from one another. As a result, if a particular plane becomes parallel with another, a degree of rotation is lost and the vector being rotated will not change as expected.
 \vskip 0.5em
 Introducing the quaternion: The quaternion is an extension of the complex number system. A quaternion has 4 components: \(x\), \(y\) and \(z\) which describe the axis of rotation, and \(w\) which describes the amount of rotation. Quaternions do not suffer from gimbal lock and can be applied to each other to perform several rotations in series.
 \vskip 0.5em
