@@ -116,6 +116,9 @@ An evaluation will be conducted into what aspects of geometry are most important
 This will be evaluated through a series of extensions to a three dimensional cross sections of four dimensional objects; each of which will focus on a different aspect of geometry. 
 %
 These representations will be experimentally evaluated using a series of tests that each focus on a different aspect of geometry, and how a cross section of a four dimensional object changes under rotation, as well as a users ability to manipulate the shape.
+\vskip 0.5em
+TODO: Research Questions\\
+This project aims to answer
 
 %==================================================================================================================================
 \chapter{Background}
@@ -128,9 +131,9 @@ The 3D cross section is limited given that only a slice of the shape can be seen
 
 \subsection{Extensions to the 3D Cross Section}
 
-Through simple discussion with peers, 3D cross section of a four dimensional objects appear to be a far more intuitive concept to grasp compared to ... 
+Through simple discussion with peers, a 3D cross section of a four dimensional object appears to be a far more intuitive concept to grasp compared against stereographic projection. 
 %
-TODO: Compared to the other representations:
+TODO: tie in with aims to teach people (answering the questions)
 %
 given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
 \vskip 0.5em
@@ -140,13 +143,21 @@ Showing several cross sections besides one another, each offset along the \(w\) 
 
 TODO: Figure of several cross sections
 
-\citet{kageyama_visualization_2015} proposed such a system that displays several cross sections of a 4D object along an ovular path, in order to try and provide a viewer with more information about the object.
+\citet{kageyama_visualization_2015} proposed such a system that displays several cross sections of a 4D object along an ovular path, in order to try and provide a viewer with more information about the object. 
+%
+By displaying the several cross sections in an ovular path, compared to a linear path, Kageyama was able to display a far greater number of cross sections, allowing for a more detailed view of the four dimensional object in its entirety.
+%
+Each cross section, as they move further away from the central slice, decreases in size. This avoids potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
+Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyamas visualisation will have each of these 3D spheres decrease in size such that a user could more likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits the same scaling behaviour. If a user interacts with the object using the appropriate keys they could observe the lack of change in the size of the 3D cross section and draw the correct conclusion.
+Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its potential to be obscure when it comes to objects with similar cross sections.
 
 Another interesting extension which arguably provides the user with more information about an object, is being able to view said object from other angles. For example: take a cone that is extended upwards to a point. From the top, a cross section of the object will appear as a circle. However from a side on perspective, the object will appear as a triangle.
 
 TODO: Figure of multi-view
 
 \citet{matsumoto_polyvision_2019} proposed \textit{Polyvision}, a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
+
+TODO: Limitations by matsumoto (VR is cool, doesnt use 4D rotation?, only used wireframes)
 
 \section{Building a 4D Object}
 
@@ -160,18 +171,21 @@ A mesh consists of vertices, edges and faces. A vertex being a point on the surf
 
 Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. The most basic cell is the tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object besides the hyper-sphere. The mesh of a pentachoron of course consists of 5 tetrahedral sub-meshes (cells).
 \vskip 0.5em
-Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, as well as the rendering of a four dimensional world. On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software built for two and three dimensions.
+Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, as well as the rendering of a four dimensional world. 
+On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software built for two and three dimensions.
 \vskip 0.5em
 There are two main drawbacks to mesh based rendering: The time taken to construct 4D objects, and the complexity of translating four dimensional geometry to 3D. 
 %
-Simple 4D Platonic solids \citep{parker_things_2014} such as the hyper-tetrahedron (5-cell), hyper-cube (8-cell) and hyper-octahedron (16-cell) are fairly trivial. Developing complex shapes such as a the hyper-dodecahedron (120-cell) or the hyper-iscosahedron (600-cell) becomes a complex task. This complexity only increase when trying to develop more complex shapes such as a hyper-sphere, torus or cone, which are smooth and, on a mathematical level, have infinitely many faces.
-
-TODO: The complexities revolve around cross section and time to develop a shape
+Simple 4D Platonic solids \citep{parker_things_2014} such as the hyper-tetrahedron (5-cell), hyper-cube (8-cell) and hyper-octahedron (16-cell) are fairly straightforward. Developing complex shapes such as a the hyper-dodecahedron (120-cell) or the hyper-iscosahedron (600-cell) becomes a complex and time consuming task. 
+This complexity only increase when trying to develop curve faced shapes such as a hyper-sphere, torus or cone, which are smooth. Smooth geometry generally requires hundreds of vertices as well as smooth surface shading that only add to computational load and development time.
+\vskip 0.5em
+TODO: The complexities revolve around cross section
 \citep{tianli_2d_2018}
 
 \subsection{Ray Marching Shaders}
 
 Despite of advancements in computational power and rendering capabilities, ray marching has not lost its place in the world.
+Signed distance fields are still heavily used in volumetric rendering meta-ball geometry, collision detection and video game shaders, with ray marching.
 Whilst less intuitive and approachable than mesh based rendering, ...
 
 TODO: quilez actively exploring ray marching for change\\
@@ -180,6 +194,8 @@ TODO: foundation for ray tracing which is becoming increasingly popular\\
 
 \citep{quilez_distance_nodate}
 \citep{the_art_of_code_ray_2018}
+
+TODO: Not novel to ray march 4D, but equations for objects would have to be derived
 
 \section{Rotating a 4D Object}
 
@@ -216,9 +232,7 @@ It is possible to multiply multivectors using the geometric product; a combinati
 %
 $$ v' = R v R^\dagger $$
 %
-TODO: Similarities between Quaternion and Rotor
-\citep{bosch_lets_nodate}
-\citep{bosch_code_nodate}
+As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very similar in concept. The rotor, unlike the quaternion, has the advantage of not having to leave the dimension it belongs in order to rotate a vector, allowing it to be used in \(n\) dimensions.
 
 \section{Interaction and Direct Manipulation}
 
