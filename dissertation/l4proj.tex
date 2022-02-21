@@ -126,7 +126,7 @@ This project aims to answer
 \section{Representations of the Fourth Dimension}
 
 There are many ways to represent the fourth dimension. Arguably the most intuitive understanding is that of a 3D cross section. As with how a sphere in $\mathbb{R}^3$ can be considered a a stack of infinitely thin circles that vary in size from top to bottom, along the \(z\) axis; a fourth dimensional sphere can be considered a stack of 3D spheres that vary in size as you move across the \(w\) axis.
-
+\vskip 0.5em
 The 3D cross section is limited given that only a slice of the shape can be seen at any given time. Stereographic projection attempts to rectify this by allowing a viewer to visualise as much of the shape as their field of view permits. Stereographic projection in $\mathbb{R}^3$ takes a 3D sphere and maps its geometry across a 2D plane. To map another object, for example a cube, its geometry must be projected beforehand onto the surface of a sphere \citep{radiya-dixit_visualizing_2017}. Stereographic projection in $\mathbb{R}^4$ takes the spherical projection of a 4D object, and maps it across a 3D environment. A viewer can stand in the center of the 3D environment and observe the mapped geometry. This approach of interpreting four dimensional space is well suited to virtual reality, however it is complex to interpret in a meaningful way, and abstracting an understanding to lower dimensions is nontrivial.
 
 \subsection{Extensions to the 3D Cross Section}
@@ -150,7 +150,7 @@ By displaying the several cross sections in an ovular path, compared to a linear
 Each cross section, as they move further away from the central slice, decreases in size. This avoids potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
 Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyamas visualisation will have each of these 3D spheres decrease in size such that a user could more likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits the same scaling behaviour. If a user interacts with the object using the appropriate keys they could observe the lack of change in the size of the 3D cross section and draw the correct conclusion.
 Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its potential to be obscure when it comes to objects with similar cross sections.
-
+\vskip 0.5em
 Another interesting extension which arguably provides the user with more information about an object, is being able to view said object from other angles. For example: take a cone that is extended upwards to a point. From the top, a cross section of the object will appear as a circle. However from a side on perspective, the object will appear as a triangle.
 
 TODO: Figure of multi-view
@@ -184,18 +184,56 @@ TODO: The complexities revolve around cross section
 
 \subsection{Ray Marching Shaders}
 
-Despite of advancements in computational power and rendering capabilities, ray marching has not lost its place in the world.
-Signed distance fields are still heavily used in volumetric rendering meta-ball geometry, collision detection and video game shaders, with ray marching.
-Whilst less intuitive and approachable than mesh based rendering, ...
+Ray march based rendering was initially developed due to limitations in real time rendering, as a way to combine easy to define primitive objects into more complex shapes. Despite advancements in rendering capabilities, allowing even low-end computers to render complex mesh based geometry in real time, ray marching has not lost its place in the world. 
+Whilst ray tracing is capable of photorealistic rendering, signed distance fields (SDFs), the core of ray marching, are still heavily used in volumetric geometry, meta-ball geometry, collision detection and ray marched shaders.
+An SDF is a function that describes a signed distance to a surface relative to a point in space. \citet{quilez_distance_nodate} lists several SDFs for primitive objects as well as functions that can be applied to them.
+%
+%\begin{lstlisting}[language=c, float, caption={The signed distance function for a sphere in $\mathbb{R}^3$}, label=lst:callahan]
+%  float sdSphere( float3 p, float r )
+%  {
+%      return length(p)-r;
+%  }
+%\end{lstlisting}
+%
+\vskip 0.5em
+Ray marching (Algorithm \ref{alg:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point to mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
 
-TODO: quilez actively exploring ray marching for change\\
-TODO: similar techniques used for volumetric rendering\\
-TODO: foundation for ray tracing which is becoming increasingly popular\\
+TODO: Ray marching figure
+%
+\begin{algorithm}
+  \DontPrintSemicolon
+  
+  \KwData{\\
+    \quad $r_o$ the origin of a ray.\;
+    \quad $r_d$ the direction of a ray.\;
+    \quad $MAX\_STEPS$ the maximum number of iterations.\;
+    \quad $MAX\_DIST$ the maximum distance from the ray origin.\;
+    \quad $SURF\_DIST$ the smallest distance from a surface before deciding not to step any further.\;
+    \quad $SDF(p)$ given a point $p$ along the ray, return the distance to the nearest surface.\;
+  }
+  \KwResult{\\
+    \quad $ d_o $ The distance from the ray origin along the ray path.
+  }
+  \Begin{
+      $ d_o \longleftarrow 0 $\;
+      $ d_s \longleftarrow \infty $\;
+      \For{$ i < MAX\_STEPS $}
+      {
+          $ p \longleftarrow r_o + d_o \cdot r_d$\;
+          $ d_s \longleftarrow SDF(p) $\;
+          $ d_o \longleftarrow d_s + d_o $\;
+          \If{$d_s < SURF\_DIST \textbf{ or } d_o > MAX\_DIST$}
+          {
+              break\;
+          }
+      }
+  }
+\caption{The ray marching algorithm}\label{alg:raymarch}
+\end{algorithm}
 
-\citep{quilez_distance_nodate}
-\citep{the_art_of_code_ray_2018}
-
-TODO: Not novel to ray march 4D, but equations for objects would have to be derived
+Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
+\vskip 0.5em
+A system that ray marching over four dimensional objects is not a novel one. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand would need to be derived from scratch.
 
 \section{Rotating a 4D Object}
 
@@ -203,12 +241,14 @@ In $\mathbb{R}^3$ there are three degrees of rotational freedom. As there are th
 
 \subsection{The Problems with Rotation}
 
-Rotating an object in $\mathbb{R}^2$ is somewhat trivial. Given a vector $v_{xy}$ rotating about an origin point within the \(xy\) plane, the vector will follow a circular path dictated by the following 2D rotation matrix:
+Rotating an object in $\mathbb{R}^2$ is somewhat trivial. Given a vector $v_{xy}$ rotating an angle $\theta$ about an origin point within the \(xy\) plane, the vector will follow a circular path dictated by the following 2D rotation matrix:
 % 2D Rotation Matrix
-$$v_{xy}' = v_{xy}\begin{bmatrix}
-  cos \theta & - sin \theta \\
-  sin \theta & cos \theta
-\end{bmatrix}$$
+\begin{equation}
+    v_{xy}' = v_{xy}\begin{bmatrix}
+      cos \theta & - sin \theta \\
+      sin \theta & cos \theta
+    \end{bmatrix},
+\end{equation}
 %
 Rotating an object in a space greater than two dimensions immediately becomes a nontrivial problem due to its non-commutativity. In dimensions greater than $\mathbb{R}^2$, rotation matrices can be composed into a homogeneous rotation matrix. Multiplying a vector with a such a matrix will produce a rotated vector, but doing so will likely encounter gimbal lock. Gimbal lock occurs when rotating an object considers each plane of rotation as independent from one another. As a result, if a particular plane becomes parallel with another, a degree of rotation is lost and the vector being rotated will not change as expected.
 \vskip 0.5em
@@ -230,8 +270,11 @@ In a given vector space greater than $\mathbb{R}^2$, a multivector greater than 
 \vskip 0.5em
 It is possible to multiply multivectors using the geometric product; a combination of the inner and outer product. Multiplying a vector \(v\) by a rotor \(R\) and it's reverse \(R^\dagger\) will rotate vector about the bivector component of the rotor.
 %
-$$ v' = R v R^\dagger $$
+\begin{equation}
+    v' = R v R^\dagger,
+\end{equation}
 %
+The angle of rotation is dictated by a scalar component of the rotor, similar to the \(w\) component of a quaternion. 
 As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very similar in concept. The rotor, unlike the quaternion, has the advantage of not having to leave the dimension it belongs in order to rotate a vector, allowing it to be used in \(n\) dimensions.
 
 \section{Interaction and Direct Manipulation}
@@ -250,6 +293,8 @@ global, swipe gestures (often multi-touch)
 \citep{kageyama_keyboard-based_2005}
 
 \section{Teaching and Evaluation}
+
+TODO: reiterate aims and questions
 
 \citep{safrankova_van_2012}
 
