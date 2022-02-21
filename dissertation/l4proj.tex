@@ -196,9 +196,26 @@ An SDF is a function that describes a signed distance to a surface relative to a
 %\end{lstlisting}
 %
 \vskip 0.5em
-Ray marching (Algorithm \ref{alg:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point to mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
+Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point to mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
 
-TODO: Ray marching figure
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{images/raymarching/raymarch_ai.png}
+      \caption{Ray marching to produce an image}
+      \label{fig:rmcast}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{images/raymarching/algorithm_ai.png}
+      \caption{Ray marching algorithm}
+      \label{fig:rmalg}
+  \end{subfigure}   
+  %
+  \caption{Ray marching. \subref{fig:rmcast} shows how each pixel of an image is coloured by casting a ray from the camera in the direction of the pixel and reading the surface of any defined geometry. 
+  \subref{fig:rmalg} shows the process of a single ray marching towards a surface, given a an origin point and a direction as described in Algorithm \ref{alg:raymarch}.
+  }\label{fig:raymarch}
+\end{figure}
 %
 \begin{algorithm}
   \DontPrintSemicolon
@@ -233,7 +250,7 @@ TODO: Ray marching figure
 
 Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
 \vskip 0.5em
-A system that ray marching over four dimensional objects is not a novel one. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand would need to be derived from scratch.
+It is not novel to ray march over primitive 4D objects such as the hyper cube or hyper sphere. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand would need to be derived from scratch.
 
 \section{Rotating a 4D Object}
 
