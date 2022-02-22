@@ -4,6 +4,7 @@
 
 % put any additional packages here
 \usepackage{amsmath}
+\usepackage{pdfpages}
 
 \begin{document}
 
@@ -179,8 +180,7 @@ There are two main drawbacks to mesh based rendering: The time taken to construc
 Simple 4D Platonic solids \citep{parker_things_2014} such as the hyper-tetrahedron (5-cell), hyper-cube (8-cell) and hyper-octahedron (16-cell) are fairly straightforward. Developing complex shapes such as a the hyper-dodecahedron (120-cell) or the hyper-iscosahedron (600-cell) becomes a complex and time consuming task. 
 This complexity only increase when trying to develop curve faced shapes such as a hyper-sphere, torus or cone, which are smooth. Smooth geometry generally requires hundreds of vertices as well as smooth surface shading that only add to computational load and development time.
 \vskip 0.5em
-TODO: The complexities revolve around cross section
-\citep{tianli_2d_2018}
+In order to render a three dimensional slice of a four dimensional object, an algorithm must be employed such that a point along an edge that connects two vertices of a 4D object can be found, and connected by edges to all other points lying on the same four dimensional hyperplane that sit along the edge connect other 4D vertices of the same object. This is a fairly complex task, and only gets more complex when calculating what faces of the slice of the object to render to produce a cohesive three dimensional slice. \citet{tianli_2d_2018} demonstrates how to find the cross section of an object and the problems associated with it.
 
 \subsection{Ray Marching Shaders}
 
@@ -198,6 +198,7 @@ An SDF is a function that describes a signed distance to a surface relative to a
 \vskip 0.5em
 Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point to mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
 
+% Ray marching Diagrams
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -216,7 +217,8 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
   \subref{fig:rmalg} shows the process of a single ray marching towards a surface, given a an origin point and a direction as described in Algorithm \ref{alg:raymarch}.
   }\label{fig:raymarch}
 \end{figure}
-%
+
+% Ray marching Algorithm
 \begin{algorithm}
   \DontPrintSemicolon
   
@@ -248,9 +250,11 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
 \caption{The ray marching algorithm}\label{alg:raymarch}
 \end{algorithm}
 
+\vskip 0.5em
 Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
 \vskip 0.5em
-It is not novel to ray march over primitive 4D objects such as the hyper cube or hyper sphere. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand would need to be derived from scratch.
+A significant advantage over mesh based rendering is the ability to render a 3D cross section of a 4D object with minimal effort. The SDF of a 4D object taken over three dimensional space will produce the SDF equivalent to the cross section of the same object in a given hyper plane along the \(w\) axis.
+It is not novel to ray march over primitive 4D objects such as the hyper cube or hyper sphere. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand would need to be derived from scratch. 
 
 \section{Rotating a 4D Object}
 
@@ -529,10 +533,10 @@ Typical inclusions in the appendices are:
 
 \end{itemize}
 
-TODO: PDF of Google Forms Questionnaire
-
 \textbf{Don't include your source code in the appendices}. It will be
 submitted separately.
+
+\includepdf[width=1.1\linewidth, pages={1-4}]{images/4d_shapes_questionnaire.pdf}
 
 \end{appendices}
 
