@@ -5,6 +5,7 @@
 % put any additional packages here
 \usepackage{amsmath}
 \usepackage{pdfpages}
+\usepackage{float}
 
 \begin{document}
 
@@ -133,11 +134,9 @@ The 3D cross section is limited given that only a slice of the shape can be seen
 
 Through simple discussion with peers, a 3D cross section of a four dimensional object appears to be a far more intuitive concept to grasp compared against stereographic projection. 
 %
-TODO: tie in with aims to teach people (answering the questions)
-%
-given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
+Given the aims of the project, are to investigate how one may extend a visualisation of a 4D object to provide a viewer with more information in order to assist in their understanding of higher dimensional space, the 3D cross section of a four dimensional world appears very appropriate given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
 \vskip 0.5em
-An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed.
+An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed. 
 \vskip 0.5em
 Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. For example: displaying several 2D circles that circularly increase and decrease in size besides one another provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere. 
 
@@ -147,17 +146,26 @@ TODO: Figure of several cross sections
 %
 By displaying the several cross sections in an ovular path, compared to a linear path, Kageyama was able to display a far greater number of cross sections, allowing for a more detailed view of the four dimensional object in its entirety.
 %
-Each cross section, as they move further away from the central slice, decreases in size. This avoids potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
-Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyamas visualisation will have each of these 3D spheres decrease in size such that a user could more likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits the same scaling behaviour. If a user interacts with the object using the appropriate keys they could observe the lack of change in the size of the 3D cross section and draw the correct conclusion.
+Each cross section, as they move further away from the central slice, decreases in size; in order to avoid potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
+%
+Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyama's visualisation will have each of these 3D spheres decrease in size such that a user could more likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits the same scaling behaviour. If a user interacts with the object using the appropriate keys they could observe the lack of change in the size of the 3D cross section and draw the correct conclusion.
 Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its potential to be obscure when it comes to objects with similar cross sections.
+
+TODO: classify Kageyama's work
 \vskip 0.5em
 Another interesting extension which arguably provides the user with more information about an object, is being able to view said object from other angles. For example: take a cone that is extended upwards to a point. From the top, a cross section of the object will appear as a circle. However from a side on perspective, the object will appear as a triangle.
 
 TODO: Figure of multi-view
 
-\citet{matsumoto_polyvision_2019} proposed \textit{Polyvision}, a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
+\textit{Polyvision}, proposed by \citet{matsumoto_polyvision_2019}, is a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
+%
+\citet{matsumoto_polyvision_2019} chose to represent 4D objects as wireframes, connecting each vertex of the object by an edge. This is possible when collapsing each vertex of the 4D object to the same three dimensional slice. This is often referred to as the "shadow" of an object. 
+This allows for a user to view almost all of an object at once, in comparison to a single 3D slice, whilst offering a more intuitive understanding, although with perhaps less information, with comparison to stereographic projection. A disadvantage of a 3D wireframe shadow is with increasingly complex objects, the wireframe cells of the wireframe becomes more and difficult differentiate with the increase in the number of vertices and edges.
+The ability to view the surface of a complex object, such as a 120-cell, likely allows for easier understanding of the geometry compared to the wireframe of its shadow.
+%
+With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts interaction to that which we are used to. Translation, rotation and scaling are restricted to the third dimension, as interaction in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ will change the object in a potentially unexpected way. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
 
-TODO: Limitations by matsumoto (VR is cool, doesnt use 4D rotation?, only used wireframes)
+TODO: classify Matsumoto's work
 
 \section{Building a 4D Object}
 
@@ -169,7 +177,7 @@ A mesh consists of vertices, edges and faces. A vertex being a point on the surf
 
 \subsection{Mesh Based Rendering}
 
-Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. As with a face in a 3D mesh being constructed of triangles (the most basic 2D shape), a 4D mesh is constructed of the most basic cell, a tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object besides the hyper-sphere. The mesh of a pentachoron consists of 5 tetrahedral sub-meshes (cells).
+Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. As with a face in a 3D mesh being constructed of triangles (the most basic 2D shape), a 4D mesh is constructed of the most basic cell, a tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object besides potentially the hyper-sphere. The mesh of a pentachoron consists of 5 tetrahedral sub-meshes (cells). A sub-mesh in this instance refers to a 3D mesh used to build a 4D object, in the same way a 2D net of faces can build a 3D shape.
 \vskip 0.5em
 Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, as well as the rendering of a four dimensional world. 
 On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software built for two and three dimensions.
@@ -196,9 +204,9 @@ An SDF is a function that describes a signed distance to a surface relative to a
 %
 \vskip 0.5em
 Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point to mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
-
+\vskip 0.5em
 % Ray marching Diagrams
-\begin{figure}
+\begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
       \includegraphics[width=\textwidth]{images/raymarching/raymarch_ai.png}
@@ -216,7 +224,7 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
   \subref{fig:rmalg} shows the process of a single ray marching towards a surface, given a an origin point and a direction as described in Algorithm \ref{alg:raymarch}.
   }\label{fig:raymarch}
 \end{figure}
-
+%
 % Ray marching Algorithm
 \begin{algorithm}
   \DontPrintSemicolon
@@ -248,7 +256,7 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
   }
 \caption{The ray marching algorithm}\label{alg:raymarch}
 \end{algorithm}
-
+%
 \vskip 0.5em
 Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
 \vskip 0.5em
