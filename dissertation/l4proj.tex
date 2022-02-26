@@ -112,14 +112,13 @@ TODO: what is the benefit of trying to teach people about it?\\
 
 As per the motivation for this project; an effective tutorial must be compiled together in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects must be developed and have the capability to showcase a wide variety of 4D shapes. Research into intuitive methods of user interaction should be explored, and a system to rotate an object without gimbal lock should be employed.
 \vskip 0.5em
-An evaluation will be conducted into what aspects of geometry are most important when trying to interpret higher dimensional spaces. 
+This paper proposes several extensions to taking a 3D cross section of a four dimensional object. An evaluation will be conducted into what aspects of the geometry emphasised by these extensions are most effective when trying to interpret higher dimensional spaces, and understanding the surface, rotation and pose of a 4D object. 
 %
-This will be evaluated through a series of extensions to a three dimensional cross sections of four dimensional objects; each of which will focus on a different aspect of geometry. 
-%
-These representations will be experimentally evaluated using a series of tests that each focus on a different aspect of geometry, and how a cross section of a four dimensional object changes under rotation, as well as a users ability to manipulate the shape.
+Given a series of tests, a study will be conducted allowing a user to manipulate several 4D objects in order to evaluate their understanding of geometry, and compare their understanding against each representation of a 3D cross section. 
+Metrics such as time taken, confidence and accuracy will be measured, with each metric being applied to several tests, each focusing on a different aspect of geometry in order to evaluate a users understanding of how a cross section of a four dimensional object changes under rotation.
 \vskip 0.5em
-TODO: Research Questions\\
-This project aims to answer
+This project aims to answer questions related to which representation of a 4D object using a 3D cross section is the most effective in conveying the properties of four dimensional geometry to a user with limited experience. Which representation is the most effective at representing the surface type of a 4D object? And which representation is more effective at conveying the rotational pose of an object in $\mathbb{R}^4$?
+Furthermore, Does a users understanding and ability to manipulate 4D objects increase with practice?
 
 %==================================================================================================================================
 \chapter{Background}
@@ -170,7 +169,7 @@ A mesh consists of vertices, edges and faces. A vertex being a point on the surf
 
 \subsection{Mesh Based Rendering}
 
-Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. The most basic cell is the tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object besides the hyper-sphere. The mesh of a pentachoron of course consists of 5 tetrahedral sub-meshes (cells).
+Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. As with a face in a 3D mesh being constructed of triangles (the most basic 2D shape), a 4D mesh is constructed of the most basic cell, a tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object besides the hyper-sphere. The mesh of a pentachoron consists of 5 tetrahedral sub-meshes (cells).
 \vskip 0.5em
 Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, as well as the rendering of a four dimensional world. 
 On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software built for two and three dimensions.
