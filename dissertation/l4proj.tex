@@ -257,7 +257,6 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
 \caption{The ray marching algorithm}\label{alg:raymarch}
 \end{algorithm}
 %
-\vskip 0.5em
 Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
 \vskip 0.5em
 A significant advantage over mesh based rendering is the ability to render a 3D cross section of a 4D object with minimal effort. The SDF of a 4D object taken over three dimensional space will produce the SDF equivalent to the cross section of the same object in a given hyper plane along the \(w\) axis.
@@ -313,27 +312,42 @@ local, grab ball driven
 
 global, swipe gestures (often multi-touch)
 
-\citep{shoemake_arcball_1994}
+\citep{shoemake_arcball_1994}\\
+\citep{hinckley_usability_1997}\\
+\citep{balakrishnan_rockinmouse_1997}
 
 \subsection{Methods of Interaction in 4D}
 
-\citep{murata_interactive_2000}
+\citep{murata_interactive_2000}\\
 \citep{kageyama_keyboard-based_2005}
 
 \section{Teaching and Evaluation}
 
 TODO: reiterate aims and questions
 
-\citep{safrankova_van_2012}
+It is important to ensure this complex mathematical topic is to be well communicated to individuals with little-to-no experience of higher dimensional space. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, States that their are five levels of understanding geometry, where a student will progress from one level to the next. The levels of understanding include: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
+Level 0 focuses on the identification and recognition of geometry using simple language. The properties that define a geometry need not be identified.
+Level 1: students begin basic analysis and identification of geometry, without a need for proofs.
+Level 2: students create meaningful definitions and are able to provide meaningful definitions to justify any reasoning.
+Level 3: students are able to provide deductive geometry proofs, showing their understanding of formal definitions and theorems
+Level 4: students have an understanding of several proofs and can comprehend Euclidean and non-Euclidean geometry.
+\vskip 0.5em
+For the purposes of this experiment, levels 1-3
+
+TODO: Explain relevance
+
+TODO: 5 phases of learning process
 
 %==================================================================================================================================
 \chapter{Analysis and Requirements}
 
-self defined project with the goal of teaching people about abstract mathematical concepts
-
 \section{Problem Specification}
 
-teach people, and develop something suited to teaching people
+% teach people, and develop something suited to teaching people
+
+% self defined project with the goal of teaching people about abstract mathematical concepts
+
+The core of this project focuses on the development of a system capable of rendering several four dimensional objects, and be able to view these objects in a series of ways as to teach
 
 \section{Limitations}
 
@@ -344,27 +358,30 @@ time per user to experiment\\
 
 \section{Prioritisation Using MoSCoW}
 
-explanation of MoSCoW
+MoSCoW is a prioritisation technique used in project planning. The purpose of MoSCoW is to separate the requirements of a project into four levels of priority: Must have, Should have, Could have and Won't have. This process may be revisited several times during a projects development lifecycle; different requirements are often re-prioritised based on project progress or project direction.
 
 \subsection*{Must Have}
 
 be able to render multiple 4D shapes
-
+\vskip 0.5em
 multiple extensions to a 3d cross section of 4d space
-
-create a tutorial video to teach and explain 4d
- - must cover the geometry
+\vskip 0.5em
+a tutorial video to teach and explain 4d\\
+ - must cover the geometry\\
  - must cover the rotation
 
 \subsection*{Should Have}
 
-be able to interact with them in 4D directly
-
-multiple tests to evaluate a persons understanding
+be able to interact/manipulate with them in 4D directly\\
+ - implement stable 4D rotation
+\vskip 0.5em
+multiple tests to evaluate a persons understanding of several aspects of geometry
 
 \subsection*{Could Have}
 
 multiple methods of direct interaction/manipulation
+\vskip 0.5em
+evaluation on effectiveness of texturing an object in different ways
 
 %===
 
