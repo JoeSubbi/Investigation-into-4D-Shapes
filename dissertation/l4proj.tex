@@ -11,7 +11,7 @@
 
 %==============================================================================
 %% METADATA
-\title{Level 4 Project: An Investigation into Importance of Different Geometric Components when Extending a Cross Section of Four Dimensional Objects}
+\title{An Investigation into Extending a 3D Cross Section of 4D Geometry and Evaluate an Extensions Effectiveness in Teaching Users to Manipulating This Geometry}
 \author{Joe Subbiani}
 \date{March 18, 2022}
 
@@ -119,7 +119,7 @@ Given a series of tests, a study will be conducted allowing a user to manipulate
 Metrics such as time taken, confidence and accuracy will be measured, with each metric being applied to several tests, each focusing on a different aspect of geometry in order to evaluate a users understanding of how a cross section of a four dimensional object changes under rotation.
 \vskip 0.5em
 This project aims to answer questions related to which representation of a 4D object using a 3D cross section is the most effective in conveying the properties of four dimensional geometry to a user with limited experience. Which representation is the most effective at representing the surface type of a 4D object? And which representation is more effective at conveying the rotational pose of an object in $\mathbb{R}^4$?
-Furthermore, Does a users understanding and ability to manipulate 4D objects increase with practice?
+Furthermore, Does a users understanding and ability to manipulate 4D objects increase with practice? And can advantages of each representation be realised and digested by potentially inexperienced users?
 
 %==================================================================================================================================
 \chapter{Background}
@@ -325,14 +325,14 @@ global, swipe gestures (often multi-touch)
 
 TODO: reiterate aims and questions
 
-It is important to ensure this complex mathematical topic is to be well communicated to individuals with little-to-no experience of higher dimensional space. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, States that their are five levels of understanding geometry, where a student will progress from one level to the next. The levels of understanding include: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
+It is important to ensure this complex mathematical topic is to be well communicated to individuals with little-to-no experience of higher dimensional space. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, Theorises that their are five levels of understanding geometry, where a student will progress from one level to the next. The levels of understanding include: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
 Level 0 focuses on the identification and recognition of geometry using simple language. The properties that define a geometry need not be identified.
 Level 1: students begin basic analysis and identification of geometry, without a need for proofs.
-Level 2: students create meaningful definitions and are able to provide meaningful definitions to justify any reasoning.
-Level 3: students are able to provide deductive geometry proofs, showing their understanding of formal definitions and theorems
+Level 2: students create meaningful definitions and are able to justify and reason their understanding of geometry.
+Level 3: students are able to provide deductive geometry proofs, showing their understanding of formal definitions and theorems.
 Level 4: students have an understanding of several proofs and can comprehend Euclidean and non-Euclidean geometry.
 \vskip 0.5em
-For the purposes of this experiment, levels 1-3
+For the purposes of this experiment, levels 0-3
 
 TODO: Explain relevance
 
@@ -343,49 +343,49 @@ TODO: 5 phases of learning process
 
 \section{Problem Specification}
 
-% teach people, and develop something suited to teaching people
+The core of this project focuses on the development of a system capable of rendering several different types of four dimensional objects, and be able to view these objects through a series of extensions to the 3D cross section in order to evaluate their effectiveness in teaching potentially inexperienced users about complex geometry.
 
-% self defined project with the goal of teaching people about abstract mathematical concepts
-
-The core of this project focuses on the development of a system capable of rendering several four dimensional objects, and be able to view these objects in a series of ways as to teach
+TODO: discuss evaluation- tie in with research questions
 
 \section{Limitations}
 
-time to develop
+The scope of the project is limited by two main factors: The time that can be spent on development, and the quantity to quality ratio of experimentation. 
+The project is primarily separated into three components: Research, development and experimentation. The development phase would take the most time with so many areas for exploration. Such areas include the creation, stable rotation, and manipulation of 4D geometry. To evaluate the effectiveness of the representations that need to be developed however, plenty of time needs to be put aside to plan and run appropriate experiments.
+Experimentation is, more often than not, limited by the number of participants that choose to be involved. To encourage the greatest number of potential participants to enroll in the experiment, the time commitment and effort cannot be so great that it deters them. Alongside the conscious effort to sign up, the experiment cannot run for such a period of time that it may effect a participants performance. As such, the amount of data that can be collected in one sitting should be maximised within a limited time frame.
 
-time per user to experiment\\
- - quantity of quality
+\section{Prioritisation of Requirements Using MoSCoW}
 
-\section{Prioritisation Using MoSCoW}
-
-MoSCoW is a prioritisation technique used in project planning. The purpose of MoSCoW is to separate the requirements of a project into four levels of priority: Must have, Should have, Could have and Won't have. This process may be revisited several times during a projects development lifecycle; different requirements are often re-prioritised based on project progress or project direction.
+MoSCoW is a prioritisation technique used in project planning. The purpose of MoSCoW is to separate the requirements of a project into four levels of priority: Must have, Should have, Could have and Won't have. This process may be revisited several times during a projects development lifecycle; different requirements are often re-prioritised based on project progress or a change in direction.
 
 \subsection*{Must Have}
 
-be able to render multiple 4D shapes
+The following requirements are necessary in order to conduct a successful evaluation:
+
+A system must be developed that is capable of rendering 4D shapes. As such, several 4D shapes must be created. 
+In order to test a persons understanding, of the 4D shapes that are to be developed, they must not all be immediately distinguishable from one another. For example, a hyper-cube and a hyper-sphere will never look similar to each other, whereas, the 3D cross section of a 4D hyper-cone in a particular pose will look identical to the 3D cross section of a 4D hyper-sphere.
 \vskip 0.5em
-multiple extensions to a 3d cross section of 4d space
+The aims of the project focus on the development of several extensions to the 3D cross section in order to find what extensions are better for conveying the complexities of 4D geometry to potentially novice users. Therefore, several extensions to the 3D cross section of four dimensional space should be developed. The extensions to the 3D cross section may take inspiration from the literature mentioned earlier, and attempt to improve upon or emphasise the components of their work that are relevant to this investigation.
 \vskip 0.5em
-a tutorial video to teach and explain 4d\\
- - must cover the geometry\\
- - must cover the rotation
+In order to prepare participants for the experiment, an introductory tutorial video will need to be assembled to teach and explain them about the complexities and features of the fourth dimension. This tutorial video must cover the behaviour of geometry in $\mathbb{R}^4$, with appropriate references to the similarities when reducing three dimensional space to a two dimensional cross section. Moreover, the video must explain rotation in four dimensions, as well as an explanation for the behaviour that occurs when rotating an object outside of the dimensions it is being viewed within. The video must have relevant diagrams and animations to appropriately depict the behaviour of 4D shapes in such a way that it will be immediately relatable to the following experiment.
+\vskip 0.5em
+Before running the experiments, the tests must be completed and evaluated several times by myself, with some preliminary research with a small group of peers to ensure the functionality of the system is as expected, and any restraints such as time limits are within acceptable bounds.
+\vskip 0.5em
+Finally the experiment must have multiple stages of testing to evaluate a persons understanding of the several aspects of geometry. The experiment must not last such a long time that it affects the participants performance. To appropriately evaluate a persons understanding alongside the effectiveness of a representation, qualitative data must be collected from the participant, about their understanding, including open and closed questions.
 
 \subsection*{Should Have}
 
+Whilst not a necessity, the following requirements would enhance the investigation, allowing the further exploration of the four dimensional world.
+
 be able to interact/manipulate with them in 4D directly\\
  - implement stable 4D rotation
-\vskip 0.5em
-multiple tests to evaluate a persons understanding of several aspects of geometry
 
 \subsection*{Could Have}
+
+Given the limitations, although it would be nice to include, the following requirements are the lowest priority. The requirements will be explored, but are not necessary to conduct the investigation and will likely not be refined to a satisfactory degree.
 
 multiple methods of direct interaction/manipulation
 \vskip 0.5em
 evaluation on effectiveness of texturing an object in different ways
-
-%===
-
-What is the problem that you want to solve, and how did you arrive at it?
 
 %==================================================================================================================================
 \chapter{Design}
@@ -393,6 +393,7 @@ What is the problem that you want to solve, and how did you arrive at it?
 \section{Tutorial}
 
 requirements for teaching
+ - match up with van-hiele model
 
  - explain 4D space, why it cannot be visualised
  - explain 4D rotation in relation to 2D and 3D rotation
@@ -414,10 +415,12 @@ shapes defined with signed distance functions
 
 relative to the camera - slice is based on W coordinate of camera based
 
-algorithm
+\citep{the_art_of_code_writing_2019} %unity
 
 \subsection{Derivation of 4D Shapes}
 
+\citep{quilez_distance_nodate}
+\citep{the_art_of_code_ray_2019} %shapes
 
 \section{Extending 3 Dimensional Cross Sections - Representing 4D Objects}
 
@@ -428,6 +431,9 @@ multi-view: polyvision\\
 abstraction of 4D rotation using 3D rotation - does not extend well to n dimensions unlike all other propersitions
 
 \section{Rotation of a 4D Vector}
+
+as mentioned bivector, also has a scalar which determines the amount of rotation\\
+also pseudo scalar
 
 \citep{bosch_4d_2011}
 \citep{bosch_code_nodate}
@@ -461,7 +467,7 @@ normal based projection
 
 \subsection{Data Collection}
 
-SimpleJSON
+SimpleJSON \citep{bunny83_simplejson_nodate}
 
 Email - challenges\\
 Copy \& Paste - challenges
@@ -510,6 +516,11 @@ random order of representations
 \subsection{Limitations}
 
 \section{Results}
+
+\subsection{Quantitative Results}
+
+
+\subsection{Qualitative Results}
 
 
 %==================================================================================================================================
@@ -560,6 +571,7 @@ Typical inclusions in the appendices are:
 \textbf{Don't include your source code in the appendices}. It will be
 submitted separately.
 
+%Questionnaire
 \includepdf[width=1.1\linewidth, pages={1-4}]{images/4d_shapes_questionnaire.pdf}
 
 \end{appendices}
