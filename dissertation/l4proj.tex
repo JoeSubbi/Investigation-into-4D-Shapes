@@ -358,8 +358,8 @@ TODO: 5 phases of learning process
 \section{Problem Specification}
 
 The core of this project focuses on the development of a system capable of rendering several different types of four dimensional objects, and be able to view these objects through a series of extensions to the 3D cross section in order to evaluate their effectiveness in teaching potentially inexperienced users about complex geometry.
-
-TODO: discuss evaluation- tie in with research questions
+\vskip 0.5em
+For a successful investigation, a focus needs to be placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment be clear and concise and that both quantitative and qualitative metrics are obtained. The experiment must have tests probing a participant on the surface type, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$ given different representations of an objects cross section.
 
 \section{Limitations}
 
@@ -380,6 +380,8 @@ In order to test a persons understanding, of the 4D shapes that are to be develo
 \vskip 0.5em
 The aims of the project focus on the development of several extensions to the 3D cross section in order to find what extensions are better for conveying the complexities of 4D geometry to potentially novice users. Therefore, several extensions to the 3D cross section of four dimensional space should be developed. The extensions to the 3D cross section may take inspiration from the literature mentioned earlier, and attempt to improve upon or emphasise the components of their work that are relevant to this investigation.
 \vskip 0.5em
+To distinguish the faces of shapes, the objects will need to be coloured such that given two objects in a different pose, both objects can be distinguished from one another even if their surface shape appears identical. 
+\vskip 0.5em
 In order to prepare participants for the experiment, an introductory tutorial video will need to be assembled to teach and explain them about the complexities and features of the fourth dimension. This tutorial video must cover the behaviour of geometry in $\mathbb{R}^4$, with appropriate references to the similarities when reducing three dimensional space to a two dimensional cross section. Moreover, the video must explain rotation in four dimensions, as well as an explanation for the behaviour that occurs when rotating an object outside of the dimensions it is being viewed within. The video must have relevant diagrams and animations to appropriately depict the behaviour of 4D shapes in such a way that it will be immediately relatable to the following experiment.
 \vskip 0.5em
 Before running the experiments, the tests must be completed and evaluated several times by myself, with some preliminary research with a small group of peers to ensure the functionality of the system is as expected, and any restraints such as time limits are within acceptable bounds.
@@ -390,16 +392,15 @@ Finally the experiment must have multiple stages of testing to evaluate a person
 
 Whilst not a necessity, the following requirements would enhance the investigation, allowing the further exploration of the four dimensional world.
 
-be able to interact/manipulate with them in 4D directly\\
- - implement stable 4D rotation
+"Free orientation", as stated by \citet{safrankova_van_2012}, is an important aspect in a students learning and understanding of the definition and behaviour of geometry. In order for a participant to master the complexities of geometry in $\mathbb{R}^4$ they should be able to handle 4D objects directly.
+Evaluating a participants understanding of a shape, its surface and its behaviour under rotation can be conducted without directly interacting with or manipulating an object, a system should be developed to allow a participant to directly interact with 4D objects in order to perceive, first hand, the effect they have on the cross section o the geometry.
+For direct manipulation in four dimensions, a 4D Rotor must be implemented to allow for stable interaction, without fear of gimbal lock.
 
 \subsection*{Could Have}
 
 Given the limitations, although it would be nice to include, the following requirements are the lowest priority. The requirements will be explored, but are not necessary to conduct the investigation and will likely not be refined to a satisfactory degree.
 
-multiple methods of direct interaction/manipulation
-\vskip 0.5em
-evaluation on effectiveness of texturing an object in different ways
+It would be desirable to implement a series of tools allowing for intuitive interaction of 4D geometry, and such methods of interaction will be experimented with. The experiments, however, will only implement one method of rotation for the experiment, given the investigation focuses on the ways to enhance the cross section of 4D space, rather than how to manipulate these objects. Therefore, it is of minimal priority to develop several methods of rotation, although during the research and development phase, several methods of interaction will be explored.
 
 %==================================================================================================================================
 \chapter{Design}
