@@ -138,9 +138,25 @@ Given the aims of the project, are to investigate how one may extend a visualisa
 \vskip 0.5em
 An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed. 
 \vskip 0.5em
-Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. For example: displaying several 2D circles that circularly increase and decrease in size besides one another provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere. 
-
-TODO: Figure of several cross sections
+Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \ref{fig:exti}: displaying several 2D circles, taken a regular intervals of $\delta$ along the z axis, that circularly increase and decrease in size provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere.
+\vskip 0.5em
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{images/extensions/timeline-delta.png}
+      \caption{Several cross sections of 3D objects at $\delta$ intervals along the z axis}
+      \label{fig:exti}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{images/extensions/multi-view.png}
+      \caption{Cross sections of a 3D cone and cylinder; where each cross section is taken along the specified plane.}
+      \label{fig:exmv}
+  \end{subfigure}   
+  %
+  \caption{Examples of extensions to a 2D cross section of 3D objects.
+  }\label{fig:extensions}
+\end{figure}
 
 \citet{kageyama_visualization_2015} proposed such a system that displays several cross sections of a 4D object along an ovular path, in order to try and provide a viewer with more information about the object. 
 %
@@ -153,10 +169,8 @@ Whilst the ovular display does provide a great deal of extra information to a vi
 
 TODO: classify Kageyama's work
 \vskip 0.5em
-Another interesting extension which arguably provides the user with more information about an object, is being able to view said object from other angles. For example: take a cone that is extended upwards to a point. From the top, a cross section of the object will appear as a circle. However from a side on perspective, the object will appear as a triangle.
-
-TODO: Figure of multi-view
-
+Another extension which arguably provides the user with more information about an object, is viewing said object from other angles. As shown in the 3D example \ref{fig:exmv}: take a cone that is extended upwards to a point along the \(y\) axis. From the top, a cross section of the object spanning the \(xz\) plane will produce a circle. However a cross section along either the \(xy\) or \(yz\) planes will appear as a triangle.
+\vskip 0.5em
 \textit{Polyvision}, proposed by \citet{matsumoto_polyvision_2019}, is a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
 %
 \citet{matsumoto_polyvision_2019} chose to represent 4D objects as wireframes, connecting each vertex of the object by an edge. This is possible when collapsing each vertex of the 4D object to the same three dimensional slice. This is often referred to as the "shadow" of an object. 
@@ -226,7 +240,7 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
 \end{figure}
 %
 % Ray marching Algorithm
-\begin{algorithm}
+\begin{algorithm}[H]
   \DontPrintSemicolon
   
   \KwData{\\
