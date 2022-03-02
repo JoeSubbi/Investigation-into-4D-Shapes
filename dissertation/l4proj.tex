@@ -312,7 +312,17 @@ In a given vector space greater than $\mathbb{R}^2$, a multivector greater than 
 It is possible to multiply multivectors using the geometric product; a combination of the inner and outer product. Multiplying a vector \(v\) by a rotor \(R\) and it's reverse \(R^\dagger\) will rotate vector about the bivector component of the rotor.
 %
 \begin{equation}
+  \label{eq:sanwhich_a}
     v' = R v R^\dagger,
+\end{equation}
+%
+Rotors can be multiplied using the geometric product. This will produce a new rotor. Therefore two rotors; $R_a$ and $R_b$, can be composed as shown in equation \ref{eq:sanwhich_b} to rotate a vector \(v\) and produce a rotated vector \(v'\).
+%
+\begin{equation}
+  \label{eq:sanwhich_b}
+  v' = R_a R_b v R_a^{\dagger} R_b^{\dagger}
+   = (R_a R_b) v (R_a R_b)^{\dagger}
+   = R_{ab}^{} v R_{ab}^{\dagger}
 \end{equation}
 %
 The angle of rotation is dictated by a scalar component of the rotor, similar to the \(w\) component of a quaternion. 
@@ -449,67 +459,63 @@ abstraction of 4D rotation using 3D rotation - does not extend well to n dimensi
 
 \section{Rotation of a 4D Vector}
 
-as mentioned bivector, also has a scalar which determines the amount of rotation\\
-also pseudo scalar
+In $\mathbb{R}^4$ a Grade 1 Multivector (Vector) \(a\) can be broken down into four components:
+\begin{equation}
+  a = a^x + a^y + a^z + a^w
+\end{equation}
+In $\mathbb{R}^4$ a Grade 2 Multivector (Bivector) \(b\) can be broken down into six components:
+\begin{equation}
+  b = b^{xy} + b^{xz} + b^{xw} + b^{yz} + b^{yw} + b^{zw}
+\end{equation}
+4D Rotor R; where \(s\) is a Grade 0 Multivector (Scalar) and \(p\) is a Grade 4 Multivector (Pseudo Scalar):
+\begin{equation}
+  R = s + b + p^{xyzw} = 
+  s + b^{xy} + b^{xz} + b^{xw} + b^{yz} + b^{yw} + b^{zw} + p^{xyzw}
+\end{equation}
 
 \citep{bosch_4d_2011}
 \citep{bosch_code_nodate}
 
 initial manual derivation
 
-sympy and galgebra
-
-equations
-
-\begin{lstlisting}[language=python, float, caption={Geometric Algebra Rotor4 Product Derivation}, label=lst:callahan]
-from sympy import symbols
-from galgebra.ga import Ga
-from galgebra.printer import Format
-
-Format(Fmode = False, Dmode = True)
-
-s4coords = (x,y,z,w) = symbols('x y z w', real=True)
-s4 = Ga('e',
-g=[1,1,1,1],
-coords=s4coords)
-
-# Vector rotation
-def rotate_vector():
-  # Vector
-  a = s4.mv('a','vector')
-
-  # Rotor
-  s = s4.mv('s', 'scalar')
-  b = s4.mv('b','bivector')
-  p = s4.mv('p', 'pseudo')
-  rotor = s + b + p
-
-  (rotor * a * rotor.rev()).Fmt(3)
-
-# Rotor4 * Rotor4 Product
-def rotor_rotor_product
-  a_s = s4.mv('a_s', 'scalar')
-  a_b = s4.mv('a_b','bivector')
-  a_p = s4.mv('a_p', 'pseudo')
-  rotor_a = a_s + a_b + a_p
-
-  b_s = s4.mv('b_s', 'scalar')
-  b_b = s4.mv('b_b','bivector')
-  b_p = s4.mv('b_p', 'pseudo')
-  rotor_b = b_s + b_b + b_p
-
-  (rotor_a * rotor_b).Fmt(3)
-
-\end{lstlisting}
+sympy and galgebra: Listing \ref{lst:rotor_derivation}
 
 \begin{equation} 
-  \begin{aligned}[t]  & + \left ( 2 a^{w} b^{xw} s + 2 a^{w} b^{xy} b^{yw} + 2 a^{w} b^{xz} b^{zw} + 2 a^{w} b^{yz} p^{xyzw} - a^{x} {\left ( b^{xw} \right )}^{2} - a^{x} {\left ( b^{xy} \right )}^{2} - a^{x} {\left ( b^{xz} \right )}^{2} + a^{x} {\left ( b^{yw} \right )}^{2} + a^{x} {\left ( b^{yz} \right )}^{2} + a^{x} {\left ( b^{zw} \right )}^{2} - a^{x} {\left ( p^{xyzw} \right )}^{2} + a^{x} s^{2} - 2 a^{y} b^{xw} b^{yw} + 2 a^{y} b^{xy} s - 2 a^{y} b^{xz} b^{yz} + 2 a^{y} b^{zw} p^{xyzw} - 2 a^{z} b^{xw} b^{zw} + 2 a^{z} b^{xy} b^{yz} + 2 a^{z} b^{xz} s - 2 a^{z} b^{yw} p^{xyzw}\right ) \boldsymbol{e}_{x} \\  &  + \left ( - 2 a^{w} b^{xw} b^{xy} - 2 a^{w} b^{xz} p^{xyzw} + 2 a^{w} b^{yw} s + 2 a^{w} b^{yz} b^{zw} - 2 a^{x} b^{xw} b^{yw} - 2 a^{x} b^{xy} s - 2 a^{x} b^{xz} b^{yz} - 2 a^{x} b^{zw} p^{xyzw} + a^{y} {\left ( b^{xw} \right )}^{2} - a^{y} {\left ( b^{xy} \right )}^{2} + a^{y} {\left ( b^{xz} \right )}^{2} - a^{y} {\left ( b^{yw} \right )}^{2} - a^{y} {\left ( b^{yz} \right )}^{2} + a^{y} {\left ( b^{zw} \right )}^{2} - a^{y} {\left ( p^{xyzw} \right )}^{2} + a^{y} s^{2} + 2 a^{z} b^{xw} p^{xyzw} - 2 a^{z} b^{xy} b^{xz} - 2 a^{z} b^{yw} b^{zw} + 2 a^{z} b^{yz} s\right ) \boldsymbol{e}_{y} \\  &  + \left ( - 2 a^{w} b^{xw} b^{xz} + 2 a^{w} b^{xy} p^{xyzw} - 2 a^{w} b^{yw} b^{yz} + 2 a^{w} b^{zw} s - 2 a^{x} b^{xw} b^{zw} + 2 a^{x} b^{xy} b^{yz} - 2 a^{x} b^{xz} s + 2 a^{x} b^{yw} p^{xyzw} - 2 a^{y} b^{xw} p^{xyzw} - 2 a^{y} b^{xy} b^{xz} - 2 a^{y} b^{yw} b^{zw} - 2 a^{y} b^{yz} s + a^{z} {\left ( b^{xw} \right )}^{2} + a^{z} {\left ( b^{xy} \right )}^{2} - a^{z} {\left ( b^{xz} \right )}^{2} + a^{z} {\left ( b^{yw} \right )}^{2} - a^{z} {\left ( b^{yz} \right )}^{2} - a^{z} {\left ( b^{zw} \right )}^{2} - a^{z} {\left ( p^{xyzw} \right )}^{2} + a^{z} s^{2}\right ) \boldsymbol{e}_{z} \\  &  + \left ( - a^{w} {\left ( b^{xw} \right )}^{2} + a^{w} {\left ( b^{xy} \right )}^{2} + a^{w} {\left ( b^{xz} \right )}^{2} - a^{w} {\left ( b^{yw} \right )}^{2} + a^{w} {\left ( b^{yz} \right )}^{2} - a^{w} {\left ( b^{zw} \right )}^{2} - a^{w} {\left ( p^{xyzw} \right )}^{2} + a^{w} s^{2} - 2 a^{x} b^{xw} s + 2 a^{x} b^{xy} b^{yw} + 2 a^{x} b^{xz} b^{zw} - 2 a^{x} b^{yz} p^{xyzw} - 2 a^{y} b^{xw} b^{xy} + 2 a^{y} b^{xz} p^{xyzw} - 2 a^{y} b^{yw} s + 2 a^{y} b^{yz} b^{zw} - 2 a^{z} b^{xw} b^{xz} - 2 a^{z} b^{xy} p^{xyzw} - 2 a^{z} b^{yw} b^{yz} - 2 a^{z} b^{zw} s\right ) \boldsymbol{e}_{w}  \end{aligned}
-  \label{eq:rotate_vec}
+  \begin{aligned}
+    \label{eq:rotate_vec} 
+  & + \Big( 2 a^{w} b^{xw} s + 2 a^{w} b^{xy} b^{yw} + 2 a^{w} b^{xz} b^{zw} + 2 a^{w} b^{yz} p^{xyzw} \\
+  & \quad - a^{x} {\left ( b^{xw} \right )}^{2} - a^{x} {\left ( b^{xy} \right )}^{2} - a^{x} {\left ( b^{xz} \right )}^{2} + a^{x} {\left ( b^{yw} \right )}^{2} + a^{x} {\left ( b^{yz} \right )}^{2} + a^{x} {\left ( b^{zw} \right )}^{2} - a^{x} {\left ( p^{xyzw} \right )}^{2} + a^{x} s^{2} \\
+  & \quad - 2 a^{y} b^{xw} b^{yw} + 2 a^{y} b^{xy} s - 2 a^{y} b^{xz} b^{yz} + 2 a^{y} b^{zw} p^{xyzw} \\
+  & \quad - 2 a^{z} b^{xw} b^{zw} + 2 a^{z} b^{xy} b^{yz} + 2 a^{z} b^{xz} s - 2 a^{z} b^{yw} p^{xyzw} \Big) \boldsymbol{e}_{x} \\
+  %
+  & + \Big( - 2 a^{w} b^{xw} b^{xy} - 2 a^{w} b^{xz} p^{xyzw} + 2 a^{w} b^{yw} s + 2 a^{w} b^{yz} b^{zw} \\
+  & \quad - 2 a^{x} b^{xw} b^{yw} - 2 a^{x} b^{xy} s - 2 a^{x} b^{xz} b^{yz} - 2 a^{x} b^{zw} p^{xyzw} \\
+  & \quad + a^{y} {\left ( b^{xw} \right )}^{2} - a^{y} {\left ( b^{xy} \right )}^{2} + a^{y} {\left ( b^{xz} \right )}^{2} - a^{y} {\left ( b^{yw} \right )}^{2} - a^{y} {\left ( b^{yz} \right )}^{2} + a^{y} {\left ( b^{zw} \right )}^{2} - a^{y} {\left ( p^{xyzw} \right )}^{2} + a^{y} s^{2} \\
+  & \quad + 2 a^{z} b^{xw} p^{xyzw} - 2 a^{z} b^{xy} b^{xz} - 2 a^{z} b^{yw} b^{zw} + 2 a^{z} b^{yz} s \Big) \boldsymbol{e}_{y} \\
+  %
+  & + \Big( - 2 a^{w} b^{xw} b^{xz} + 2 a^{w} b^{xy} p^{xyzw} - 2 a^{w} b^{yw} b^{yz} + 2 a^{w} b^{zw} s \\ 
+  & \quad - 2 a^{x} b^{xw} b^{zw} + 2 a^{x} b^{xy} b^{yz} - 2 a^{x} b^{xz} s + 2 a^{x} b^{yw} p^{xyzw} \\
+  & \quad - 2 a^{y} b^{xw} p^{xyzw} - 2 a^{y} b^{xy} b^{xz} - 2 a^{y} b^{yw} b^{zw} - 2 a^{y} b^{yz} s \\
+  & \quad + a^{z} {\left ( b^{xw} \right )}^{2} + a^{z} {\left ( b^{xy} \right )}^{2} - a^{z} {\left ( b^{xz} \right )}^{2} + a^{z} {\left ( b^{yw} \right )}^{2} - a^{z} {\left ( b^{yz} \right )}^{2} - a^{z} {\left ( b^{zw} \right )}^{2} - a^{z} {\left ( p^{xyzw} \right )}^{2} + a^{z} s^{2} \Big) \boldsymbol{e}_{z} \\
+  %
+  & + \Big( - a^{w} {\left ( b^{xw} \right )}^{2} + a^{w} {\left ( b^{xy} \right )}^{2} + a^{w} {\left ( b^{xz} \right )}^{2} - a^{w} {\left ( b^{yw} \right )}^{2} + a^{w} {\left ( b^{yz} \right )}^{2} - a^{w} {\left ( b^{zw} \right )}^{2} - a^{w} {\left ( p^{xyzw} \right )}^{2} + a^{w} s^{2} \\
+  & \quad - 2 a^{x} b^{xw} s + 2 a^{x} b^{xy} b^{yw} + 2 a^{x} b^{xz} b^{zw} - 2 a^{x} b^{yz} p^{xyzw} \\
+  & \quad - 2 a^{y} b^{xw} b^{xy} + 2 a^{y} b^{xz} p^{xyzw} - 2 a^{y} b^{yw} s + 2 a^{y} b^{yz} b^{zw} \\
+  & \quad - 2 a^{z} b^{xw} b^{xz} - 2 a^{z} b^{xy} p^{xyzw} - 2 a^{z} b^{yw} b^{yz} - 2 a^{z} b^{zw} s \Big) \boldsymbol{e}_{w}  
+  \end{aligned}
 \end{equation}
 
 \begin{equation}
-  \begin{aligned}[t]  & + \left ( - a^{xw}_{b} b^{xw}_{b} - a^{xy}_{b} b^{xy}_{b} - a^{xz}_{b} b^{xz}_{b} - a^{yw}_{b} b^{yw}_{b} - a^{yz}_{b} b^{yz}_{b} - a^{zw}_{b} b^{zw}_{b} + a^{xyzw}_{p} b^{xyzw}_{p} + a_{s} b_{s}\right )  \\  &  + \left ( - a^{xw}_{b} b^{yw}_{b} + a^{xy}_{b} b_{s} - a^{xz}_{b} b^{yz}_{b} + a^{yw}_{b} b^{xw}_{b} + a^{yz}_{b} b^{xz}_{b} - a^{zw}_{b} b^{xyzw}_{p} - a^{xyzw}_{p} b^{zw}_{b} + a_{s} b^{xy}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y} \\  &  + \left ( - a^{xw}_{b} b^{zw}_{b} + a^{xy}_{b} b^{yz}_{b} + a^{xz}_{b} b_{s} + a^{yw}_{b} b^{xyzw}_{p} - a^{yz}_{b} b^{xy}_{b} + a^{zw}_{b} b^{xw}_{b} + a^{xyzw}_{p} b^{yw}_{b} + a_{s} b^{xz}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{z} \\  &  + \left ( a^{xw}_{b} b_{s} + a^{xy}_{b} b^{yw}_{b} + a^{xz}_{b} b^{zw}_{b} - a^{yw}_{b} b^{xy}_{b} - a^{yz}_{b} b^{xyzw}_{p} - a^{zw}_{b} b^{xz}_{b} - a^{xyzw}_{p} b^{yz}_{b} + a_{s} b^{xw}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{w} \\  &  + \left ( - a^{xw}_{b} b^{xyzw}_{p} - a^{xy}_{b} b^{xz}_{b} + a^{xz}_{b} b^{xy}_{b} - a^{yw}_{b} b^{zw}_{b} + a^{yz}_{b} b_{s} + a^{zw}_{b} b^{yw}_{b} - a^{xyzw}_{p} b^{xw}_{b} + a_{s} b^{yz}_{b}\right ) \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z} \\  &  + \left ( a^{xw}_{b} b^{xy}_{b} - a^{xy}_{b} b^{xw}_{b} + a^{xz}_{b} b^{xyzw}_{p} + a^{yw}_{b} b_{s} + a^{yz}_{b} b^{zw}_{b} - a^{zw}_{b} b^{yz}_{b} + a^{xyzw}_{p} b^{xz}_{b} + a_{s} b^{yw}_{b}\right ) \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{w} \\  &  + \left ( a^{xw}_{b} b^{xz}_{b} - a^{xy}_{b} b^{xyzw}_{p} - a^{xz}_{b} b^{xw}_{b} + a^{yw}_{b} b^{yz}_{b} - a^{yz}_{b} b^{yw}_{b} + a^{zw}_{b} b_{s} - a^{xyzw}_{p} b^{xy}_{b} + a_{s} b^{zw}_{b}\right ) \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w} \\  &  + \left ( a^{xw}_{b} b^{yz}_{b} + a^{xy}_{b} b^{zw}_{b} - a^{xz}_{b} b^{yw}_{b} - a^{yw}_{b} b^{xz}_{b} + a^{yz}_{b} b^{xw}_{b} + a^{zw}_{b} b^{xy}_{b} + a^{xyzw}_{p} b_{s} + a_{s} b^{xyzw}_{p}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w}  \end{aligned}
-  \label{eq:rotate_rot}
+  \begin{aligned}[t]   
+    \label{eq:rotate_rotor}
+  & + \left ( - a^{xw}_{b} b^{xw}_{b} - a^{xy}_{b} b^{xy}_{b} - a^{xz}_{b} b^{xz}_{b} - a^{yw}_{b} b^{yw}_{b} - a^{yz}_{b} b^{yz}_{b} - a^{zw}_{b} b^{zw}_{b} + a^{xyzw}_{p} b^{xyzw}_{p} + a_{s} b_{s}\right )  \\  
+  & + \left ( - a^{xw}_{b} b^{yw}_{b} + a^{xy}_{b} b_{s} - a^{xz}_{b} b^{yz}_{b} + a^{yw}_{b} b^{xw}_{b} + a^{yz}_{b} b^{xz}_{b} - a^{zw}_{b} b^{xyzw}_{p} - a^{xyzw}_{p} b^{zw}_{b} + a_{s} b^{xy}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y} \\  
+  & + \left ( - a^{xw}_{b} b^{zw}_{b} + a^{xy}_{b} b^{yz}_{b} + a^{xz}_{b} b_{s} + a^{yw}_{b} b^{xyzw}_{p} - a^{yz}_{b} b^{xy}_{b} + a^{zw}_{b} b^{xw}_{b} + a^{xyzw}_{p} b^{yw}_{b} + a_{s} b^{xz}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{z} \\ 
+  & + \left ( a^{xw}_{b} b_{s} + a^{xy}_{b} b^{yw}_{b} + a^{xz}_{b} b^{zw}_{b} - a^{yw}_{b} b^{xy}_{b} - a^{yz}_{b} b^{xyzw}_{p} - a^{zw}_{b} b^{xz}_{b} - a^{xyzw}_{p} b^{yz}_{b} + a_{s} b^{xw}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{w} \\  
+  & + \left ( - a^{xw}_{b} b^{xyzw}_{p} - a^{xy}_{b} b^{xz}_{b} + a^{xz}_{b} b^{xy}_{b} - a^{yw}_{b} b^{zw}_{b} + a^{yz}_{b} b_{s} + a^{zw}_{b} b^{yw}_{b} - a^{xyzw}_{p} b^{xw}_{b} + a_{s} b^{yz}_{b}\right ) \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z} \\  
+  & + \left ( a^{xw}_{b} b^{xy}_{b} - a^{xy}_{b} b^{xw}_{b} + a^{xz}_{b} b^{xyzw}_{p} + a^{yw}_{b} b_{s} + a^{yz}_{b} b^{zw}_{b} - a^{zw}_{b} b^{yz}_{b} + a^{xyzw}_{p} b^{xz}_{b} + a_{s} b^{yw}_{b}\right ) \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{w} \\ 
+  & + \left ( a^{xw}_{b} b^{xz}_{b} - a^{xy}_{b} b^{xyzw}_{p} - a^{xz}_{b} b^{xw}_{b} + a^{yw}_{b} b^{yz}_{b} - a^{yz}_{b} b^{yw}_{b} + a^{zw}_{b} b_{s} - a^{xyzw}_{p} b^{xy}_{b} + a_{s} b^{zw}_{b}\right ) \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w} \\ 
+  & + \left ( a^{xw}_{b} b^{yz}_{b} + a^{xy}_{b} b^{zw}_{b} - a^{xz}_{b} b^{yw}_{b} - a^{yw}_{b} b^{xz}_{b} + a^{yz}_{b} b^{xw}_{b} + a^{zw}_{b} b^{xy}_{b} + a^{xyzw}_{p} b_{s} + a_{s} b^{xyzw}_{p}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w}  \end{aligned}
 \end{equation}
 
 \section{Methods of Rotation}
@@ -621,25 +627,57 @@ Summarise the whole project for a lazy reader who didn't read the rest (e.g. a p
 
 \chapter{Appendices}
 
-Typical inclusions in the appendices are:
+%\begin{itemize}
+%\item
+%  Copies of ethics approvals (required if obtained)
+%\item
+%  Extensive tables or figures that are too bulky to fit in the main body of the report, particularly ones that are repetitive and summarised in the body.
+%\item 
+%  Outline of the source code (e.g. directory structure), or other architecture documentation like class diagrams.
+%\item 
+%  User manuals, and any guides to starting/running the software.
+%\end{itemize}
 
-\begin{itemize}
-\item
-  Copies of ethics approvals (required if obtained)
-\item
-  Copies of questionnaires etc. used to gather data from subjects.
-\item
-  Extensive tables or figures that are too bulky to fit in the main body of
-  the report, particularly ones that are repetitive and summarised in the body.
+% Rotor Product Derivation
+\begin{lstlisting}[language=python, caption={Rotor4 product derivation using Geometric Algebra in python: Rotor4-Vector rotation using double reflection, and Rotor4-Rotor4 product to apply a 4D Rotor to another 4D Rotor}, label=lst:rotor_derivation]
+  from sympy import symbols
+  from galgebra.ga import Ga
+  from galgebra.printer import Format
+  
+  Format(Fmode = False, Dmode = True)
+  
+  s4coords = (x,y,z,w) = symbols('x y z w', real=True)
+  s4 = Ga('e', g=[1,1,1,1],
+  coords=s4coords)
+  
+  def rotate_vector():
+    # Vector
+    a = s4.mv('a','vector')
 
-\item Outline of the source code (e.g. directory structure), or other architecture documentation like class diagrams.
-
-\item User manuals, and any guides to starting/running the software.
-
-\end{itemize}
-
-\textbf{Don't include your source code in the appendices}. It will be
-submitted separately.
+    # Rotor
+    s = s4.mv('s', 'scalar')
+    b = s4.mv('b','bivector')
+    p = s4.mv('p', 'pseudo')
+    rotor = s + b + p
+  
+    (rotor * a * rotor.rev()).Fmt(3)
+  
+  def rotor_rotor_product
+    # Rotor A
+    a_s = s4.mv('a_s', 'scalar')
+    a_b = s4.mv('a_b','bivector')
+    a_p = s4.mv('a_p', 'pseudo')
+    rotor_a = a_s + a_b + a_p
+  
+    # Rotor B
+    b_s = s4.mv('b_s', 'scalar')
+    b_b = s4.mv('b_b','bivector')
+    b_p = s4.mv('b_p', 'pseudo')
+    rotor_b = b_s + b_b + b_p
+  
+    (rotor_a * rotor_b).Fmt(3)
+  
+\end{lstlisting}
 
 %Questionnaire
 \includepdf[width=1.1\linewidth, pages={1-4}]{images/4d_shapes_questionnaire.pdf}
