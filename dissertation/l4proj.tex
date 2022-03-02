@@ -139,7 +139,7 @@ Given the aims of the project, are to investigate how one may extend a visualisa
 An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed. 
 \vskip 0.5em
 Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \ref{fig:exti}: displaying several 2D circles, taken a regular intervals of $\delta$ along the z axis, that circularly increase and decrease in size provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere.
-\vskip 0.5em
+
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -395,7 +395,7 @@ Whilst not a necessity, the following requirements would enhance the investigati
 "Free orientation", as stated by \citet{safrankova_van_2012}, is an important aspect in a students learning and understanding of the definition and behaviour of geometry. In order for a participant to master the complexities of geometry in $\mathbb{R}^4$ they should be able to handle 4D objects directly.
 Evaluating a participants understanding of a shape, its surface and its behaviour under rotation can be conducted without directly interacting with or manipulating an object, a system should be developed to allow a participant to directly interact with 4D objects in order to perceive, first hand, the effect they have on the cross section o the geometry.
 For direct manipulation in four dimensions, a 4D Rotor must be implemented to allow for stable interaction, without fear of gimbal lock.
-
+\pagebreak
 \subsection*{Could Have}
 
 Given the limitations, although it would be nice to include, the following requirements are the lowest priority. The requirements will be explored, but are not necessary to conduct the investigation and will likely not be refined to a satisfactory degree.
@@ -432,6 +432,8 @@ relative to the camera - slice is based on W coordinate of camera based
 
 \citep{the_art_of_code_writing_2019} %unity
 
+Algorithm \ref{alg:raymarch}
+
 \subsection{Derivation of 4D Shapes}
 
 \citep{quilez_distance_nodate}
@@ -458,6 +460,57 @@ initial manual derivation
 sympy and galgebra
 
 equations
+
+\begin{lstlisting}[language=python, float, caption={Geometric Algebra Rotor4 Product Derivation}, label=lst:callahan]
+from sympy import symbols
+from galgebra.ga import Ga
+from galgebra.printer import Format
+
+Format(Fmode = False, Dmode = True)
+
+s4coords = (x,y,z,w) = symbols('x y z w', real=True)
+s4 = Ga('e',
+g=[1,1,1,1],
+coords=s4coords)
+
+# Vector rotation
+def rotate_vector():
+  # Vector
+  a = s4.mv('a','vector')
+
+  # Rotor
+  s = s4.mv('s', 'scalar')
+  b = s4.mv('b','bivector')
+  p = s4.mv('p', 'pseudo')
+  rotor = s + b + p
+
+  (rotor * a * rotor.rev()).Fmt(3)
+
+# Rotor4 * Rotor4 Product
+def rotor_rotor_product
+  a_s = s4.mv('a_s', 'scalar')
+  a_b = s4.mv('a_b','bivector')
+  a_p = s4.mv('a_p', 'pseudo')
+  rotor_a = a_s + a_b + a_p
+
+  b_s = s4.mv('b_s', 'scalar')
+  b_b = s4.mv('b_b','bivector')
+  b_p = s4.mv('b_p', 'pseudo')
+  rotor_b = b_s + b_b + b_p
+
+  (rotor_a * rotor_b).Fmt(3)
+
+\end{lstlisting}
+
+\begin{equation} 
+  \begin{aligned}[t]  & + \left ( 2 a^{w} b^{xw} s + 2 a^{w} b^{xy} b^{yw} + 2 a^{w} b^{xz} b^{zw} + 2 a^{w} b^{yz} p^{xyzw} - a^{x} {\left ( b^{xw} \right )}^{2} - a^{x} {\left ( b^{xy} \right )}^{2} - a^{x} {\left ( b^{xz} \right )}^{2} + a^{x} {\left ( b^{yw} \right )}^{2} + a^{x} {\left ( b^{yz} \right )}^{2} + a^{x} {\left ( b^{zw} \right )}^{2} - a^{x} {\left ( p^{xyzw} \right )}^{2} + a^{x} s^{2} - 2 a^{y} b^{xw} b^{yw} + 2 a^{y} b^{xy} s - 2 a^{y} b^{xz} b^{yz} + 2 a^{y} b^{zw} p^{xyzw} - 2 a^{z} b^{xw} b^{zw} + 2 a^{z} b^{xy} b^{yz} + 2 a^{z} b^{xz} s - 2 a^{z} b^{yw} p^{xyzw}\right ) \boldsymbol{e}_{x} \\  &  + \left ( - 2 a^{w} b^{xw} b^{xy} - 2 a^{w} b^{xz} p^{xyzw} + 2 a^{w} b^{yw} s + 2 a^{w} b^{yz} b^{zw} - 2 a^{x} b^{xw} b^{yw} - 2 a^{x} b^{xy} s - 2 a^{x} b^{xz} b^{yz} - 2 a^{x} b^{zw} p^{xyzw} + a^{y} {\left ( b^{xw} \right )}^{2} - a^{y} {\left ( b^{xy} \right )}^{2} + a^{y} {\left ( b^{xz} \right )}^{2} - a^{y} {\left ( b^{yw} \right )}^{2} - a^{y} {\left ( b^{yz} \right )}^{2} + a^{y} {\left ( b^{zw} \right )}^{2} - a^{y} {\left ( p^{xyzw} \right )}^{2} + a^{y} s^{2} + 2 a^{z} b^{xw} p^{xyzw} - 2 a^{z} b^{xy} b^{xz} - 2 a^{z} b^{yw} b^{zw} + 2 a^{z} b^{yz} s\right ) \boldsymbol{e}_{y} \\  &  + \left ( - 2 a^{w} b^{xw} b^{xz} + 2 a^{w} b^{xy} p^{xyzw} - 2 a^{w} b^{yw} b^{yz} + 2 a^{w} b^{zw} s - 2 a^{x} b^{xw} b^{zw} + 2 a^{x} b^{xy} b^{yz} - 2 a^{x} b^{xz} s + 2 a^{x} b^{yw} p^{xyzw} - 2 a^{y} b^{xw} p^{xyzw} - 2 a^{y} b^{xy} b^{xz} - 2 a^{y} b^{yw} b^{zw} - 2 a^{y} b^{yz} s + a^{z} {\left ( b^{xw} \right )}^{2} + a^{z} {\left ( b^{xy} \right )}^{2} - a^{z} {\left ( b^{xz} \right )}^{2} + a^{z} {\left ( b^{yw} \right )}^{2} - a^{z} {\left ( b^{yz} \right )}^{2} - a^{z} {\left ( b^{zw} \right )}^{2} - a^{z} {\left ( p^{xyzw} \right )}^{2} + a^{z} s^{2}\right ) \boldsymbol{e}_{z} \\  &  + \left ( - a^{w} {\left ( b^{xw} \right )}^{2} + a^{w} {\left ( b^{xy} \right )}^{2} + a^{w} {\left ( b^{xz} \right )}^{2} - a^{w} {\left ( b^{yw} \right )}^{2} + a^{w} {\left ( b^{yz} \right )}^{2} - a^{w} {\left ( b^{zw} \right )}^{2} - a^{w} {\left ( p^{xyzw} \right )}^{2} + a^{w} s^{2} - 2 a^{x} b^{xw} s + 2 a^{x} b^{xy} b^{yw} + 2 a^{x} b^{xz} b^{zw} - 2 a^{x} b^{yz} p^{xyzw} - 2 a^{y} b^{xw} b^{xy} + 2 a^{y} b^{xz} p^{xyzw} - 2 a^{y} b^{yw} s + 2 a^{y} b^{yz} b^{zw} - 2 a^{z} b^{xw} b^{xz} - 2 a^{z} b^{xy} p^{xyzw} - 2 a^{z} b^{yw} b^{yz} - 2 a^{z} b^{zw} s\right ) \boldsymbol{e}_{w}  \end{aligned}
+  \label{eq:rotate_vec}
+\end{equation}
+
+\begin{equation}
+  \begin{aligned}[t]  & + \left ( - a^{xw}_{b} b^{xw}_{b} - a^{xy}_{b} b^{xy}_{b} - a^{xz}_{b} b^{xz}_{b} - a^{yw}_{b} b^{yw}_{b} - a^{yz}_{b} b^{yz}_{b} - a^{zw}_{b} b^{zw}_{b} + a^{xyzw}_{p} b^{xyzw}_{p} + a_{s} b_{s}\right )  \\  &  + \left ( - a^{xw}_{b} b^{yw}_{b} + a^{xy}_{b} b_{s} - a^{xz}_{b} b^{yz}_{b} + a^{yw}_{b} b^{xw}_{b} + a^{yz}_{b} b^{xz}_{b} - a^{zw}_{b} b^{xyzw}_{p} - a^{xyzw}_{p} b^{zw}_{b} + a_{s} b^{xy}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y} \\  &  + \left ( - a^{xw}_{b} b^{zw}_{b} + a^{xy}_{b} b^{yz}_{b} + a^{xz}_{b} b_{s} + a^{yw}_{b} b^{xyzw}_{p} - a^{yz}_{b} b^{xy}_{b} + a^{zw}_{b} b^{xw}_{b} + a^{xyzw}_{p} b^{yw}_{b} + a_{s} b^{xz}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{z} \\  &  + \left ( a^{xw}_{b} b_{s} + a^{xy}_{b} b^{yw}_{b} + a^{xz}_{b} b^{zw}_{b} - a^{yw}_{b} b^{xy}_{b} - a^{yz}_{b} b^{xyzw}_{p} - a^{zw}_{b} b^{xz}_{b} - a^{xyzw}_{p} b^{yz}_{b} + a_{s} b^{xw}_{b}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{w} \\  &  + \left ( - a^{xw}_{b} b^{xyzw}_{p} - a^{xy}_{b} b^{xz}_{b} + a^{xz}_{b} b^{xy}_{b} - a^{yw}_{b} b^{zw}_{b} + a^{yz}_{b} b_{s} + a^{zw}_{b} b^{yw}_{b} - a^{xyzw}_{p} b^{xw}_{b} + a_{s} b^{yz}_{b}\right ) \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z} \\  &  + \left ( a^{xw}_{b} b^{xy}_{b} - a^{xy}_{b} b^{xw}_{b} + a^{xz}_{b} b^{xyzw}_{p} + a^{yw}_{b} b_{s} + a^{yz}_{b} b^{zw}_{b} - a^{zw}_{b} b^{yz}_{b} + a^{xyzw}_{p} b^{xz}_{b} + a_{s} b^{yw}_{b}\right ) \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{w} \\  &  + \left ( a^{xw}_{b} b^{xz}_{b} - a^{xy}_{b} b^{xyzw}_{p} - a^{xz}_{b} b^{xw}_{b} + a^{yw}_{b} b^{yz}_{b} - a^{yz}_{b} b^{yw}_{b} + a^{zw}_{b} b_{s} - a^{xyzw}_{p} b^{xy}_{b} + a_{s} b^{zw}_{b}\right ) \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w} \\  &  + \left ( a^{xw}_{b} b^{yz}_{b} + a^{xy}_{b} b^{zw}_{b} - a^{xz}_{b} b^{yw}_{b} - a^{yw}_{b} b^{xz}_{b} + a^{yz}_{b} b^{xw}_{b} + a^{zw}_{b} b^{xy}_{b} + a^{xyzw}_{p} b_{s} + a_{s} b^{xyzw}_{p}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w}  \end{aligned}
+  \label{eq:rotate_rot}
+\end{equation}
 
 \section{Methods of Rotation}
 
@@ -531,6 +584,8 @@ random order of representations
 \subsection{Limitations}
 
 \section{Results}
+
+\citep{glen_jaccard_2022}
 
 \subsection{Quantitative Results}
 
