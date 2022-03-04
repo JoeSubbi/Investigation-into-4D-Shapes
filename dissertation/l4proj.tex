@@ -209,7 +209,7 @@ In order to render a three dimensional slice of a four dimensional object, an al
 \subsection{Ray Marching Shaders}
 
 Ray march based rendering was initially developed due to limitations in real time rendering, as a way to combine easy to define primitive objects into more complex shapes. Despite advancements in rendering capabilities, allowing even low-end computers to render complex mesh based geometry in real time, ray marching has not lost its place in the world. 
-Whilst ray tracing is capable of photorealistic rendering, signed distance fields (SDFs), the core of ray marching, are still heavily used in volumetric geometry, meta-ball geometry, collision detection and ray marched shaders.
+Whilst ray marching has often thought to evolved into ray tracing, the foundation of photorealistic rendering, signed distance fields (SDFs), the core of ray marching, are still heavily used in volumetric geometry, meta-ball geometry, collision detection and ray marched shaders.
 An SDF is a function that describes a signed distance to a surface relative to a point in space. \citet{quilez_distance_nodate} lists several SDFs for primitive objects as well as functions that can be applied to them.
 %
 %\begin{lstlisting}[language=c, float, caption={The signed distance function for a sphere in $\mathbb{R}^3$}, label=lst:callahan]
@@ -220,7 +220,7 @@ An SDF is a function that describes a signed distance to a surface relative to a
 %\end{lstlisting}
 %
 \vskip 0.5em
-Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point to mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
+Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point in the direction of a pixel to colour the pixel based on the distance to a mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
 \vskip 0.5em
 % Ray marching Diagrams
 \begin{figure}[H]
@@ -277,11 +277,11 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
 Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
 \vskip 0.5em
 A significant advantage over mesh based rendering is the ability to render a 3D cross section of a 4D object with minimal effort. The SDF of a 4D object taken over three dimensional space will produce the SDF equivalent to the cross section of the same object in a given hyper plane along the \(w\) axis.
-It is not novel to ray march over primitive 4D objects such as the hyper cube or hyper sphere. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand would need to be derived from scratch. 
+It is not novel to ray march over primitive 4D objects such as the hyper cube or hyper sphere. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand needed to be derived from scratch. 
 
 \section{Rotating a 4D Object}
 
-In $\mathbb{R}^3$ there are three degrees of rotational freedom. As there are three axes, the method of rotating an object has commonly been considered as rotating about an axis. However, in $\mathbb{R}^4$ there are six degrees of rotational freedom, despite there only being four axes. Instead, rotation must be considered as a rotation about a plane formed by two axes. Therefore the six planes of rotation in $\mathbb{R}^4$ would be \(xy\), \(xz\), \(yz\), \(xw\), \(yw\) and \(zw\).
+In $\mathbb{R}^3$ there are three degrees of rotational freedom. As there are three axes, the method of rotating an object has commonly been considered as rotating about an axis. However, in $\mathbb{R}^4$ there are six degrees of rotational freedom, despite there only being four axes. Instead, rotation must be considered as a rotation about a plane formed by two axes. Therefore the six planes of rotation in $\mathbb{R}^4$ are \(xy\), \(xz\), \(yz\), \(xw\), \(yw\) and \(zw\).
 
 \subsection{The Problems with Rotation}
 
@@ -298,7 +298,7 @@ Rotating an object in a space greater than two dimensions immediately becomes a 
 \vskip 0.5em
 Introducing the quaternion: The quaternion is an extension of the complex number system. A quaternion has 4 components: \(x\), \(y\) and \(z\) which describe the axis of rotation, and \(w\) which describes the amount of rotation. Quaternions do not suffer from gimbal lock and can be applied to each other to perform several rotations in series.
 \vskip 0.5em
-Quaternions have a problem: They consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
+Quaternions have a problem: They consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating within two dimensions as rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
 
 \subsection{Geometric Algebra and The Rotor}
 
@@ -310,16 +310,16 @@ A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\), and has, alongsid
 \vskip 0.5em
 As mentioned above, a rotation should be considered as a rotation about a plane. A bivector defines the plane for a vector to rotate about. As demonstrated by \citet{mathoma_geometric_2017}, a rotor can rotate a vector following the principle that a double reflection forms a rotation \citep{mathoma_geometric_2016-2}.
 \vskip 0.5em
-In a given vector space greater than $\mathbb{R}^2$, a multivector greater than grade zero can be projected onto the vector space basis blades. A basis blade is a the plane formed parallel to two perpendicular axes. The \(xy\) blade is often referred to as $e_{xy}$ or $e_{01}$. Therefore a bivector in $\mathbb{R}^3$ can be decomposed into three projections onto the $e_{xy}$, $e_{xz}$ and $e_{yz}$ planes; and a bivector in $\mathbb{R}^4$ can be decomposed into 6 elements.
+In a given vector space greater than $\mathbb{R}^2$, a multivector greater than grade zero can be projected onto the vector space basis blades. A basis blade is a the plane formed parallel to two perpendicular axes. The \(xy\) blade is often referred to as $e_{xy}$ or $e_{01}$. Therefore a bivector in $\mathbb{R}^3$ can be decomposed into three projections onto the $e_{xy}$, $e_{xz}$ and $e_{yz}$ planes; and a bivector in $\mathbb{R}^4$ can be decomposed into 6 elements. To decompose a bivector into its projections, the outer (or wedge) product of the two vectors which form said bivector can be used.
 \vskip 0.5em
-It is possible to multiply multivectors using the geometric product; a combination of the inner and outer product. Multiplying a vector \(v\) by a rotor \(R\) and it's reverse \(R^\dagger\) will rotate vector about the bivector component of the rotor.
+It is possible to multiply multivectors using the geometric product; a combination of the inner and outer product. Multiplying a vector \(v\) by a rotor \(R\) and it's reverse \(R^\dagger\) will rotate vector about the bivector component of the rotor. Order matters here.
 %
 \begin{equation}
   \label{eq:sanwhich_a}
     v' = R v R^\dagger,
 \end{equation}
 %
-Rotors can be multiplied using the geometric product. This will produce a new rotor. Therefore two rotors; $R_a$ and $R_b$, can be composed as shown in equation \ref{eq:sanwhich_b} to rotate a vector \(v\) and produce a rotated vector \(v'\).
+Rotors can also be multiplied using the geometric product. This will produce a new rotor. Therefore two rotors; $R_a$ and $R_b$, can be composed as shown in equation \ref{eq:sanwhich_b} to rotate a vector \(v\) and produce a rotated vector \(v'\).
 %
 \begin{equation}
   \label{eq:sanwhich_b}
@@ -329,7 +329,7 @@ Rotors can be multiplied using the geometric product. This will produce a new ro
 \end{equation}
 %
 The angle of rotation is dictated by a scalar component of the rotor, similar to the \(w\) component of a quaternion. 
-As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very similar in concept. The rotor, unlike the quaternion, has the advantage of not having to leave the dimension it belongs in order to rotate a vector, allowing it to be used in \(n\) dimensions.
+As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very similar in concept. The rotor, unlike the quaternion, has the advantage of not having to leave the dimensionality of the vector in order to rotate the vector, allowing it to be used in \(n\) dimensions.
 
 \section{Interaction and Direct Manipulation}
 
@@ -352,7 +352,7 @@ global, swipe gestures (often multi-touch)
 
 TODO: reiterate aims and questions
 
-It is important to ensure this complex mathematical topic is to be well communicated to individuals with little-to-no experience of higher dimensional space. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, Theorises that their are five levels of understanding geometry, where a student will progress from one level to the next. The levels of understanding include: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
+For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, Theorises that their are five levels of understanding geometry, where a student will progress from one level to the next. The levels of understanding include: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
 Level 0 focuses on the identification and recognition of geometry using simple language. The properties that define a geometry need not be identified.
 Level 1: students begin basic analysis and identification of geometry, without a need for proofs.
 Level 2: students create meaningful definitions and are able to justify and reason their understanding of geometry.
@@ -400,13 +400,17 @@ integration - DISCUSSION BETWEEN VIDEO AND EXPERIMENT
 
 The core of this project focuses on the development of a system capable of rendering several different types of four dimensional objects, and be able to view these objects through a series of extensions to the 3D cross section in order to evaluate their effectiveness in teaching potentially inexperienced users about complex geometry.
 \vskip 0.5em
-For a successful investigation, a focus needs to be placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment be clear and concise and that both quantitative and qualitative metrics are obtained. The experiment must have tests probing a participant on the surface type, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$ given different representations of an objects cross section.
+For a successful investigation, a focus was placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment was to be clear and concise. Both quantitative and qualitative metrics were obtained. The experiment needed tests probing a participant on the surface type, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$ given different representations of an objects cross section.
 
 \section{Limitations}
 
 The scope of the project is limited by two main factors: The time that can be spent on development, and the quantity to quality ratio of experimentation. 
-The project is primarily separated into three components: Research, development and experimentation. The development phase would take the most time with so many areas for exploration. Such areas include the creation, stable rotation, and manipulation of 4D geometry. To evaluate the effectiveness of the representations that need to be developed however, plenty of time needs to be put aside to plan and run appropriate experiments.
-Experimentation is, more often than not, limited by the number of participants that choose to be involved. To encourage the greatest number of potential participants to enroll in the experiment, the time commitment and effort cannot be so great that it deters them. Alongside the conscious effort to sign up, the experiment cannot run for such a period of time that it may effect a participants performance. As such, the amount of data that can be collected in one sitting should be maximised within a limited time frame.
+The project is primarily separated into three components: Research, development and experimentation. The development phase took the most time with so many areas for exploration. Such areas include the creation, stable rotation, and manipulation of 4D geometry. To evaluate the effectiveness of the representations that need to be developed however, plenty of time needs to be put aside to plan and run appropriate experiments.
+Experimentation is, more often than not, limited by the number of participants that choose to be involved. To encourage the greatest number of potential participants to enroll in the experiment, the time commitment and effort cannot be so great that it deters them. Alongside the conscious effort to sign up, the experiment cannot run for such a period of time that it may effect a participants performance. As such, the amount of data that can be collected in one sitting was to be maximised within a limited time frame.
+
+\section{The Framework}
+
+TODO: Why Unity
 
 \section{Prioritisation of Requirements Using MoSCoW}
 
@@ -414,7 +418,7 @@ MoSCoW is a prioritisation technique used in project planning. The purpose of Mo
 
 \subsection*{Must Have}
 
-The following requirements are necessary in order to conduct a successful evaluation:
+The following requirements are necessary in order to conduct a successful evaluation and were compiled and refined throughout the projects development:
 
 A system must be developed that is capable of rendering 4D shapes. As such, several 4D shapes must be created. 
 In order to test a persons understanding, of the 4D shapes that are to be developed, they must not all be immediately distinguishable from one another. For example, a hyper-cube and a hyper-sphere will never look similar to each other, whereas, the 3D cross section of a 4D hyper-cone in a particular pose will look identical to the 3D cross section of a 4D hyper-sphere.
@@ -436,7 +440,7 @@ Whilst not a necessity, the following requirements would enhance the investigati
 "Free orientation", as stated by \citet{safrankova_van_2012}, is an important aspect in a students learning and understanding of the definition and behaviour of geometry. In order for a participant to master the complexities of geometry in $\mathbb{R}^4$ they should be able to handle 4D objects directly.
 Evaluating a participants understanding of a shape, its surface and its behaviour under rotation can be conducted without directly interacting with or manipulating an object, a system should be developed to allow a participant to directly interact with 4D objects in order to perceive, first hand, the effect they have on the cross section o the geometry.
 For direct manipulation in four dimensions, a 4D Rotor must be implemented to allow for stable interaction, without fear of gimbal lock.
-\pagebreak
+
 \subsection*{Could Have}
 
 Given the limitations, although it would be nice to include, the following requirements are the lowest priority. The requirements will be explored, but are not necessary to conduct the investigation and will likely not be refined to a satisfactory degree.
