@@ -83,15 +83,15 @@
 
 \section{The Fourth Dimension}
 
-The world is described as three dimensional Euclidean space, conventionally referred to as $\mathbb{R}^3$. Three axes, conventionally labeled \(x\), \(y\) and \(z\), define the three degrees of translational freedom an entity can move within. All three axes that make up Euclidean space exist perpendicular to each other. Four dimensional space, conventionally referred to as $\mathbb{R}^4$, is the mathematical concept where a fourth perpendicular axes, conventionally labeled \(w\), exists perpendicular to all of the other three dimensional axes. It is impossible to visualise four dimensions in its entirety and often has to be abstracted to an analogues 3D - 2D example to reason and understand the behaviour of four dimensional entities. 
+The world is described as three dimensional Euclidean space, conventionally referred to as $\mathbb{R}^3$. Three axes, conventionally labeled \(x\), \(y\) and \(z\), define the three degrees of translational freedom an entity can move within. All three axes that make up Euclidean space exist perpendicular to each other. Four dimensional space, conventionally referred to as $\mathbb{R}^4$, is the mathematical concept where a fourth perpendicular axes, conventionally labeled \(w\), exists perpendicular to all of the other three dimensional axes. It is impossible to visualise four dimensions in its entirety and often has to be abstracted to an analogues 3D to 2D example to reason and understand the behaviour of four dimensional entities. 
 
 \section{Opportunities for Exploration}
 
-Handling four dimensional space presents a number of opportunities and challenges that come with the desire to explore, interpret and manipulate higher dimensional objects. The most immediate challenge is that of being able to manipulate a four dimensional object. Rotating an object is a non trivial challenge and the most common method of rotation in 3D cannot be extended to higher dimensions. There are several ways in which users can interact with 3D objects. Another non-trivial challenge is finding intuitive ways in which a user can manipulate a 4D object through a two dimensional user interface.
+Handling four dimensional space presents a number of opportunities and challenges that come with the desire to explore, interpret and manipulate higher dimensional objects. The most immediate challenge is that of being able to manipulate a four dimensional object. Rotating an object in a dimensional space greater than two is a non trivial challenge. The most common method of rotation in 3D cannot be extended to higher dimensions. There are several ways in which users can interact with 3D objects; another non-trivial challenge is finding intuitive ways in which a user can manipulate a 4D object through a two dimensional user interface.
 \vskip 0.5em
-To understand the orientation of an object, a user needs to be able to differentiate similar faces of that object from each other. Colour, patterns and textures can be applied to an object in order to assist in comprehending the current status of an object in comparison to an otherwise visually similar counterpart. An example of this is a cube rotated 90 degrees (\(\frac{\pi}{2}\) radians) and the same cube rotated by 270 degrees (\(\frac{3\pi}{2}\) radians).
+To understand the orientation of an object, a user needs to be able to differentiate similar faces of that object from each other. Colour, patterns and textures can be applied to an object in order to assist in comprehending the current status of an object in comparison to an otherwise visually similar counterpart. An example of this is a cube rotated 90 degrees (\(\frac{\pi}{2}\) radians) and the same cube rotated by 270 degrees (\(\frac{3\pi}{2}\) radians). the un-textured cube would appear be the same despite not being in the same orientation.
 \vskip 0.5em
-In this paper several methods will be applied in an attempt to provide more information about a four dimensional object. Such methods include: viewing the object from other angles, attempts to visualise the object in its entirety, and abstractions of the rotation of an object in order to help understand higher dimensional rotations.
+In this paper several methods will be applied in an attempt to provide more information about a four dimensional object. Such methods include: viewing the object from other angles, attempts to visualise the object in its entirety spanning along the \(w\) axis, and abstractions of the rotation of an object in order to help interpret higher dimensional rotations.
 
 \section{Motivation}
 
@@ -102,7 +102,7 @@ This supposed tidiness has lead to misconceptions that are so heavily rooted in 
 %
 In the 3D world, these misconceptions do not matter, and the mathematics is still sound. Quaternions, the most common method of controlling or interpreting rotation, is heavily used in gyroscopic devices, interactive digital 3D environments, animation and robotics. More abstract practices such as mathematics and physics, however, need to consider geometry in higher dimensional spaces.
 \vskip 0.5em
-A variety of fields within science and engineering utilise the visualisation of higher dimensional spaces to tackle a variety of problems. For any problem defined in \(n\) dimensional space, to understand it more intuitively, it is often suitable to reduce the dimensionality of the problem. However, when a problem is reduced to $\mathbb{R}^3$ or $\mathbb{R}^2$ it may become somewhat trivial. Visualisation of 4D objects can often server as the "bridge from the 'trivial cases' to the 'nontrivial cases'", \citep{zhou_visualization_1991}. Such problems that utilise the visualisation of four dimensional space include: understanding differential geometry, collision detection, analysis of 3D objects in motion, and scalar-fields in 3D space; among others. \citep{zhou_visualization_1991}
+A variety of fields within science and engineering utilise the visualisation of higher dimensional spaces to tackle a variety of problems. To more intuitively understand a given problem defined in \(n\) dimensional space it is often suitable to reduce the dimensionality of the problem. However, when a problem is reduced to $\mathbb{R}^3$ or $\mathbb{R}^2$ it may become somewhat trivial. Visualisation of 4D objects can often server as the "bridge from the 'trivial cases' to the 'nontrivial cases'", \citep{zhou_visualization_1991}. Such problems that utilise the visualisation of four dimensional space include: Analysis of differential geometry, collision detection, analysis of 3D objects in motion, and scalar-fields in 3D space; among others \citep{zhou_visualization_1991}.
 \vskip 0.5em
 %
 TODO: what is the benefit of trying to teach people about it?\\
@@ -111,22 +111,25 @@ TODO: what is the benefit of trying to teach people about it?\\
 
 % wide range of 4 Dimensional shape. variety of ways to display. As such the usability of each representation will be experimentally validated in order to find the most intuitive and effective way to represent higher dimensional shapes. The accuracy of which the user can identify these properties and act accordingly will be measured against the representation being shown to them.
 
-As per the motivation for this project; an effective tutorial must be compiled together in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects must be developed and have the capability to showcase a wide variety of 4D shapes. Research into intuitive methods of user interaction should be explored, and a system to rotate an object without gimbal lock should be employed.
+As per the motivation for this project; an effective tutorial has been compiled together in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects has be developed with the capability to showcase a wide variety of 4D shapes. Research into intuitive methods of user interaction has been explored, and a system to rotate an object without gimbal lock was employed.
 \vskip 0.5em
-This paper proposes several extensions to taking a 3D cross section of a four dimensional object. An evaluation will be conducted into what aspects of the geometry emphasised by these extensions are most effective when trying to interpret higher dimensional spaces, and understanding the surface, rotation and pose of a 4D object. 
+This paper proposes several extensions to taking a 3D cross section of a four dimensional object. The project evaluation explores what aspects of the geometry emphasised by these extensions are most effective when trying to interpret higher dimensional spaces, and understanding the surface, rotation and pose of a 4D object. 
 %
-Given a series of tests, a study will be conducted allowing a user to manipulate several 4D objects in order to evaluate their understanding of geometry, and compare their understanding against each representation of a 3D cross section. 
-Metrics such as time taken, confidence and accuracy will be measured, with each metric being applied to several tests, each focusing on a different aspect of geometry in order to evaluate a users understanding of how a cross section of a four dimensional object changes under rotation.
+Given a series of tests, a study was conducted that allowed users to manipulate several 4D objects in order to evaluate their understanding of geometry, and compare their understanding against each representation of a 3D cross section. 
+Metrics such as time taken, confidence and accuracy were be measured, with each metric being applied to several tests, with each test focusing on a different aspect of geometry in order to evaluate a users understanding of how a cross section of a four dimensional object changes under rotation.
 \vskip 0.5em
-This project aims to answer questions related to which representation of a 4D object using a 3D cross section is the most effective in conveying the properties of four dimensional geometry to a user with limited experience. Which representation is the most effective at representing the surface type of a 4D object? And which representation is more effective at conveying the rotational pose of an object in $\mathbb{R}^4$?
+This paper aims to answer questions related to which representation of a 4D object presented through a 3D cross section is the most effective in conveying the properties of four dimensional geometry to a user with limited experience. Which representation is the most effective at representing the surface type of a 4D object? And which representation is more effective at conveying the rotational pose of an object in $\mathbb{R}^4$?
 Furthermore, Does a users understanding and ability to manipulate 4D objects increase with practice? And can advantages of each representation be realised and digested by potentially inexperienced users?
+
+TODO: Build in Unity
+TODO: Revise ordering - Logical order
 
 %==================================================================================================================================
 \chapter{Background}
 
 \section{Representations of the Fourth Dimension}
 
-There are many ways to represent the fourth dimension. Arguably the most intuitive understanding is that of a 3D cross section. As with how a sphere in $\mathbb{R}^3$ can be considered a a stack of infinitely thin circles that vary in size from top to bottom, along the \(z\) axis; a fourth dimensional sphere can be considered a stack of 3D spheres that vary in size as you move across the \(w\) axis.
+There are many ways to represent the fourth dimension. Arguably the most intuitive understanding is that of a 3D cross section. As with how a sphere in $\mathbb{R}^3$ can be considered a stack of infinitely thin circles that vary in size from top to bottom, along the \(z\) axis; a fourth dimensional sphere can be considered a stack of 3D spheres that vary in size as you move across the \(w\) axis.
 \vskip 0.5em
 The 3D cross section is limited given that only a slice of the shape can be seen at any given time. Stereographic projection attempts to rectify this by allowing a viewer to visualise as much of the shape as their field of view permits. Stereographic projection in $\mathbb{R}^3$ takes a 3D sphere and maps its geometry across a 2D plane. To map another object, for example a cube, its geometry must be projected beforehand onto the surface of a sphere \citep{radiya-dixit_visualizing_2017}. Stereographic projection in $\mathbb{R}^4$ takes the spherical projection of a 4D object, and maps it across a 3D environment. A viewer can stand in the center of the 3D environment and observe the mapped geometry. This approach of interpreting four dimensional space is well suited to virtual reality, however it is complex to interpret in a meaningful way, and abstracting an understanding to lower dimensions is nontrivial.
 
@@ -134,11 +137,11 @@ The 3D cross section is limited given that only a slice of the shape can be seen
 
 Through simple discussion with peers, a 3D cross section of a four dimensional object appears to be a far more intuitive concept to grasp compared against stereographic projection. 
 %
-Given the aims of the project, are to investigate how one may extend a visualisation of a 4D object to provide a viewer with more information in order to assist in their understanding of higher dimensional space, the 3D cross section of a four dimensional world appears very appropriate given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
+Given the aims of the project, are to investigate how one may extend a visualisation of a 4D object to provide a viewer with more information in order to assist in their understanding of higher dimensional space, the 3D cross section of a four dimensional world appears most appropriate given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
 \vskip 0.5em
 An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed. 
 \vskip 0.5em
-Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \ref{fig:exti}: displaying several 2D circles, taken a regular intervals of $\delta$ along the z axis, that circularly increase and decrease in size provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere.
+Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \ref{fig:exti}: displaying several 2D circles, taken a regular intervals of $\delta$ along the \(z\) axis, that circularly increase and decrease in size provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere.
 
 \begin{figure}
   \centering
@@ -164,8 +167,8 @@ By displaying the several cross sections in an ovular path, compared to a linear
 %
 Each cross section, as they move further away from the central slice, decreases in size; in order to avoid potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
 %
-Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyama's visualisation will have each of these 3D spheres decrease in size such that a user could more likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits the same scaling behaviour. If a user interacts with the object using the appropriate keys they could observe the lack of change in the size of the 3D cross section and draw the correct conclusion.
-Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its potential to be obscure when it comes to objects with similar cross sections.
+Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyama's visualisation will have each of these 3D spheres decrease in size such that a user could likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits similar scaling behaviour. If a user interacts with the object using the appropriate keys to move across the \(w\) axis, they could observe the lack of change in the size of the central 3D cross section and draw the correct conclusion that it is a cylinder.
+Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its potential to be obscure when several objects can have similar cross sections.
 
 TODO: classify Kageyama's work
 \vskip 0.5em
@@ -174,20 +177,20 @@ Another extension which arguably provides the user with more information about a
 \textit{Polyvision}, proposed by \citet{matsumoto_polyvision_2019}, is a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
 %
 \citet{matsumoto_polyvision_2019} chose to represent 4D objects as wireframes, connecting each vertex of the object by an edge. This is possible when collapsing each vertex of the 4D object to the same three dimensional slice. This is often referred to as the "shadow" of an object. 
-This allows for a user to view almost all of an object at once, in comparison to a single 3D slice, whilst offering a more intuitive understanding, although with perhaps less information, with comparison to stereographic projection. A disadvantage of a 3D wireframe shadow is with increasingly complex objects, the wireframe cells of the wireframe becomes more and difficult differentiate with the increase in the number of vertices and edges.
+A user may view almost all of an object at once using this technique, in comparison to a single 3D slice, whilst potentially offering a more intuitive understanding, although perhaps less information, with comparison to stereographic projection. A disadvantage of a 3D wireframe shadow is with increasingly complex objects, the wireframe cells of the object become more and difficult differentiate with the increase in the number of vertices and edges.
 The ability to view the surface of a complex object, such as a 120-cell, likely allows for easier understanding of the geometry compared to the wireframe of its shadow.
 %
-With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts interaction to that which we are used to. Translation, rotation and scaling are restricted to the third dimension, as interaction in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ will change the object in a potentially unexpected way. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
+With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts interaction to that which we are used to and capable of. Translation, rotation and scaling are restricted to the third dimension. Interaction in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ will change the object in a potentially unexpected way. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
 
 TODO: classify Matsumoto's work
 
 \section{Building a 4D Object}
 
-Rendering three dimensional shapes on a 2D screen is an art that has evolved over time and ranging several disciplines. When Tron released in 1982, computers were not powerful enough to render triangle meshes in real time; as is the standard for 3D rendering nowadays. 
-Similar films of that era, such as Dune 1984 or Star Wars the Original Trilogy often used a mix of practical effects and physically modifying the film. The team behind tron, however, opted to take advantage of machines to do some heavy lifting. In-spite of the technological limitations the team were able build a system to combine and render simple but smooth primitive objects. They used a system called Ray Marching \citep{sheppard_tron_2010}.
+Rendering three dimensional shapes on a 2D screen is an art that has evolved over time and ranges several disciplines. When Tron released in 1982, computers were not powerful enough to render triangle meshes in real time; as is the standard for 3D rendering nowadays. 
+Similar films of that era, such as Dune (1984) or Star Wars the Original Trilogy (1977-1983) often used a mix of practical effects and physically modifying the film, using techniques such as rotoscoping and double exposure. The team behind tron, however, opted to take advantage of machines to do some heavy lifting. In-spite of the technological limitations the team were able build a system to combine and render simple but smooth primitive objects. They used a system called Ray Marching \citep{sheppard_tron_2010}.
 \vskip 0.5em
 Today, it is standard to use triangle meshes to build and even render complex models in real time; and not just for film, but for real time interactive media such as video games.
-A mesh consists of vertices, edges and faces. A vertex being a point on the surface of an object that edges connect to. A face is formed by a closed loop of edges. Generally, a face will be made up of three vertices and three edges, creating the most simple 2D shape: A triangle; which form the surface of a 3D mesh.
+A mesh consists of vertices, edges and faces. A vertex being a point on the surface of an object that edges connect to. A face is formed by a closed loop of edges. Generally, a face will be made up of three vertices and three edges, creating the most simple 2D shape: A triangle; which form a part of the surface of a 3D mesh.
 
 \subsection{Mesh Based Rendering}
 
@@ -356,11 +359,39 @@ Level 2: students create meaningful definitions and are able to justify and reas
 Level 3: students are able to provide deductive geometry proofs, showing their understanding of formal definitions and theorems.
 Level 4: students have an understanding of several proofs and can comprehend Euclidean and non-Euclidean geometry.
 \vskip 0.5em
+TODO: 5 phases of learning process
+
+\vskip 0.5em
 For the purposes of this experiment, levels 0-3
 
 TODO: Explain relevance
 
-TODO: 5 phases of learning process
+
+information inquiry - VIDEO
+ - students receive information and discover structure
+ - well known language
+
+guided or directed orientation - VIDEO
+ - deal with tasks to explore relationships
+ - teacher that suggests activities enabling students to recognise properties of a new concept
+ - relationships are discovered and discussed
+   - encourage discussion
+
+explanation or explication - DISCUSSION AFTER VIDEO
+ - student formulate what they have discovered and new terminology is introduced
+ - share opinion on relationships discovered
+   - encourage discussion
+ - teacher ensures correct terminology - more useful than familiarity with concept
+
+free orientation - MOST IMPORTANT FOR THIS PROJECT
+ - student solves more complex tasks independently
+ - master network of relationships in material
+ - know properties but develop understanding of relationships in various situations
+
+integration - DISCUSSION BETWEEN VIDEO AND EXPERIMENT
+ - student summarises what they have learnt
+ - do not present new material in this phase
+ - summary of what has been learned
 
 %==================================================================================================================================
 \chapter{Analysis and Requirements}
@@ -420,6 +451,33 @@ It would be desirable to implement a series of tools allowing for intuitive inte
 requirements for teaching
  - match up with van-hiele model
 
+ information inquiry - VIDEO
+ - students receive information and discover structure
+ - well known language
+
+guided or directed orientation - VIDEO
+ - deal with tasks to explore relationships
+ - teacher that suggests activities enabling students to recognise properties of a new concept
+ - relationships are discovered and discussed
+   - encourage discussion
+
+explanation or explication - DISCUSSION AFTER VIDEO
+ - student formulate what they have discovered and new terminology is introduced
+ - share opinion on relationships discovered
+   - encourage discussion
+ - teacher ensures correct terminology - more useful than familiarity with concept
+
+free orientation - MOST IMPORTANT FOR THIS PROJECT
+ - student solves more complex tasks independently
+ - master network of relationships in material
+ - know properties but develop understanding of relationships in various situations
+
+integration - DISCUSSION BETWEEN VIDEO AND EXPERIMENT
+ - student summarises what they have learnt
+ - do not present new material in this phase
+ - summary of what has been learned
+
+OTHER STUFF
  - explain 4D space, why it cannot be visualised
  - explain 4D rotation in relation to 2D and 3D rotation
 
