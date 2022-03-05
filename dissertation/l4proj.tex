@@ -410,7 +410,11 @@ Experimentation is, more often than not, limited by the number of participants t
 
 \section{The Framework}
 
-TODO: Why Unity
+The project was developed in the Unity game engine using ray marching shaders. Unity is readily available to anyone for free; and allows for quick and simple application deployment for web based hosting using WebGL and HTML5. 
+Given the COVID-19 pandemic at the time of the experiment, online hosting was an important consideration to allow for a more accessible experiment in a world where people are having to self isolate. Not only does this allow for a participants safety, but the size of the audience can be increased. Online hosting reduces the commitment a participant has to make, making the experiment more appealing. Time to commute and costs of travel that potential participants would otherwise have to make, now no longer factor into the considerations made by a potential participant when signing up for the experiment.
+\vskip 0.5em
+Ray marching was used rather than mesh based rendering given its comparative ease. Several 4D shapes can be written fairly quickly using ray marching. Although complex geometry with defined faces, such as the 120-cell is a struggle to write using ray marching, render curved geometry using mesh based rendering requires the development of a smooth shading rendering effect. Furthermore, implementing a rendering of the 3D cross section of a 4D object is comparatively trivial using ray marching. To render the three dimensional cross section of a 4D mesh is yet another system to develop that would require more time and research. 
+Generally, ray marching is more suitable to this project in exploring primitive geometry in $\mathbb{R}^4$, and allows for more time to be spent on research and development into stable rotation and manipulation of 4D geometry, and the creation of a cohesive investigation.
 
 \section{Prioritisation of Requirements Using MoSCoW}
 
@@ -428,7 +432,9 @@ The aims of the project focus on the development of several extensions to the 3D
 To distinguish the faces of shapes, the objects will need to be coloured such that given two objects in a different pose, both objects can be distinguished from one another even if their surface shape appears identical. 
 \vskip 0.5em
 In order to prepare participants for the experiment, an introductory tutorial video will need to be assembled to teach and explain them about the complexities and features of the fourth dimension. This tutorial video must cover the behaviour of geometry in $\mathbb{R}^4$, with appropriate references to the similarities when reducing three dimensional space to a two dimensional cross section. Moreover, the video must explain rotation in four dimensions, as well as an explanation for the behaviour that occurs when rotating an object outside of the dimensions it is being viewed within. The video must have relevant diagrams and animations to appropriately depict the behaviour of 4D shapes in such a way that it will be immediately relatable to the following experiment.
-\vskip 0.5em
+%\vskip 0.5em
+\pagebreak
+
 Before running the experiments, the tests must be completed and evaluated several times by myself, with some preliminary research with a small group of peers to ensure the functionality of the system is as expected, and any restraints such as time limits are within acceptable bounds.
 \vskip 0.5em
 Finally the experiment must have multiple stages of testing to evaluate a persons understanding of the several aspects of geometry. The experiment must not last such a long time that it affects the participants performance. To appropriately evaluate a persons understanding alongside the effectiveness of a representation, qualitative data must be collected from the participant, about their understanding, including open and closed questions.
