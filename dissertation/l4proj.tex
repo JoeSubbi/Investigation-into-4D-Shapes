@@ -6,12 +6,14 @@
 \usepackage{amsmath}
 \usepackage{pdfpages}
 \usepackage{float}
+\usepackage{cleveref}
 
 \begin{document}
 
 %==============================================================================
 %% METADATA
-\title{An Investigation into Extending a 3D Cross Section of 4D Geometry and Evaluate an Extensions Effectiveness in Teaching Users to Manipulating This Geometry}
+\title{Evaluating the Effectiveness of Extensions to 3D Cross Sections of 4D Geometry in the Teaching and Manipulation of this Geometry}
+%\title{An Investigation into Extending a 3D Cross Section of 4D Geometry and Evaluate an Extensions Effectiveness in Teaching Users to Manipulating This Geometry}
 \author{Joe Subbiani}
 \date{March 18, 2022}
 
@@ -138,7 +140,7 @@ Given the aims of the project, are to investigate how one may extend a visualisa
 \vskip 0.5em
 An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed. 
 \vskip 0.5em
-Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \ref{fig:exti}: displaying several 2D circles, taken a regular intervals of $\delta$ along the \(z\) axis, that circularly increase and decrease in size provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere.
+Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \cref{fig:exti}: displaying several 2D circles, taken a regular intervals of $\delta$ along the \(z\) axis, that circularly increase and decrease in size provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere.
 
 \begin{figure}
   \centering
@@ -169,7 +171,7 @@ Whilst the ovular display does provide a great deal of extra information to a vi
 
 TODO: classify Kageyama's work
 \vskip 0.5em
-Another extension which arguably provides the user with more information about an object, is viewing said object from other angles. As shown in the 3D example \ref{fig:exmv}: take a cone that is extended upwards to a point along the \(y\) axis. From the top, a cross section of the object spanning the \(xz\) plane will produce a circle. However a cross section along either the \(xy\) or \(yz\) planes will appear as a triangle.
+Another extension which arguably provides the user with more information about an object, is viewing said object from other angles. As shown in the 3D example \cref{fig:exmv}: take a cone that is extended upwards to a point along the \(y\) axis. From the top, a cross section of the object spanning the \(xz\) plane will produce a circle. However a cross section along either the \(xy\) or \(yz\) planes will appear as a triangle.
 \vskip 0.5em
 \textit{Polyvision}, proposed by \citet{matsumoto_polyvision_2019}, is a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
 %
@@ -208,14 +210,6 @@ In order to render a three dimensional slice of a four dimensional object, an al
 Ray march based rendering was initially developed due to limitations in real time rendering, as a way to combine easy to define primitive objects into more complex shapes. Despite advancements in rendering capabilities, allowing even low-end computers to render complex mesh based geometry in real time, ray marching has not lost its place in the world. 
 Whilst ray marching has often thought to evolved into ray tracing, the foundation of photorealistic rendering, signed distance fields (SDFs), the core of ray marching, are still heavily used in volumetric geometry, meta-ball geometry, collision detection and ray marched shaders.
 An SDF is a function that describes a signed distance to a surface relative to a point in space. \citet{quilez_distance_nodate} lists several SDFs for primitive objects as well as functions that can be applied to them.
-%
-%\begin{lstlisting}[language=c, float, caption={The signed distance function for a sphere in $\mathbb{R}^3$}, label=lst:callahan]
-%  float sdSphere( float3 p, float r )
-%  {
-%      return length(p)-r;
-%  }
-%\end{lstlisting}
-%
 
 % Ray marching Diagrams
 \begin{figure}[H]
@@ -233,7 +227,7 @@ An SDF is a function that describes a signed distance to a surface relative to a
   \end{subfigure}   
   %
   \caption{Ray marching. \subref{fig:rmcast} shows how each pixel of an image is coloured by casting a ray from the camera in the direction of the pixel and reading the surface of any defined geometry. 
-  \subref{fig:rmalg} shows the process of a single ray marching towards a surface, given a an origin point and a direction as described in Algorithm \ref{alg:raymarch}.
+  \subref{fig:rmalg} shows the process of a single ray marching towards a surface, given a an origin point and a direction as described in \cref{alg:raymarch}.
   }\label{fig:raymarch}
 \end{figure}
 %
@@ -270,7 +264,7 @@ An SDF is a function that describes a signed distance to a surface relative to a
 \end{algorithm}
 \pagebreak
 
-Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point in the direction of a pixel to colour the pixel based on the distance to a mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
+Ray marching (\cref{alg:raymarch}, \cref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point in the direction of a pixel to colour the pixel based on the distance to a mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
 \vskip 0.5em
 %
 Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
@@ -318,7 +312,7 @@ It is possible to multiply multivectors using the geometric product; a combinati
     v' = R v R^\dagger,
 \end{equation}
 %
-Rotors can also be multiplied using the geometric product. This will produce a new rotor. Therefore two rotors; $R_a$ and $R_b$, can be composed as shown in equation \ref{eq:sanwhich_b} to rotate a vector \(v\) and produce a rotated vector \(v'\).
+Rotors can also be multiplied using the geometric product. This will produce a new rotor. Therefore two rotors; $R_a$ and $R_b$, can be composed as shown in \cref{eq:sanwhich_b} to rotate a vector \(v\) and produce a rotated vector \(v'\).
 %
 \begin{equation}
   \label{eq:sanwhich_b}
@@ -367,7 +361,7 @@ Finally, \textit{Integration} involves the student summarising what they have le
 For the purposes of this experiment, only levels 0 to 2 of \textit{The van Hiele Model of Geometric Thinking} will be explored. A rule of the model is that a student may not progress to level \(N\) without having first tackled level $N-1$. 
 In order to best evaluate the effectiveness of an extension to the 3D cross section of a 4D object, a participant of the investigation should understand the geometry they are working with to some degree.
 Unfortunately, given the limited time to conduct the investigation, and an individual experiment, participants will not be able to sufficiently progress through each level, whilst also covering each of the five stages of the learning process. 
-To provide a participant with the best possible foundations for understanding four dimensions, tutorials and question and answer sessions before and after each stage in the experiment were be conducted. The experiment was designed to try follow the structure of the five stage learning process as closely as would allow. This is expanded upon more in the experimental design section (\ref{experimental_design}) of this paper.
+To provide a participant with the best possible foundations for understanding four dimensions, tutorials and question and answer sessions before and after each stage in the experiment were be conducted. The experiment was designed to try follow the structure of the five stage learning process as closely as would allow. This is expanded upon more in the experimental design section (\cref{experimental_design}) of this paper.
 
 %==================================================================================================================================
 \chapter{Analysis and Requirements}
@@ -385,6 +379,7 @@ The project is primarily separated into three components: Research, development 
 Experimentation is, more often than not, limited by the number of participants that choose to be involved. To encourage the greatest number of potential participants to enroll in the experiment, the time commitment and effort cannot be so great that it deters them. Alongside the conscious effort to sign up, the experiment cannot run for such a period of time that it may effect a participants performance. As such, the amount of data that can be collected in one sitting was to be maximised within a limited time frame.
 
 \section{The Framework}
+\label{requirements_framework}
 
 The project was developed in the Unity game engine using ray marching shaders. Unity is readily available to anyone for free; and allows for quick and simple application deployment for web based hosting using WebGL and HTML5. 
 Given the COVID-19 pandemic at the time of the experiment, online hosting was an important consideration to allow for a more accessible experiment in a world where people are having to self isolate. Not only does this allow for a participants safety, but the size of the audience can be increased. Online hosting reduces the commitment a participant has to make, making the experiment more appealing. Time to commute and costs of travel that potential participants would otherwise have to make, now no longer factor into the considerations made by a potential participant when signing up for the experiment.
@@ -484,20 +479,45 @@ requirements for testing
 
 \section{Building 4D Objects With Ray Marching}
 
-shapes defined with signed distance functions
+As stated in \cref{requirements_framework}, the combination of Unity and ray marching shaders were used to develop and render three dimensional objects cross sections of four dimensional objects.
+Ray marching over signed distance functions in Unity has often been used within art and game development communities. 
+The first phase of implementing a system to render four dimensional objects was to form a foundation: implement a three dimensional ray marcher in Unity \citep{the_art_of_code_writing_2019}. 
+The ray marching algorithm (\cref{alg:raymarch}) casts a ray from an origin pointer towards a pixel on the screen, to determine how to colour this pixel. The algorithm takes a signed distance function (SDF) which defines the surface relative to an origin point, given a point \(p\) along the ray. 
+TODO: Describe Sphere SDF
+
+\begin{lstlisting}[language=c, caption={The signed distance function for a sphere in $\mathbb{R}^3$}, label=lst:sdSphere]
+  float sdSphere( float3 p, float r )
+  {
+      p -= float3(1,0,0);
+      return length(p)-r;
+  }
+\end{lstlisting}
+
+TODO: Summarise SDFs in more detail - shapes defined with signed distance functions
 
 relative to the camera - slice is based on W coordinate of camera based
 
-\citep{the_art_of_code_writing_2019} %unity
+TODO: Discuss extending raymarch algorithm to 4D (extend SDFs to 4D)
 
-Algorithm \ref{alg:raymarch}
+TODO: Discuss lighting the objects
+
+The shader can be configured such that if the ray does not make contact with a surface the pixel is set to a default colour or it can be discarded. 
+
+\vskip 0.5em
 
 \subsection{Derivation of 4D Shapes}
+
+subtracting the distance adds thickness
+
+interior distance
 
 \citep{quilez_distance_nodate}
 \citep{the_art_of_code_ray_2019} %shapes
 
 \section{Extending 3 Dimensional Cross Sections - Representing 4D Objects}
+
+The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects at once
+
 
 timeline: simple - ellyptical version
  - ellypitcal adds more information, but not as intuitive as straight line\\
@@ -526,9 +546,9 @@ In $\mathbb{R}^4$ a Grade 2 Multivector (Bivector) \(b\) can be broken down into
 
 initial manual derivation
 
-sympy and galgebra: Listing \ref{lst:rotor_derivation}\\
-equation to rotate vector: Equation \ref{eq:rotate_vec}\\
-equation to rotate rotor: Equation \ref{eq:rotate_rotor}
+sympy and galgebra: Listing \cref{lst:rotor_derivation}\\
+equation to rotate vector: Equation \cref{eq:rotate_vec}\\
+equation to rotate rotor: Equation \cref{eq:rotate_rotor}
 
 \section{Methods of Rotation}
 
@@ -653,8 +673,8 @@ Summarise the whole project for a lazy reader who didn't read the rest (e.g. a p
 % Rotor Product Derivation
 \begin{lstlisting}[language=python, caption={
   Rotor4 product derivation using Geometric Algebra in python: \\
-  Rotor4-Vector rotation using double reflection; producing Equation \ref{eq:rotate_vec}.\\
-  Rotor4-Rotor4 product to apply a 4D Rotor to another 4D Rotor; producing Equation \ref{eq:rotate_rotor}.
+  Rotor4-Vector rotation using double reflection; producing \cref{eq:rotate_vec}.\\
+  Rotor4-Rotor4 product to apply a 4D Rotor to another 4D Rotor; producing \cref{eq:rotate_rotor}.
   }, label=lst:rotor_derivation]
   from sympy import symbols
   from galgebra.ga import Ga
