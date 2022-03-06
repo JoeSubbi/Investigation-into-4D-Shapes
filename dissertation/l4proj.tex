@@ -216,9 +216,7 @@ An SDF is a function that describes a signed distance to a surface relative to a
 %  }
 %\end{lstlisting}
 %
-\vskip 0.5em
-Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point in the direction of a pixel to colour the pixel based on the distance to a mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
-\vskip 0.5em
+
 % Ray marching Diagrams
 \begin{figure}[H]
   \centering
@@ -270,6 +268,10 @@ Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the pr
   }
 \caption{The ray marching algorithm}\label{alg:raymarch}
 \end{algorithm}
+\pagebreak
+
+Ray marching (Algorithm \ref{alg:raymarch}, Figure \ref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point in the direction of a pixel to colour the pixel based on the distance to a mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
+\vskip 0.5em
 %
 Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
 \vskip 0.5em
@@ -527,8 +529,6 @@ initial manual derivation
 sympy and galgebra: Listing \ref{lst:rotor_derivation}\\
 equation to rotate vector: Equation \ref{eq:rotate_vec}\\
 equation to rotate rotor: Equation \ref{eq:rotate_rotor}
-
-
 
 \section{Methods of Rotation}
 
