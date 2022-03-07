@@ -97,6 +97,11 @@
     tabsize=4,
     captionpos=b
 }
+
+\lstdefinelanguage{glsl}[]{c}{
+    morekeywords={float4, float3}
+}
+
 %% ---
 
 % nice number printing

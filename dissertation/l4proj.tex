@@ -483,9 +483,12 @@ As stated in \cref{requirements_framework}, the combination of Unity and ray mar
 Ray marching over signed distance functions in Unity has often been used within art and game development communities. 
 The first phase of implementing a system to render four dimensional objects was to form a foundation: implement a three dimensional ray marcher in Unity \citep{the_art_of_code_writing_2019}. 
 The ray marching algorithm (\cref{alg:raymarch}) casts a ray from an origin pointer towards a pixel on the screen, to determine how to colour this pixel. The algorithm takes a signed distance function (SDF) which defines the surface relative to an origin point, given a point \(p\) along the ray. 
-TODO: Describe Sphere SDF
-
-\begin{lstlisting}[language=c, caption={The signed distance function for a sphere in $\mathbb{R}^3$}, label=lst:sdSphere]
+To summarise the basics of SDFs, \cref{lst:sdSphere} shows a signed distance function written in GLSL for a 3D sphere, with radius \(r\). 
+The center of the sphere is described as an offset from the origin. To apply this to the point \(p\), along the ray, the opposing translation must be applied. Using \(p\), the distance to the surface is calculated. Given $r=0$ the distance returned by the function would be the distance to the center of the sphere. By subtracting the radius from the distance to the center of the object, a radius is described around the point defining surface of the sphere.
+Therefore, the SDF returns the distance to the surface of a sphere, defined by a radius and a point offset from the origin.
+\vskip 0.5em
+%
+\begin{lstlisting}[language=glsl, caption={The signed distance function for a sphere in $\mathbb{R}^3$ with a center at $(1,0,0)$, and radius $r$}, label=lst:sdSphere]
   float sdSphere( float3 p, float r )
   {
       p -= float3(1,0,0);
@@ -493,17 +496,44 @@ TODO: Describe Sphere SDF
   }
 \end{lstlisting}
 
-TODO: Summarise SDFs in more detail - shapes defined with signed distance functions
-
-relative to the camera - slice is based on W coordinate of camera based
-
-TODO: Discuss extending raymarch algorithm to 4D (extend SDFs to 4D)
-
-TODO: Discuss lighting the objects
-
-The shader can be configured such that if the ray does not make contact with a surface the pixel is set to a default colour or it can be discarded. 
-
+The 3D ray marching shader written in Unity defines two vectors describing the ray origin and the hit position of the ray. These vectors are used to define the ray origin and ray direction for each pixel, to calculate what the shader should render.
+When extending the ray marcher to four dimensions, the majority of the process was enabling the algorithm and its components, such as the SDF, to take 4D vectors (\texttt{float4}), rather than a 3D (\texttt{float3}). Given the components of the shader describing the ray origin and direction existed along the same slice of four dimensions, only a single 3D slice of the four dimensional space was taken and rendered, giving us the 3D cross section.
 \vskip 0.5em
+With the standard ray marcher implemented the shader can only interpret whether a ray hits a surface or not. The only information of a 3D shape that can be gathered from this binary value will be its 2D shadow. In order to render a 3D component of the object, we need light and shadows. 
+Two basic methods of shading include angle dependant light falloff and shadows cast by other objects obstructing a light source \cref{lst:rm_light}. 
+A surface normal is a vector that is perpendicular to a point on the surface and can be used to measure the angle of the surface relative to another vector. 
+Using the surface normal an angle dependant light falloff can be implemented such that a surfaces light value will be lower if the difference between the surface normal and the vector to the light source is higher.
+A shadow cast by on to a surface can be taken by ray marching from a surface in the direction of the light source to check if there is another surface obstructing the path. If there is, the surfaces light value can be lowered.
+
+\begin{lstlisting}[language=glsl, float, caption={Given a light position \texttt{lightPos}, shade a surface in the scene based on the fall off angle and cast a shadow, if a surface is obstructing another surface from the light source}, label=lst:rm_light]
+float4 GetNormal(float4 p){
+    float2 e = float2(0.01, 0);
+
+    float4 n = GetDist(p) - float4( 
+        GetDist(p-e.xyyy),
+        GetDist(p-e.yxyy),
+        GetDist(p-e.yyxy),
+        GetDist(p-e.yyyx)
+    );
+    return normalize(n);
+}
+
+float GetLight(float4 p, float4 lightPos){
+
+    //angle dependant fall off
+    float4 lv = normalize(lightPos-p);
+    float4 n  = GetNormal(p);
+    float  light  = clamp(dot(n,lv), 0., 1.);
+
+    //shadow
+    float4 so = p + n * SURF_DIST * 2.; //shadow origin
+    float4 sd = normalize(lightPos-so); //light direction
+    float d = Raymarch(so, sd);
+    if( d < length(lightPos-p) ) light *= 0.1;
+
+    return light;
+}
+\end{lstlisting}
 
 \subsection{Derivation of 4D Shapes}
 
