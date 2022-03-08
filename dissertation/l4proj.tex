@@ -537,12 +537,25 @@ float GetLight(float4 p, float4 lightPos){
 
 \subsection{Derivation of 4D Shapes}
 
-subtracting the distance adds thickness
+Of the 3D SDFs derived by \citet{quilez_distance_nodate} and \citet{the_art_of_code_ray_2019}, the sphere, box, and capsule were fairly trivial to translate directly to four dimensional space.
+A 4D hyper sphere takes a radius, with the surface spanning equally along all four axes.
+A 4D box takes a 4D vector where each component describes the height, width, depth and length of the box along each of the four axes respectively.
 
-interior distance
+TODO: interior distance
 
-\citep{quilez_distance_nodate}
-\citep{the_art_of_code_ray_2019} %shapes
+Finally a 4D capsule can be described as a line connecting two points, \(A\) and \(B\), and the line is given a thickness via a radius. Just as with the sphere, the radius spans in all four dimensions.
+\vskip 0.5em
+The torus was an interesting shape; two variations were developed for this project.
+A 3D torus can be described by a major radius, $r_1$ and a minor radius $r_2$. $r_1$ is the main ring of the torus, and $r_2$ is the thickness of this ring - its radius.
+When you take a 2D slice of a 3D torus it may appear as a pair of circles a distance $2(R_1 - R_2)$ apart as shown in \cref{fig:exti}. 
+Similar to the cross section of a sphere, it makes sense to have the radius $r_2$ of the two circles expand into the fourth dimension, such that a 3D cross section of a four dimensional torus may appear as a pair of 3D spheres.
+Alternatively, consider a four dimensional torus with three radii: $r_1$, $r_2$ and $r_3$.
+
+TODO: torus with 3 radii
+
+TODO: cone
+
+TODO: pentachoron
 
 \section{Extending 3 Dimensional Cross Sections - Representing 4D Objects}
 
