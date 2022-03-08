@@ -294,6 +294,7 @@ Introducing the quaternion: The quaternion is an extension of the complex number
 Quaternions have a problem: They consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating within two dimensions as rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
 
 \subsection{Geometric Algebra and The Rotor}
+\label{ga_and_rotor}
 
 Geometric Algebra, often referred to as Clifford Algebra, is a field of mathematics describing vector space. Vector space is populated by multivectors, graded by their vector components. Most notably, multivectors are defined by their associative, distributive and anti-commutative properties \citep{baker_maths_nodate}.
 A grade zero multivector is a scalar number. a grade one multivector is just a vector. Grade two multivectors are known as bivectors, which build the foundation for the rotor. A trivector is a grade 3 multivector forming a parallelepiped from 3 vectors. Finally in $\mathbb{R}^4$ there is what is known as a pseudo-scalar.
@@ -564,8 +565,7 @@ A tetrahedron is made up of 4 triangular faces, each opposing one of it's four v
 The SDF for a tetrahedron also takes a parameter $s$, used to scale the tetrahedron. Subtracting $s$ from the distance to the surface, the surface is effectively brought further from the center, similar to the radius of a sphere.
 Constructing a pentachoron is done in a near identical way, just five vertices are considered rather than four.
 
-\section{Extending 3 Dimensional Cross Sections: \\
-         Representing 4D Objects}
+\section{Extending 3 Dimensional Cross Sections: \\Representing 4D Objects}
 
 The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects at once. To render several SDFs at once, each function may be combined using a boolean union: taking the minimum distance between two or more objects using \texttt{min(a, b)}.
 \vskip 0.5em
@@ -575,26 +575,44 @@ timeline: simple - ellyptical version
  - ellypitcal adds more information, but not as intuitive as straight line\\
 onionskin - similar to timeline, but not very intuitive for users unfamiliar with 4D\\
 multi-view: polyvision\\
-abstraction of 4D rotation using 3D rotation - does not extend well to n dimensions unlike all other propersitions
+abstraction of 4D rotation using 3D rotation - does not extend well to n dimensions unlike all other propositions
 
 \section{Rotation of a 4D Vector}
 
-In $\mathbb{R}^4$ a Grade 1 Multivector (Vector) \(a\) can be broken down into four components:
+As discussed in \cref{ga_and_rotor}, geometric algebra provides a platform for stable rotation of a vector in $\mathbb{R}^4$ without gimbal lock. 
+The rotor is straightforward to work with when considering the abstract multivectors as single entities. Implementing a rotor in code, on the other hand, is a more complex task. 
+A rotor is made up of three multivectors: A scalar, a bivector and a pseudo-scalar. To perform arithmetic operations on non-scalar multivectors, they must be broken down into projections. 
+
+TODO: Explain Projections + Figure - vector and bivector
+\label{fig:vec_proj}
+\label{fig:bivec_proj}
+
+In $\mathbb{R}^4$ a grade 1 multivector (Vector) \(a\) can be broken down into four components. Each component is the vector projected onto one of the four axes (\cref{eq:vec_components}). One of the four projections is therefore a scalar value describing the vectors distance along an axis (\cref{fig:vec_proj}).
+%
 \begin{equation}
+  \label{eq:vec_components}
   a = a^x + a^y + a^z + a^w
 \end{equation}
-In $\mathbb{R}^4$ a Grade 2 Multivector (Bivector) \(b\) can be broken down into six components:
+%
+In $\mathbb{R}^4$ a grade 2 multivector (Bivector) \(b\) is described by its area and orientation in space. A bivector can be broken down into six components, where each component is the bivectors projection onto each plane that can be taken from the four axes (\cref{eq:bivec_components}). A projection of the bivector onto a plane is a scalar value equivalent to the area of the projected bivector which will be less than or equal to the area of the bivector (\cref{fig:bivec_proj}).
+%
 \begin{equation}
+  \label{eq:bivec_components}
   b = b^{xy} + b^{xz} + b^{xw} + b^{yz} + b^{yw} + b^{zw}
 \end{equation}
-4D Rotor R; where \(s\) is a Grade 0 Multivector (Scalar) and \(p\) is a Grade 4 Multivector (Pseudo Scalar):
+%
+As stated above, a rotor in $\mathbb{R}^4$ is comprised of a grade 0 multivector (Scalar) \(s\), a bivector and a grade 4 multivector (pseudo-scalar) \(p\) (\cref{eq:rotor_components}). The bivector defines the plane of rotation to rotate the vector about. The scalar describes how much to rotate the vector by. The pseudo-scalar is required for 4D rotation to normalise the rotor and ensure stable rotation; without it the vector may rotate unpredictably or increase/decrease in size.
+%
 \begin{equation}
+  \label{eq:rotor_components}
   R = s + b + p^{xyzw} = 
   s + b^{xy} + b^{xz} + b^{xw} + b^{yz} + b^{yw} + b^{zw} + p^{xyzw}
 \end{equation}
-
+%
 \citep{bosch_4d_2011}
-\citep{bosch_code_nodate}
+
+\citet{bosch_code_nodate} 
+
 
 initial manual derivation
 
