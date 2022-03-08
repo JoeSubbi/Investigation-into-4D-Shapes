@@ -505,8 +505,9 @@ A surface normal is a vector that is perpendicular to a point on the surface and
 Using the surface normal an angle dependant light falloff can be implemented such that a surfaces light value will be lower if the difference between the surface normal and the vector to the light source is higher.
 A shadow cast by on to a surface can be taken by ray marching from a surface in the direction of the light source to check if there is another surface obstructing the path. If there is, the surfaces light value can be lowered.
 
-\begin{lstlisting}[language=glsl, float, caption={Given a light position \texttt{lightPos}, shade a surface in the scene based on the fall off angle and cast a shadow, if a surface is obstructing another surface from the light source}, label=lst:rm_light]
-float4 GetNormal(float4 p){
+\begin{lstlisting}[language=glsl, float, caption={Given a light position \texttt{lightPos}, shade the surface based on the fall off angle and cast a shadow, if a surface is obstructing another surface from the light source}, label=lst:rm_light]
+float4 GetNormal(float4 p)
+{
     float2 e = float2(0.01, 0);
 
     float4 n = GetDist(p) - float4( 
@@ -518,8 +519,8 @@ float4 GetNormal(float4 p){
     return normalize(n);
 }
 
-float GetLight(float4 p, float4 lightPos){
-
+float GetLight(float4 p, float4 lightPos)
+{
     //angle dependant fall off
     float4 lv = normalize(lightPos-p);
     float4 n  = GetNormal(p);
@@ -540,26 +541,34 @@ float GetLight(float4 p, float4 lightPos){
 Of the 3D SDFs derived by \citet{quilez_distance_nodate} and \citet{the_art_of_code_ray_2019}, the sphere, box, and capsule were fairly trivial to translate directly to four dimensional space.
 A 4D hyper sphere takes a radius, with the surface spanning equally along all four axes.
 A 4D box takes a 4D vector where each component describes the height, width, depth and length of the box along each of the four axes respectively.
-
-TODO: interior distance
-
+Similar to how the sphere subtracts the radius from the distance to the origin point, the box subtracts the 4D vector containing the dimensions of the box. 
+To produce flat faces for each side of the box without the distance function stepping passed the surface, the vector is combined with the zero vector using a boolean intersection, with the use of \texttt{max(a, b)}. The derivation is best described by \citet{the_art_of_code_ray_2019}.
+%TODO: interior distance and 
 Finally a 4D capsule can be described as a line connecting two points, \(A\) and \(B\), and the line is given a thickness via a radius. Just as with the sphere, the radius spans in all four dimensions.
 \vskip 0.5em
-The torus was an interesting shape; two variations were developed for this project.
+The torus is an interesting shape; two variations were developed for this project.
 A 3D torus can be described by a major radius, $r_1$ and a minor radius $r_2$. $r_1$ is the main ring of the torus, and $r_2$ is the thickness of this ring - its radius.
 When you take a 2D slice of a 3D torus it may appear as a pair of circles a distance $2(R_1 - R_2)$ apart as shown in \cref{fig:exti}. 
 Similar to the cross section of a sphere, it makes sense to have the radius $r_2$ of the two circles expand into the fourth dimension, such that a 3D cross section of a four dimensional torus may appear as a pair of 3D spheres.
-Alternatively, consider a four dimensional torus with three radii: $r_1$, $r_2$ and $r_3$.
+Alternatively, consider a four dimensional torus with three radii: $r_1$, $r_2$ and $r_3$. Similar to how the 3D torus can be described as a circle with a thickness, a 4D torus with three radii describes a circle defined by radius $r_1$, with radius $r_2$ surrounding the circle that is given a thickness defined by the radius $r_3$. 
+Essentially this produces a circle with a torus sweeping across its path. Therefore, a 3D cross section of this torus may appear as two tori with a major radius of $r_2$ and minor radius of $r_3$ separated by a distance of $2(r_1 - (r_2 + r_3))$.
+\vskip 0.5em
+The 3D cross section of a 4D cone would in some instances appear as a 3D cone, and in other instances appear as a 3D sphere, in the same way a 3D cones' 2D cross section may in some cases appear as a triangle or a circle (\cref{fig:exmv}). 
+The cone SDFs developed by \citet{quilez_distance_nodate} and others define the cone by its height and slope. This approach did not extend well to 4D, and defining an instance of a cone was rather unintuitive.
+The SDF for the cone implemented takes a height and the radius at the base of the cone. This approach extends well to $\mathbb{R}^4$, as rather than a defining the cone as a surface function of angle and height, it defines the slice of the cone at any given cross section.
+\vskip 0.5em
+Of the shapes defined thus far, the 4D box is the only shape with edges, meaning it would obviously stand out against the other curved surfaces. 
+A 4D tetrahedron, also known as a pentachoron (5-cell), was created to present another platonic solid, showcasing the boxes similarities with other shapes.
+The SDF of plane can be defined by its normal vector. For example, The SDF of a plane that spans $xy$ in $\mathbb{R}^3$ would simply be \texttt{p.y}.
+A tetrahedron is made up of 4 triangular faces, each opposing one of it's four vertices. The SDF for a tetrahedron can be defined by four vectors describing the normal of each face. These vector can actually be taken as the coordinates fo the four vertices making up the shape. Each of these vectors defines the SDF of a plane parallel to each face of the tetrahedron respectively. By taking the boolean intersection of these planes using \texttt{max(a, b)}, the SDF for a tetrahedron is produced.
+The SDF for a tetrahedron also takes a parameter $s$, used to scale the tetrahedron. Subtracting $s$ from the distance to the surface, the surface is effectively brought further from the center, similar to the radius of a sphere.
+Constructing a pentachoron is done in a near identical way, just five vertices are considered rather than four.
 
-TODO: torus with 3 radii
+\section{Extending 3 Dimensional Cross Sections: \\
+         Representing 4D Objects}
 
-TODO: cone
-
-TODO: pentachoron
-
-\section{Extending 3 Dimensional Cross Sections - Representing 4D Objects}
-
-The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects at once
+The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects at once. To render several SDFs at once, each function may be combined using a boolean union: taking the minimum distance between two or more objects using \texttt{min(a, b)}.
+\vskip 0.5em
 
 
 timeline: simple - ellyptical version

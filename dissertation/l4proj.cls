@@ -99,7 +99,7 @@
 }
 
 \lstdefinelanguage{glsl}[]{c}{
-    morekeywords={float4, float3}
+    morekeywords={float4, float3, float2}
 }
 
 %% ---
