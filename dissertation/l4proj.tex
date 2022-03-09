@@ -609,12 +609,18 @@ As stated above, a rotor in $\mathbb{R}^4$ is comprised of a grade 0 multivector
   s + b^{xy} + b^{xz} + b^{xw} + b^{yz} + b^{yw} + b^{zw} + p^{xyzw}
 \end{equation}
 %
+\begin{equation}
+  \label{eq:rotor_rev}
+  R^{\dagger} = s - b - p^{xyzw} = 
+  s + b^{xy} - b^{xz} - b^{xw} - b^{yz} - b^{yw} - b^{zw} - p^{xyzw}
+\end{equation}
+%
 \citet{bosch_4d_2011} provides a code template written in C++ for a \texttt{Rotor4} in his initial blog post describing the rotor. Following his interactive article - an Introduction to Rotors - describing properties of geometric algebra in detail \citep{bosch_lets_nodate} Bosch provides a completed \texttt{Rotor3} class, compared against a Quaternion implementation \citep{bosch_code_nodate}. With this wealth of information, the foundations for the rotor could be implemented in Unity, C\#. The 4D rotor however was incomplete. 
 Whilst Bosch provided a completed \texttt{Rotor3} class, the $\mathbb{R}^4$ rotor-rotor product, and the $\mathbb{R}^4$ rotor-vector-sandwich product (the rotation of a vector) where not. 
 \vskip 0.5em
 A multivector is considered as a sum of its projections, as shown above. In order to multiply two multivectors using the geometric product, the multivectors can be multiplied out given its distributive properties. As such, referencing a 4D geometric product multiplication table \citep{baker_maths_nodate-1}, the subsequent multivector can be derived.
 \cref{eq:geo_prod} shows how two multivectors can be multiplied using the geometric product with two vectors \(a\) and \(b\) in  $\mathbb{R}^3$ using the appropriate geometric product multiplication table \citep{baker_maths_nodate}.
-%
+
 \begin{equation}
   \label{eq:geo_prod}
   \begin{split}
@@ -628,14 +634,13 @@ A multivector is considered as a sum of its projections, as shown above. In orde
           &+(e^{zx} - e^{yz} + e)e^z\\
   \end{split}
 \end{equation}
-%
-Initially the equations for the rotor-rotor product and the rotation of a vector where derived by hand, similar to \cref{eq:geo_prod}. There were however consistent errors in the behaviour of the objects rotations. These errors related to the vector produced from the rotor-vector sandwich product (\cref{eq:sandwich_a}). 
 
-TODO: sympy and galgebra
-
-sympy and galgebra: Listing \cref{lst:rotor_derivation}\\
-equation to rotate vector: Equation \cref{eq:rotate_vec}\\
-equation to rotate rotor: Equation \cref{eq:rotate_rotor}
+Initially the equations for the rotor-rotor product and the rotation of a vector where derived by hand, using the same process as \cref{eq:geo_prod}. 
+When testing the rotation of 4D objects however, there were consistent errors in their behaviour. Examples of these issues include: dramatic scaling, surface errors with ray marching, objects not rotating along the expected planes of rotation. These issues were focused around the vector produced from the rotor-vector sandwich product (\cref{eq:sandwich_a}). 
+\vskip 0.5em
+Deriving the sandwich product by hand proved challenging, given that order matters as per the anti-commutative properties of multivectors. The process also produces grade 3 trivectors, which have influence over the rotated vector. 
+\texttt{GAlgebra} is a package for symbolic geometric algebra calculus in python. The package was used to derive the appropriate equations for the rotor. This method of derivation proved far more reliable, although translating the equations to C\# proved very tedious. The code to produce the equations can be found in \cref{lst:rotor_derivation}.
+The final equations are grouped into their multivector components. The final equation to rotate a vector (\cref{eq:vec_components}) using a rotor (\cref{eq:rotor_components}) and its reverse (\cref{eq:rotor_rev}) is grouped into the four components that make up the rotated vector. The equation to rotate a vector: \cref{eq:rotate_vec}. The geometric product of two rotors \(a\) and \(b\) produces the equation (\cref{eq:rotate_rotor}) and is grouped by a rotors eight components.
 
 \section{Methods of Rotation}
 
