@@ -567,13 +567,78 @@ Constructing a pentachoron is done in a near identical way, just five vertices a
 
 \section{Extending 3 Dimensional Cross Sections: \\Representing 4D Objects}
 
-The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects at once. To render several SDFs at once, each function may be combined using a boolean union: taking the minimum distance between two or more objects using \texttt{min(a, b)}.
+%Each explanation must cover
+% - what it involves
+% - how it was rendered
+% - what it should assist with
+% - what it will not provide benefit with
+
+The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects within the same scene. To render several SDFs at once, each function may be combined using a boolean union: taking the minimum distance between two or more objects using \texttt{min(a, b)}.
 \vskip 0.5em
+Each extension to the 3D cross section took advantage of colouring different shapes within a scene. To colour different shapes within a scene a second function is employed that for the most part is identical to the SDF describing the scene, however it returns a number. Each value the number may take is a material index. To find what material number to set for each object, a comparison is made between the distance returned by the union of all SDFs in the seen, and the distance of a specific SDF in the scene. If they are equal, then you may return the material index you intend to associate with that specific SDF. \citep{the_art_of_code_setting_2021}
+\vskip 0.5em
+%Timeline
+The simplest extension to a 3D cross section of 4D space is to render several cross sections at once, each offset by a multiple of the distance $\delta_1$ along the \(w\) axis, with each cross section being separated by a distance of $\delta_2$ along the \(x\) axis. 
+The core of this concept has been explored by \citet{kageyama_visualization_2015}. In order to avoid the aforementioned problems with scaling, each cross section was built to exist side by side one another as shown in \cref{fig:exti}. 
+Throughout the project, this representation has been referred to as the \textit{w-axis Timeline}. Given an object under translation, passing through the hyper-plane, over time, by definition labels each cross section as a glimpse into the past or future, with respect to the primary central cross section.
+A drawback of showcasing cross sections side by side is that fewer cross sections can be shown on screen at one time, in comparison to the elliptical design presented by \citet{kageyama_visualization_2015}. This problem is generally less significant for primitive shapes, such as the ones implemented for this project. The problem becomes more significant when visualising complex shapes with unpredictably changing surfaces.
+Given this representation provides more information about the geometry of an object over $\mathbb{R}^4$ it is reasonable to expect that it would most effective in shape identification. The \textit{w-axis Timeline} may also provide some benefit a user to predictably manipulating a four dimensional object, or identify a rotation more accurately, although this is likely to be not particularly significant, if it all..
+
+TODO: Timeline Figure
+%
+\vskip 0.5em
+%OnionSkin
+Taking inspiration from 2D animation, for its time in development, the following extension was referred to as the \textit{onion skin} representation. In 2D animation, the animator may enable the onion skin tool to see a set number of frames before and after the current frame so that they may see how the animation will progress as they move forward in time. 
+This representation aims for a similar approach, where the user may see backwards and forward along the \(w\) axis, rather than time. This approach follows a similar vein of thinking to the \textit{w-axis Timeline}. 
+The differing factor between the two is that the \textit{onion skin} representation overlays two translucent cross sections, forward and backward along \(w\), around the main cross section as shown in 
+\cref{fig:rep_onion}. The goal was to emphasise the geometry of a single object in a more cohesive manor.
+The transparency of the cross sections were achieved by ray marching over 2 different distance functions. The first SDF contains all three cross sections. The second SDF just contains the central object. Two renders of the scene will be produced. By halving the colour values of both renders and overlaying them above each other, the full colour range is regained and anything that was hidden by one of the translucent objects will now be visible.
+\vskip 0.5em
+The \textit{onion skin} representation was not carried forwards to the experiment phase. Each representation was placed under trial during informal discussions with peers. The participants of this discussion generally had limited experience of the fourth dimension. The purpose of this discussion was to evaluate if a representation had potential before carrying it through to the final experiments. 
+During discussions of objects under rotation whilst this representation was active showed it to be confusing and hard to follow. 
+Originally the translucent cross sections were set to be a consistent distance along \(w\) from the main object, as with the \textit{w-axis Timeline}. It was found that it was not obvious that the central cross section would become either of the other cross sections as it moved along \(w\), as expected. 
+In an attempt to rectify this problem, the translucent cross sections were set exist at fixed intervals along the \(w\) axis. Using this, the central cross section could be observed directly to become the translucent cross section when translated in its direction along \(w\). When the central cross section reached a translucent cross sections position along \(w\), the translucent cross sections would be shifted by a fixed amount such that the central cross section would again be directly in between the two translucent cross sections.
+Despite these efforts, this representation was still deemed to confusing for users as was subsequently set aside for the rest of development.
+
+\begin{figure}
+  \begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{images/representations/onion-torus.png}
+    \caption{Torus}
+    \label{fig:rep_onion-torus1}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{images/representations/onion-torus-2.png}
+    \caption{Torus}
+    \label{fig:rep_onion-torus2}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{images/representations/onion-cone.png}
+    \caption{Cone}
+    \label{fig:rep_onion-cone}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{images/representations/onion-cube-2.png}
+    \caption{Cube}
+    \label{fig:rep_onion-cube}
+  \end{subfigure}
+  %
+  \caption{
+    Early development of the \text{onion skin} extension to the 3D cross section.
+    \subref{fig:rep_onion-torus1} shows a torus rotated along $wx$ and $wy$ with no shift along the $w$ axis.
+    \subref{fig:rep_onion-torus2} shows a torus rotated along $wy$ with a small shift along the $w$ axis.
+    \subref{fig:rep_onion-cone} shows a torus rotated along $wx$ and $wy$ with a small shift along the $w$ axis.
+    \subref{fig:rep_onion-cube} shows a cube rotated along $wx$ and $wy$ with a moderate shift along the $w$ axis.
+    }
+  \label{fig:rep_onion}
+\end{figure}
+%
+\vskip 0.5em
+%Multi-view
 
 
-timeline: simple - ellyptical version
- - ellypitcal adds more information, but not as intuitive as straight line\\
-onionskin - similar to timeline, but not very intuitive for users unfamiliar with 4D\\
 multi-view: polyvision\\
 abstraction of 4D rotation using 3D rotation - does not extend well to n dimensions unlike all other propositions
 
@@ -583,9 +648,20 @@ As discussed in \cref{ga_and_rotor}, geometric algebra provides a platform for s
 The rotor is straightforward to work with when considering the abstract multivectors as single entities. Implementing a rotor in code, on the other hand, is a more complex task. 
 A rotor is made up of three multivectors: A scalar, a bivector and a pseudo-scalar. To perform arithmetic operations on non-scalar multivectors, they must be broken down into projections. 
 
-TODO: Explain Projections + Figure - vector and bivector
-\label{fig:vec_proj}
-\label{fig:bivec_proj}
+\begin{figure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/rotation/projection_vec.png}
+    \caption{The components of a vector}
+    \label{fig:vec_proj}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{images/rotation/projection_biv.png}
+    \caption{The components of a bivector}
+    \label{fig:bivec_proj}
+  \end{subfigure}
+  \caption{The projection of multivectors in $\mathbb{R}^3$ onto their basis blades. \subref{fig:vec_proj} shows the projections of a vector as projections stemming from the }
+  \label{fig:projections}
+\end{figure}
 
 In $\mathbb{R}^4$ a grade 1 multivector (Vector) \(a\) can be broken down into four components. Each component is the vector projected onto one of the four axes (\cref{eq:vec_components}). One of the four projections is therefore a scalar value describing the vectors distance along an axis (\cref{fig:vec_proj}).
 %
@@ -660,6 +736,8 @@ why it failed
 \section{Texturing Ray Marched Objects}
 
 normal based projection
+
+\citep{the_art_of_code_how_2020}
 
 \section{Building the Experiment}
 
