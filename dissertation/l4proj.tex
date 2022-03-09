@@ -309,14 +309,14 @@ In a given vector space greater than $\mathbb{R}^2$, a multivector greater than 
 It is possible to multiply multivectors using the geometric product; a combination of the inner and outer product. Multiplying a vector \(v\) by a rotor \(R\) and it's reverse \(R^\dagger\) will rotate vector about the bivector component of the rotor. Order matters here.
 %
 \begin{equation}
-  \label{eq:sanwhich_a}
+  \label{eq:sandwich_a}
     v' = R v R^\dagger,
 \end{equation}
 %
-Rotors can also be multiplied using the geometric product. This will produce a new rotor. Therefore two rotors; $R_a$ and $R_b$, can be composed as shown in \cref{eq:sanwhich_b} to rotate a vector \(v\) and produce a rotated vector \(v'\).
+Rotors can also be multiplied using the geometric product. This will produce a new rotor. Therefore two rotors; $R_a$ and $R_b$, can be composed as shown in \cref{eq:sandwich_b} to rotate a vector \(v\) and produce a rotated vector \(v'\).
 %
 \begin{equation}
-  \label{eq:sanwhich_b}
+  \label{eq:sandwich_b}
   v' = R_a R_b v R_a^{\dagger} R_b^{\dagger}
    = (R_a R_b) v (R_a R_b)^{\dagger}
    = R_{ab}^{} v R_{ab}^{\dagger}
@@ -609,18 +609,37 @@ As stated above, a rotor in $\mathbb{R}^4$ is comprised of a grade 0 multivector
   s + b^{xy} + b^{xz} + b^{xw} + b^{yz} + b^{yw} + b^{zw} + p^{xyzw}
 \end{equation}
 %
-\citep{bosch_4d_2011}
+\citet{bosch_4d_2011} provides a code template written in C++ for a \texttt{Rotor4} in his initial blog post describing the rotor. Following his interactive article - an Introduction to Rotors - describing properties of geometric algebra in detail \citep{bosch_lets_nodate} Bosch provides a completed \texttt{Rotor3} class, compared against a Quaternion implementation \citep{bosch_code_nodate}. With this wealth of information, the foundations for the rotor could be implemented in Unity, C\#. The 4D rotor however was incomplete. 
+Whilst Bosch provided a completed \texttt{Rotor3} class, the $\mathbb{R}^4$ rotor-rotor product, and the $\mathbb{R}^4$ rotor-vector-sandwich product (the rotation of a vector) where not. 
+\vskip 0.5em
+A multivector is considered as a sum of its projections, as shown above. In order to multiply two multivectors using the geometric product, the multivectors can be multiplied out given its distributive properties. As such, referencing a 4D geometric product multiplication table \citep{baker_maths_nodate-1}, the subsequent multivector can be derived.
+\cref{eq:geo_prod} shows how two multivectors can be multiplied using the geometric product with two vectors \(a\) and \(b\) in  $\mathbb{R}^3$ using the appropriate geometric product multiplication table \citep{baker_maths_nodate}.
+%
+\begin{equation}
+  \label{eq:geo_prod}
+  \begin{split}
+    a = a^x + a^y + a^z\\
+    b = b^x + b^y + b^z\\
+    a*b = &+(a^x * b^x + a^x * b^y + a^x + b^z)e^x\\
+          &+(a^y * b^x + a^y * b^y + a^y + b^z)e^y\\
+          &+(a^z * b^x + a^z * b^y + a^z + b^z)e^z\\
+    a*b = &+(e + e^{xy} - e^{zx})e^x\\
+          &+(-e^{xy} + e + e^{yz})e^y\\
+          &+(e^{zx} - e^{yz} + e)e^z\\
+  \end{split}
+\end{equation}
+%
+Initially the equations for the rotor-rotor product and the rotation of a vector where derived by hand, similar to \cref{eq:geo_prod}. There were however consistent errors in the behaviour of the objects rotations. These errors related to the vector produced from the rotor-vector sandwich product (\cref{eq:sandwich_a}). 
 
-\citet{bosch_code_nodate} 
-
-
-initial manual derivation
+TODO: sympy and galgebra
 
 sympy and galgebra: Listing \cref{lst:rotor_derivation}\\
 equation to rotate vector: Equation \cref{eq:rotate_vec}\\
 equation to rotate rotor: Equation \cref{eq:rotate_rotor}
 
 \section{Methods of Rotation}
+
+how to get information to shader
 
 \subsection{Swipe Based Input - Rotation About The Global Axes}
 
