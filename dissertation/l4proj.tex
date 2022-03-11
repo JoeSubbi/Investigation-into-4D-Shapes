@@ -343,6 +343,7 @@ global, swipe gestures (often multi-touch)
 \citep{kageyama_keyboard-based_2005}
 
 \section{Teaching and Evaluation}
+\label{teaching_and_eval}
 
 In order to evaluate the effectiveness of each extension to a 3D cross section of a 4D object, as stated in the aims of this investigation, a participant should have an understanding of what four dimensional geometry is, and how it behaves.
 For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space, prior to conducting the experiment of the representations of the 4D geometry. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, Theorises that their are five levels of understanding geometry, where a student will progress from one level to the next. The levels of understanding include: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
@@ -428,38 +429,43 @@ It would be desirable to implement a series of tools allowing for intuitive inte
 %==================================================================================================================================
 \chapter{Design}
 
-requirements for teaching
- - match up with van-hiele model
+%requirements for teaching
+% - match up with van-hiele model
+%
+% information inquiry - VIDEO
+% - students receive information and discover structure
+% - well known language
 
- information inquiry - VIDEO
- - students receive information and discover structure
- - well known language
+%guided or directed orientation - VIDEO
+% - deal with tasks to explore relationships
+% - teacher that suggests activities enabling students to recognise %properties of a new concept
+% - relationships are discovered and discussed
+%   - encourage discussion
 
-guided or directed orientation - VIDEO
- - deal with tasks to explore relationships
- - teacher that suggests activities enabling students to recognise properties of a new concept
- - relationships are discovered and discussed
-   - encourage discussion
+%explanation or explication - DISCUSSION AFTER VIDEO
+% - student formulate what they have discovered and new terminology is introduced
+% - share opinion on relationships discovered
+%   - encourage discussion
+% - teacher ensures correct terminology - more useful than familiarity with concept
 
-explanation or explication - DISCUSSION AFTER VIDEO
- - student formulate what they have discovered and new terminology is introduced
- - share opinion on relationships discovered
-   - encourage discussion
- - teacher ensures correct terminology - more useful than familiarity with concept
+%free orientation - MOST IMPORTANT FOR THIS PROJECT
+% - student solves more complex tasks independently
+% - master network of relationships in material
+% - know properties but develop understanding of relationships in various situations
 
-free orientation - MOST IMPORTANT FOR THIS PROJECT
- - student solves more complex tasks independently
- - master network of relationships in material
- - know properties but develop understanding of relationships in various situations
+%integration - DISCUSSION BETWEEN VIDEO AND EXPERIMENT
+% - student summarises what they have learnt
+% - do not present new material in this phase
+% - summary of what has been learned
 
-integration - DISCUSSION BETWEEN VIDEO AND EXPERIMENT
- - student summarises what they have learnt
- - do not present new material in this phase
- - summary of what has been learned
+%OTHER STUFF
+% - explain 4D space, why it cannot be visualised
+% - explain 4D rotation in relation to 2D and 3D rotation
 
-OTHER STUFF
- - explain 4D space, why it cannot be visualised
- - explain 4D rotation in relation to 2D and 3D rotation
+Given this investigation revolves around a participants understanding of complex geometry, it is important that they are familiar with the behaviour of this geometry prior to completing the main portion of the experiment.
+Each extension to the 3D cross section will be evaluated against a series of tasks a user must complete. This will be the most significant portion of the experiment. Prior to this phase, the user will be trained on the complexities of the fourth dimension. Elements will be taken from the \textit{van Hiele model of geometric thinking} as discussed in \cref{teaching_and_eval}. 
+%
+The experiment will be organised into a series of formal and informal phases; the main portion of the experiment being formal.
 
 \section{Tutorial}
 
@@ -475,6 +481,8 @@ requirements for testing
  - be able to interpret the rotation of a shapes
  - be able to manipulate a shape
 
+\section{Interaction}
+
 %==================================================================================================================================
 \chapter{Implementation}
 
@@ -485,7 +493,7 @@ Ray marching over signed distance functions in Unity is not an uncommon topic wi
 To render a ray marching shader, one must spawn in an object, such as a plane, into the scene in Unity, and apply a material utilising the ray marched shader to this object. The scene defined by the shader will be rendered onto the object.
 The first phase of implementing a system to render four dimensional objects was to form a foundation: implement a three dimensional ray marcher in Unity \citep{the_art_of_code_writing_2019}. 
 The ray marching algorithm (\cref{alg:raymarch}) casts a ray from an origin pointer towards a pixel on the screen, to determine how to colour this pixel. The algorithm takes a signed distance function (SDF) which defines the surface relative to an origin point, given a point \(p\) along the ray. 
-To summarise the basics of SDFs, \cref{lst:sdSphere} shows a signed distance function written in GLSL for a 3D sphere, with radius \(r\). 
+To summarise the basics of SDFs, \cref{lst:sdSphere} shows a signed distance function written in GLSL for a \textbf{sphere} in $\mathbb{R}^3$ with radius \(r\). 
 The center of the sphere is described as an offset from the origin. To apply this to the point \(p\), along the ray, the opposing translation must be applied. Using \(p\), the distance to the surface is calculated. Given $r=0$ the distance returned by the function would be the distance to the center of the sphere. By subtracting the radius from the distance to the center of the object, a radius is described around the point defining surface of the sphere.
 Therefore, the SDF returns the distance to the surface of a sphere, defined by a radius and a point offset from the origin.
 \vskip 0.5em
@@ -541,26 +549,26 @@ float GetLight(float4 p, float4 lightPos)
 \subsection{Derivation of 4D Shapes}
 
 Of the 3D SDFs derived by \citet{quilez_distance_nodate} and \citet{the_art_of_code_ray_2019}, the sphere, box, and capsule were fairly trivial to translate directly to four dimensional space.
-A 4D hyper sphere takes a radius, with the surface spanning equally along all four axes.
-A 4D box takes a 4D vector where each component describes the height, width, depth and length of the box along each of the four axes respectively.
+A \textbf{4D hyper sphere} takes a radius, with the surface spanning equally along all four axes.
+A \textbf{4D box} takes a 4D vector where each component describes the height, width, depth and length of the box along each of the four axes respectively.
 Similar to how the sphere subtracts the radius from the distance to the origin point, the box subtracts the 4D vector containing the dimensions of the box. 
 To produce flat faces for each side of the box without the distance function stepping passed the surface, the vector is combined with the zero vector using a boolean intersection, with the use of \texttt{max(a, b)}. The derivation is best described by \citet{the_art_of_code_ray_2019}.
 %TODO: interior distance and 
-Finally a 4D capsule can be described as a line connecting two points, \(A\) and \(B\), and the line is given a thickness via a radius. Just as with the sphere, the radius spans in all four dimensions.
+Finally a \textbf{4D capsule} can be described as a line connecting two points, \(A\) and \(B\), and the line is given a thickness via a radius. Just as with the sphere, the radius spans in all four dimensions.
 \vskip 0.5em
 The torus is an interesting shape; two variations were developed for this project.
-A 3D torus can be described by a major radius, $r_1$ and a minor radius $r_2$. $r_1$ is the main ring of the torus, and $r_2$ is the thickness of this ring - its radius.
+A \textbf{4D torus with two radii}, like a 3D torus, can be described by a major radius, $r_1$ and a minor radius $r_2$. $r_1$ is the main ring of the torus, and $r_2$ is the thickness of this ring - its radius.
 When you take a 2D slice of a 3D torus it may appear as a pair of circles a distance $2(R_1 - R_2)$ apart as shown in \cref{fig:exti}. 
 Similar to the cross section of a sphere, it makes sense to have the radius $r_2$ of the two circles expand into the fourth dimension, such that a 3D cross section of a four dimensional torus may appear as a pair of 3D spheres.
-Alternatively, consider a four dimensional torus with three radii: $r_1$, $r_2$ and $r_3$. Similar to how the 3D torus can be described as a circle with a thickness, a 4D torus with three radii describes a circle defined by radius $r_1$, with radius $r_2$ surrounding the circle that is given a thickness defined by the radius $r_3$. 
+Alternatively, consider a \textbf{4D torus with three radii}: $r_1$, $r_2$ and $r_3$. Similar to how the 3D torus can be described as a circle with a thickness, a 4D torus with three radii describes a circle defined by radius $r_1$, with radius $r_2$ surrounding the circle that is given a thickness defined by the radius $r_3$. 
 Essentially this produces a circle with a torus sweeping across its path. Therefore, a 3D cross section of this torus may appear as two tori with a major radius of $r_2$ and minor radius of $r_3$ separated by a distance of $2(r_1 - (r_2 + r_3))$.
 \vskip 0.5em
-The 3D cross section of a 4D cone would in some instances appear as a 3D cone, and in other instances appear as a 3D sphere, in the same way a 3D cones' 2D cross section may in some cases appear as a triangle or a circle (\cref{fig:exmv}). 
+The 3D cross section of a \textbf{4D cone} would in some instances appear as a 3D cone, and in other instances appear as a 3D sphere, in the same way a 3D cones' 2D cross section may in some cases appear as a triangle or a circle (\cref{fig:exmv}). 
 The cone SDFs developed by \citet{quilez_distance_nodate} and others define the cone by its height and slope. This approach did not extend well to 4D, and defining an instance of a cone was rather unintuitive.
 The SDF for the cone implemented takes a height and the radius at the base of the cone. This approach extends well to $\mathbb{R}^4$, as rather than a defining the cone as a surface function of angle and height, it defines the slice of the cone at any given cross section.
 \vskip 0.5em
 Of the shapes defined thus far, the 4D box is the only shape with edges, meaning it would obviously stand out against the other curved surfaces. 
-A 4D tetrahedron, also known as a pentachoron (5-cell), was created to present another platonic solid, showcasing the boxes similarities with other shapes.
+A \textbf{4D tetrahedron}, also known as a \textbf{pentachoron} (5-cell), was created to present another platonic solid, showcasing the boxes similarities with other shapes.
 The SDF of plane can be defined by its normal vector. For example, The SDF of a plane that spans $xy$ in $\mathbb{R}^3$ would simply be \texttt{p.y}.
 A tetrahedron is made up of 4 triangular faces, each opposing one of it's four vertices. The SDF for a tetrahedron can be defined by four vectors describing the normal of each face. These vector can actually be taken as the coordinates fo the four vertices making up the shape. Each of these vectors defines the SDF of a plane parallel to each face of the tetrahedron respectively. By taking the boolean intersection of these planes using \texttt{max(a, b)}, the SDF for a tetrahedron is produced.
 The SDF for a tetrahedron also takes a parameter $s$, used to scale the tetrahedron. Subtracting $s$ from the distance to the surface, the surface is effectively brought further from the center, similar to the radius of a sphere.
@@ -669,40 +677,43 @@ The signed distance function referenced in the ray marching algorithm defines th
 %
 \begin{figure}[H]
   \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{images/representations/onion-sphere.png}
-    \caption{Sphere}
-    \label{fig:rep_4-3-sphere}
+    \includegraphics[width=\textwidth]{images/representations/3-4-torus.png}
+    \caption{Torus}
+    \label{fig:rep_4-3-torus}
   \end{subfigure}
   %
   \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{images/representations/onion-sphere.png}
-    \caption{Pentachoron}
-    \label{fig:rep_4-3-pentachoron}
-  \end{subfigure}
-  %
-  \begin{subfigure}[b]{0.33\textwidth}
-    \includegraphics[width=\textwidth]{images/representations/onion-sphere.png}
+    \includegraphics[width=\textwidth]{images/representations/3-4-capsuleX.png}
     \caption{Capsule}
     \label{fig:rep_4-3-capsule}
   \end{subfigure}
   %
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{images/representations/3-4-cone.png}
+    \caption{Cone}
+    \label{fig:rep_4-3-cone}
+  \end{subfigure}
+  %
   \caption{
     The \emph{4D to 3D abstraction} extension to the 3D cross section of a 4D object.
+    \subref{rep_4-3-torus} shows a torus rotated approximately $45^{\circ}$ about the $xw$ plane, and then $70^{\circ}$ about the $xw$ plane.
+    \subref{rep_4-3-capsule} shows a capsule initially extended along $w$, and then rotated $90^{\circ}$ about the $xw$ plane.
     }
   \label{fig:rep_4-3}
 \end{figure}
 
-TODO: 4D-3D Figure
 %Texturing
 Each extension to the 3D cross section took advantage of colouring different shapes within a scene. To colour different shapes within a scene a second function is employed that for the most part is identical to the SDF describing the scene, however it returns a number. Each value the number may take is a material index. To find what material index relates to each object in the scene, a comparison is made between the distance returned by the union of all SDFs in the scene, and the distance of a specific SDF in the scene. If they are equal, then the material index associated with that specific SDF may be returned \citep{the_art_of_code_setting_2021}.
-\vskip 0.5em
+
+\subsection{\textit{W-axis Timeline}}
 %Timeline
 The simplest extension to a 3D cross section of 4D space is to render several cross sections at once, each offset by a multiple of the distance $\delta_1$ along the \(w\) axis, with each cross section being separated by a distance of $\delta_2$ along the \(x\) axis. 
 The core of this concept has been explored by \citet{kageyama_visualization_2015}. In order to avoid the aforementioned problems with scaling, each cross section was built to exist side by side one another as shown in \cref{fig:exti}. 
 Throughout the project, this representation has been referred to as the \textit{w-axis timeline}. Given an object under translation, passing through the hyper-plane, over time, by definition labels each cross section as a glimpse into the past or future, with respect to the primary central cross section.
 A drawback of showcasing cross sections side by side is that fewer cross sections can be shown on screen at one time, in comparison to the elliptical design presented by \citet{kageyama_visualization_2015}. This problem is generally less significant for primitive shapes, such as the ones implemented for this project. The problem becomes more significant when visualising complex shapes with unpredictably changing surfaces.
 Given this representation provides more information about the geometry of an object over $\mathbb{R}^4$ it is reasonable to expect that it would most effective in shape identification. The \textit{w-axis timeline} may also provide some benefit a user to predictably manipulating a four dimensional object, or identify a rotation more accurately, although this is likely to be not particularly significant, if it all.
-\vskip 0.5em
+
+\subsection{\textit{Onion Skin}}
 %OnionSkin
 Taking inspiration from 2D animation, for its time in development, the following extension was referred to as the \textit{onion skin} representation. In 2D animation, the animator may enable the onion skin tool to see a set number of frames before and after the current frame so that they may see how the animation will progress as they move forward in time. 
 This representation aims for a similar approach, where the user may see backwards and forward along the \(w\) axis, rather than time. This approach follows a similar vein of thinking to the \textit{w-axis Timeline}. 
@@ -715,7 +726,8 @@ During discussions of objects under rotation whilst this representation was acti
 Originally the translucent cross sections were set to be a consistent distance along \(w\) from the main object, as with the \textit{w-axis Timeline}. It was found that it was not obvious that the central cross section would become either of the other cross sections as it moved along \(w\), as expected. 
 In an attempt to rectify this problem, the translucent cross sections were set exist at fixed intervals along the \(w\) axis. Using this, the central cross section could be observed directly to become the translucent cross section when translated in its direction along \(w\). When the central cross section reached a translucent cross sections position along \(w\), the translucent cross sections would be shifted by a fixed amount such that the central cross section would again be directly in between the two translucent cross sections.
 Despite these efforts, this representation was still deemed to confusing for users as was subsequently set aside for the rest of development.
-\vskip 0.5em
+
+\subsection{\textit{Multi-rotational View}}
 %Multi-view
 \textit{Polyvision}, proposed by \citet{matsumoto_polyvision_2019} extends a 3D shadow wireframe of a 4D object by introducing the ability to view the object from multiple angles. Viewing an object from multiple angles at once provides a great deal of insight into the geometry, and also in identifying the rotations it may undergo.
 A similar representation of 4D geometry was applied during this project over 3D cross sections of 4D objects. Throughout the duration investigation this representation has been referred as the \textit{multi-rotational view} or \textit{multi-view} for short.
@@ -723,7 +735,8 @@ In order to view the same cross section from three other angles, the SDFs for fo
 In order to differentiate they four cross sections they were coloured differently. Conventionally, the \(x\), \(y\) and \(z\) axes are coloured red, green and blue respectively. Therefore the cross section that was rotated about the $xw$ plane was coloured red, the cross section that was rotated about the $yw$ plane was coloured green and the cross section that was rotated about the $zw$ plane was coloured blue; as shown in \cref{fig:rep_multi}.
 One of the biggest strengths of the \textit{multi-view} representation its ability to clearly convey the behaviour of a slice of 4D geometry under rotation; although it can be challenging to comprehend at first.
 Another positive of the \textit{multi-view} representation is its ability to effectively provide enough information to determine the shape that is being viewed, without requiring a user to first interaction with the object to verify their hypothesis.
-\vskip 0.5em
+
+\subsection{\textit{4D to 3D Abstraction}}
 %4D to 3D
 The most controversial extension to the 3D cross section of a given 4D object, within this investigation, attempts to abstract 4D rotations (any plane of rotation involving the \(w\) axis) to 3D rotation. The goal of this representation is to assist users in better understanding an object undergoing rotation over time, as well as improving the accuracy of the manipulation of 4D geometry.
 The representation, referred to in this project as the \textit{4D to 3D abstraction}, takes a 3D object to complement the main 4D object. The 3D object will mimic a 4D planar rotation ($xw$, $yw$ or $zw$) with the 3D axial rotation ($x$, $y$ or $z$ axes; equivalent to the $yz$, $xz$ and $xy$ planes of rotation respectively) utilising the 3D axis involved with the four dimensional rotation. For example: if the main 4D object is rotating about the $yw$ plane, the 3D counterpart will rotate about the $y$ axis (or the $xz$ plane).
@@ -834,11 +847,7 @@ normal based projection
 
 \citep{the_art_of_code_how_2020}
 
-\section{Building the Experiment}
-
-\subsection{}
-
-\subsection{Data Collection}
+\section{Building the Experiment - Data Collection}
 
 SimpleJSON \citep{bunny83_simplejson_nodate}
 
@@ -890,10 +899,51 @@ random order of representations
 
 \section{Results}
 
-\citep{glen_jaccard_2022}
-
 \subsection{Quantitative Results}
 
+\subsubsection{Shape Matching}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{images/results/shape_matching_stats.png}
+  \caption{Shape matching correctness and timings}
+  \label{fig:shape_stats}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{images/results/shape_matching_correlations.png}
+  \caption{Shape matching correlations}
+  \label{fig:shape_corr}
+\end{figure}
+
+\subsubsection{Rotation Matching}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{images/results/rotation_matching_stats.png}
+  \caption{Rotation matching correctness and timings}
+  \label{fig:shape_stats}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{images/results/rotation_matching_correlations.png}
+  \caption{Rotation matching correlations}
+  \label{fig:shape_corr}
+\end{figure}
+
+\subsubsection{Pose Matching}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{images/results/pose_matching_stats.png}
+  \caption{Pose matching correctness and timings}
+  \label{fig:shape_stats}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{images/results/pose_matching_correlations.png}
+  \caption{Pose matching correlations}
+  \label{fig:shape_corr}
+\end{figure}
+
+\citep{glen_jaccard_2022}
 
 \subsection{Qualitative Results}
 
