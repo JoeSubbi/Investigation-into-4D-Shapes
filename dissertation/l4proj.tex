@@ -105,9 +105,9 @@ This supposed tidiness has lead to misconceptions that are so heavily rooted in 
 In the 3D world, these misconceptions do not matter, and the mathematics is still sound. Quaternions, the most common method of controlling or interpreting rotation, is heavily used in gyroscopic devices, interactive digital 3D environments, animation and robotics. More abstract practices such as mathematics and physics, however, need to consider geometry in higher dimensional spaces.
 \vskip 0.5em
 A variety of fields within science and engineering utilise the visualisation of higher dimensional spaces to tackle a variety of problems. To more intuitively understand a given problem defined in \(n\) dimensional space it is often suitable to reduce the dimensionality of the problem. However, when a problem is reduced to $\mathbb{R}^3$ or $\mathbb{R}^2$ it may become somewhat trivial. Visualisation of 4D objects can often server as the "bridge from the 'trivial cases' to the 'nontrivial cases'", \citep{zhou_visualization_1991}. Such problems that utilise the visualisation of four dimensional space include: Analysis of differential geometry, collision detection, analysis of 3D objects in motion, and scalar-fields in 3D space; among others \citep{zhou_visualization_1991}.
-\vskip 0.5em
+%\vskip 0.5em
 %
-TODO: what is the benefit of trying to teach people about it?\\
+%TODO: what is the benefit of trying to teach people about it?\\
 
 \section{Aims}
 
@@ -429,39 +429,6 @@ It would be desirable to implement a series of tools allowing for intuitive inte
 %==================================================================================================================================
 \chapter{Design}
 
-%requirements for teaching
-% - match up with van-hiele model
-
-% information inquiry - VIDEO
-% - students receive information and discover structure
-% - well known language
-
-%guided or directed orientation - VIDEO
-% - deal with tasks to explore relationships
-% - teacher that suggests activities enabling students to recognise %properties of a new concept
-% - relationships are discovered and discussed
-%   - encourage discussion
-
-%explanation or explication - DISCUSSION AFTER VIDEO
-% - student formulate what they have discovered and new terminology is introduced
-% - share opinion on relationships discovered
-%   - encourage discussion
-% - teacher ensures correct terminology - more useful than familiarity with concept
-
-%free orientation - MOST IMPORTANT FOR THIS PROJECT
-% - student solves more complex tasks independently
-% - master network of relationships in material
-% - know properties but develop understanding of relationships in various situations
-
-%integration - DISCUSSION BETWEEN VIDEO AND EXPERIMENT
-% - student summarises what they have learnt
-% - do not present new material in this phase
-% - summary of what has been learned
-
-%OTHER STUFF
-% - explain 4D space, why it cannot be visualised
-% - explain 4D rotation in relation to 2D and 3D rotation
-
 Given this investigation revolves around a participants understanding of complex geometry, it is important that they are familiar with the behaviour of this geometry prior to completing the main portion of the experiment.
 Each extension to the 3D cross section will be evaluated against a series of tasks a user must complete. This will be the most significant portion of the experiment. Prior to this phase, the user will be trained on the complexities of the fourth dimension. Elements will be taken from the \textit{van Hiele model of geometric thinking} as discussed in \cref{teaching_and_eval}. 
 %
@@ -489,14 +456,60 @@ To emphasise how planar rotations work in \(n\) dimensions, a 2D cross section o
 \section{Experiment}
 \label{experimental_design}
 
+%discuss video - explanation or explication - integration
+To elaborate on the participants understanding, following the tutorial video, an informal discussion would take place. This discussion would utilise the \textit{explanation or explication} and \textit{integration} phases of the learning process; where a student is asked to formulate what they have learned, and share their opinions on the relationships they have discovered. Here the teacher may correct terminology. Towards the end of the discussion, without any addition of new material, the participant would summarise what they have learned to ensure ensure adequate preparation for the coming experiment.
+\vskip 0.5em
+Given the limited time to conduct an experiment, the remainder of the experiment took guidance from both the \textit{free orientation} and \textit{guided or directed orientation} stages of van Hiele's learning process, effectively merging them into a single orientation phase.  
+%play with a 4D shape, get the hang of controls - free orientation
+Prior to the main portion of the experiment, participants were provided with a 4D hypercube, and a summary of the controls to manipulate the shape. Here a participant may spend time observing how the shape may change when undergoing different rotations, as well as how the shape may change when moving it through the hyper plane. 
+Informal tasks were proposed to the participants in an attempt to allow them to connect relationships of the geometry. An example of such a task included: Rotating the shape with the use of a 4D rotation such that the colours of two opposing faces of the 3D cross section switch sides of the object. Here participants may learn basic properties of four dimensional rotations, and should be able to connect the similarities to rotating a shape in $\mathbb{R}^3$.
+\vskip 0.5em
+%testing - guided or directed orientation
+Of the developed extensions to the 3D cross section of four dimensional space, different extensions will have different strengths and weaknesses. Some extensions may excel in describing the surface geometry of an object, whilst others may better convey the rotation of an object in $\mathbb{R}^4$. Therefore the main portion of the experiment was broken down into a series of three tasks, repeated for each representation. Each of the three tasks focuses on a different aspect of geometry: understanding the shape of a 4D object, understanding the rotation of a 4D object, and the ability to manipulate a 4D object.
 
-requirements for testing
+First, the participant was be tested on their understanding of the surface of a shape. Given a cross section of a 4D object, the participant should be able to identify the shape on screen. The participant was allowed to manipulate the object to assist them given a limited time frame.
 
- - be able to understand the shapes
- - be able to interpret the rotation of a shapes
- - be able to manipulate a shape
+Second, the participant was tested on their understanding of any rotations a 4D object may undergo. Given a 4D object under continuous rotation, the participant should be able to identify the active planes of rotation.
+
+Finally, the participant was tested on their ability to manipulate 4D geometry. Given a second object in a random pose, the participant is tasked with matching the primary objects orientation, with that of the secondary object. The randomly orientated object is only randomly oriented along 4D planes of rotation, allowing a user to manipulate both shapes simultaneously in 3D to view all sides of the objects in question.
+
+%requirements for testing
+% - be able to understand the shapes
+% - be able to interpret the rotation of a shapes
+% - be able to manipulate a shape
+
+%requirements for teaching
+% - match up with van-hiele model
+
+% information inquiry - VIDEO
+% - students receive information and discover structure
+% - well known language
+
+%guided or directed orientation - Experiment
+% - deal with tasks to explore relationships
+% - teacher that suggests activities enabling students to recognise %properties of a new concept
+% - relationships are discovered and discussed
+%   - encourage discussion
+
+%explanation or explication - DISCUSSION AFTER VIDEO
+% - student formulate what they have discovered and new terminology is introduced
+% - share opinion on relationships discovered
+%   - encourage discussion
+% - teacher ensures correct terminology - more useful than familiarity with concept
+
+%free orientation - MOST IMPORTANT FOR THIS PROJECT
+% - student solves more complex tasks independently
+% - master network of relationships in material
+% - know properties but develop understanding of relationships in various situations
+
+%integration - DISCUSSION BETWEEN VIDEO AND EXPERIMENT
+% - student summarises what they have learnt
+% - do not present new material in this phase
+% - summary of what has been learned
 
 \section{Interaction}
+
+
 
 %==================================================================================================================================
 \chapter{Implementation}
