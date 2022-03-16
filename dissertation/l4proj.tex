@@ -874,8 +874,49 @@ why it failed
 
 \section{Texturing Ray Marched Objects}
 
-Texturing the three dimensional cross section of four dimensional objects is a rather odd task given only a slice of the object can be seen at a given time. It is however, a necessary task in order to identify and distinguish different faces of a symmetric object.
-In ray marching, the common method of texturing objects is through normal based projection - also known as tri-planar projection \citep{the_art_of_code_how_2020}.
+Two cubes, offset by a multiple of $90^{\circ}$ from each other will look identical. It is important to be able to distinguish the pose of two given symmetric objects of the same shape. Texturing the faces with colours and patterns allows a user to distinguish two otherwise identical shapes.
+Texturing the three dimensional cross section of four dimensional objects is a rather odd task given only a slice of the object can be seen at a given time.
+In ray marching, the common method of texturing objects is through normal based projection - also known as tri-planar projection \citep{the_art_of_code_how_2020}. 
+Given an un-rotated object in $\mathbb{R}^3$, colours and textures can be projected onto the object according to the surface normal. The components of the normal vector can be mapped to the intensity of the projections. For example, multiplying the vector $(1,0,0)$ with a colour/texture would only project the texture along the $x$ axis.
+Extending tri-planar projection to $\mathbb{R}^4$ utilises the 4D normal vector. Given the six planes of rotation, when a pattern is projected onto the cross section, it may morph under rotation. This makes some sense given a pattern is being projected from a direction we cannot see.
+\vskip 0.5em
+A common method of representing the surface normal in 3D is to map the three components of the normal vectors to the three primary colours: Red, Green and Blue. The origin point of the local axes exist in the center of the object. Therefore, components of the normal vector may be positive or negative. To distinguish all six sides of a shape in $\mathbb{R}^3$, if the vector component is positive, it may be coloured (RGB), otherwise it will be black. By adding the lighting to the surface of the object, the black sides of the object can be distinguished.
+%
+\begin{figure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{images/textures/no-pattern-rgbw.png}
+    \caption{
+      RGBW
+    }
+    \label{fig:tex1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{images/textures/pattern-direction.png}
+    \caption{
+      Directionally Coloured Pattern
+    }
+    \label{fig:tex2}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[width=\textwidth]{images/textures/pattern-rgbw.png}
+    \caption{
+      RGBW Coloured Pattern
+    }
+    \label{fig:tex3}
+  \end{subfigure}
+  \caption{
+    Quad-planar projection of colours and textures using 4D normal vectors.
+    \subref{fig:tex1} shows positive components coloured $x$: Red, $y$: Green, $z$: Blue and $w$: white. Negative components are dark and shaded with diffuse lighting.
+    \subref{fig:tex2} shows patterns projected along each axis. negative components of the normal vector are coloured Blue, and positive are coloured Red.
+    \subref{fig:tex3} shows patterns projected along each axis. Positive components coloured $x$: Red, $y$: Green, $z$: Blue and $w$: white. Negative components are dark and shaded with diffuse lighting.
+  }
+  \label{fig:textures}
+\end{figure}
+%
+Three methods of distinguishing the shapes were explored in this project: \textit{RGBW}, \textit{Directionally coloured patterns} and \textit{RGBW coloured patterns}; alongside the un-coloured diffuse lighting. 
+\textit{RGBW} builds upon the RGB colouration method of distinguishing faces. Given there are four components of the normal vector in $\mathbb{R}^4$, but only 3 primary colours, a surface facing the $w$ axis will be coloured white.
+To more clearly emphasise the difference between the direction of a surface of an object, a pattern can be projected along each axis. 
+Four different patterns patterns where developed, and projected along each axes. To distinguish the positive and negative directions of the surface normal, the patterns must be multiplied by a colour. One colour scheme implemented was to colour the negative direction blue and the positive direction red. The other was to mix the RGBW colour scheme with the patterns.
 
 \section{Building the Experiment - Data Collection}
 
