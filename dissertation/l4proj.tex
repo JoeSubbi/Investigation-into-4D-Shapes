@@ -944,12 +944,22 @@ Four different patterns patterns where developed, and projected along each axes.
 
 \section{Building the Experiment - Data Collection}
 
+\subsection*{Data Format}
+
 Collected data was stored in a JSON format (\cref{lst:json}) for its ease of assembly and analysis. The Unity plugin: SimpleJSON \citep{bunny83_simplejson_nodate} allows for easy reading and writing and of JSON data.
 The data was separated by tasks per representation. Each task was repeated several times per representations, with each task collecting data such as: time taken, participant answers, the pose of objects on screen, and participant survey responses held after each task. Data was not analysed prior to collection as analysis tools would be developed after the fact.
-\vskip 0.5em
+
+\subsection*{Remote Data Collection}
+
 Given the pandemic at the time of this project, it was necessary, for the purposes of collecting as much data as possible, that this experiment could function remotely. As stated, the project was built in Unity, allowing for easy building to WebGL, meaning the experiment could be hosted online. Unity's WebGL builds, and sites hosting WebGL builds, such as \href{https://itch.io/}{\textit{itch.io}} and \href{https://www.newgrounds.com/}{\textit{newgrounds}}, implement security precautions making data collection a troublesome task.
 During runtime, the data is stored to a persistent data path. This worked well for local testing, however downloading the file from online hosting is not possible without setting up a database.
-Therefore an attempt was made to sending the data file through email. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
+
+\subsection*{Collecting Data via Automatic Email}
+
+An attempt was made to sending the data file through email. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
+
+\subsection*{Collecting Data via Copy \& Paste}
+
 Unity enables a programmer to copy a string to the system clipboard. A button was implemented that would allow a user to copy the collected data to their clipboard in order to manually email the data for collection. WebGL builds, however, do not allow the use of copying to a system clipboard. The Unity plugin: WebGLInput \citep{kou-yeung_webglinput_nodate} allows for copying and pasting through the use of text boxes.
 The data was collected remotely from users via a copy/paste text box that would appear at the end of an experiment.
 
