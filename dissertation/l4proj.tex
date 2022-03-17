@@ -7,6 +7,7 @@
 \usepackage{pdfpages}
 \usepackage{float}
 \usepackage{cleveref}
+\usepackage{multicol}
 
 \begin{document}
 
@@ -515,16 +516,30 @@ As a result, an intuitive system has been developed, allowing users manipulate o
 %==================================================================================================================================
 \chapter{Implementation}
 
+\noindent
+\begin{minipage}[c]{0.45\linewidth}
+  To conduct the investigation, four main components had to be developed (\cref{fig:components}): Building and rendering 4D shapes, rotating and manipulating these shapes, building and running the experiment, and collecting and analysing the data from the experiments.
+  There would be no project without the ability to render 4D shapes, so of course this was developed first. The experimental tasks were built up alongside the development of the rotor, and of course the rotor was required in order to manipulate the 4D shapes. After the experiment was assembled, data analysis tools could be developed independently, as experiments were run.
+\end{minipage} 
+\hspace{0.8cm}
+\begin{minipage}[c]{0.4\linewidth}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Implementation Schema.drawio.png}
+  \caption{Project Component Diagram}
+  \label{fig:components}
+  \end{figure}
+\end{minipage}
+
 \section{Building 4D Objects With Ray Marching}
 
-As stated in \cref{requirements_framework}, the combination of Unity and ray marching shaders were used to develop and render three dimensional objects cross sections of four dimensional objects.
+As stated in \cref{requirements_framework}, ray marching shaders in Unity were used to develop and render three dimensional cross sections of four dimensional objects.
 Ray marching over signed distance functions in Unity is not an uncommon topic within art and game development communities.
-To render a ray marching shader, one must spawn in an object, such as a plane, into the scene in Unity, and apply a material utilising the ray marched shader to this object. The scene defined by the shader will be rendered onto the object.
-The first phase of implementing a system to render four dimensional objects was to form a foundation: implement a three dimensional ray marcher in Unity \citep{the_art_of_code_writing_2019}. 
-The ray marching algorithm (\cref{alg:raymarch}) casts a ray from an origin pointer towards a pixel on the screen, to determine how to colour this pixel. The algorithm takes a signed distance function (SDF) which defines the surface relative to an origin point, given a point \(p\) along the ray. 
+To render a ray marching shader, a material utilising the ray marched shader must be applied to an object, such as a plane. The scene defined within the shader will be rendered onto the object.
+Before implementing a system to render four dimensional objects, a foundation was layed in the form of a three dimensional ray marcher in Unity \citep{the_art_of_code_writing_2019}. 
+The ray marching algorithm (\cref{alg:raymarch}) casts a ray from an origin pointer towards a pixel on the screen, to determine how to colour this pixel. The algorithm takes a signed distance function (SDF) which returns the distance from a point \(p\) along the ray to the surface relative to an origin point. 
 To summarise the basics of SDFs, \cref{lst:sdSphere} shows a signed distance function written in GLSL for a \textbf{sphere} in $\mathbb{R}^3$ with radius \(r\). 
-The center of the sphere is described as an offset from the origin. To apply this to the point \(p\), along the ray, the opposing translation must be applied. Using \(p\), the distance to the surface is calculated. Given $r=0$ the distance returned by the function would be the distance to the center of the sphere. By subtracting the radius from the distance to the center of the object, a radius is described around the point defining surface of the sphere.
-Therefore, the SDF returns the distance to the surface of a sphere, defined by a radius and a point offset from the origin.
+The center of the sphere is offset from the origin. To interpret this, the opposing translation is applied to the point \(p\), along the ray. Using \(p\), the distance to the surface is calculated. Subtracting the radius from the distance to the center of the object defines the surface of the sphere about its center.
 \vskip 0.5em
 %
 \begin{lstlisting}[language=glsl, caption={The signed distance function for a sphere in $\mathbb{R}^3$ with a center at $(1,0,0)$, and radius $r$}, label=lst:sdSphere]
@@ -539,12 +554,12 @@ The 3D ray marching shader written in Unity defines two vectors describing the r
 When extending the ray marcher to four dimensions, the majority of the process was enabling the algorithm and its components, such as the SDF, to take 4D vectors (\texttt{float4}), rather than a 3D (\texttt{float3}). Given the components of the shader describing the ray origin and direction existed along the same slice of four dimensions, only a single 3D slice of the four dimensional space was taken and rendered, giving us the 3D cross section.
 \vskip 0.5em
 With the standard ray marcher implemented the shader can only interpret whether a ray hits a surface or not. The only information of a 3D shape that can be gathered from this binary value will be its 2D shadow. In order to render a 3D component of the object, we need light and shadows. 
-Two basic methods of shading include angle dependant light falloff and shadows cast by other objects obstructing a light source \cref{lst:rm_light}. 
+Two basic methods of shading include angle dependant light falloff - lambertian diffuse elimination - and shadows cast by other objects obstructing a light source \cref{lst:rm_light}. 
 A surface normal is a vector that is perpendicular to a point on the surface and can be used to measure the angle of the surface relative to another vector. 
-Using the surface normal an angle dependant light falloff can be implemented such that a surfaces light value will be lower if the difference between the surface normal and the vector to the light source is higher.
+Using the surface normal an lambertian diffuse elimination can be implemented such that a surfaces light value will be lower if the difference between the surface normal and the vector to the light source is higher.
 A shadow cast by on to a surface can be taken by ray marching from a surface in the direction of the light source to check if there is another surface obstructing the path. If there is, the surfaces light value can be lowered.
 
-\begin{lstlisting}[language=glsl, float, caption={Given a light position \texttt{lightPos}, shade the surface based on the fall off angle and cast a shadow, if a surface is obstructing another surface from the light source}, label=lst:rm_light]
+\begin{lstlisting}[language=glsl, caption={Given a light position \texttt{lightPos}, shade the surface based on the fall off angle and cast a shadow, if a surface is obstructing another surface from the light source}, label=lst:rm_light]
 float4 GetNormal(float4 p)
 {
     float2 e = float2(0.01, 0);
@@ -577,38 +592,34 @@ float GetLight(float4 p, float4 lightPos)
 
 \subsection{Derivation of 4D Shapes}
 
+Ray marching excels at creating infinitely complex shapes, such as high dimensional fractals. 
+Participants of the experiment may have little to no experience with higher dimensional geometry. To effectively evaluate each extension to the 3D cross section, the participant needs to understand the information they are seeing on screen. The best way to convey complex ideas is with simple examples; ergo, using geometric primitives, rather than complex geometry.
+\vskip 0.5em
 Of the 3D SDFs derived by \citet{quilez_distance_nodate} and \citet{the_art_of_code_ray_2019}, the sphere, box, and capsule were fairly trivial to translate directly to four dimensional space.
 A \textbf{4D hyper sphere} takes a radius, with the surface spanning equally along all four axes.
 A \textbf{4D box} takes a 4D vector where each component describes the height, width, depth and length of the box along each of the four axes respectively.
 Similar to how the sphere subtracts the radius from the distance to the origin point, the box subtracts the 4D vector containing the dimensions of the box. 
-To produce flat faces for each side of the box without the distance function stepping passed the surface, the vector is combined with the zero vector using a boolean intersection, with the use of \texttt{max(a, b)}. The derivation is best described by \citet{the_art_of_code_ray_2019}.
-%TODO: interior distance and 
-Finally a \textbf{4D capsule} can be described as a line connecting two points, \(A\) and \(B\), and the line is given a thickness via a radius. Just as with the sphere, the radius spans in all four dimensions.
+To flatten the faces of the box, without the distance function stepping passed the surface, the vector is combined with the zero vector using a boolean intersection, with the use of \texttt{max(a, b)}. The derivation is best described by \citet{the_art_of_code_ray_2019}.
+%TODO: interior distance
+Finally a \textbf{4D capsule} can be described as a line connecting two points, \(A\) and \(B\). The line is given a thickness via subtracting a radius. Just as with the sphere, the radius spans in all four dimensions.
 \vskip 0.5em
 The torus is an interesting shape; two variations were developed for this project.
 A \textbf{4D torus with two radii}, like a 3D torus, can be described by a major radius, $r_1$ and a minor radius $r_2$. $r_1$ is the main ring of the torus, and $r_2$ is the thickness of this ring - its radius.
 When you take a 2D slice of a 3D torus it may appear as a pair of circles a distance $2(R_1 - R_2)$ apart as shown in \cref{fig:exti}. 
-Similar to the cross section of a sphere, it makes sense to have the radius $r_2$ of the two circles expand into the fourth dimension, such that a 3D cross section of a four dimensional torus may appear as a pair of 3D spheres.
+Similar to the cross section of a sphere, it makes sense to have the radius $r_2$ span across the fourth dimension. The 3D cross section of a four dimensional torus therefore may appear as a pair of 3D spheres.
 Alternatively, consider a \textbf{4D torus with three radii}: $r_1$, $r_2$ and $r_3$. Similar to how the 3D torus can be described as a circle with a thickness, a 4D torus with three radii describes a circle defined by radius $r_1$, with radius $r_2$ surrounding the circle that is given a thickness defined by the radius $r_3$. 
 Essentially this produces a circle with a torus sweeping across its path. Therefore, a 3D cross section of this torus may appear as two tori with a major radius of $r_2$ and minor radius of $r_3$ separated by a distance of $2(r_1 - (r_2 + r_3))$.
 \vskip 0.5em
-The 3D cross section of a \textbf{4D cone} would in some instances appear as a 3D cone, and in other instances appear as a 3D sphere, in the same way a 3D cones' 2D cross section may in some cases appear as a triangle or a circle (\cref{fig:exmv}). 
+The 3D cross section of a \textbf{4D cone} in some instances appears as a 3D cone, and in other instances appear as a 3D sphere, in the same way a 3D cones' 2D cross section may in some cases appear as a triangle or a circle (\cref{fig:exmv}). 
 The cone SDFs developed by \citet{quilez_distance_nodate} and others define the cone by its height and slope. This approach did not extend well to 4D, and defining an instance of a cone was rather unintuitive.
-The SDF for the cone implemented takes a height and the radius at the base of the cone. This approach extends well to $\mathbb{R}^4$, as rather than a defining the cone as a surface function of angle and height, it defines the slice of the cone at any given cross section.
+The developed SDF for a cone takes a height and the radius at the base of the cone. This approach extends well to $\mathbb{R}^4$, as rather than a defining the cone as a surface function of angle and height, it defines the slice of the cone at any given cross section.
 \vskip 0.5em
 Of the shapes defined thus far, the 4D box is the only shape with edges, meaning it would obviously stand out against the other curved surfaces. 
-A \textbf{4D tetrahedron}, also known as a \textbf{pentachoron} (5-cell), was created to present another platonic solid, showcasing the boxes similarities with other shapes.
-The SDF of plane can be defined by its normal vector. For example, The SDF of a plane that spans $xy$ in $\mathbb{R}^3$ would simply be \texttt{p.y}.
-A tetrahedron is made up of 4 triangular faces, each opposing one of it's four vertices. The SDF for a tetrahedron can be defined by four vectors describing the normal of each face. These vector can actually be taken as the coordinates fo the four vertices making up the shape. Each of these vectors defines the SDF of a plane parallel to each face of the tetrahedron respectively. By taking the boolean intersection of these planes using \texttt{max(a, b)}, the SDF for a tetrahedron is produced.
-The SDF for a tetrahedron also takes a parameter $s$, used to scale the tetrahedron. Subtracting $s$ from the distance to the surface, the surface is effectively brought further from the center, similar to the radius of a sphere.
+A \textbf{4D tetrahedron} (\textbf{pentachoron}) was created to present another platonic solid, showcasing their similarities.
+The SDF of plane can be defined by its normal vector. For example, The SDF of a plane that spans $xy$ in $\mathbb{R}^3$ would be \texttt{p.z}.
+A tetrahedron is made up of 4 triangular faces, each opposing one of it's four vertices. The SDF for a tetrahedron uses these vertices as the vectors describing the normal of each face. Each of these vectors defines the SDF of a plane parallel to a face of the tetrahedron. By taking the boolean intersection of these planes using \texttt{max(a, b)}, the SDF for a tetrahedron is produced.
+The SDF for a tetrahedron also takes a parameter $s$, used to scale the tetrahedron. Subtracting $s$ from the distance to the surface, effectively brings the surface further from the center, similar to the radius of a sphere.
 Constructing a pentachoron is done in a near identical way, just five vertices are considered rather than four.
-\vskip 0.5em
-All the SDFs developed were compiled into a \texttt{.cginc} file as to be referenced by any shader throughout the project that would use them.
-
-\section{Extending 3 Dimensional Cross Sections: Representing 4D Objects}
-
-%Union
-The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects within the same scene. To render several SDFs at once, each function may be combined using a boolean union: taking the minimum distance between two or more objects using \texttt{min(a, b)}.
 
 \begin{figure}[H]
   \begin{subfigure}[b]{0.47\textwidth}
@@ -731,8 +742,13 @@ The signed distance function referenced in the ray marching algorithm defines th
   \label{fig:rep_4-3}
 \end{figure}
 
+\section{Extending 3 Dimensional Cross Sections: Representing 4D Objects}
+
+%Union
+The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects within the same scene. To render several SDFs at once, each function may be combined using a boolean union: taking the minimum distance between two or more objects using \texttt{min(a, b)}.
+\vskip 0.5em
 %Texturing
-Each extension to the 3D cross section took advantage of colouring different shapes within a scene. To colour different shapes within a scene a second function is employed that for the most part is identical to the SDF describing the scene, however it returns a number. Each value the number may take is a material index. To find what material index relates to each object in the scene, a comparison is made between the distance returned by the union of all SDFs in the scene, and the distance of a specific SDF in the scene. If they are equal, then the material index associated with that specific SDF may be returned \citep{the_art_of_code_setting_2021}.
+Each extension to the 3D cross section took advantage of colouring different shapes within a scene. To colour different shapes within a scene a second function is employed that for the most part is identical to the SDF describing the scene, however it returns a number. Each value the number may take is a material index. To find what material index relates to each object in the scene, a comparison is made between the distance returned by the union of all SDFs in the scene, and the distance to a specific SDF in the scene. If they are equal, then the material index associated with that specific SDF is returned \citep{the_art_of_code_setting_2021}.
 
 \subsection{\textit{W-axis Timeline}}
 %Timeline
@@ -767,13 +783,13 @@ Another positive of the \textit{multi-view} representation is its ability to eff
 
 \subsection{\textit{4D to 3D Abstraction}}
 %4D to 3D
-The most controversial extension to the 3D cross section of a given 4D object, within this investigation, attempts to abstract 4D rotations (any plane of rotation involving the \(w\) axis) to 3D rotation. The goal of this representation is to assist users in better understanding an object undergoing rotation over time, as well as improving the accuracy of the manipulation of 4D geometry.
+The most risky extension to the 3D cross section of a given 4D object, within this investigation, attempts to abstract 4D rotations (any plane of rotation involving the \(w\) axis) to 3D rotation. The goal of this representation is to assist users in better understanding an object undergoing rotation over time, as well as improving the accuracy of the manipulation of 4D geometry.
 The representation, referred to in this project as the \textit{4D to 3D abstraction}, takes a 3D object to complement the main 4D object. The 3D object will mimic a 4D planar rotation ($xw$, $yw$ or $zw$) with the 3D axial rotation ($x$, $y$ or $z$ axes; equivalent to the $yz$, $xz$ and $xy$ planes of rotation respectively) utilising the 3D axis involved with the four dimensional rotation. For example: if the main 4D object is rotating about the $yw$ plane, the 3D counterpart will rotate about the $y$ axis (or the $xz$ plane).
 In order to render a window with a separate 3D object on screen, a second plane was spawned into the scene in Unity to render the ray marched 3D object. A second camera facing the plane allowed for a window displaying the 3D object to be rendered to a UI panel.
 The 3D object can be configured such that it is the 3D shape analogous to the main 4D shape on screen, or the 3D shape may be independent from the main 4D shape. During the experiment, the 3D shape is configured to be a 3D cube. 
 The advantage of using a cube comes with its consistent right angles. The 3D cube conveys reasonably well how far away from a right angle the 4D object is, with respect to the global axes, as shown in \cref{fig:rep_4-3}.
 
-The primary advantage of this representation is also its most controversial aspect. The \textit{4D to 3D abstraction}, as mentioned earlier, abstracts the 4D rotation to a 3D rotation. As a result, it becomes very quick to identify what rotations are occurring with the main 4D object. This can be helpful for beginners, but unless considered with a critical eye, runs the risk of not teaching users how four dimensions works, and instead provides an answer to a question without a user considering why the 3D cross section of an object behaves in the way that it does.
+The primary advantage of this representation is also a risk. The \textit{4D to 3D abstraction}, as mentioned earlier, abstracts the 4D rotation to a 3D rotation. As a result, it becomes very quick to identify what rotations are occurring with the main 4D object. This can be helpful for beginners, but unless considered with a critical eye, runs the risk of not teaching users how four dimensions works, and instead provides an answer to a question without a user considering why the 3D cross section of an object behaves in the way that it does.
 Whilst this may not invalidate the extension, it is worth noting that the \textit{4D to 3D abstraction} representation is not extendable across \(n\) dimensions. Every other representation thus far could in theory be used in any dimension greater than two. This abstraction however relies on their being three more rotations in four dimensions, that can be directly mapped to the three planes of rotation in 3D. Considering five dimensional space: there are ten planes of rotation. If you tried to map 5D rotations to 4D; only three of the four new planes of rotation could be considered.
 This representation is expected to provide an increase of accuracy in the manipulation of 4D objects, as well as correctly interpreting any rotations it may undergo over time. This representation does not however provide any more information about the geometry of the object being handled, unlike the aforementioned representations.
 
@@ -880,14 +896,6 @@ TODO: grab ball
 
 \section{Texturing Ray Marched Objects}
 
-Two cubes, offset by a multiple of $90^{\circ}$ from each other will look identical. It is important to be able to distinguish the pose of two given symmetric objects of the same shape. Texturing the faces with colours and patterns allows a user to distinguish two otherwise identical shapes.
-Texturing the three dimensional cross section of four dimensional objects is a rather odd task given only a slice of the object can be seen at a given time.
-In ray marching, the common method of texturing objects is through normal based projection - also known as tri-planar projection \citep{the_art_of_code_how_2020}. 
-Given an un-rotated object in $\mathbb{R}^3$, colours and textures can be projected onto the object according to the surface normal. The components of the normal vector can be mapped to the intensity of the projections. For example, multiplying the vector $(1,0,0)$ with a colour/texture would only project the texture along the $x$ axis.
-Extending tri-planar projection to $\mathbb{R}^4$ utilises the 4D normal vector. Given the six planes of rotation, when a pattern is projected onto the cross section, it may morph under rotation. This makes some sense given a pattern is being projected from a direction we cannot see.
-\vskip 0.5em
-A common method of representing the surface normal in 3D is to map the three components of the normal vectors to the three primary colours: Red, Green and Blue. The origin point of the local axes exist in the center of the object. Therefore, components of the normal vector may be positive or negative. To distinguish all six sides of a shape in $\mathbb{R}^3$, if the vector component is positive, it may be coloured (RGB), otherwise it will be black. By adding the lighting to the surface of the object, the black sides of the object can be distinguished.
-%
 \begin{figure}
   \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\textwidth]{images/textures/no-pattern-rgbw.png}
@@ -920,7 +928,15 @@ A common method of representing the surface normal in 3D is to map the three com
   }
   \label{fig:textures}
 \end{figure}
-%
+
+Two cubes, offset by a multiple of $90^{\circ}$ from each other will look identical. It is important to be able to distinguish the pose of two given symmetric objects of the same shape. Texturing the faces with colours and patterns allows a user to distinguish two otherwise identical shapes.
+Texturing the three dimensional cross section of four dimensional objects is a rather odd task given only a slice of the object can be seen at a given time.
+In ray marching, the common method of texturing objects is through normal based projection - also known as tri-planar projection \citep{the_art_of_code_how_2020}. 
+Given an un-rotated object in $\mathbb{R}^3$, colours and textures can be projected onto the object according to the surface normal. The components of the normal vector can be mapped to the intensity of the projections. For example, multiplying the vector $(1,0,0)$ with a colour/texture would only project the texture along the $x$ axis.
+Extending tri-planar projection to $\mathbb{R}^4$ utilises the 4D normal vector. Given the six planes of rotation, when a pattern is projected onto the cross section, it may morph under rotation. This makes some sense given a pattern is being projected from a direction we cannot see.
+\vskip 0.5em
+A common method of representing the surface normal in 3D is to map the three components of the normal vectors to the three primary colours: Red, Green and Blue. The origin point of the local axes exist in the center of the object. Therefore, components of the normal vector may be positive or negative. To distinguish all six sides of a shape in $\mathbb{R}^3$, if the vector component is positive, it may be coloured (RGB), otherwise it will be black. By adding the lighting to the surface of the object, the black sides of the object can be distinguished.
+\vskip 0.5em
 Three methods of distinguishing the shapes were explored in this project: \textit{RGBW}, \textit{Directionally coloured patterns} and \textit{RGBW coloured patterns}; alongside the un-coloured diffuse lighting. 
 \textit{RGBW} builds upon the RGB colouration method of distinguishing faces. Given there are four components of the normal vector in $\mathbb{R}^4$, but only 3 primary colours, a surface facing the $w$ axis will be coloured white.
 To more clearly emphasise the difference between the direction of a surface of an object, a pattern can be projected along each axis. 
@@ -928,7 +944,9 @@ Four different patterns patterns where developed, and projected along each axes.
 
 \section{Building the Experiment - Data Collection}
 
-To make data analysis as straightforward as possible, collected data was stored in a JSON format. The Unity plugin: SimpleJSON \citep{bunny83_simplejson_nodate} allows for easy reading and writing and of JSON data.
+Collected data was stored in a JSON format (\cref{lst:json}) for its ease of assembly and analysis. The Unity plugin: SimpleJSON \citep{bunny83_simplejson_nodate} allows for easy reading and writing and of JSON data.
+The data was separated by tasks per representation. Each task was repeated several times per representations, with each task collecting data such as: time taken, participant answers, the pose of objects on screen, and participant survey responses held after each task. Data was not analysed prior to collection as analysis tools would be developed after the fact.
+\vskip 0.5em
 Given the pandemic at the time of this project, it was necessary, for the purposes of collecting as much data as possible, that this experiment could function remotely. As stated, the project was built in Unity, allowing for easy building to WebGL, meaning the experiment could be hosted online. Unity's WebGL builds, and sites hosting WebGL builds, such as \href{https://itch.io/}{\textit{itch.io}} and \href{https://www.newgrounds.com/}{\textit{newgrounds}}, implement security precautions making data collection a troublesome task.
 During runtime, the data is stored to a persistent data path. This worked well for local testing, however downloading the file from online hosting is not possible without setting up a database.
 Therefore an attempt was made to sending the data file through email. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
@@ -1150,6 +1168,60 @@ Summarise the whole project for a lazy reader who didn't read the rest (e.g. a p
   & + \left ( a^{xw}_{b} b^{xz}_{b} - a^{xy}_{b} b^{xyzw}_{p} - a^{xz}_{b} b^{xw}_{b} + a^{yw}_{b} b^{yz}_{b} - a^{yz}_{b} b^{yw}_{b} + a^{zw}_{b} b_{s} - a^{xyzw}_{p} b^{xy}_{b} + a_{s} b^{zw}_{b}\right ) \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w} \\ 
   & + \left ( a^{xw}_{b} b^{yz}_{b} + a^{xy}_{b} b^{zw}_{b} - a^{xz}_{b} b^{yw}_{b} - a^{yw}_{b} b^{xz}_{b} + a^{yz}_{b} b^{xw}_{b} + a^{zw}_{b} b^{xy}_{b} + a^{xyzw}_{p} b_{s} + a_{s} b^{xyzw}_{p}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w}  \end{aligned}
 \end{equation}
+
+\begin{lstlisting}[language=java, float, caption={
+  JSON schema for data collection
+}, label=lst:json]
+{
+  representation_name:
+  {
+    // repeated i times for each representation
+    shape_match_i: 
+    {
+      loaded_shape,
+      selected_shape,   // answer of suspected object
+      time,             // time taken
+      initial_rotor,    // object rotation: rotor components
+      final_rotor,
+      w_count,          // interactions with the hyperplane slider
+      swipe_count,      // number of applied rotations
+    }
+    shape_match_i_survey
+    {
+      confidence,       // users confidence
+      understanding,    // users understanding
+    }
+    rotation_match_i:
+    {
+      loaded_shape,
+      loaded_rotation,    // boolean array of active planes of continuous rotation
+      selected_rotation,  // answer of suspected planes of rotation
+      time,               // time taken
+    }
+    rotation_match_i_survey:
+    {
+      confidence,       // users confidence
+      understanding,    // users understanding
+    }
+    pose_match_i:
+    {
+      loaded_shape,
+      time,                       // time taken
+      main_object_rotor,          // final rotor components of main object
+      match_object_rotor,         // final rotor components of posed object to be matched
+      initial_match_object_rotor, // initial pose of the object to be matched
+      w_count,                    // interactions with the hyperplane slider
+      swipe_count                 // number of applied rotations
+    }
+    pose_match_i_survey:
+    {
+      ease,             // user rated ease
+    }
+  }
+}
+\end{lstlisting}
+
+\pagebreak
 
 %Questionnaire
 \includepdf[width=1.1\linewidth, pages={1-4}]{images/4d_shapes_questionnaire.pdf}
