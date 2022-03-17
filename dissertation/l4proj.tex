@@ -168,8 +168,7 @@ Each cross section, as they move further away from the central slice, decreases 
 %
 Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyama's visualisation will have each of these 3D spheres decrease in size such that a user could likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits similar scaling behaviour. If a user interacts with the object using the appropriate keys to move across the \(w\) axis, they could observe the lack of change in the size of the central 3D cross section and draw the correct conclusion that it is a cylinder.
 Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its potential to be obscure when several objects can have similar cross sections.
-
-TODO: classify Kageyama's work
+%TODO: classify Kageyama's work
 \vskip 0.5em
 Another extension which arguably provides the user with more information about an object, is viewing said object from other angles. As shown in the 3D example \cref{fig:exmv}: take a cone that is extended upwards to a point along the \(y\) axis. From the top, a cross section of the object spanning the \(xz\) plane will produce a circle. However a cross section along either the \(xy\) or \(yz\) planes will appear as a triangle.
 \vskip 0.5em
@@ -180,8 +179,7 @@ A user may view almost all of an object at once using this technique, in compari
 The ability to view the surface of a complex object, such as a 120-cell, likely allows for easier understanding of the geometry compared to the wireframe of its shadow.
 %
 With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts interaction to that which we are used to and capable of. Translation, rotation and scaling are restricted to the third dimension. Interaction in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ will change the object in a potentially unexpected way. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
-
-TODO: classify Matsumoto's work
+%TODO: classify Matsumoto's work
 
 \section{Building a 4D Object}
 
@@ -329,6 +327,8 @@ As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very 
 
 \subsection{Methods of Interaction in 3D}
 
+TODO: 3D interaction
+
 local, grab ball driven
 
 global, swipe gestures (often multi-touch)
@@ -338,6 +338,8 @@ global, swipe gestures (often multi-touch)
 \citep{balakrishnan_rockinmouse_1997}
 
 \subsection{Methods of Interaction in 4D}
+
+TODO: 4D interaction
 
 \citep{murata_interactive_2000}\\
 \citep{kageyama_keyboard-based_2005}
@@ -438,7 +440,7 @@ The different portions of the experiment heavily encouraged discussion with the 
 
 A brief discussion was conducted with each participant following their introduction to the experiment and what the experiment would entail. This discussion focused around a participants prior knowledge with the concepts of 4D.
 As per the first stage of van Hiele's requirements for teaching, \textit{information inquiry}, students are to receive the material and discover the structure of the geometry presented in this stage. This introduction should use familiar, well-known and understood language.
-The material received by the students at this stage was compiled in the form of a video tutorial.
+The material received by the students at this stage was compiled in the form of a video tutorial, linked \href{https://www.youtube.com/watch?v=fhnhK7w67_s}{\textit{here}}.
 \vskip 0.5em
 The tutorial was structured such that the world of four dimensions could be built upon piece by piece in hopes that students would better digest each component of $\mathbb{R}^4$ in turn without feeling too overwhelmed.
 To begin with, the concept of a fourth perpendicular axis was introduced, with emphasis that this could not be visualised, and instead a method of viewing 4D geometry would be with the use of a 3D cross section. 
@@ -609,25 +611,25 @@ All the SDFs developed were compiled into a \texttt{.cginc} file as to be refere
 The signed distance function referenced in the ray marching algorithm defines the scene to be rendered. In this function, several other SDFs can be referenced to render several objects within the same scene. To render several SDFs at once, each function may be combined using a boolean union: taking the minimum distance between two or more objects using \texttt{min(a, b)}.
 
 \begin{figure}[H]
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.47\textwidth}
     \includegraphics[width=\textwidth]{images/representations/timeline-sphere.png}
     \caption{Sphere}
     \label{fig:rep_timeline-sphere}
   \end{subfigure}
   %
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.47\textwidth}
     \includegraphics[width=\textwidth]{images/representations/timeline-cone.png}
     \caption{Cone extended along $w$}
     \label{fig:rep_timeline-cone}
   \end{subfigure}
   \\
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.47\textwidth}
     \includegraphics[width=\textwidth]{images/representations/timeline-capsule.png}
     \caption{Capsule extended along $w$}
     \label{fig:rep_timeline-capsule}
   \end{subfigure}
   %
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.47\textwidth}
     \includegraphics[width=\textwidth]{images/representations/timeline-cube.png}
     \caption{Rotated Cube}
     \label{fig:rep_timeline-cube}
@@ -866,11 +868,15 @@ Grab ball rotation was an attempt to expand upon perhaps the most commonly emplo
 intuitive\\
 does not define "how rotated" 4D axes are relative to the local coordinates of the shape
 
+TODO: swipe
+
 \subsection{4D Grab Ball - Rotation About The Local Axes}
 
 idea\\
 progress\\
 why it failed
+
+TODO: grab ball
 
 \section{Texturing Ray Marched Objects}
 
@@ -890,6 +896,7 @@ A common method of representing the surface normal in 3D is to map the three com
     }
     \label{fig:tex1}
   \end{subfigure}
+  %
   \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\textwidth]{images/textures/pattern-direction.png}
     \caption{
@@ -897,6 +904,7 @@ A common method of representing the surface normal in 3D is to map the three com
     }
     \label{fig:tex2}
   \end{subfigure}
+  %
   \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\textwidth]{images/textures/pattern-rgbw.png}
     \caption{
@@ -905,10 +913,10 @@ A common method of representing the surface normal in 3D is to map the three com
     \label{fig:tex3}
   \end{subfigure}
   \caption{
-    Quad-planar projection of colours and textures using 4D normal vectors.
-    \subref{fig:tex1} shows positive components coloured $x$: Red, $y$: Green, $z$: Blue and $w$: white. Negative components are dark and shaded with diffuse lighting.
-    \subref{fig:tex2} shows patterns projected along each axis. negative components of the normal vector are coloured Blue, and positive are coloured Red.
-    \subref{fig:tex3} shows patterns projected along each axis. Positive components coloured $x$: Red, $y$: Green, $z$: Blue and $w$: white. Negative components are dark and shaded with diffuse lighting.
+    Quad-planar projection of colours and textures using the components of 4D normal vectors.
+    \subref{fig:tex1}, positive components are coloured $x$: Red, $y$: Green, $z$: Blue and $w$: white. Negative are dark and shaded with diffuse lighting.
+    \subref{fig:tex2}, patterns projected along each axis. negative components are coloured Blue, and positive are coloured Red.
+    \subref{fig:tex3}, patterns projected along each axis. Positive components coloured $x$: Red, $y$: Green, $z$: Blue and $w$: white. Negative are dark and shaded with diffuse lighting.
   }
   \label{fig:textures}
 \end{figure}
@@ -920,10 +928,12 @@ Four different patterns patterns where developed, and projected along each axes.
 
 \section{Building the Experiment - Data Collection}
 
-SimpleJSON \citep{bunny83_simplejson_nodate}
-
-Email - challenges\\
-Copy \& Paste - challenges
+To make data analysis as straightforward as possible, collected data was stored in a JSON format. The Unity plugin: SimpleJSON \citep{bunny83_simplejson_nodate} allows for easy reading and writing and of JSON data.
+Given the pandemic at the time of this project, it was necessary, for the purposes of collecting as much data as possible, that this experiment could function remotely. As stated, the project was built in Unity, allowing for easy building to WebGL, meaning the experiment could be hosted online. Unity's WebGL builds, and sites hosting WebGL builds, such as \href{https://itch.io/}{\textit{itch.io}} and \href{https://www.newgrounds.com/}{\textit{newgrounds}}, implement security precautions making data collection a troublesome task.
+During runtime, the data is stored to a persistent data path. This worked well for local testing, however downloading the file from online hosting is not possible without setting up a database.
+Therefore an attempt was made to sending the data file through email. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
+Unity enables a programmer to copy a string to the system clipboard. A button was implemented that would allow a user to copy the collected data to their clipboard in order to manually email the data for collection. WebGL builds, however, do not allow the use of copying to a system clipboard. The Unity plugin: WebGLInput \citep{kou-yeung_webglinput_nodate} allows for copying and pasting through the use of text boxes.
+The data was collected remotely from users via a copy/paste text box that would appear at the end of an experiment.
 
 %==================================================================================================================================
 \chapter{Evaluation} 
