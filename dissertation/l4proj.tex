@@ -111,6 +111,7 @@ A variety of fields within science and engineering utilise the visualisation of 
 %TODO: what is the benefit of trying to teach people about it?\\
 
 \section{Aims}
+\label{aims}
 
 % wide range of 4 Dimensional shape. variety of ways to display. As such the usability of each representation will be experimentally validated in order to find the most intuitive and effective way to represent higher dimensional shapes. The accuracy of which the user can identify these properties and act accordingly will be measured against the representation being shown to them.
 
@@ -438,6 +439,7 @@ Each extension to the 3D cross section will be evaluated against a series of tas
 The different portions of the experiment heavily encouraged discussion with the teacher/observer in order to ensure the best understanding a participant may have of four dimensions prior to and during the experiment.
 
 \section{Tutorial}
+\label{tutorial}
 
 A brief discussion was conducted with each participant following their introduction to the experiment and what the experiment would entail. This discussion focused around a participants prior knowledge with the concepts of 4D.
 As per the first stage of van Hiele's requirements for teaching, \textit{information inquiry}, students are to receive the material and discover the structure of the geometry presented in this stage. This introduction should use familiar, well-known and understood language.
@@ -968,20 +970,22 @@ The data was collected remotely from users via a copy/paste text box that would 
 
 \section{Aims} 
 
-\section{Experimental Design}
+This investigation aims to evaluate the effectiveness of each of the three extensions to the 3D cross section of 4D geometry. Each extension has the potential to benefit a viewers understanding with respect to different aspects of geometry. Therefore the goal of the investigation is to evaluate what aspect of geometry, if at any, each of the three representations may assist a user in interpreting. To reiterate \cref{aims}: Which representation is more effective at conveying the surface geometry, the rotational pose, or assisting a users in manipulate geometry in $\mathbb{R}^4$ ?
 
-\subsection{Preliminary Research}
+\section{Preliminary Research}
 
-what is the best way to explain concepts\\
-try teach some friends the basics and see what explanations work best
+\subsection{How to Teach Others}
 
-the best ways to teach people about geometry\\
- - reference that paper about 5 stages or something
-
-between users experiment
- - test user with every representation
+To properly take advantage of, and evaluate each of the developed extension to the 3D cross section, a participant needed to understand the foundations 4D space. 
+As expected, many participants had little or no experience in 4D geometry, as shown in the responses to questionnaire \ref{questionnaire}.
+The tutorial video was structured with the goal of effectively teaching inexperienced participants prior to the experiment (\cref{tutorial}). The script for the video was drafted and tested several times with peers to tune the descriptions and explanations of complex topics to be clear and concise. 
+The explanation for the rotation of geometry within and outside of the dimensions of the cross section is a notable example of a portion of the script that underwent several rewrites before viewers felt it was adequate.
+\vskip 0.5em
+During the development of each representation, preliminary evaluations were conducted to see if each extension had potential in assisting users in their interpretation of geometry. As discussed, the \textit{onion skin} representation proved unintuitive and too complex to digest for inexperienced users. Peers favoured the \textit{w-axis timeline} as a less confusing alternative. As such, only three of the four developed representations were carried forward to experimentation.
 
 \subsection{Repeated Preliminary Experiments}
+
+TODO: preliminary experiments
 
 build system\\
 test it\\
@@ -991,7 +995,9 @@ Need to provide clear explanations of concepts early on
 
 provide time to play with object before tests to learn controls and behaviour
 
-\subsection{Tasks and Parameters}
+\section{Tasks and Parameters}
+
+TODO: experiment tasks
 
 shape match\\
  - all shapes\\
@@ -1004,21 +1010,25 @@ pose match\\
 
 random order of representations
 
-\subsection{Limitations}
+\section{Limitations}
+
+TODO: experiment limitations
 
 \section{Results}
+
+TODO: results
 
 \subsection{Quantitative Results}
 
 \subsubsection{Shape Matching}
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/shape_matching_stats.png}
   \caption{Shape matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/shape_matching_correlations.png}
   \caption{Shape matching correlations}
   \label{fig:shape_corr}
@@ -1026,13 +1036,13 @@ random order of representations
 
 \subsubsection{Rotation Matching}
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/rotation_matching_stats.png}
   \caption{Rotation matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/rotation_matching_correlations.png}
   \caption{Rotation matching correlations}
   \label{fig:shape_corr}
@@ -1040,13 +1050,13 @@ random order of representations
 
 \subsubsection{Pose Matching}
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/pose_matching_stats.png}
   \caption{Pose matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/pose_matching_correlations.png}
   \caption{Pose matching correlations}
   \label{fig:shape_corr}
@@ -1059,6 +1069,9 @@ random order of representations
 
 %==================================================================================================================================
 \chapter{Conclusion}    
+
+TODO: conclusion
+
 Summarise the whole project for a lazy reader who didn't read the rest (e.g. a prize-awarding committee).
 \section{Guidance}
 \begin{itemize}
@@ -1234,6 +1247,7 @@ Summarise the whole project for a lazy reader who didn't read the rest (e.g. a p
 \pagebreak
 
 %Questionnaire
+\label{questionnaire}
 \includepdf[width=1.1\linewidth, pages={1-4}]{images/4d_shapes_questionnaire.pdf}
 
 \end{appendices}
