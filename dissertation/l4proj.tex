@@ -894,9 +894,7 @@ why it failed
 
 TODO: grab ball
 
-\section{Texturing Ray Marched Objects}
-
-\begin{figure}
+\begin{figure}[H]
   \begin{subfigure}[b]{0.32\textwidth}
     \includegraphics[width=\textwidth]{images/textures/no-pattern-rgbw.png}
     \caption{
@@ -929,6 +927,8 @@ TODO: grab ball
   \label{fig:textures}
 \end{figure}
 
+\section{Texturing Ray Marched Objects}
+
 Two cubes, offset by a multiple of $90^{\circ}$ from each other will look identical. It is important to be able to distinguish the pose of two given symmetric objects of the same shape. Texturing the faces with colours and patterns allows a user to distinguish two otherwise identical shapes.
 Texturing the three dimensional cross section of four dimensional objects is a rather odd task given only a slice of the object can be seen at a given time.
 In ray marching, the common method of texturing objects is through normal based projection - also known as tri-planar projection \citep{the_art_of_code_how_2020}. 
@@ -938,25 +938,25 @@ Extending tri-planar projection to $\mathbb{R}^4$ utilises the 4D normal vector.
 A common method of representing the surface normal in 3D is to map the three components of the normal vectors to the three primary colours: Red, Green and Blue. The origin point of the local axes exist in the center of the object. Therefore, components of the normal vector may be positive or negative. To distinguish all six sides of a shape in $\mathbb{R}^3$, if the vector component is positive, it may be coloured (RGB), otherwise it will be black. By adding the lighting to the surface of the object, the black sides of the object can be distinguished.
 \vskip 0.5em
 Three methods of distinguishing the shapes were explored in this project: \textit{RGBW}, \textit{Directionally coloured patterns} and \textit{RGBW coloured patterns}; alongside the un-coloured diffuse lighting. 
-\textit{RGBW} builds upon the RGB colouration method of distinguishing faces. Given there are four components of the normal vector in $\mathbb{R}^4$, but only 3 primary colours, a surface facing the $w$ axis will be coloured white.
+\textit{RGBW} (\cref{fig:tex1}) builds upon the RGB colouration method of distinguishing faces. Given there are four components of the normal vector in $\mathbb{R}^4$, but only 3 primary colours, a surface facing the $w$ axis will be coloured white.
 To more clearly emphasise the difference between the direction of a surface of an object, a pattern can be projected along each axis. 
-Four different patterns patterns where developed, and projected along each axes. To distinguish the positive and negative directions of the surface normal, the patterns must be multiplied by a colour. One colour scheme implemented was to colour the negative direction blue and the positive direction red. The other was to mix the RGBW colour scheme with the patterns.
+Four different patterns patterns where developed, and projected along each axes. To distinguish the positive and negative directions of the surface normal, the patterns must be multiplied by a colour. One colour scheme implemented was to colour the negative direction blue and the positive direction red (\cref{fig:tex2}). The other was to mix the \textit{RGBW} colour scheme with the patterns (\cref{fig:tex3}).
 
-\section{Building the Experiment - Data Collection}
+\section{Collecting Data}
 
 \subsection*{Data Format}
 
 Collected data was stored in a JSON format (\cref{lst:json}) for its ease of assembly and analysis. The Unity plugin: SimpleJSON \citep{bunny83_simplejson_nodate} allows for easy reading and writing and of JSON data.
 The data was separated by tasks per representation. Each task was repeated several times per representations, with each task collecting data such as: time taken, participant answers, the pose of objects on screen, and participant survey responses held after each task. Data was not analysed prior to collection as analysis tools would be developed after the fact.
 
-\subsection*{Remote Data Collection}
+\subsection{Remote Data Collection}
 
 Given the pandemic at the time of this project, it was necessary, for the purposes of collecting as much data as possible, that this experiment could function remotely. As stated, the project was built in Unity, allowing for easy building to WebGL, meaning the experiment could be hosted online. Unity's WebGL builds, and sites hosting WebGL builds, such as \href{https://itch.io/}{\textit{itch.io}} and \href{https://www.newgrounds.com/}{\textit{newgrounds}}, implement security precautions making data collection a troublesome task.
 During runtime, the data is stored to a persistent data path. This worked well for local testing, however downloading the file from online hosting is not possible without setting up a database.
 
 \subsection*{Collecting Data via Automatic Email}
 
-An attempt was made to sending the data file through email. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
+An attempt was made to sending the data file through email upon the completion of the experiment. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
 
 \subsection*{Collecting Data via Copy \& Paste}
 
