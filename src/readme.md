@@ -3,7 +3,7 @@
 <!-- Put a brief description of your code here. This should at least describe the file structure. -->
 
 Content is stored in `4D Shapes/Assets/`. The most relevant directories include: `Modular Scene/`, `Rotation/` and `Shaders/`.
- - `Modular Scene/` is where a user may manipulate shapes, and where all and where each task in the experiment is run via controller scripts. The directory contains most of the relevant scripts, materials and UI components. The scene itself is stored in `Scenes/`
+ - `Modular Scene/` is where a user may manipulate shapes. Each task in the experiment is run via controller scripts. The directory contains most of the relevant scripts, materials and UI components. The scene itself is stored in `Scenes/`
  - `Rotation/` contains the `Rotor4` class and scripts to rotate objects
  - `Shaders/` contains all the developed ray march shaders for rendering 4D objects
 
