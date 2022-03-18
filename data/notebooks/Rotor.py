@@ -82,8 +82,8 @@ class Rotor4:
         self.bzw = -sina * bv.bzw
         self.bxyzw = 0
 
-    @staticmethod
-    def __mul__(a, b):
+    def __mul__(self, b):
+        a = self
         e     = -a.bxw * b.bxw   - a.bxy * b.bxy   - a.bxz * b.bxz   - a.byw * b.byw   - a.byz * b.byz   - a.bzw * b.bzw   + a.bxyzw * b.bxyzw + a.a * b.a;
         exy   = -a.bxw * b.byw   + a.bxy * b.a     - a.bxz * b.byz   + a.byw * b.bxw   + a.byz * b.bxz   - a.bzw * b.bxyzw - a.bxyzw * b.bzw   + a.a * b.bxy;
         exz   = -a.bxw * b.bzw   + a.bxy * b.byz   + a.bxz * b.a     + a.byw * b.bxyzw - a.byz * b.bxy   + a.bzw * b.bxw   + a.bxyzw * b.byw   + a.a * b.bxz;
@@ -93,7 +93,8 @@ class Rotor4:
         ezw   =  a.bxw * b.bxz   - a.bxy * b.bxyzw - a.bxz * b.bxw   + a.byw * b.byz   - a.byz * b.byw   + a.bzw * b.a     - a.bxyzw * b.bxy   + a.a * b.bzw;
         exyzw =  a.bxw * b.byz   + a.bxy * b.bzw   - a.bxz * b.byw   - a.byw * b.bxz   + a.byz * b.bxw   + a.bzw * b.bxy   + a.bxyzw * b.a     + a.a * b.bxyzw;
 
-        return Rotor4(e, exy, exz, eyz, exw, eyw, ezw, exyzw)
+        r = Rotor4()
+        return r.constructor(e, exy, exz, eyz, exw, eyw, ezw, exyzw)
 
     def rotate(self, a):
         s = self.a
