@@ -329,15 +329,45 @@ As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very 
 
 \subsection{Methods of Interaction in 3D}
 
-TODO: 3D interaction
+\subsection*{Common Approaches}
 
-local, grab ball driven
+Manipulating virtual objects in three dimensions is challenging. Excluding mixed reality, general we can only interact with geometry through a 2D interface.
+%
+One common method of rotating a 3D object through a 2D screen is with the use of swiping. Swipe-based rotations are very common on touch screen devices, utilising multi-touch to take advantage of a third dimension. 
+Assuming the $z$ axis protrudes from the screen, swiping left or right will rotate about the $xz$ plane, up and down will rotate about the $yz$ plane, and two fingers rotating clockwise or anti-clockwise will perform a rotation about the $xy$ plane. 
+Swipe-based rotation performs rotations relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it not being used in professional 3D development software.
+\vskip 0.5em
+Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation does not appear to have a name, so it will be referred to as a grab ball. The grab ball is made up of 3 arcs. Using the mouse, an arc can be selected by holding down a mouse button. From here, the plane of rotation will be parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
+The grab ball provides an efficient method of rotation, but is implemented in several ways throughout various software. For example, \textit{Blender} allows the user to move the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc, projected onto the screen.
 
-global, swipe gestures (often multi-touch)
+\subsection*{Novel Hardware-based Approaches}
 
+Whilst this projects focus on manipulating geometry is focussed around software, it is worth noting that hardware based approaches to interaction exist. An example of 3D manipulation using hardware is 
+the \textit{Rockin'Mouse} \citep{balakrishnan_rockinmouse_1997}.
+
+TODO: rockin mouse
+
+\subsection*{Novel Software-based Approaches}
+
+Back to software: Inspiration ...
+
+\citep{chen_study_1988}
+
+virtual sphere - object encased in a sphere and can roll about
+
+TODO: virtual sphere
+
+stuff
 \citep{shoemake_arcball_1994}\\
+ -  remark that a pair of arcballs can be used to rotate objects in 4d
+
+"good feel"
+
+TODO: arcball
+
 \citep{hinckley_usability_1997}\\
-\citep{balakrishnan_rockinmouse_1997}
+
+useability study - no evidence that arcball better than virtual sphere - but users prefer using it
 
 \subsection{Methods of Interaction in 4D}
 
@@ -881,12 +911,21 @@ The first challenge in rotating ray marched 4D shapes was passing the informatio
 Two methods of rotation were developed, but only swipe based input was implemented. Swipe based input took mouse delta values and keyboard inputs to rotating an object in the direction of mouse movement, allowing a user to restrict the plane of rotation through a keyboard input.
 Grab ball rotation was an attempt to expand upon perhaps the most commonly employed method of 3D rotation found in software. Three arcs, or in the case of 4D: six hyper torii, each controlling a different plane of local rotation for the object.
 
+
+\citep{shoemake_arcball_1994} remarks: 
+ - can use a pair of arcballs to rotate objects in 4d
+
+allocated time did not allow for exploration further
+
+
 \subsection{Swipe Based Input - Rotation About The Global Axes}
 
 intuitive\\
 does not define "how rotated" 4D axes are relative to the local coordinates of the shape
 
 TODO: swipe
+
+deliberate
 
 \subsection{4D Grab Ball - Rotation About The Local Axes}
 
