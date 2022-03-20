@@ -333,12 +333,12 @@ As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very 
 
 Manipulating virtual objects in three dimensions is challenging. Excluding mixed reality, general we can only interact with geometry through a 2D interface.
 %
-One common method of rotating a 3D object through a 2D screen is with the use of swiping. Swipe-based rotations are very common on touch screen devices, utilising multi-touch to take advantage of a third dimension. 
-Assuming the $z$ axis protrudes from the screen, swiping left or right will rotate about the $xz$ plane, up and down will rotate about the $yz$ plane, and two fingers rotating clockwise or anti-clockwise will perform a rotation about the $xy$ plane. 
-Swipe-based rotation performs rotations relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it not being used in professional 3D development software.
+One common method of rotating a 3D object through a 2D screen is with the use of swiping. Swipe-based rotations are very common on touch screen devices, utilising multi-touch as a secondary input to switch dimensions. 
+Assuming the $z$ axis protrudes from the screen, swiping left or right will rotate about the $xz$ plane, up and down will rotate about the $yz$ plane. Two fingers rotating clockwise or anti-clockwise will perform a rotation about the $xy$ plane. 
+Swipe-based rotation is limited to performing rotations relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it not being used in professional 3D development software.
 \vskip 0.5em
-Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation does not appear to have a name, so it will be referred to as a grab ball. The grab ball is made up of 3 arcs. Using the mouse, an arc can be selected by holding down a mouse button. From here, the plane of rotation will be parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
-The grab ball provides an efficient method of rotation, but is implemented in several ways throughout various software. For example, \textit{Blender} allows the user to move the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc, projected onto the screen.
+Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, it appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected by holding down a mouse button. From here, the plane of rotation is restricted as parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
+The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate by moving the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc.
 
 \subsection*{Novel Hardware-based Approaches}
 
@@ -349,30 +349,27 @@ The main drawbacks of hardware focused methods of interaction is the expense and
 
 \subsection*{Novel Software-based Approaches}
 
-Given an object encased in a sphere, a user may roll this sphere to rotate the object inside. The virtual sphere \citep{chen_study_1988} is built on this idea; allowing users to roll the object by dragging their mouse across the surface of the surrounding sphere. dragging the mouse outside of the sphere will rotate the object about the $xy$ plane, the screen the object is being viewed through. This method is similar to swiping, mentioned earlier, but enables the user to control all three degrees of rotational freedom without the need for a secondary input to switch between planes of rotation.
+Given an object encased in a sphere, a user may roll the sphere to rotate the object inside. The virtual sphere \citep{chen_study_1988} allows users to roll the object by dragging their mouse across the surface of the surrounding sphere. dragging the mouse outside of the sphere will rotate the object about the $xy$ plane, the screen the object is being viewed through. This method is similar to swiping, mentioned earlier, but enables the user to control all three degrees of rotational freedom without the need for a secondary input to switch between planes of rotation.
 \vskip 0.5em
-The arcball \citep{shoemake_arcball_1994} is similar to the virtual sphere, in that the projection of the mouse is projected onto and dragged across a sphere. 
-The defining property of the arcball is 
+Hysteresis, or path dependance, is when the resulting pose when dragging a mouse from point $A$ to point $B$ may be different depending on the path taken. The virtual sphere exhibits hysteresis, and as such a rotation cannot be undone by reversing the previous action.
+Arcball \citep{shoemake_arcball_1994} is similar to the virtual sphere, in that the cursor of a mouse is projected onto and dragged across an on-screen sphere. 
+The major difference between the virtual sphere and arcball, is that arcball does not exhibit hysteresis. This is accomplished through two properties:
+The system utilises the double coverage property of quaternions, such that dragging from either side of the sphere, $180^{\circ}$ apart, will complete a full $360^{\circ}$ rotation.
+Arcball consistently compares the initial point $A$ to the updated mouse position $B$ in a single drag, producing one arc of rotation. Combined with the double coverage, any path from $A$ to $B$ will result in the same rotation.
 
-TODO: arcball
-"good feel"
-
-%Understand and Reword
-An interesting property of the arcball is how it avoids hysteresis effects. Hysteresis occurs when a closed loop mouse motion may not produce closed loops of rotation, meaning it may not be possible to undo a sequence of drags by reversing their oder \citep{hinckley_usability_1997}.
-
-\citet{shoemake_arcball_1994} also remarks that a pair of arcballs can be used to rotate an object in four dimensions, although given the limited time of the project, this was not explored further.
-\vskip 0.5em
-According to \citet{hinckley_usability_1997}, there is no evidence that the arcball may be better than the virtual sphere. However, users of the two mechanics generally report the arcball to be more response and provide more control. 
+\pagebreak
+According to \citet{hinckley_usability_1997}, there is no evidence that the arcball may be better than the virtual sphere. However, users of the two mechanics generally report the arcball to be more responsive and allow for more control. 
 On the other hand, many users enjoy the virtual spheres slower movement as it emulates the feeling of "pushing" the object around.
 
 \subsection{Methods of Interaction in 4D}
 
-Direct manipulation of 4D geometry is immediately a more complex problem given double the number of planes of rotation.
-
-TODO: 4D interaction
-
-\citep{murata_interactive_2000}\\
-\citep{kageyama_keyboard-based_2005}
+Direct manipulation of 4D geometry is immediately a more complex problem given double the number of planes of rotation. 
+\citet{shoemake_arcball_1994} also remarks that a pair of arcballs can be used to rotate an object in four dimensions. 
+\citep{hanson_rolling_1992} also proposes a similar approach, taking advantage of a virtual sphere to rotate in 4D.
+\vskip 0.5em
+A primitive solution proposed by \citet{kageyama_keyboard-based_2005} explores the idea of using keyboard inputs to rotate an object in all 6 DoF. This system allows users to compose rotation matrices to rotate an object. This allows for incremental control over how an object rotates. As the system uses rotation matrices, it is at risk of gimbal lock. Furthermore, key presses are discrete. A more desireable approach may be to utilise a mouse for a more continuous spectrum of rotation, with an optional incremental feature, as is standard with most 3D software.
+\vskip 0.5em
+\citet{yan_multitouching_2012} takes advantage of multi-touch screen devices, and the different gestures that can be accomplished with two or more. Multi-touch presents itself as an easier and more intuitive secondary input opposed to keyboard presses.
 
 \section{Teaching and Evaluation}
 \label{teaching_and_eval}
