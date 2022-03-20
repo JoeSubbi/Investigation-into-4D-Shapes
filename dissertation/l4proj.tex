@@ -342,34 +342,32 @@ The grab ball provides an efficient method of rotation, but is implemented in se
 
 \subsection*{Novel Hardware-based Approaches}
 
-Whilst this projects focus on manipulating geometry is focussed around software, it is worth noting that hardware based approaches to interaction exist. An example of 3D manipulation using hardware is 
-the \textit{Rockin'Mouse} \citep{balakrishnan_rockinmouse_1997}.
-
-TODO: rockin mouse
+Whilst this projects implementation for manipulating geometry is software focused, it is worth noting the research into hardware based solutions. The \textit{Rockin'Mouse} \citep{balakrishnan_rockinmouse_1997} is an example of a hardware centered approach in assisting users with 3D interaction. 
+A regular mouse allows a user to control two translational degrees of freedom (DoF). As a result, a method of switching between dimensions is required in order to fully manipulate geometry in 3D.
+The \textit{Rockin'Mouse} is a four DoF input device that can be tilted in two DoF. Being in control of four DoF simultaneously, allows users to manipulate geometry in all three dimensions without the need for a secondary input. Results indicate that this hardware allows users to manipulate geometry in 3D 30\% faster than with the use of a traditional mouse. 
+The main drawbacks of hardware focused methods of interaction is the expense and lack of accessability.
 
 \subsection*{Novel Software-based Approaches}
 
-Back to software: Inspiration ...
-
-\citep{chen_study_1988}
-
-virtual sphere - object encased in a sphere and can roll about
-
-TODO: virtual sphere
-
-stuff
-\citep{shoemake_arcball_1994}\\
- -  remark that a pair of arcballs can be used to rotate objects in 4d
-
-"good feel"
+Given an object encased in a sphere, a user may roll this sphere to rotate the object inside. The virtual sphere \citep{chen_study_1988} is built on this idea; allowing users to roll the object by dragging their mouse across the surface of the surrounding sphere. dragging the mouse outside of the sphere will rotate the object about the $xy$ plane, the screen the object is being viewed through. This method is similar to swiping, mentioned earlier, but enables the user to control all three degrees of rotational freedom without the need for a secondary input to switch between planes of rotation.
+\vskip 0.5em
+The arcball \citep{shoemake_arcball_1994} is similar to the virtual sphere, in that the projection of the mouse is projected onto and dragged across a sphere. 
+The defining property of the arcball is 
 
 TODO: arcball
+"good feel"
 
-\citep{hinckley_usability_1997}\\
+%Understand and Reword
+An interesting property of the arcball is how it avoids hysteresis effects. Hysteresis occurs when a closed loop mouse motion may not produce closed loops of rotation, meaning it may not be possible to undo a sequence of drags by reversing their oder \citep{hinckley_usability_1997}.
 
-useability study - no evidence that arcball better than virtual sphere - but users prefer using it
+\citet{shoemake_arcball_1994} also remarks that a pair of arcballs can be used to rotate an object in four dimensions, although given the limited time of the project, this was not explored further.
+\vskip 0.5em
+According to \citet{hinckley_usability_1997}, there is no evidence that the arcball may be better than the virtual sphere. However, users of the two mechanics generally report the arcball to be more response and provide more control. 
+On the other hand, many users enjoy the virtual spheres slower movement as it emulates the feeling of "pushing" the object around.
 
 \subsection{Methods of Interaction in 4D}
+
+Direct manipulation of 4D geometry is immediately a more complex problem given double the number of planes of rotation.
 
 TODO: 4D interaction
 
@@ -652,6 +650,8 @@ The SDF of plane can be defined by its normal vector. For example, The SDF of a 
 A tetrahedron is made up of 4 triangular faces, each opposing one of it's four vertices. The SDF for a tetrahedron uses these vertices as the vectors describing the normal of each face. Each of these vectors defines the SDF of a plane parallel to a face of the tetrahedron. By taking the boolean intersection of these planes using \texttt{max(a, b)}, the SDF for a tetrahedron is produced.
 The SDF for a tetrahedron also takes a parameter $s$, used to scale the tetrahedron. Subtracting $s$ from the distance to the surface, effectively brings the surface further from the center, similar to the radius of a sphere.
 Constructing a pentachoron is done in a near identical way, just five vertices are considered rather than four.
+
+TODO: Figures of derivation
 
 \begin{figure}[H]
   \begin{subfigure}[b]{0.47\textwidth}
@@ -936,23 +936,23 @@ why it failed
 TODO: grab ball
 
 \begin{figure}[H]
-  \begin{subfigure}[b]{0.32\textwidth}
+  \begin{subfigure}[b]{0.25\textwidth}
     \includegraphics[width=\textwidth]{images/textures/no-pattern-rgbw.png}
     \caption{
       RGBW
     }
     \label{fig:tex1}
   \end{subfigure}
-  %
-  \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[width=\textwidth]{images/textures/pattern-direction.png}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.30\textwidth}
+    \includegraphics[width=0.83\textwidth]{images/textures/pattern-direction.png}
     \caption{
       Directionally Coloured Pattern
     }
     \label{fig:tex2}
   \end{subfigure}
-  %
-  \begin{subfigure}[b]{0.32\textwidth}
+  \hspace{0.5cm}
+  \begin{subfigure}[b]{0.25\textwidth}
     \includegraphics[width=\textwidth]{images/textures/pattern-rgbw.png}
     \caption{
       RGBW Coloured Pattern
@@ -1059,7 +1059,7 @@ TODO: results
 
 \subsection{Quantitative Results}
 
-\subsubsection{Shape Matching}
+\subsection*{Shape Matching}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/shape_matching_stats.png}
@@ -1073,7 +1073,7 @@ TODO: results
   \label{fig:shape_corr}
 \end{figure}
 
-\subsubsection{Rotation Matching}
+\subsection*{Rotation Matching}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/rotation_matching_stats.png}
@@ -1087,7 +1087,7 @@ TODO: results
   \label{fig:shape_corr}
 \end{figure}
 
-\subsubsection{Pose Matching}
+\subsection*{Pose Matching}
 
 \begin{figure}[H]
   \includegraphics[width=\textwidth]{images/results/pose_matching_stats.png}
