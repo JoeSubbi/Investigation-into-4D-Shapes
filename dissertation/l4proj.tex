@@ -132,17 +132,17 @@ Metrics such as time taken, confidence and accuracy were be measured, with each 
 
 There are many ways to represent the fourth dimension. Arguably the most intuitive understanding is that of a 3D cross section. As with how a sphere in $\mathbb{R}^3$ can be considered a stack of infinitely thin circles that vary in size from top to bottom, along the \(z\) axis; a fourth dimensional sphere can be considered a stack of 3D spheres that vary in size as you move across the \(w\) axis.
 \vskip 0.5em
-The 3D cross section is limited given that only a slice of the shape can be seen at any given time. Stereographic projection attempts to rectify this by allowing a viewer to visualise as much of the shape as their field of view permits. Stereographic projection in $\mathbb{R}^3$ takes a 3D sphere and maps its geometry across a 2D plane. To map another object, for example a cube, its geometry must be projected beforehand onto the surface of a sphere \citep{radiya-dixit_visualizing_2017}. Stereographic projection in $\mathbb{R}^4$ takes the spherical projection of a 4D object, and maps it across a 3D environment. A viewer can stand in the center of the 3D environment and observe the mapped geometry. This approach of interpreting four dimensional space is well suited to virtual reality, however it is complex to interpret in a meaningful way, and abstracting an understanding to lower dimensions is nontrivial.
+The 3D cross section is limited given that only a slice of the shape can be seen at any given time. Stereographic projection attempts to rectify this by allowing a viewer to visualise as much of the shape as their field of view permits. Stereographic projection in $\mathbb{R}^3$ takes a 3D sphere and maps its geometry across a 2D plane. To map another object, for example a cube, its geometry must be projected beforehand onto the surface of a sphere \citep{radiya-dixit_visualizing_2017}. Stereographic projection in $\mathbb{R}^4$ takes the spherical projection of a 4D object, and maps it across a 3D environment. A viewer can stand in the center of the 3D environment and observe the mapped geometry. This approach of visualising 4D space is well suited to virtual reality, however it is complex to interpret in a meaningful way, and abstracting an understanding to lower dimensions is nontrivial.
 
 \subsection{Extensions to the 3D Cross Section}
 
 Through simple discussion with peers, a 3D cross section of a four dimensional object appears to be a far more intuitive concept to grasp compared against stereographic projection. 
 %
-Given the aims of the project, are to investigate how one may extend a visualisation of a 4D object to provide a viewer with more information in order to assist in their understanding of higher dimensional space, the 3D cross section of a four dimensional world appears most appropriate given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
+Given the aims of the project, are to investigate how one may extend a visualisation of a 4D object to provide a viewer with more information to assist their understanding of higher dimensional space, the 3D cross section of a 4D world appears most appropriate given it's relative simplicity in using lower dimensional abstractions to assist in understanding higher dimensional geometry.
 \vskip 0.5em
-An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are dealing with. Several such extensions have already been explored conceptually or even fully developed. 
+An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are exploring. Several such extensions have already been explored conceptually or even fully developed.
 \vskip 0.5em
-Showing several cross sections besides one another, each offset along the \(w\) axis an increased amount is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \cref{fig:exti}: displaying several 2D circles, taken a regular intervals of $\delta$ along the \(z\) axis, that circularly increase and decrease in size provides a viewer with enough information to estimate that the object being displayed is likely a 3D sphere.
+Showing several cross sections besides one another, each offset along the \(w\) axis by an increasing amount, is a simple means of trying to provide more information to the user about the entire shape of the object. As shown in the 3D example \cref{fig:exti}: displaying several 2D circles, taken at regular intervals of $\delta$ along the \(z\) axis, that circularly increase and decrease in size provides a viewer with enough information to deduce that the object being displayed is likely a 3D sphere.
 
 \begin{figure}
   \centering
@@ -168,34 +168,35 @@ By displaying the several cross sections in an ovular path, compared to a linear
 %
 Each cross section, as they move further away from the central slice, decreases in size; in order to avoid potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
 %
-Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder that is extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyama's visualisation will have each of these 3D spheres decrease in size such that a user could likely interpret the shape to be a 3D cross section of a 4D sphere given it exhibits similar scaling behaviour. If a user interacts with the object using the appropriate keys to move across the \(w\) axis, they could observe the lack of change in the size of the central 3D cross section and draw the correct conclusion that it is a cylinder.
+Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyama's visualisation, however, will have each of these 3D spheres decrease in size such that a user may interpret the shape to be a 3D cross section of a 4D sphere given it exhibits similar scaling behaviour. If a user were to move across the \(w\) axis, they could observe the lack of change in the size of the central 3D cross section and draw the correct conclusion that it is a cylinder.
 Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its potential to be obscure when several objects can have similar cross sections.
 %TODO: classify Kageyama's work
 \vskip 0.5em
 Another extension which arguably provides the user with more information about an object, is viewing said object from other angles. As shown in the 3D example \cref{fig:exmv}: take a cone that is extended upwards to a point along the \(y\) axis. From the top, a cross section of the object spanning the \(xz\) plane will produce a circle. However a cross section along either the \(xy\) or \(yz\) planes will appear as a triangle.
 \vskip 0.5em
-\textit{Polyvision}, proposed by \citet{matsumoto_polyvision_2019}, is a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
+\textit{Polyvision} \citep{matsumoto_polyvision_2019} is a virtual reality system to view four dimensional objects from multiple angles to quickly and effectively understand the shape being interacted with.
 %
-\citet{matsumoto_polyvision_2019} chose to represent 4D objects as wireframes, connecting each vertex of the object by an edge. This is possible when collapsing each vertex of the 4D object to the same three dimensional slice. This is often referred to as the "shadow" of an object. 
-A user may view almost all of an object at once using this technique, in comparison to a single 3D slice, whilst potentially offering a more intuitive understanding, although perhaps less information, with comparison to stereographic projection. A disadvantage of a 3D wireframe shadow is with increasingly complex objects, the wireframe cells of the object become more and difficult differentiate with the increase in the number of vertices and edges.
+\citet{matsumoto_polyvision_2019} represents 4D objects as wireframes, connecting each vertex of the object by an edge. This is possible when collapsing each vertex of the 4D object to the same three dimensional slice. This is often referred to as the "shadow" of an object. 
+A user may view almost all of an object at once using this technique, in comparison to a single 3D slice; whilst potentially offering a more intuitive understanding, although perhaps less information, when compared to stereographic projection. 
+A disadvantage of the a wireframe shadow comes when visualising complex objects. The wireframe cells of the object become more difficult to differentiate with higher quantities of vertices and edges.
 The ability to view the surface of a complex object, such as a 120-cell, likely allows for easier understanding of the geometry compared to the wireframe of its shadow.
 %
-With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts interaction to that which we are used to and capable of. Translation, rotation and scaling are restricted to the third dimension. Interaction in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ will change the object in a potentially unexpected way. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
+With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts interaction to that which we are capable of. Translation, rotation and scaling are restricted to the third dimension. Interaction in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ will change the object in a potentially unexpected way. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
 %TODO: classify Matsumoto's work
 
 \section{Building a 4D Object}
 
-Rendering three dimensional shapes on a 2D screen is an art that has evolved over time and ranges several disciplines. When Tron released in 1982, computers were not powerful enough to render triangle meshes in real time; as is the standard for 3D rendering nowadays. 
-Similar films of that era, such as Dune (1984) or Star Wars the Original Trilogy (1977-1983) often used a mix of practical effects and physically modifying the film, using techniques such as rotoscoping and double exposure. The team behind tron, however, opted to take advantage of machines to do some heavy lifting. In-spite of the technological limitations the team were able build a system to combine and render simple but smooth primitive objects. They used a system called Ray Marching \citep{sheppard_tron_2010}.
+Rendering three dimensional shapes on a 2D screen is an art that has evolved over time and ranges several disciplines. When \textit{Tron} released in 1982, computers were not powerful enough to render triangle meshes in real time; as is the standard for 3D rendering nowadays. 
+Similar films of that era, such as \textit{Dune} (1984) or \textit{Star Wars} (the Original Trilogy) (1977-1983) often used a mix of practical effects and physically modifying film, using techniques such as rotoscoping and double exposure. The team behind tron, however, opted to take advantage of machines to do some heavy lifting. In-spite of the technological limitations the team were able build a system to combine and render simple but smooth primitive objects. They used a system called Ray Marching \citep{sheppard_tron_2010}.
 \vskip 0.5em
 Today, it is standard to use triangle meshes to build and even render complex models in real time; and not just for film, but for real time interactive media such as video games.
 A mesh consists of vertices, edges and faces. A vertex being a point on the surface of an object that edges connect to. A face is formed by a closed loop of edges. Generally, a face will be made up of three vertices and three edges, creating the most simple 2D shape: A triangle; which form a part of the surface of a 3D mesh.
 
 \subsection{Mesh Based Rendering}
 
-Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. As with a face in a 3D mesh being constructed of triangles (the most basic 2D shape), a 4D mesh is constructed of the most basic cell, a tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object besides potentially the hyper-sphere. The mesh of a pentachoron consists of 5 tetrahedral sub-meshes (cells). A sub-mesh in this instance refers to a 3D mesh used to build a 4D object, in the same way a 2D net of faces can build a 3D shape.
+Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. As with a face in a 3D mesh being constructed of triangles (the most basic 2D shape), a 4D mesh is constructed of the most basic cell, a tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object (besides potentially the hyper-sphere). The mesh of a pentachoron consists of 5 tetrahedral sub-meshes (cells). A sub-mesh in this instance refers to a 3D mesh used to build a 4D object, in the same way a 2D faces can build a 3D shape.
 \vskip 0.5em
-Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, as well as the rendering of a four dimensional world. 
+Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, and several complicated shapes such as a 4D klein bottle.
 On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software built for two and three dimensions.
 \vskip 0.5em
 There are two main drawbacks to mesh based rendering: The time taken to construct 4D objects, and the complexity of translating four dimensional geometry to 3D. 
@@ -203,14 +204,11 @@ There are two main drawbacks to mesh based rendering: The time taken to construc
 Simple 4D Platonic solids \citep{parker_things_2014} such as the hyper-tetrahedron (5-cell), hyper-cube (8-cell) and hyper-octahedron (16-cell) are fairly straightforward. Developing complex shapes such as a the hyper-dodecahedron (120-cell) or the hyper-iscosahedron (600-cell) becomes a complex and time consuming task. 
 This complexity only increase when trying to develop curve faced shapes such as a hyper-sphere, torus or cone, which are smooth. Smooth geometry generally requires hundreds of vertices as well as smooth surface shading that only add to computational load and development time.
 \vskip 0.5em
-In order to render a three dimensional slice of a four dimensional object, an algorithm must be employed such that a point along an edge that connects two vertices of a 4D object can be found, and connected by edges to all other points lying on the same four dimensional hyperplane that sit along the edge connect other 4D vertices of the same object. This is a fairly complex task, and only gets more complex when calculating what faces of the slice of the object to render to produce a cohesive three dimensional slice. \citet{tianli_2d_2018} demonstrates how to find the cross section of an object and the problems associated with it.
+In order to render a three dimensional slice of a four dimensional object, an algorithm must be employed such that a point along an edge that connects two vertices is found and connected, by edges, to all other points lying on the same four dimensional hyperplane that sit along edges connect other 4D vertices of the same object. This is a fairly complex task, and only gets more complex when calculating what faces of the slice of the object to render a cohesive three dimensional slice. \citet{tianli_2d_2018} demonstrates how to find the cross section of an object and the problems associated with it.
 
 \subsection{Ray Marching Shaders}
 
-Ray march based rendering was initially developed due to limitations in real time rendering, as a way to combine easy to define primitive objects into more complex shapes. Despite advancements in rendering capabilities, allowing even low-end computers to render complex mesh based geometry in real time, ray marching has not lost its place in the world. 
-Whilst ray marching has often thought to evolved into ray tracing, the foundation of photorealistic rendering, signed distance fields (SDFs), the core of ray marching, are still heavily used in volumetric geometry, meta-ball geometry, collision detection and ray marched shaders.
-An SDF is a function that describes a signed distance to a surface relative to a point in space. \citet{quilez_distance_nodate} lists several SDFs for primitive objects as well as functions that can be applied to them.
-
+Ray march based rendering was initially developed due to limitations in real time rendering, as a way to combine easy to define primitive objects into more complex shapes. Despite advancements in\hfill rendering\hfill capabilities,\hfill allowing\hfill even\hfill low-end\hfill computers\hfill to\hfill render\hfill complex\hfill mesh\hfill based 
 % Ray marching Diagrams
 \begin{figure}[H]
   \centering
@@ -262,19 +260,24 @@ An SDF is a function that describes a signed distance to a surface relative to a
   }
 \caption{The ray marching algorithm}\label{alg:raymarch}
 \end{algorithm}
-\pagebreak
-
-Ray marching (\cref{alg:raymarch}, \cref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point in the direction of a pixel to colour the pixel based on the distance to a mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface and then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
+%
+geometry in real time, ray marching has not lost its place in the world. 
+Whilst ray marching has often thought to have evolved into ray tracing, the foundation of photorealistic rendering, signed distance fields (SDFs), the core of ray marching, are still heavily used in volumetric geometry, meta-ball geometry, collision detection and ray marched shaders.
+An SDF is a function that describes a signed distance to a surface relative to a point in space. \citet{quilez_distance_nodate} lists several SDFs for primitive objects as well as functions that can be applied to them.
+\vskip 0.5em
+Ray marching (\cref{alg:raymarch}, \cref{fig:raymarch}) is the processes of calculating the colour of each pixel on a screen by casting a ray from an origin point in the direction of a pixel. The pixel is coloured based on the distance to a mathematically defined geometric surface. Given an origin point and a direction, the algorithm takes the distance to the nearest surface. It then marches forward by that distance to map out the surface detail. \citep{the_art_of_code_ray_2018}.
 \vskip 0.5em
 %
-Whilst less intuitive and approachable than mesh based rendering, there are active communities which strive to build interesting or complex geometry using these mathematical expressions in conjunction with ray marching. \textit{Shadertoy}, developed by \citet{quilez_shadertoy_2013}, is a web based platform that allows anyone to create and experiment with shader based geometry.
+Whilst less intuitive than mesh based rendering, there are active communities striving to build interesting and complex geometry with ray marching. \textit{Shadertoy} \citep{quilez_shadertoy_2013} is a web based platform allowing anyone to create and experiment with shader based geometry.
 \vskip 0.5em
-A significant advantage over mesh based rendering is the ability to render a 3D cross section of a 4D object with minimal effort. The SDF of a 4D object taken over three dimensional space will produce the SDF equivalent to the cross section of the same object in a given hyper plane along the \(w\) axis.
+A significant advantage over mesh based rendering is the ability to render a 3D cross section of a 4D object with minimal effort. The SDF of a 4D object taken over three dimensional space will yield cross section of the same object in a given hyper plane along the \(w\) axis.
 It is not novel to ray march over primitive 4D objects such as the hyper cube or hyper sphere. Often, primitive SDFs taken over $\mathbb{R}^3$ can be easily extended to $\mathbb{R}^4$; and this is the case for many of the SDFs developed by \citet{quilez_distance_nodate}. Other 4D geometry on the other hand needed to be derived from scratch. 
 
 \section{Rotating a 4D Object}
 
-In $\mathbb{R}^3$ there are three degrees of rotational freedom. As there are three axes, the method of rotating an object has commonly been considered as rotating about an axis. However, in $\mathbb{R}^4$ there are six degrees of rotational freedom, despite there only being four axes. Instead, rotation must be considered as a rotation about a plane formed by two axes. Therefore the six planes of rotation in $\mathbb{R}^4$ are \(xy\), \(xz\), \(yz\), \(xw\), \(yw\) and \(zw\).
+In $\mathbb{R}^3$ there are three degrees of rotational freedom. As there are three axes, the method of rotating an object has commonly been considered as rotating about an axis. 
+In $\mathbb{R}^4$ there are six degrees of rotational freedom, despite there only being four axes. Instead, rotation is considered about a plane formed by two axes. 
+The six planes of rotation in $\mathbb{R}^4$ are \(xy\), \(xz\), \(yz\), \(xw\), \(yw\) and \(zw\).
 
 \subsection{The Problems with Rotation}
 
@@ -287,24 +290,25 @@ Rotating an object in $\mathbb{R}^2$ is somewhat trivial. Given a vector $v_{xy}
     \end{bmatrix},
 \end{equation}
 %
-Rotating an object in a space greater than two dimensions immediately becomes a nontrivial problem due to its non-commutativity. In dimensions greater than $\mathbb{R}^2$, rotation matrices can be composed into a homogeneous rotation matrix. Multiplying a vector with a such a matrix will produce a rotated vector, but doing so will likely encounter gimbal lock. Gimbal lock occurs when rotating an object considers each plane of rotation as independent from one another. As a result, if a particular plane becomes parallel with another, a degree of rotation is lost and the vector being rotated will not change as expected.
+Rotating an object in a space greater than two dimensions immediately becomes a nontrivial problem due to its non-commutativity. In higher dimensions, rotation matrices can be composed into a homogeneous rotation matrix. Multiplying a vector with a such a matrix will rotate a vector, but doing so will likely encounter gimbal lock. Gimbal lock occurs when considering each plane of rotation independent to one another. As a result, if a particular plane becomes parallel to another, a degree of rotation is lost and the vector will not rotate as expected.
 \vskip 0.5em
-Introducing the quaternion: The quaternion is an extension of the complex number system. A quaternion has 4 components: \(x\), \(y\) and \(z\) which describe the axis of rotation, and \(w\) which describes the amount of rotation. Quaternions do not suffer from gimbal lock and can be applied to each other to perform several rotations in series.
+Introducing the quaternion; an extension of the complex number system. A quaternion has 4 components: \(x\), \(y\) and \(z\) which describe the axis of rotation, and \(w\) which describes the amount of rotation. Quaternions do not suffer from gimbal lock and can be applied to each other to perform several rotations in series.
 \vskip 0.5em
 Quaternions have a problem: They consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating within two dimensions as rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
 
 \subsection{Geometric Algebra and The Rotor}
 \label{ga_and_rotor}
 
-Geometric Algebra, often referred to as Clifford Algebra, is a field of mathematics describing vector space. Vector space is populated by multivectors, graded by their vector components. Most notably, multivectors are defined by their associative, distributive and anti-commutative properties \citep{baker_maths_nodate}.
+Geometric Algebra (or Clifford Algebra) is a field of mathematics describing vector space. Vector space is populated by multivectors, graded by their vector components. Multivectors are defined by their associative, distributive and anti-commutative properties \citep{baker_maths_nodate}.
 A grade zero multivector is a scalar number. a grade one multivector is just a vector. Grade two multivectors are known as bivectors, which build the foundation for the rotor. A trivector is a grade 3 multivector forming a parallelepiped from 3 vectors. Finally in $\mathbb{R}^4$ there is what is known as a pseudo-scalar.
 \vskip 0.5em
-A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\), and has, alongside its orientation in space defined by it's vector components, two important properties: The direction of rotation, from \(a\) to \(b\), and an area, dictated by the parallelogram formed by its two vector components as illustrated by \citet{slehar_clifford_2014}. A bivector in the reverse direction, i.e from \(b\) to \(a\) fulfills the anti-commutative property such that $b_{ba} = -b_{ab}$. 
+A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\). Its two vector components define its orientation in space. The bivector is also defined by two important properties: The direction of rotation, from \(a\) to \(b\), and the area of the parallelogram formed by its two vector components as illustrated by \citet{slehar_clifford_2014}. A bivector in the reverse direction, i.e from \(b\) to \(a\) fulfills the anti-commutative property such that $b_{ba} = -b_{ab}$. 
 % TODO: Wedge Product similar to Cross Product
 \vskip 0.5em
 As mentioned above, a rotation should be considered as a rotation about a plane. A bivector defines the plane for a vector to rotate about. As demonstrated by \citet{mathoma_geometric_2017}, a rotor can rotate a vector following the principle that a double reflection forms a rotation \citep{mathoma_geometric_2016-2}.
 \vskip 0.5em
-In a given vector space greater than $\mathbb{R}^2$, a multivector greater than grade zero can be projected onto the vector space basis blades. A basis blade is a the plane formed parallel to two perpendicular axes. The \(xy\) blade is often referred to as $e_x \wedge e_y$ or $e_{xy}$ or sometimes $e_{01}$. Therefore a bivector in $\mathbb{R}^3$ can be decomposed into three projections onto the $e_{xy}$, $e_{xz}$ and $e_{yz}$ planes; and a bivector in $\mathbb{R}^4$ can be decomposed into 6 elements. To decompose a bivector into its projections, the outer (or wedge) product of the two vectors which form said bivector can be used.
+In a given vector space greater than $\mathbb{R}^2$, a multivector greater than grade zero can be projected onto the vector space basis blades. The basis blades of a grade 2 multivector are the planes formed by two perpendicular axes. The \(xy\) blade is often referred to as $e_x \wedge e_y$ or $e_{xy}$ or sometimes $e_{01}$. Therefore a bivector in $\mathbb{R}^3$ can be decomposed into three projections onto the $e_{xy}$, $e_{xz}$ and $e_{yz}$ planes. A bivector in $\mathbb{R}^4$ can be decomposed into six elements.
+The outer (wedge) product of two vectors is used to calculate the area of a bivector, and is used to calculate the area of its projections.
 \vskip 0.5em
 It is possible to multiply multivectors using the geometric product; a combination of the inner and outer product. Multiplying a vector \(v\) by a rotor \(R\) and it's reverse \(R^\dagger\) will rotate vector about the bivector component of the rotor. Order matters here.
 %
@@ -323,7 +327,7 @@ Rotors can also be multiplied using the geometric product. This will produce a n
 \end{equation}
 %
 The angle of rotation is dictated by a scalar component of the rotor, similar to the \(w\) component of a quaternion. 
-As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very similar in concept. The rotor, unlike the quaternion, has the advantage of not having to leave the dimensionality of the vector in order to rotate the vector, allowing it to be used in \(n\) dimensions.
+As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very similar in concept. The rotor, unlike the quaternion, has the advantage of not leaving the dimensionality of the vector in order to rotate the vector, allowing it to be used in \(n\) dimensions.
 
 \section{Interaction and Direct Manipulation}
 \label{background_rotation}
@@ -332,14 +336,14 @@ As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very 
 
 \subsection*{Common Approaches}
 
-Manipulating virtual objects in three dimensions is challenging. Excluding mixed reality, general we can only interact with geometry through a 2D interface.
+Intuitive manipulation of virtual objects in three dimensions is challenging. Excluding mixed reality, generally we can only interact with geometry through a 2D interface.
 %
 One common method of rotating a 3D object through a 2D screen is with the use of swiping. Swipe-based rotations are very common on touch screen devices, utilising multi-touch as a secondary input to switch dimensions. 
 Assuming the $z$ axis protrudes from the screen, swiping left or right will rotate about the $xz$ plane, up and down will rotate about the $yz$ plane. Two fingers rotating clockwise or anti-clockwise will perform a rotation about the $xy$ plane. 
 Swipe-based rotation is limited to performing rotations relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it not being used in professional 3D development software.
 \vskip 0.5em
-Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, it appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected by holding down a mouse button. From here, the plane of rotation is restricted as parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
-The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate by moving the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc.
+Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected, restricting the plane of rotation parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
+The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate whilst moving the cursor along the path of the arc. \textit{Unity} however requires the user to move the mouse along the path tangent to the arc.
 
 \subsection*{Novel Hardware-based Approaches}
 
@@ -357,8 +361,7 @@ Arcball \citep{shoemake_arcball_1994} is similar to the virtual sphere, in that 
 The major difference between the virtual sphere and arcball, is that arcball does not exhibit hysteresis. This is accomplished through two properties:
 The system utilises the double coverage property of quaternions, such that dragging from either side of the sphere, $180^{\circ}$ apart, will complete a full $360^{\circ}$ rotation.
 Arcball consistently compares the initial point $A$ to the updated mouse position $B$ in a single drag, producing one arc of rotation. Combined with the double coverage, any path from $A$ to $B$ will result in the same rotation.
-
-\pagebreak
+\vskip 0.5em
 According to \citet{hinckley_usability_1997}, there is no evidence that the arcball may be better than the virtual sphere. However, users of the two mechanics generally report the arcball to be more responsive and allow for more control. 
 On the other hand, many users enjoy the virtual spheres slower movement as it emulates the feeling of "pushing" the object around.
 
@@ -368,32 +371,33 @@ Direct manipulation of 4D geometry is immediately a more complex problem given d
 \citet{shoemake_arcball_1994} also remarks that a pair of arcballs can be used to rotate an object in four dimensions. 
 \citep{hanson_rolling_1992} also proposes a similar approach, taking advantage of a virtual sphere to rotate in 4D.
 \vskip 0.5em
-A primitive solution proposed by \citet{kageyama_keyboard-based_2005} explores the idea of using keyboard inputs to rotate an object in all 6 DoF. This system allows users to compose rotation matrices to rotate an object. This allows for incremental control over how an object rotates. As the system uses rotation matrices, it is at risk of gimbal lock. Furthermore, key presses are discrete. A more desireable approach may be to utilise a mouse for a more continuous spectrum of rotation, with an optional incremental feature, as is standard with most 3D software.
-\vskip 0.5em
-\citet{yan_multitouching_2012} takes advantage of multi-touch screen devices, and the different gestures that can be accomplished with two or more. Multi-touch presents itself as an easier and more intuitive secondary input opposed to keyboard presses.
+A primitive solution proposed by \citet{kageyama_keyboard-based_2005} explores the idea of using keyboard inputs to rotate an object in all 6 DoF. This system allows users to compose rotation matrices for incremental control over how an object rotates. As the system uses rotation matrices, it is at risk of gimbal lock. Furthermore, key presses are discrete. A more desireable approach may be to utilise a mouse for a more continuous spectrum of rotation, with an optional incremental feature, as is standard with most 3D software.
+
+\pagebreak
+\citet{yan_multitouching_2012} takes advantage of multi-touch screen devices, and the different gestures that can be accomplished with two or more. Multi-touch presents itself as an easier and more intuitive secondary input opposed to keyboard presses, with different gestures referring to different rotations.
 
 \section{Teaching and Evaluation}
 \label{teaching_and_eval}
 
-In order to evaluate the effectiveness of each extension to a 3D cross section of a 4D object, as stated in the aims of this investigation, a participant should have an understanding of what four dimensional geometry is, and how it behaves.
-For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space, prior to conducting the experiment of the representations of the 4D geometry. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, Theorises that their are five levels of understanding geometry, where a student will progress from one level to the next. The levels of understanding include: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
+In order to evaluate the effectiveness of each extension to a 3D cross section of a 4D object, a participant should have an understanding of what four dimensional geometry is, and how it behaves.
+For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space, prior to conducting the experiment. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, Theorises that their are five levels of understanding geometry, where a student will progress from one level to the next: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
 Level 0 focuses on the identification and recognition of geometry using simple language. The properties that define a geometry need not be identified.
 Level 1: students begin basic analysis and identification of geometry, without a need for proofs.
 Level 2: students create meaningful definitions and are able to justify and reason their understanding of geometry.
 Level 3: students are able to provide deductive geometry proofs, showing their understanding of formal definitions and theorems.
 Level 4: students have an understanding of several proofs and can comprehend Euclidean and non-Euclidean geometry.
 \vskip 0.5em
-\citet{safrankova_van_2012} outlines the five stages of the learning process that should be covered when teach a student about geometry in order to comprehensively cover the material in such a way that a student will understand it; as outlined in the van Hiele model.
-\textit{Information inquiry} is where students receive the relevant material and discover the structure of the information they are handling. At this stage a teacher should use familiar language to help a student relate what they already understand to the new material.
+\citet{safrankova_van_2012} outlines the five stages of the learning process to comprehensively cover the material and reaffirm a students understanding; as outlined in the van Hiele model.
+\textit{Information inquiry} is where students receive the material and discover the structure of the information they are handling. At this stage a teacher should use familiar language to help a student relate what they already understand to the new material.
 \textit{Guided or directed orientation} deals with the exploration of relationships within the material. A teacher may suggest activities enabling students to recognise the properties of a new concept. Discussion is encourage between the student and the teacher to assist in discovering relationships between properties of the material.
-\textit{Explanation or Explication}: Here, students formulate what they have discovered. New terminology is introduced whilst the student shares their opinion on what relationship is discovered. Here a teacher can ensure the correct terminology is being used.
-The \textit{Free orientation} stage allows for students to solve more complex tasks independently to master the network of relationships within the content. In this stage a student may develop their understanding of the properties of geometry as well as develop their understanding of the relationships between geometry in a variety of scenarios.
+\textit{Explanation or Explication}: Students formulate what they have discovered. New terminology is introduced whilst the student shares their thoughts on the relationships discovered. Here a teacher can ensure the correct terminology is being used.
+The \textit{Free orientation} stage allows for students to solve more complex tasks independently to master the network of relationships within the content. A student may develop their understanding of the properties of geometry as well as develop their understanding of the material in a variety of scenarios.
 Finally, \textit{Integration} involves the student summarising what they have learned. No new material is presented in this stage.
 \vskip 0.5em
 For the purposes of this experiment, only levels 0 to 2 of \textit{The van Hiele Model of Geometric Thinking} will be explored. A rule of the model is that a student may not progress to level \(N\) without having first tackled level $N-1$. 
-In order to best evaluate the effectiveness of an extension to the 3D cross section of a 4D object, a participant of the investigation should understand the geometry they are working with to some degree.
+In order to best evaluate the effectiveness of an extension to the 3D cross section of a 4D object, a participant of the investigation should understand the geometry they are working with.
 Unfortunately, given the limited time to conduct the investigation, and an individual experiment, participants will not be able to sufficiently progress through each level, whilst also covering each of the five stages of the learning process. 
-To provide a participant with the best possible foundations for understanding four dimensions, tutorials and question and answer sessions before and after each stage in the experiment were be conducted. The experiment was designed to try follow the structure of the five stage learning process as closely as would allow. This is expanded upon more in the experimental design section (\cref{experimental_design}) of this paper.
+To provide a participant with the best possible foundations for understanding four dimensions, tutorials and question and answer sessions before and after each stage in the experiment were conducted. The experiment was designed around the structure of the five stage learning process as is expanded upon in the experimental design section (\cref{experimental_design}) of this paper.
 
 %==================================================================================================================================
 \chapter{Analysis and Requirements}
