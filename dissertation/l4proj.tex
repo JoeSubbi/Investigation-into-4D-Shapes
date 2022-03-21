@@ -925,25 +925,26 @@ Whilst it would have been desirable to explore manipulation tools such as arcbal
 
 \subsection{Swipe Based Input - Rotation About The Global Axes}
 
-%Manipulating virtual objects in three dimensions is challenging. Excluding mixed reality, general we can only interact with geometry through a 2D interface.
-%
-%One common method of rotating a 3D object through a 2D screen is with the use of swiping. Swipe-based rotations are very common on touch screen devices, utilising multi-touch as a secondary input to switch dimensions. 
-%Assuming the $z$ axis protrudes from the screen, swiping left or right will rotate about the $xz$ plane, up and down will rotate about the $yz$ plane. Two fingers rotating clockwise or anti-clockwise will perform a rotation about the $xy$ plane. 
-%Swipe-based rotation is limited to performing rotations relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it not being used in professional 3D development software.
+Swipe based rotation mechanics are simple to implement and straightforward to understand. Restricting the plane of rotation allows users to be deliberate in the actions they take. A disadvantage of swipe based rotation in comparison with arcball or the virtual sphere, is requiring a secondary input to switch between dimensions.
+\vskip 0.5em
+Beginning with 3D swipe based rotation. Left clicking the mouse button and dragging it across the screen yields a delta value; a \texttt{Vector2} describing the difference in the $x$ and $y$ mouse positions between the current and previous frame.
+Using this information, the plane of rotation may be specified: an upward swipe ($y$) will rotate about the $yz$ plane, and a sideways swipe ($x$) will rotate about the $xz$ plane. 
+Taking the mouse delta values and multiplying them by a \texttt{speed} constant allows them to be used as the input angle of rotation.
+The implementation allows a user to hold the \texttt{x} and \texttt{y} keys to restrict the plane of rotation about the $x$ and $y$ axes ($yz$ and $xz$ planes) respectively. 
+To rotate about the $z$ axis ($xy$ plane), the user may hold the \texttt{z} key.
+To calculate the angle of rotation, the screen is divided into vertical and horizontal halves to produce a basic equation for translating circular motion to linear values. The user may then rotate the mouse in a circle about the center of the screen to produce the matching rotation.
+\vskip 0.5em
+The 3D rotation controls may extended to four dimensions, keeping 3D rotation to the same as before; using the left mouse button. The right mouse button is then in control of 4D rotation. The mouse delta values are again used to control rotation in the $xw$ and $yw$ planes, respective to the $x$ and $y$ delta values.
+A user may restrict the planes of rotation using the same keys as before. Holding the \texttt{x} key will restrict the rotation to the $xw$ plane, and holding the \texttt{y} will restrict the rotation to the $yw$ plane. Holding the \texttt{z} key allows the user to rotate about the $zw$ plane, where a user may move the cursor, again in a circular motion, to rotate the object.
+\vskip 0.5em
+Although the resulting rotation mechanic does not give the user control relative to the objects local axes, it received a warm reception during informal discussions with participants. It appears intuitive and easy to grasp. 
+Separating the left and right click of the mouse to three and four dimensional rotations respectively, in combination with the ability to restrict the planes of rotation, allows users to be deliberate and purposeful with their actions.
+
+\subsection{4D Grab Ball - Rotation About The Local Axes}
+
 %\vskip 0.5em
 %Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, it appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected by holding down a mouse button. From here, the plane of rotation is restricted as parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
 %The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate by moving the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc.
-
-Swipe based rotation mechanics are simple to implement and straightforward to understand.
-
-intuitive\\
-does not define "how rotated" 4D axes are relative to the local coordinates of the shape
-
-TODO: swipe
-
-deliberate
-
-\subsection{4D Grab Ball - Rotation About The Local Axes}
 
 idea\\
 progress\\
