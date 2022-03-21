@@ -406,26 +406,28 @@ To provide a participant with the best possible foundations for understanding fo
 
 The core of this project focuses on the development of a system capable of rendering several different types of four dimensional objects, and be able to view these objects through a series of extensions to the 3D cross section in order to evaluate their effectiveness in teaching potentially inexperienced users about complex geometry.
 \vskip 0.5em
-For a successful investigation, a focus was placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment was to be clear and concise. Both quantitative and qualitative metrics were obtained. The experiment needed tests probing a participant on the surface type, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$ given different representations of an objects cross section.
+For a successful investigation, a focus was placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment was to be clear and concise. Both quantitative and qualitative metrics were obtained. To properly evaluate each representations of an objects cross section, the experiment required tests probing a participant on the surface type, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$.
 
 \section{Limitations}
 
-The scope of the project is limited by two main factors: The time that can be spent on development, and the quantity to quality ratio of experimentation. 
-The project is primarily separated into three components: Research, development and experimentation. The development phase took the most time with so many areas for exploration. Such areas include the creation, stable rotation, and manipulation of 4D geometry. To evaluate the effectiveness of the representations that need to be developed however, plenty of time needs to be put aside to plan and run appropriate experiments.
+The scope of the project was limited by two main factors: The time that can be spent on development, and the quantity to quality ratio of experimentation. 
+The project is primarily separated into three components: Research, development and experimentation. The development phase took the most time with so many areas for exploration. Such areas include the creation, stable rotation, and manipulation of 4D geometry. To evaluate the effectiveness of the representations that need to be developed however, plenty of time needed to be put aside to plan and run appropriate experiments.
 Experimentation is, more often than not, limited by the number of participants that choose to be involved. To encourage the greatest number of potential participants to enroll in the experiment, the time commitment and effort cannot be so great that it deters them. Alongside the conscious effort to sign up, the experiment cannot run for such a period of time that it may effect a participants performance. As such, the amount of data that can be collected in one sitting was to be maximised within a limited time frame.
 
 \section{The Framework}
 \label{requirements_framework}
 
 The project was developed in the Unity game engine using ray marching shaders. Unity is readily available to anyone for free; and allows for quick and simple application deployment for web based hosting using WebGL and HTML5. 
-Given the COVID-19 pandemic at the time of the experiment, online hosting was an important consideration to allow for a more accessible experiment in a world where people are having to self isolate. Not only does this allow for a participants safety, but the size of the audience can be increased. Online hosting reduces the commitment a participant has to make, making the experiment more appealing. Time to commute and costs of travel that potential participants would otherwise have to make, now no longer factor into the considerations made by a potential participant when signing up for the experiment.
+Given the COVID-19 pandemic at the time of the experiment, online hosting was an important consideration to allow for a more accessible experiment in a world where people are having to self isolate. Not only does this allow for a participants safety, but the potential size of the audience can be increased. Online hosting reduces the commitment a participant has to make, making the experiment more appealing. Time to commute and costs of travel that potential participants would otherwise have to make, now no longer factor into the considerations made by a potential participant when signing up for the experiment.
 \vskip 0.5em
-Ray marching was used rather than mesh based rendering given its comparative ease. Several 4D shapes can be written fairly quickly using ray marching. Although complex geometry with defined faces, such as the 120-cell is a struggle to write using ray marching, render curved geometry using mesh based rendering requires the development of a smooth shading rendering effect. Furthermore, implementing a rendering of the 3D cross section of a 4D object is comparatively trivial using ray marching. To render the three dimensional cross section of a 4D mesh is yet another system to develop that would require more time and research. 
-Generally, ray marching is more suitable to this project in exploring primitive geometry in $\mathbb{R}^4$, and allows for more time to be spent on research and development into stable rotation and manipulation of 4D geometry, and the creation of a cohesive investigation.
+Ray marching was used rather than mesh based rendering given its comparative ease. Several 4D shapes can be written fairly quickly using ray marching. Although complex geometry with defined faces, such as the 120-cell is a struggle to write using ray marching, render curved geometry using mesh based rendering requires the development of a smooth shading rendering effect. 
+Moreover, the experiment only intended to test users with 4D primitive objects given they are easier to understand and relate to three dimensions. 
+Furthermore, implementing a rendering of the 3D cross section of a 4D object is comparatively trivial using ray marching. To render the three dimensional cross section of a 4D mesh is yet another system to develop that would require more time and research. 
+Generally, ray marching is more suitable to this project in exploring primitive geometry in $\mathbb{R}^4$, and allows for more time to be spent on the research and development of stable rotation and manipulation of 4D geometry, and the creation of a cohesive investigation.
 
 \section{Prioritisation of Requirements Using MoSCoW}
 
-MoSCoW is a prioritisation technique used in project planning. The purpose of MoSCoW is to separate the requirements of a project into four levels of priority: Must have, Should have, Could have and Won't have. This process may be revisited several times during a projects development lifecycle; different requirements are often re-prioritised based on project progress or a change in direction.
+MoSCoW is a prioritisation technique used in project planning. The purpose of MoSCoW is to separate the requirements of a project into four levels of priority: Must have, Should have, Could have and Won't have this time. This process may be revisited several times during a projects development lifecycle; different requirements are often re-prioritised based on project progress or a change in direction.
 
 \subsection*{Must Have}
 
@@ -438,11 +440,12 @@ The aims of the project focus on the development of several extensions to the 3D
 \vskip 0.5em
 To distinguish the faces of shapes, the objects will need to be coloured such that given two objects in a different pose, both objects can be distinguished from one another even if their surface shape appears identical. 
 \vskip 0.5em
-In order to prepare participants for the experiment, an introductory tutorial video will need to be assembled to teach and explain them about the complexities and features of the fourth dimension. This tutorial video must cover the behaviour of geometry in $\mathbb{R}^4$, with appropriate references to the similarities when reducing three dimensional space to a two dimensional cross section. Moreover, the video must explain rotation in four dimensions, as well as an explanation for the behaviour that occurs when rotating an object outside of the dimensions it is being viewed within. The video must have relevant diagrams and animations to appropriately depict the behaviour of 4D shapes in such a way that it will be immediately relatable to the following experiment.
-%\vskip 0.5em
+In order to prepare participants for the experiment, an introductory tutorial video will need to be assembled to teach and explain to them about the complexities and features of the fourth dimension. This tutorial video must cover the behaviour of geometry in $\mathbb{R}^4$, with appropriate references to the similarities when reducing three dimensional space to a two dimensional cross section. 
+Moreover, the video must explain rotation in four dimensions, as well as an explanation for the behaviour that occurs when rotating an object outside of the dimensions it is being viewed within. The video must have relevant diagrams and animations to appropriately depict the behaviour of 4D shapes in such a way that is related to the following experiment.
+
 \pagebreak
 
-Before running the experiments, the tests must be completed and evaluated several times by myself, with some preliminary research with a small group of peers to ensure the functionality of the system is as expected, and any restraints such as time limits are within acceptable bounds.
+Before running the experiments, the tasks must be completed and evaluated several times by myself, and complimented by some preliminary research with a small group of peers to ensure the functionality of the system is as expected, and any restraints such as time limits are within acceptable bounds.
 \vskip 0.5em
 Finally the experiment must have multiple stages of testing to evaluate a persons understanding of the several aspects of geometry. The experiment must not last such a long time that it affects the participants performance. To appropriately evaluate a persons understanding alongside the effectiveness of a representation, qualitative data must be collected from the participant, about their understanding, including open and closed questions.
 
@@ -451,14 +454,16 @@ Finally the experiment must have multiple stages of testing to evaluate a person
 Whilst not a necessity, the following requirements would enhance the investigation, allowing the further exploration of the four dimensional world.
 
 "Free orientation", as stated by \citet{safrankova_van_2012}, is an important aspect in a students learning and understanding of the definition and behaviour of geometry. In order for a participant to master the complexities of geometry in $\mathbb{R}^4$ they should be able to handle 4D objects directly.
-Evaluating a participants understanding of a shape, its surface and its behaviour under rotation can be conducted without directly interacting with or manipulating an object, a system should be developed to allow a participant to directly interact with 4D objects in order to perceive, first hand, the effect they have on the cross section o the geometry.
+Evaluating a participants understanding of a shape, its surface and its behaviour under rotation can be conducted without directly interacting with or manipulating an object; however a system should be developed allowing a participant to directly interact with 4D objects in order to perceive, first hand, the effect they have on the cross section o the geometry.
 For direct manipulation in four dimensions, a 4D Rotor must be implemented to allow for stable interaction, without fear of gimbal lock.
+\vskip 0.5em
+Following the implementation of a system to freely rotate 4D geometry, a challenge should be implemented evaluating a participants understanding of the geometry through the use of the manipulation of objects on screen.
 
 \subsection*{Could Have}
 
 Given the limitations, although it would be nice to include, the following requirements are the lowest priority. The requirements will be explored, but are not necessary to conduct the investigation and will likely not be refined to a satisfactory degree.
 
-It would be desirable to implement a series of tools allowing for intuitive interaction of 4D geometry, and such methods of interaction will be experimented with. The experiments, however, will only implement one method of rotation for the experiment, given the investigation focuses on the ways to enhance the cross section of 4D space, rather than how to manipulate these objects. Therefore, it is of minimal priority to develop several methods of rotation, although during the research and development phase, several methods of interaction will be explored.
+It would be desirable to implement a series of tools for manipulation, allowing for intuitive interaction of 4D geometry. Such methods of interaction will be experimented with. The experiments, however, will only implement one method of rotation for the experiment, given the investigation focuses on the ways to enhance the cross section of 4D space, rather than how to manipulate these objects. Therefore, it is of minimal priority to develop several methods of rotation, although during the research and development phase, several methods of interaction will be explored.
 
 %==================================================================================================================================
 \chapter{Design}
@@ -479,7 +484,7 @@ The tutorial was structured such that the world of four dimensions could be buil
 To begin with, the concept of a fourth perpendicular axis was introduced, with emphasis that this could not be visualised, and instead a method of viewing 4D geometry would be with the use of a 3D cross section. 
 The 2D cross sections of some primitive 3D shapes, namely the hyper-sphere and a hyper-cube, were showcased. 
 To complement the behaviour of a shapes cross section, the geometry of a hyper-sphere and a hyper-cube were described independent to their cross sections.
-
+\vskip 0.5em
 The rotation of 4D geometry is a more complex subject. As such, the rotation was broken down into several stages.
 Rotation in \(n\) dimensions must be considered a planar rotation, opposed to axial rotations as most people are used to. 
 Planar rotations are first introduced in 3D and were equated to the axial rotations to assist in a learners understanding.
