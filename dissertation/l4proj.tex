@@ -1047,7 +1047,31 @@ For the experiment to be successful it must provide clear explanations of the ex
 
 \section{Tasks and Parameters}
 
-TODO: Task Figures
+\begin{figure}
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{images/tasks/shape_match.PNG}
+    \caption{
+      Shape match
+    }
+    \label{fig:task_s}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{images/tasks/rotation_match.PNG}
+    \caption{
+      Rotation match
+    }
+    \label{fig:task_r}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{images/tasks/pose_match.PNG}
+    \caption{
+      Pose match
+    }
+    \label{fig:task_p}
+  \end{subfigure}
+  \label{fig:tasks}
+  \caption{User Interface layout for each task using the Control representation.}
+\end{figure}
 
 The experiment was separated into a series of repeated task. Each task would be repeated several times for each representation. Each task would try to capture the representations effectiveness at conveying a different aspect of geometry.
 
@@ -1055,6 +1079,7 @@ The experiment was separated into a series of repeated task. Each task would be 
 
 The goal of shape matching is to evaluate a representations effectiveness at conveying the surface geometry of a 3D cross section of a 4D object.
 Given a random object, in a random pose, a user must identify the shapes 3D analogous counterpart. A user may select which shape they believe to be on screen through a menu on the left hand side.
+(\cref{fig:task_s}).
 The participant was allotted twenty seconds to play with and identify the shape on screen which, in hindsight, was likely to little time.
 
 The cross section of different objects, such as the hyper-cube and pentachoron may appear similar. When textured, however, will have distinct colours or patterns, making them more easily identifiable.As such, the objects on screen are white and coloured exclusively with diffuse lighting, as to avoid bias where a user may identify a relationship between the patterns and shapes. 
@@ -1066,7 +1091,7 @@ After each attempt at the task, the participant was asked how confident they wer
 
 The goal of rotation matching is to evaluate a representations effectiveness conveying to a user the rotations a 4D object may undergo; allowing a user to identify any active planes of continuous rotation.
 A given random object may rotate in up to three planes of rotation at once. There is a 100\% chance of at least one 4D rotation (involving the \(w\) axis), approximately a 33\% chance of a second 4D rotation, and a 30\% chance of a 3D rotation.
-A user may select from a menu on the left hand side all of the planes of rotation they believe may be active.
+A user may select from a menu on the left hand side all of the planes of rotation they believe may be active. (\cref{fig:task_r}).
 The participant was informed prior to this task that their may be between one and three planes of rotation, with a maximum of one 3D rotation at a given time.
 The participant was allotted sixty seconds to play with and identify the shape on screen.
 The sphere was not included for this experiment as its cross section does not change shape under rotation. 
@@ -1077,7 +1102,7 @@ As with the shape matching task, after each attempt the participant was quizzed 
 \subsection*{Pose Matching}
 
 The goal of pose matching is to evaluate a representations effectiveness in assisting a user when manipulating geometry.
-Given a primary object in the same on-screen position as with the other tasks, and a secondary randomly oriented object in the top of the screen, a user must rotate the primary object to match the pose of the secondary object.
+Given a primary object in the same on-screen position as with the other tasks, and a secondary randomly oriented object in the top of the screen, a user must rotate the primary object to match the pose of the secondary object. (\cref{fig:task_p}).
 The secondary object is randomly rotated exclusively along the 4D planes of rotation. 
 Rotating the primary object using 3D rotation will simultaneously rotate the secondary object in 3D. The purpose of this is to allow a user to check all sides of the two shapes match, otherwise you may just be looking at a single side of the secondary object, with no hint of similarity between the two objects.
 The participant was allotted three minutes to manipulate the shapes on screen to match their orientation as closely as possible.
@@ -1090,8 +1115,11 @@ After the completion of each attempt the user was asked to rate the difficulty o
 It was expected that as users learned the behaviour of 4D shapes, they would improve. To avoid this bias leaking into the data, representations were presented in a random order. A control representation was included, without any extension to the 3D cross section being utilised.
 
 Each representation would be subject to five iterations of shape matching, five iterations of rotation matching, and three iterations of pose matching, respectively.
+After each representation, the user would be shown graphs detailing their accuracy. The purpose of this was to keep participants engaged and attentive.
 
 \section{Limitations}
+
+The experimentation process for this investigation suffers from limitations that may restrict the quality of the data collected.The most notably drawback is the lack of time per participant.
 
 TODO: experiment limitations
 
