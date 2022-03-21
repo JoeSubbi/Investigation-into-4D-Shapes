@@ -658,7 +658,7 @@ A tetrahedron is made up of 4 triangular faces, each opposing one of it's four v
 The SDF for a tetrahedron also takes a parameter $s$, used to scale the tetrahedron. Subtracting $s$ from the distance to the surface, effectively brings the surface further from the center, similar to the radius of a sphere.
 Constructing a pentachoron is done in a near identical way, just five vertices are considered rather than four.
 
-TODO: Figures of derivation
+% TODO: Figures of derivation
 
 \begin{figure}[H]
   \begin{subfigure}[b]{0.47\textwidth}
@@ -775,8 +775,8 @@ TODO: Figures of derivation
   %
   \caption{
     The \emph{4D to 3D abstraction} extension to the 3D cross section of a 4D object.
-    \subref{rep_4-3-torus} shows a torus rotated approximately $45^{\circ}$ about the $xw$ plane, and then $70^{\circ}$ about the $xw$ plane.
-    \subref{rep_4-3-capsule} shows a capsule initially extended along $w$, and then rotated $90^{\circ}$ about the $xw$ plane.
+    \subref{fig:rep_4-3-torus} shows a torus rotated approximately $45^{\circ}$ about the $xw$ plane, and then $70^{\circ}$ about the $xw$ plane.
+    \subref{fig:rep_4-3-capsule} shows a capsule initially extended along $w$, and then rotated $90^{\circ}$ about the $xw$ plane.
     }
   \label{fig:rep_4-3}
 \end{figure}
@@ -868,6 +868,7 @@ As stated above, a rotor in $\mathbb{R}^4$ is comprised of a grade 0 multivector
 %
 \citet{bosch_4d_2011} provides a code template written in C++ for a \texttt{Rotor4} in his initial blog post describing the rotor. Following his interactive article - an Introduction to Rotors - describing properties of geometric algebra in detail \citep{bosch_lets_nodate} Bosch provides a completed \texttt{Rotor3} class, compared against a Quaternion implementation \citep{bosch_code_nodate}. With this wealth of information, the foundations for the rotor could be implemented in Unity, C\#. The 4D rotor however was incomplete. 
 Whilst Bosch provided a completed \texttt{Rotor3} class, the $\mathbb{R}^4$ rotor-rotor product, and the $\mathbb{R}^4$ rotor-vector-sandwich product (the rotation of a vector) where not. 
+\vskip 0.5em
 
 \begin{figure}
   \begin{subfigure}[b]{0.45\textwidth}
@@ -917,7 +918,7 @@ The first challenge in rotating ray marched 4D shapes was passing the informatio
 \vskip 0.5em
 Two methods of rotation were developed; only swipe based input was implemented. 
 Swipe based input takes mouse delta values and keyboard inputs to rotate an object in the direction of mouse movement, allowing a user to restrict the plane of rotation through a keyboard input.
-Grab ball rotation was an attempt to expand upon the most commonly employed method of 3D rotation. Three arcs, or in the case of 4D: six hyper torii, each controlling a different plane of local rotation for the object.
+Grab ball rotation was an attempt to expand upon the most commonly employed method of 3D rotation. Three arcs, or in the case of 4D: six hyper tori, each controlling a different plane of local rotation for the object.
 \vskip 0.5em
 Arcball or the virtual sphere can be used in 4D, as discussed in \cref{background_rotation}. 
 Swipe based rotation is simple to implement, and allows for restricting the planes of rotation. Therefore it was the minimal viable product in the development of an intuitive rotation mechanic.
@@ -940,17 +941,74 @@ A user may restrict the planes of rotation using the same keys as before. Holdin
 Although the resulting rotation mechanic does not give the user control relative to the objects local axes, it received a warm reception during informal discussions with participants. It appears intuitive and easy to grasp. 
 Separating the left and right click of the mouse to three and four dimensional rotations respectively, in combination with the ability to restrict the planes of rotation, allows users to be deliberate and purposeful with their actions.
 
+\begin{figure}[H]
+  \hspace{1.75cm}
+  \begin{subfigure}[b]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{images/rotation/grabball-3D.PNG}
+    \caption{
+      Rotations in 3D
+    }
+    \label{fig:grab1}
+  \end{subfigure}
+  \hspace{1cm}
+  \begin{subfigure}[b]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{images/rotation/grabball-3D-offset.PNG}
+    \caption{
+      After rotations in 4D
+    }
+    \label{fig:grab2}
+  \end{subfigure}
+  \label{fig:grabballs-arcs}
+  \caption{
+    Interactive mesh based arcs. When interacted with, an arc will overlay a tangent line which the path should follow. This works well for 3D rotation \subref{fig:grab1}. When rotating in 4D, the grab ball remains stationary. As such, it becomes offset from the geometry \subref{fig:grab2}.
+  }
+\end{figure}
+
+\begin{figure}[H]
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{images/rotation/grabball-torii.PNG}
+    \caption{
+      Not rotated in 4D
+    }
+    \label{fig:grab3}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{images/rotation/grabball-torii-split-2.PNG}
+    \caption{
+      Small rotation in 4D
+    }
+    \label{fig:grab4}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.33\textwidth}
+    \includegraphics[width=\textwidth]{images/rotation/grabball-torii-split.PNG}
+    \caption{
+      Large rotation in 4D
+    }
+    \label{fig:grab5}
+  \end{subfigure}
+  \label{fig:grabballs-tori}
+  \caption{
+    Ray marched grab ball concept using six tori. 4D arcs are lighter in colour to the 3D arcs. \subref{fig:grab3} shows the 4D arcs are hidden, and would be inaccessible. If rotated in 4D, the arcs begin to change, overtime indicating less and less what the result of interaction may be (\subref{fig:grab4}, \subref{fig:grab5}).
+  }
+\end{figure}
+
 \subsection{4D Grab Ball - Rotation About The Local Axes}
 
 %\vskip 0.5em
 %Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, it appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected by holding down a mouse button. From here, the plane of rotation is restricted as parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
 %The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate by moving the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc.
 
+Referred to in this paper as the grab ball, is the most commonly employed method of controlling the rotation of an object. The grab ball provides the user with control over the objects rotation, relative to the objects local axis. As such, 
+
+In $\mathbb{R}^3$.
+
 idea\\
 progress\\
 why it failed
 
 TODO: grab ball
+
+%====
 
 \begin{figure}[H]
   \begin{subfigure}[b]{0.25\textwidth}
