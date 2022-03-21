@@ -326,6 +326,7 @@ The angle of rotation is dictated by a scalar component of the rotor, similar to
 As shown by \citep{bosch_code_nodate}, the quaternion and the 3D rotor are very similar in concept. The rotor, unlike the quaternion, has the advantage of not having to leave the dimensionality of the vector in order to rotate the vector, allowing it to be used in \(n\) dimensions.
 
 \section{Interaction and Direct Manipulation}
+\label{background_rotation}
 
 \subsection{Methods of Interaction in 3D}
 
@@ -903,19 +904,28 @@ The final equations are grouped into their multivector components. The final equ
 \section{Methods of Rotation}
 \label{interaction}
 
-The first challenge in rotating ray marched 4D shapes was passing the information to the shader. Unity's shader lab allows the programmer to implement and adjust properties of the shader. This is normally used for changing the colour or the roughness. The shader properties included to manipulate any ray marched objects included the $(x,y,z,w)$ translation of the origin point, as well as the eight components of the Rotor used to rotate the object. \cref{eq:rotate_vec} was implemented in the shader to rotate any vector in the scene according to the eight rotor component shader properties.
+The first challenge in rotating ray marched 4D shapes was passing the information to the shader. Unity's shader lab allows the programmer to implement and adjust properties of the shader. This is normally used for changing the colour or roughness. The shader properties used to manipulate ray marched objects included the $(x,y,z,w)$ translation of the origin point, as well as the eight components of the Rotor used to rotate the object. \cref{eq:rotate_vec} was implemented in the shader to rotate any vector in the scene according to the eight rotor component shader properties.
 \vskip 0.5em
-Two methods of rotation were developed, but only swipe based input was implemented. Swipe based input took mouse delta values and keyboard inputs to rotating an object in the direction of mouse movement, allowing a user to restrict the plane of rotation through a keyboard input.
-Grab ball rotation was an attempt to expand upon perhaps the most commonly employed method of 3D rotation found in software. Three arcs, or in the case of 4D: six hyper torii, each controlling a different plane of local rotation for the object.
-
-
-\citep{shoemake_arcball_1994} remarks: 
- - can use a pair of arcballs to rotate objects in 4d
-
-allocated time did not allow for exploration further
-
+Two methods of rotation were developed; only swipe based input was implemented. 
+Swipe based input takes mouse delta values and keyboard inputs to rotate an object in the direction of mouse movement, allowing a user to restrict the plane of rotation through a keyboard input.
+Grab ball rotation was an attempt to expand upon the most commonly employed method of 3D rotation. Three arcs, or in the case of 4D: six hyper torii, each controlling a different plane of local rotation for the object.
+\vskip 0.5em
+Arcball or the virtual sphere can be used in 4D, as discussed in \cref{background_rotation}. 
+Swipe based rotation is simple to implement, and allows for restricting the planes of rotation. Therefore it was the minimal viable product in the development of an intuitive rotation mechanic.
+Whilst it would have been desirable to explore manipulation tools such as arcball or the virtual sphere, the allocated time versus the time of development did not allow for detailed exploration or development of such mechanics.
 
 \subsection{Swipe Based Input - Rotation About The Global Axes}
+
+%Manipulating virtual objects in three dimensions is challenging. Excluding mixed reality, general we can only interact with geometry through a 2D interface.
+%
+%One common method of rotating a 3D object through a 2D screen is with the use of swiping. Swipe-based rotations are very common on touch screen devices, utilising multi-touch as a secondary input to switch dimensions. 
+%Assuming the $z$ axis protrudes from the screen, swiping left or right will rotate about the $xz$ plane, up and down will rotate about the $yz$ plane. Two fingers rotating clockwise or anti-clockwise will perform a rotation about the $xy$ plane. 
+%Swipe-based rotation is limited to performing rotations relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it not being used in professional 3D development software.
+%\vskip 0.5em
+%Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, it appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected by holding down a mouse button. From here, the plane of rotation is restricted as parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
+%The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate by moving the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc.
+
+Swipe based rotation mechanics are simple to implement and straightforward to understand.
 
 intuitive\\
 does not define "how rotated" 4D axes are relative to the local coordinates of the shape
@@ -982,7 +992,7 @@ Four different patterns patterns where developed, and projected along each axes.
 
 \section{Collecting Data}
 
-\subsection*{Data Format}
+\subsection{Data Format}
 
 Collected data was stored in a JSON format (\cref{lst:json}) for its ease of assembly and analysis. The Unity plugin: SimpleJSON \citep{bunny83_simplejson_nodate} allows for easy reading and writing and of JSON data.
 The data was separated by tasks per representation. Each task was repeated several times per representations, with each task collecting data such as: time taken, participant answers, the pose of objects on screen, and participant survey responses held after each task. Data was not analysed prior to collection as analysis tools would be developed after the fact.
@@ -1021,15 +1031,10 @@ During the development of each representation, preliminary evaluations were cond
 
 \subsection{Repeated Preliminary Experiments}
 
-TODO: preliminary experiments
-
-build system\\
-test it\\
-improvements\\
-
-Need to provide clear explanations of concepts early on
-
-provide time to play with object before tests to learn controls and behaviour
+The system was developed over the foundation that it was to be repeatedly tested and improved. 
+In order to gather the best data, the experiment should not rush the user more than necessary. The experiment should also not last so long that it wears the participant down and affects their results. To collect as much good data as possible, the timing of the experiment could not require an unreasonable commitment from potential participants. As such, the experiment was repeatedly tested and balanced to provide a user with an experience that allowed them to take their time, but did not last so long that it may wear them out, or deter people from participation.
+\vskip 0.5em
+For the experiment to be successful it must provide clear explanations of the experimental process and components participants will be interacting with, such as the extensions to the 3D cross section. Every piece of text was proof read by peers with little experience, in order to ensure the experiment was clear and concise.
 
 \section{Tasks and Parameters}
 
