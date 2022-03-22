@@ -941,8 +941,33 @@ A user may restrict the planes of rotation using the same keys as before. Holdin
 Although the resulting rotation mechanic does not give the user control relative to the objects local axes, it received a warm reception during informal discussions with participants. It appears intuitive and easy to grasp. 
 Separating the left and right click of the mouse to three and four dimensional rotations respectively, in combination with the ability to restrict the planes of rotation, allows users to be deliberate and purposeful with their actions.
 
-\begin{figure}[H]
-  \hspace{1.75cm}
+\subsection{4D Grab Ball - Rotation About The Local Axes}
+
+The most commonly employed method of controlling the rotation of an object, is with the use of a grab ball (as it is referred to in this paper). The grab ball provides a user with control over an objects rotation, relative to the objects local axis. The grab ball is well suited to a 2D interface, allowing a user to rotate an object without the need for a secondary input to switch dimensions.
+\vskip 0.5em
+In $\mathbb{R}^3$ dragging the mouse across each of the three arcs controls each of the three planes of rotation independently.
+Different software approaches the method of interaction in different ways. 
+Unity's rotation tool appears to rotate geometry as the cursor follows the path tangent to the arc, from the point at which the user clicked on the arc. This tangent line is not indicated to a developer, and therefore rotation can sometimes feels rather clunky.
+\vskip 0.5em
+Initial exploration of the grab ball, began with an implementation in $\mathbb{R}^3$. As with Unity's implementation, the system was designed such that a rotation occurs as the cursor is dragged along the tangent relative to the point of contact with an arc. To improve upon Unity's implementation, a tangent line is rendered to the screen in order to guide the users actions, as shown in \cref{fig:grab1}. 
+To rotate the grab ball itself, Unity's \texttt{transform} was used,rotating the ball with the use of quaternions.
+After some improvements, the interaction in $\mathbb{R}^3$ seemed intuitive and promising.
+\vskip 0.5em
+To rotate an object in four dimensions, a toggle was initially implemented, such that the three arcs would switch from the 3D planes of rotation, to the 4D planes of rotation (involving \(w\)).
+As the grab ball was rotated using a quaternion, it was held stationary when manipulating the geometry in 4D planes of rotation.
+This resulted in the first failure. Rotating in multiple planes of 4D rotation should effect the grab ball, and as a result the object and grab ball would no longer be in sync. This is shown in \cref{fig:grab2}. Furthermore, a four dimensional grab ball would require six arcs, one for each plane of rotation.
+\vskip 0.5em
+Exploring the idea of the grab ball further, an SDF of a grab ball was developed: The union of six tori, each with their major radius spanning each of the six planes of rotation.
+To select an object, a ray cast is emitted from the cursor position on screen. A collider is required for the ray cast to detect the object it has interacted with. The ray marched shader has no collider and therefore cannot be interacted with, unlike the mesh based arcs.
+The ray marched grab ball however, does provide some insight. 
+The 4D tori are still being viewed as a 3D cross section. As shown in \cref{fig:grabballs-arcs}, rotating the grab ball in four dimensions morphs the arcs. As the arc may just appear as two spheres, it can become impossible to predict the plane of rotation the object may rotate in, when grabbing a particular arc. 
+Furthermore, as shown in \cref{fig:grab3}, as the arcs are the same size, and only a slice of them may be seen at a given time, three of the six arcs are invisible - obscured by the other three.
+\vskip 0.5em
+Given more time for this investigation, research would be conducted into controlling the mesh of an arc through the use of a rotor, to rotate it in $\mathbb{R}^4$. It would be interesting to explore the shadow of a four dimensional grab ball, and how it may behave.
+Equally, it may be possible to define a collider synced to the ray marched grab ball. Explore how to control such an entity despite only a portion of it being visible at a given time, may prove more intuitive than one might expect.
+
+\begin{figure}
+  \hspace{1.6cm}
   \begin{subfigure}[b]{0.35\textwidth}
     \includegraphics[width=\textwidth]{images/rotation/grabball-3D.PNG}
     \caption{
@@ -950,7 +975,7 @@ Separating the left and right click of the mouse to three and four dimensional r
     }
     \label{fig:grab1}
   \end{subfigure}
-  \hspace{1cm}
+  \hspace{0.8cm}
   \begin{subfigure}[b]{0.35\textwidth}
     \includegraphics[width=\textwidth]{images/rotation/grabball-3D-offset.PNG}
     \caption{
@@ -964,7 +989,7 @@ Separating the left and right click of the mouse to three and four dimensional r
   }
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
   \begin{subfigure}[b]{0.33\textwidth}
     \includegraphics[width=\textwidth]{images/rotation/grabball-torii.PNG}
     \caption{
@@ -991,22 +1016,6 @@ Separating the left and right click of the mouse to three and four dimensional r
     Ray marched grab ball concept using six tori. 4D arcs are lighter in colour to the 3D arcs. \subref{fig:grab3} shows the 4D arcs are hidden, and would be inaccessible. If rotated in 4D, the arcs begin to change, overtime indicating less and less what the result of interaction may be (\subref{fig:grab4}, \subref{fig:grab5}).
   }
 \end{figure}
-
-\subsection{4D Grab Ball - Rotation About The Local Axes}
-
-%\vskip 0.5em
-%Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, it appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected by holding down a mouse button. From here, the plane of rotation is restricted as parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
-%The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate by moving the cursor, following the path of the arc in a circular motion. \textit{Unity} however requires the user to move the mouse along the path of the tangent to the arc.
-
-Referred to in this paper as the grab ball, is the most commonly employed method of controlling the rotation of an object. The grab ball provides the user with control over the objects rotation, relative to the objects local axis. As such, 
-
-In $\mathbb{R}^3$.
-
-idea\\
-progress\\
-why it failed
-
-TODO: grab ball
 
 %====
 
