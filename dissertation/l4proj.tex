@@ -94,7 +94,7 @@ Handling four dimensional space presents a number of opportunities and challenge
 \vskip 0.5em
 To understand the orientation of an object, a user needs to be able to differentiate similar faces of that object from each other. Colour, patterns and textures can be applied to an object in order to assist in comprehending the current pose of an object in comparison to an otherwise visually similar counterpart. An example of this is a cube rotated 90 degrees (\(\frac{\pi}{2}\) radians) and the same cube rotated by 270 degrees (\(\frac{3\pi}{2}\) radians). The un-textured cubes would appear to be the same despite not being in the same orientation.
 \vskip 0.5em
-In this paper several methods will be applied in an attempt to provide assist users by providing more information about a four dimensional object. Such methods include: viewing the object from other angles, attempts to visualise the object in its entirety spanning along the \(w\) axis, and abstractions of the rotation of an object in order to help interpret higher dimensional rotations.
+In this paper several methods will be applied in an attempt to assist a users understanding of higher dimensional space. Users will be provided with a series of extensions to the visualisation of four dimensional geometry. Such methods include: viewing the object from other angles, attempts to visualise the object in its entirety spanning along the \(w\) axis, and abstractions of the rotation of an object in order to help interpret higher dimensional rotations.
 
 \section{Motivation}
 
@@ -115,12 +115,12 @@ A variety of fields within science and engineering utilise the visualisation of 
 
 % wide range of 4 Dimensional shape. variety of ways to display. As such the usability of each representation will be experimentally validated in order to find the most intuitive and effective way to represent higher dimensional shapes. The accuracy of which the user can identify these properties and act accordingly will be measured against the representation being shown to them.
 
-This paper aims to answer questions related to which representation of 4D space, presented as an extension to the 3D cross section, is the most effective in conveying the properties of four dimensional geometry to a user with limited experience. Which representation is the most effective at representing the surface type of a 4D object? And which representation is more effective at conveying the rotational pose of an object in $\mathbb{R}^4$?
+This paper aims to answer questions related to which representation of 4D space, presented as an extension to the 3D cross section, is the most effective in conveying the properties of four dimensional geometry to a user with limited experience. Which representation is the most effective at representing the surface of a 4D object? And which representation is more effective at conveying the rotational pose of an object in $\mathbb{R}^4$?
 Furthermore, Does a users understanding and ability to manipulate 4D objects increase with practice? And can advantages of each representation be realised and digested by potentially inexperienced users?
 \vskip 0.5em
-As per the motivation for this project; an effective tutorial has been compiled together in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects has be developed in Unity, with the capability to showcase a wide variety of 4D shapes using ray marching. Research into intuitive methods of user interaction has been explored, and a system to rotate an object without gimbal lock was employed.
+As per the motivation for this project; an effective tutorial was compiled in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects was developed in Unity, with the capability to showcase a wide variety of 4D shapes using ray marching. Research into intuitive methods of user interaction was explored, and a system to rotate an object without gimbal lock was employed.
 \vskip 0.5em
-This paper proposes several extensions to taking a 3D cross section of a four dimensional object. The project evaluation explores what aspects of the geometry emphasised by these extensions are most effective when trying to interpret higher dimensional spaces, and understand the surface, rotation and pose of a 4D object. 
+This paper proposes several extensions to taking a 3D cross section of a four dimensional objects. Each extensions is designed to emphasise a different aspect of geometry. The project evaluation explores the effectiveness of each extension in assisting users to interpret higher dimensional spaces, and understand the surface, rotation and pose of a 4D object. 
 %
 Given a series of challenges, a study was conducted that allowed users to manipulate several 4D objects in order to evaluate their understanding of geometry, and compare their understanding against each representation of a 3D cross section. 
 Metrics such as time taken, confidence and accuracy were measured, with each metric being applied to several tasks; with each task focusing on a different aspect of geometry in order to evaluate a users understanding of how a cross section of a four dimensional object changes under rotation.
@@ -408,7 +408,7 @@ To provide a participant with the best possible foundations for understanding fo
 
 The core of this project focuses on the development of a system capable of rendering several different types of four dimensional objects, and be able to view these objects through a series of extensions to the 3D cross section in order to evaluate their effectiveness in teaching potentially inexperienced users about complex geometry.
 \vskip 0.5em
-For a successful investigation, a focus was placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment was to be clear and concise. Both quantitative and qualitative metrics were obtained. To properly evaluate each representations of an objects cross section, the experiment required tests probing a participant on the surface type, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$.
+For a successful investigation, a focus was placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment was to be clear and concise. Both quantitative and qualitative metrics were obtained. To properly evaluate each representations of an objects cross section, the experiment required tests probing a participant on the surface, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$.
 
 \section{Limitations}
 
@@ -1080,13 +1080,13 @@ The data was separated by tasks per representation. Each task was repeated sever
 
 Given the pandemic at the time of this project, it was necessary, for the purposes of collecting as much data as possible, that this experiment could function remotely. As stated, the project was built in Unity, allowing for easy building to WebGL, meaning the experiment could be hosted online. Unity's WebGL builds, and sites hosting WebGL builds, such as \href{https://itch.io/}{\textit{itch.io}} and \href{https://www.newgrounds.com/}{\textit{newgrounds}}, implement security precautions making data collection a troublesome task.
 During runtime, the data is stored to a persistent data path. This worked well for local testing, however downloading the file from online hosting is not possible without setting up a database.
-
-\subsection*{Collecting Data via Automatic Email}
-
+\vskip 0.5em
+\subsubsection{Collecting Data via Automatic Email}~
+\vskip 0.2em
 An attempt was made to sending the data file through email upon the completion of the experiment. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
-
-\subsection*{Collecting Data via Copy \& Paste}
-
+\vskip 0.5em
+\subsubsection{Collecting Data via Copy \& Paste}~
+\vskip 0.2em
 Unity enables a programmer to copy a string to the system clipboard. A button was implemented that would allow a user to copy the collected data to their clipboard in order to manually email the data for collection. WebGL builds, however, do not allow the use of copying to a system clipboard. The Unity plugin: WebGLInput \citep{kou-yeung_webglinput_nodate} allows for copying and pasting through the use of text boxes.
 The data was collected remotely from users via a copy/paste text box that would appear at the end of an experiment.
 
@@ -1096,6 +1096,10 @@ The data was collected remotely from users via a copy/paste text box that would 
 \section{Aims} 
 
 This investigation aims to evaluate the effectiveness of each of the three extensions to the 3D cross section of 4D geometry. Each extension has the potential to benefit a viewers understanding with respect to different aspects of geometry. Therefore the goal of the investigation is to evaluate what aspect of geometry, if at any, each of the three representations may assist a user in interpreting. To reiterate \cref{aims}: Which representation is more effective at conveying the surface geometry, the rotational pose, or assisting a users in manipulate geometry in $\mathbb{R}^4$ ?
+
+TODO: reiterate data collected
+
+time, accuracy, initial rotation - distance from 90 degrees, change with each iteration of representation. representation, shape, enabled roations.
 
 \section{Preliminary Research}
 
@@ -1145,7 +1149,7 @@ For the experiment to be successful it must provide clear explanations of the ex
 
 The experiment was separated into a series of repeated task. Each task would be repeated several times for each representation. Each task would try to capture the representations effectiveness at conveying a different aspect of geometry.
 
-\subsection*{Shape Matching}
+\subsection{Shape Matching}
 
 The goal of shape matching is to evaluate a representations effectiveness at conveying the surface geometry of a 3D cross section of a 4D object.
 Given a random object, in a random pose, a user must identify the shapes 3D analogous counterpart. A user may select which shape they believe to be on screen through a menu on the left hand side.
@@ -1157,7 +1161,9 @@ All of the developed shapes were included in this task, summing to six 3D object
 
 After each attempt at the task, the participant was asked how confident they were in their answer. The participant was also asked if they felt they could relate what they saw in the 3D cross section of a 4D object to an analogous 3D to 2D example. These metrics would assist in differentiating blind guesses from an actual understanding.
 
-\subsection*{Rotation Matching}
+TODO: Cone and capsule coded with 50\% of being un-rotated, encourage users to explore with w axis and rotation
+
+\subsection{Rotation Matching}
 
 The goal of rotation matching is to evaluate a representations effectiveness conveying to a user the rotations a 4D object may undergo; allowing a user to identify any active planes of continuous rotation.
 A given random object may rotate in up to three planes of rotation at once. There is a 100\% chance of at least one 4D rotation (involving the \(w\) axis), approximately a 33\% chance of a second 4D rotation, and a 30\% chance of a 3D rotation.
@@ -1169,7 +1175,7 @@ Furthermore, all objects where textured given it may be impossible to identify a
 
 As with the shape matching task, after each attempt the participant was quizzed on their confidence and understanding.
 
-\subsection*{Pose Matching}
+\subsection{Pose Matching}
 
 The goal of pose matching is to evaluate a representations effectiveness in assisting a user when manipulating geometry.
 Given a primary object in the same on-screen position as with the other tasks, and a secondary randomly oriented object in the top of the screen, a user must rotate the primary object to match the pose of the secondary object. (\cref{fig:task_p}).
@@ -1180,7 +1186,7 @@ As with rotation match, the sphere was not included. All objects utilised a patt
 
 After the completion of each attempt the user was asked to rate the difficulty of the task. The difficulty may indicate if some shapes are easier to manipulate, and if a representation appears to assists users in the manipulation of geometry.
 
-\subsection*{Task Format}
+\subsection{Task Format}
 
 It was expected that as users learned the behaviour of 4D shapes, they would improve. To avoid this bias leaking into the data, representations were presented in a random order. A control representation was included, without any extension to the 3D cross section being utilised.
 
@@ -1199,58 +1205,234 @@ lack of experience prior to experiment
 
 there will be a learning curve - enough data?
 
+performance of WebGL application
+
 \section{Results}
 
 TODO: results
+
+number of participants
+
+background with 4D shapes
 
 \subsection{Quantitative Results}
 
 \subsection*{Shape Matching}
 
+timeline is worst
+ - should have been better than control or multi-view
+ - recurring theme - limited data may not be very representative
+ - note - more shapes on screen, more lag - this rep had most shapes on screen of any other. 
+
+more correct over time
+
+faster response over time, first 2 attempts were jarring with short limit
+
+less info more correct
+
+longer to answer with more info
+
+control took this least time - further indicating less info can be better
+
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{images/results/shape_matching_stats.png}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/results/shape_matching_stats.png}
   \caption{Shape matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
 
+confidence and understanding correlated with correctness - not just blind guesses
+
+correctness would decrease with increase in time - unanswered questions, prob with experiment
+
+less correct with cone - if unrotated, may be considered a sphere?
+
+torus more correct - quite an obvious shape
+
+users would interact a lot more with sphere to verify it is a sphere
+
+confidence at highest with control rep - less info
+
+bigger focus on rotating object with multiview
+
+less rotations with 4D-3D for some reason? weird, would have thought it would be more similar to control
+
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{images/results/shape_matching_correlations.png}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/results/shape_matching_correlations.png}
   \caption{Shape matching correlations}
   \label{fig:shape_corr}
 \end{figure}
 
 \subsection*{Rotation Matching}
 
+\citep{glen_jaccard_2022} jaccard index
+
+least correct with multi-view
+ - people seeing patterns in how shapes behave and get mislead - takes a more professional eye
+
+best with 3D to 4D abstraction
+ - does give away answer - debatable whether people understood it or just got answer
+ - shortest time to answer
+ - most correct
+
+timeline worse than control - does not provide extra info for rotation, plus extra info on screen
+
+multiview does not help compared to control, but is better than timeline
+
+increase over time, but interaction 2 anomoly
+
+time taken decreases over time very clearly
+
+multi-view takes longest - more information (less than timeline) but does explain rotation, so people try absorb that
+
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{images/results/rotation_matching_stats.png}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_stats.png}
   \caption{Rotation matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
 
+basically not correlation between confidence and correctness - partially luck
+
+confidence decreased as they spent more time watching it - if they couldnt tell early on, they probably didnt understand It
+
+confidence higher with capsule, lower with pentachoron
+time taken lower for capsule
+
+correctness didn't very between shapes much
+
+confidence higher with 4D -3D, lower with multi-view
+
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{images/results/rotation_matching_correlations.png}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_correlations.png}
   \caption{Rotation matching correlations}
   \label{fig:shape_corr}
 \end{figure}
 
 \subsection*{Pose Matching}
 
+hard to draw conclusions
+
+generally less accurate with 3D-4D and timeline
+
+control had tightest range
+
+3D-4D had the biggest range, but much fewer outliers, more common higher accuracy
+
+more information, more time taken
+
+very varied - alot of outliers
+
+lower upper bounds over time
+
+first 2 iterations take alot longer
+
+faster over time
+
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{images/results/pose_matching_stats.png}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/results/pose_matching_stats.png}
   \caption{Pose matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
 
+ease lower as accuracy higher - odd
+
+longer time means less easy
+time taken has small increase with accuracy
+
+more rotation when more accurate
+
+time was longer if initial rotation was further away from a 90deg intervals
+more swiping as initial rotation further from 90deg
+
+ease higher if user had to swipe less - verified ease factor
+
+
+less accurate and more time with box
+more accurate with torus
+
+less rotations with capsule and less time taken
+more rotations with pentachoron
+
 \begin{figure}[H]
-  \includegraphics[width=\textwidth]{images/results/pose_matching_correlations.png}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/results/pose_matching_correlations.png}
   \caption{Pose matching correlations}
   \label{fig:shape_corr}
 \end{figure}
 
-\citep{glen_jaccard_2022}
 
 \subsection{Qualitative Results}
 
+\subsubsection{w-axis Timeline}~
+\vskip 0.2em
++ simple representation of geometry
++ indication of what will occur before interacting with slider
++ saved time identifying shapes
+- hard to understand in small time frame
+- lagged in browsers
+- no help for rotation
+%
+\vskip 0.5em
+\subsubsection{Multi-view}~
+\vskip 0.2em
++ helpful for understanding which planes of rotation occured
++ interesting
+- too much info
+- lagged in browsers
+- new users can misinterpret rotation - 3D can look like 4D from other perspectives and visa versa
+%
+\vskip 0.5em
+\subsubsection{4D-3D}~
+\vskip 0.2em
++ easy, simple
++ helps with rotation
++ easier to differentiate between multiple rotations
+- often didnt pay attention to it except in rotation match, not to help with accuracy of pose match
+
+\subsection{Analysis and Discussion}
+
+\subsubsection{Representations}~
+\vskip 0.2em
+new users dont have enough experience to take advantage
+ - more info on screen, more time taken
+ - confidence was higher with less info on screen
+
+3d to 4d good intro to differentiate 3D to 4D rotations to new users - kinda cheaty
+
+timeline and multi-view perform worse
+ - laggy in browsers
+ - mostly too much info given limited time
+
+not much beenfit when manipulating shapes
+ - focus on main object
+
+shape match - control took this least time - further indicating less info can be better
+%
+\vskip 0.5em
+\subsubsection{Performance Over Time}~
+\vskip 0.2em
+correctness increase over time
+ - less so for pose matching
+
+answers would be submitted faster over time
+
+indication that timelimit may have been too harsh for shape match
+%
+\vskip 0.5em
+\subsubsection{Correlations Between Numerical Features}~
+\vskip 0.2em
+More interaction with objects increased accuracy
+
+spending more time increased accuracy, although short timelimits did result in a trade off of good data
+
+confidence / understanding and correctness were well correlated
+ - not just blind guessing
+
+less correct if more happening on screen - representations
 
 %==================================================================================================================================
 \chapter{Conclusion}    
