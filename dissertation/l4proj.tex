@@ -1097,16 +1097,12 @@ The data was collected remotely from users via a copy/paste text box that would 
 
 This investigation aims to evaluate the effectiveness of each of the three extensions to the 3D cross section of 4D geometry. Each extension has the potential to benefit a viewers understanding with respect to different aspects of geometry. Therefore the goal of the investigation is to evaluate what aspect of geometry, if at any, each of the three representations may assist a user in interpreting. To reiterate \cref{aims}: Which representation is more effective at conveying the surface geometry, the rotational pose, or assisting a users in manipulate geometry in $\mathbb{R}^4$ ?
 
-TODO: reiterate data collected
-
-time, accuracy, initial rotation - distance from 90 degrees, change with each iteration of representation. representation, shape, enabled roations.
-
 \section{Preliminary Research}
 
 \subsection{How to Teach Others}
 
 To properly take advantage of, and evaluate each of the developed extension to the 3D cross section, a participant needed to understand the foundations 4D space. 
-As expected, many participants had little or no experience in 4D geometry, as shown in the responses to questionnaire \ref{questionnaire}.
+As expected, many participants had little or no experience in 4D geometry, as shown in the responses to questionnaire (\ref{questionnaire}).
 The tutorial video was structured with the goal of effectively teaching inexperienced participants prior to the experiment (\cref{tutorial}). The script for the video was drafted and tested several times with peers to tune the descriptions and explanations of complex topics to be clear and concise. 
 The explanation for the rotation of geometry within and outside of the dimensions of the cross section is a notable example of a portion of the script that underwent several rewrites before viewers felt it was adequate.
 \vskip 0.5em
@@ -1152,16 +1148,15 @@ The experiment was separated into a series of repeated task. Each task would be 
 \subsection{Shape Matching}
 
 The goal of shape matching is to evaluate a representations effectiveness at conveying the surface geometry of a 3D cross section of a 4D object.
-Given a random object, in a random pose, a user must identify the shapes 3D analogous counterpart. A user may select which shape they believe to be on screen through a menu on the left hand side.
+Given a random object, in a random pose, positioned randomly along the $w$ axis, a user must identify the shapes 3D analogous counterpart. A user may select the shape they believe to be on screen using a menu on the left.
 (\cref{fig:task_s}).
-The participant was allotted twenty seconds to play with and identify the shape on screen which, in hindsight, was likely to little time.
+To encourage users to interact with the object, and not make premature assumptions, the cone and capsule were biased such that their cross sections would appear as a sphere 35\% of the time.
+The participant was allotted twenty seconds to play with and identify the shape on screen.
 
-The cross section of different objects, such as the hyper-cube and pentachoron may appear similar. When textured, however, will have distinct colours or patterns, making them more easily identifiable.As such, the objects on screen are white and coloured exclusively with diffuse lighting, as to avoid bias where a user may identify a relationship between the patterns and shapes. 
-All of the developed shapes were included in this task, summing to six 3D objects, analogous to seven different 4D objects.
+The cross section of different objects, such as the hyper-cube and pentachoron may appear similar. When textured, however, will have distinct colours or patterns, making them more easily identifiable. As such, the objects on screen where coloured exclusively white with diffuse lighting as to avoid bias where a user may identify a relationship between the patterns and shapes. 
+All of the developed shapes were included in this task, summing to six 3D objects, analogous to seven 4D objects.
 
 After each attempt at the task, the participant was asked how confident they were in their answer. The participant was also asked if they felt they could relate what they saw in the 3D cross section of a 4D object to an analogous 3D to 2D example. These metrics would assist in differentiating blind guesses from an actual understanding.
-
-TODO: Cone and capsule coded with 50\% of being un-rotated, encourage users to explore with w axis and rotation
 
 \subsection{Rotation Matching}
 
@@ -1195,29 +1190,22 @@ After each representation, the user would be shown graphs detailing their accura
 
 \section{Limitations}
 
-The experimentation process for this investigation suffers from limitations that may restrict the quality of the data collected.The most notably drawback is the lack of time per participant.
-
-TODO: experiment limitations
-
-time
-
-lack of experience prior to experiment
-
-there will be a learning curve - enough data?
-
-performance of WebGL application
+The experimentation process for this investigation suffers from limitations that may limit the quality of the data collected. 
+A notable drawback is the lack of time per task. Given the need to limit the time of a single experiment, time limits were placed on each task. The twenty seconds alloted to the shape match task proved too little, resulting in participants failing to answer in time (\cref{fig:shape_stats}). 
+For users with limited experience, there will be a moderately steep learning curve given the length of time an experiment may run for. Data will be varied based on different participants rate of learning, and as such, there likely is not enough evidence to draw any firm conclusions.
+Furthermore, the data may biased against participants who participated remotely due to poor performance when the application is run in WebGL. The w-axis timeline, and multi-rotational view both have to render a fairly intensive scene, and as such tend to lag in browser.
 
 \section{Results}
 
-TODO: results
-
-number of participants
-
-background with 4D shapes
+The following data is compiled from a total of 11 participants. All participants remained anonymous and provided explicit permission for their data to be analysed. During the experiment participants were asked to answer questionnaire (\ref{questionnaire}).
+When asked how a participant learns best; 5 participants identified as a kinesthetic learner, 4 as a visual learner, and the remaining 2 learn best through reading and writing.
+Of the 11 participants, 3 had never heard of four dimensions before. 5 participants had briefly explored the concept through a personal interest. The remaining 3 were familiar with higher dimensionality in the form of data science and mathematics.
 
 \subsection{Quantitative Results}
 
 \subsection*{Shape Matching}
+
+TODO: shape matching
 
 timeline is worst
  - should have been better than control or multi-view
@@ -1260,11 +1248,13 @@ less rotations with 4D-3D for some reason? weird, would have thought it would be
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/shape_matching_correlations.png}
-  \caption{Shape matching correlations}
+  \caption{Shape matching correlations. "W Count": number of interactions with the $w$ axis slider. "Swipe Count": number of rotations applied to the object. "Initial Rotation": The distance from $90^{\circ}$ of the angle of the initial pose relative to no rotation}
   \label{fig:shape_corr}
 \end{figure}
 
 \subsection*{Rotation Matching}
+
+TODO: rotation matching
 
 \citep{glen_jaccard_2022} jaccard index
 
@@ -1307,11 +1297,13 @@ confidence higher with 4D -3D, lower with multi-view
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_correlations.png}
-  \caption{Rotation matching correlations}
+  \caption{Rotation matching correlations. "Number of Rotations": The number of active planes of continuous rotation.}
   \label{fig:shape_corr}
 \end{figure}
 
 \subsection*{Pose Matching}
+
+TODO: pose matching
 
 hard to draw conclusions
 
@@ -1360,12 +1352,13 @@ more rotations with pentachoron
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/pose_matching_correlations.png}
-  \caption{Pose matching correlations}
+  \caption{Pose matching correlations. "W Count": number of interactions with the $w$ axis slider. "Swipe Count": number of rotations applied to the object. "Initial Rotation": The distance from $90^{\circ}$ of the angle of the initial pose relative to no rotation.}
   \label{fig:shape_corr}
 \end{figure}
 
-
 \subsection{Qualitative Results}
+
+TODO: qualitative results
 
 \subsubsection{w-axis Timeline}~
 \vskip 0.2em
@@ -1394,6 +1387,8 @@ more rotations with pentachoron
 - often didnt pay attention to it except in rotation match, not to help with accuracy of pose match
 
 \subsection{Analysis and Discussion}
+
+TODO: analysis and discussion
 
 \subsubsection{Representations}~
 \vskip 0.2em
