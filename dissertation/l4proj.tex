@@ -480,7 +480,8 @@ The different portions of the experiment heavily encouraged discussion with the 
 
 A brief discussion was conducted with each participant following their introduction to the experiment and what the experiment would entail. This discussion focused around a participants prior knowledge with the concepts of 4D.
 As per the first stage of van Hiele's requirements for teaching, \textit{information inquiry}, students are to receive the material and discover the structure of the geometry presented in this stage. This introduction should use familiar, well-known and understood language.
-The material received by the students at this stage was compiled in the form of a video tutorial, linked \href{https://www.youtube.com/watch?v=fhnhK7w67_s}{\textit{here}}.
+The material received by the students at this stage was compiled in the form of a video tutorial, linked here: 
+\url{https://www.youtube.com/watch?v=fhnhK7w67_s}
 \vskip 0.5em
 The tutorial was structured such that the world of four dimensions could be built upon piece by piece in hopes that students would better digest each component of $\mathbb{R}^4$ in turn without feeling too overwhelmed.
 To begin with, the concept of a fourth perpendicular axis was introduced, with emphasis that this could not be visualised, and instead a method of viewing 4D geometry would be with the use of a 3D cross section. 
@@ -1078,7 +1079,7 @@ The data was separated by tasks per representation. Each task was repeated sever
 
 \subsection{Remote Data Collection}
 
-Given the pandemic at the time of this project, it was necessary, for the purposes of collecting as much data as possible, that this experiment could function remotely. As stated, the project was built in Unity, allowing for easy building to WebGL, meaning the experiment could be hosted online. Unity's WebGL builds, and sites hosting WebGL builds, such as \href{https://itch.io/}{\textit{itch.io}} and \href{https://www.newgrounds.com/}{\textit{newgrounds}}, implement security precautions making data collection a troublesome task.
+Given the pandemic at the time of this project, it was necessary, for the purposes of collecting as much data as possible, that this experiment could function remotely. As stated, the project was built in Unity, allowing for easy building to WebGL, meaning the experiment could be hosted online. Unity's WebGL builds, and sites hosting WebGL builds, such as \href{https://itch.io/}{\textit{itch.io}} and \href{https://www.newgrounds.com/}{\textit{newgrounds.com}}, implement security precautions making data collection a troublesome task.
 During runtime, the data is stored to a persistent data path. This worked well for local testing, however downloading the file from online hosting is not possible without setting up a database.
 \vskip 0.5em
 \subsubsection{Collecting Data via Automatic Email}~
@@ -1222,12 +1223,14 @@ longer to answer with more info
 
 control took this least time - further indicating less info can be better
 
-\begin{figure}[H]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/shape_matching_stats.png}
   \caption{Shape matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
+
+=============
 
 confidence and understanding correlated with correctness - not just blind guesses
 
@@ -1245,7 +1248,7 @@ bigger focus on rotating object with multiview
 
 less rotations with 4D-3D for some reason? weird, would have thought it would be more similar to control
 
-\begin{figure}[H]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/shape_matching_correlations.png}
   \caption{Shape matching correlations. "W Count": number of interactions with the $w$ axis slider. "Swipe Count": number of rotations applied to the object. "Initial Rotation": The distance from $90^{\circ}$ of the angle of the initial pose relative to no rotation}
@@ -1276,12 +1279,14 @@ time taken decreases over time very clearly
 
 multi-view takes longest - more information (less than timeline) but does explain rotation, so people try absorb that
 
-\begin{figure}[H]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_stats.png}
   \caption{Rotation matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
+
+=============
 
 basically not correlation between confidence and correctness - partially luck
 
@@ -1294,7 +1299,7 @@ correctness didn't very between shapes much
 
 confidence higher with 4D -3D, lower with multi-view
 
-\begin{figure}[H]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_correlations.png}
   \caption{Rotation matching correlations. "Number of Rotations": The number of active planes of continuous rotation.}
@@ -1323,12 +1328,14 @@ first 2 iterations take alot longer
 
 faster over time
 
-\begin{figure}[H]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/pose_matching_stats.png}
   \caption{Pose matching correctness and timings}
   \label{fig:shape_stats}
 \end{figure}
+
+=============
 
 ease lower as accuracy higher - odd
 
@@ -1349,7 +1356,7 @@ more accurate with torus
 less rotations with capsule and less time taken
 more rotations with pentachoron
 
-\begin{figure}[H]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/pose_matching_correlations.png}
   \caption{Pose matching correlations. "W Count": number of interactions with the $w$ axis slider. "Swipe Count": number of rotations applied to the object. "Initial Rotation": The distance from $90^{\circ}$ of the angle of the initial pose relative to no rotation.}
