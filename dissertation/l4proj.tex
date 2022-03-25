@@ -1117,6 +1117,7 @@ In order to gather the best data, the experiment should not rush the user more t
 For the experiment to be successful it must provide clear explanations of the experimental process and components participants will be interacting with, such as the extensions to the 3D cross section. Every piece of text was proof read by peers with little experience, in order to ensure the experiment was clear and concise.
 
 \section{Tasks and Parameters}
+\label{params}
 
 \begin{figure}
   \begin{subfigure}[b]{0.33\textwidth}
@@ -1190,6 +1191,7 @@ Each representation would be subject to five iterations of shape matching, five 
 After each representation, the user would be shown graphs detailing their accuracy. The purpose of this was to keep participants engaged and attentive.
 
 \section{Limitations}
+\label{limiations}
 
 The experimentation process for this investigation suffers from limitations that may limit the quality of the data collected. 
 A notable drawback is the lack of time per task. Given the need to limit the time of a single experiment, time limits were placed on each task. The twenty seconds alloted to the shape match task proved too little, resulting in participants failing to answer in time (\cref{fig:shape_stats}). 
@@ -1206,22 +1208,17 @@ Of the 11 participants, 3 had never heard of four dimensions before. 5 participa
 
 \subsection*{Shape Matching}
 
-TODO: shape matching
-
-timeline is worst
- - should have been better than control or multi-view
- - recurring theme - limited data may not be very representative
- - note - more shapes on screen, more lag - this rep had most shapes on screen of any other. 
-
-more correct over time
-
-faster response over time, first 2 attempts were jarring with short limit
-
-less info more correct
-
-longer to answer with more info
-
-control took this least time - further indicating less info can be better
+%correct over time
+As the participant spends more time dealing with 4D shapes, it makes sense that they become more familiar with these shapes. As shown in  \cref{fig:shape_stats}, participants tend to answer more accurately over time; where each iteration follows the introduction of a new representation in random order.
+%submission time over time
+Following this, \cref{fig:shape_stats} also shows that participants tend to submit their answer earlier with each iteration of a new representation.
+\vskip 0.5em
+%correctness per representation
+What is surprising; participants were most correct when using the control representation, and performed worst with the w-axis timeline.
+Whilst running the experiment in browser, the performance would decrease as the complexity of a ray marched scene increased.
+Furthermore, through discussion with participants, it appears a common theme that they felt they performed worse if there is more content to digest.
+These two elements are backed up by the time taken per representation (\cref{fig:shape_stats}), where participants were much more likely to expire the twenty second time limit when interacting with representations rendering more content.
+\vskip 0.5em
 
 \begin{figure}
   \centering
@@ -1230,23 +1227,24 @@ control took this least time - further indicating less info can be better
   \label{fig:shape_stats}
 \end{figure}
 
-=============
-
-confidence and understanding correlated with correctness - not just blind guesses
-
-correctness would decrease with increase in time - unanswered questions, prob with experiment
-
-less correct with cone - if unrotated, may be considered a sphere?
-
-torus more correct - quite an obvious shape
-
-users would interact a lot more with sphere to verify it is a sphere
-
-confidence at highest with control rep - less info
-
-bigger focus on rotating object with multiview
-
-less rotations with 4D-3D for some reason? weird, would have thought it would be more similar to control
+% correctness and confidence
+Encouragingly, a positive correlation can be seen between a participants correct answers and their confidence and understanding of their submission (\cref{fig:shape_corr}). Their confidence was rated on a scale of 0 to 10, and their understanding was a binary answer of "yes" or "no".
+This correlation suggests that participants were not making blind guesses.
+\vskip 0.5em
+% time taken
+A strong correlation can be seen between a participants confidence and how long they took to answer the question. As expected, a participant took longer to submit their answer if they were unsure of the correct answer.
+Following this, a decrease in correctness and understanding correlates with an increased time to answer (\cref{fig:shape_corr}).
+\vskip 0.5em
+% correlations per shape
+As stated in \cref{params}, the cone and capsule had the potential to appear as a sphere. This may be a potential reason as to why participants were less likely to be correct when tasked with identifying the cone (\cref{fig:shape_corr}).
+On the other hand, users rarely incorrectly identified a torus. This is unsurprising as the torus is a very distinct shape.
+As expected, users would interact far more with the sphere, to indeed verify it was a sphere, given it will not change under rotation. This is indicated by the increased swipe count, used to rotate objects on screen (\cref{fig:shape_corr}).
+\vskip 0.5em
+% correlations per rep
+Users tended to be less confident when using the w-axis timeline, and more confident whilst handling the control representation. This goes hand in hand with the correctness of a participants submission.
+Interestingly, participants tended to rotate objects more when using the multi-rotational view representation, despite already viewing objects from alternate perspectives. 
+Participants also used the w-axis slider less for this representation.
+On the other hand, participants tended to use the w-axis slider more, and rotate the object less when using the 3D abstraction of 4D rotation. Given the 4D to 3D abstraction does not show any more information about the objects surface than the control representation, it is odd users handled it differently (\cref{fig:shape_corr}).
 
 \begin{figure}
   \centering
@@ -1257,9 +1255,20 @@ less rotations with 4D-3D for some reason? weird, would have thought it would be
 
 \subsection*{Rotation Matching}
 
-TODO: rotation matching
+The active planes of continuous rotation were stored as a $1 \times 6$ boolean array. Two boolean arrays were collected: The loaded active planes of rotation, and the planes of rotation a participants suspected to be active. The similarity of two boolean arrays, $A$ and $B$, can be calculated using the jaccard index \cref{jaccard}, \citep{glen_jaccard_2022}.
+%
+\begin{equation}
+  \label{jaccard}
+  J(A, B) = \frac{|A \cap B|}{|A \cup B|}
+\end{equation}
+%
+% per iteration
+With each iteration of a new representation, there appears to be a steady increase in accuracy, indicated by the quantity of perfect answers, and the similarity using the jaccard index (\cref{fig:rot_stats}).
+Furthermore, the time taken to answer clearly decreases as users spend more time with the 4D shapes.
+\vskip 0.5em
+%
 
-\citep{glen_jaccard_2022} jaccard index
+TODO: rotation matching
 
 least correct with multi-view
  - people seeing patterns in how shapes behave and get mislead - takes a more professional eye
@@ -1273,17 +1282,13 @@ timeline worse than control - does not provide extra info for rotation, plus ext
 
 multiview does not help compared to control, but is better than timeline
 
-increase over time, but interaction 2 anomoly
-
-time taken decreases over time very clearly
-
 multi-view takes longest - more information (less than timeline) but does explain rotation, so people try absorb that
 
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_stats.png}
   \caption{Rotation matching correctness and timings}
-  \label{fig:shape_stats}
+  \label{fig:rot_stats}
 \end{figure}
 
 =============
@@ -1303,7 +1308,7 @@ confidence higher with 4D -3D, lower with multi-view
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_correlations.png}
   \caption{Rotation matching correlations. "Number of Rotations": The number of active planes of continuous rotation.}
-  \label{fig:shape_corr}
+  \label{fig:rot_corr}
 \end{figure}
 
 \subsection*{Pose Matching}
@@ -1332,7 +1337,7 @@ faster over time
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/pose_matching_stats.png}
   \caption{Pose matching correctness and timings}
-  \label{fig:shape_stats}
+  \label{fig:pos_stats}
 \end{figure}
 
 =============
@@ -1360,7 +1365,7 @@ more rotations with pentachoron
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/pose_matching_correlations.png}
   \caption{Pose matching correlations. "W Count": number of interactions with the $w$ axis slider. "Swipe Count": number of rotations applied to the object. "Initial Rotation": The distance from $90^{\circ}$ of the angle of the initial pose relative to no rotation.}
-  \label{fig:shape_corr}
+  \label{fig:pos_corr}
 \end{figure}
 
 \subsection{Qualitative Results}
