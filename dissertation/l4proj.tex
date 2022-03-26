@@ -142,7 +142,7 @@ The aims of the project are to investigate how one may extend a visualisation of
 \vskip 0.5em
 An extension to a 3D cross section involves providing the viewer of the object with more information about the object they are exploring. Several such extensions have already been explored conceptually or even fully developed.
 \vskip 0.5em
-Showing several cross sections besides one another, each offset along the \(w\) axis by an increasing amount, is a simple means of trying to provide more information to the user about the entire shapes geometry. As shown in the 3D example \cref{fig:exti}: displaying several 2D circles, taken at regular intervals of $\delta$ along the \(z\) axis, that circularly increase and decrease in size provides a viewer with enough information to deduce that the object being displayed is likely a 3D sphere.
+Showing several cross sections beside one another, where each cross section is offset by a multiple of distance $\delta$ along the \(w\) axis, is a simple means of trying to provide more information to a viewer about the shapes geometry. As shown in the 3D example \cref{fig:exti}: Several 2D circles taken at regular intervals along the \(z\) axis, that circularly increase and decrease in size, provides a viewer with enough information to deduce that the object being displayed is likely a 3D sphere.
 
 \begin{figure}
   \centering
@@ -166,7 +166,7 @@ Showing several cross sections besides one another, each offset along the \(w\) 
 %
 A far greater number of cross sections can be displayed along an ovular path through the use of vertical space, with comparison to a linear path. This allows for a more detailed view of the four dimensional object in its entirety.
 %
-Each cross section, as they move further away from the central slice, decreases in size; to avoid potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
+Kageyama designed each cross section, as they move further away from the central slice, to decrease in size; avoiding potential confusion in conveying the idea that travelling across the fourth dimension wraps around, forming a circular path.
 %
 Scaling each cross section however, can produce some immediate confusion when first viewing an object. For example, taking several cross sections of a 4D cylinder extended along the \(w\) axis should produce several 3D spheres of the same size. Kageyama's visualisation, however, will have each of these 3D spheres decrease in size such that a user may interpret the shape as a 3D cross section of a 4D sphere, given it exhibits similar scaling behaviour. If a user were to move across the \(w\) axis, they could observe the lack of change in the size of the central 3D cross section and draw the correct conclusion that it is a cylinder.
 Whilst the ovular display does provide a great deal of extra information to a viewer, it is limited by its obscurity given several objects may have identical cross sections.
@@ -180,9 +180,9 @@ Another extension which arguably provides the user with more information about a
 A user may view almost all of an object at once using this technique, in comparison to a single 3D slice; whilst potentially offering a more intuitive understanding, although perhaps less information, when compared to stereographic projection. 
 The wireframe shadow has two main disadvantages. 
 Firstly, curved, smooth objects are typically better represented by their surface, rather than a wireframe. 
-Secondly, complex objects such as the 120-cell, contain thousands of edges and hundreds of vertices. Viewing the surface of this object likely allows users a better understanding of the geometry.
+Secondly, complex objects such as the 120-cell, contain hundreds to thousands of edges and vertices, rendering a chaotic image that may be hard to recognise. Viewing the surface of this object likely allows users a better understanding of the geometry.
 %
-With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts interaction to that which we are capable of. Translation, rotation and scaling are restricted to the third dimension. Interaction in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ may change the object in a potentially unexpected way. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
+With the goal of teaching others, \citet{matsumoto_polyvision_2019} restricts translation, rotation and scaling to the third dimension. Rotations in $\mathbb{R}^3$, from another perspective in $\mathbb{R}^4$ may produce a 4D rotation. Whilst the effects of 4D manipulation can be seen in this way, \textit{Polyvision} lacks the ability to directly manipulate an object in 4D space.
 %TODO: classify Matsumoto's work
 
 \section{Building a 4D Object}
@@ -198,7 +198,7 @@ A mesh consists of vertices, edges and faces. A vertex is a point on the surface
 Both \citet{bosch_n-dimensional_2020} and \citet{tianli_4d_2018} have developed real time interactive systems which display four dimensional objects using mesh based rendering. As illustrated by \citet{tianli_4d_2018}, 4D shapes are made up of cells, similar to how a 3D mesh is made up of faces. As with a face in a 3D mesh being constructed of triangles (the most basic 2D shape), a 4D mesh is constructed of the most basic cell, a tetrahedron. A tetrahedron is made up of four triangles defined by faces, vertices and edges. The pentachoron, also known as a hyper-tetrahedron or a 5-cell, is the most primitive 4D object (besides potentially the hyper-sphere). The mesh of a pentachoron consists of 5 tetrahedral sub-meshes (cells). A sub-mesh in this instance refers to a 3D mesh used to build a 4D object, in the same way a 2D faces can build a 3D shape.
 \vskip 0.5em
 Mesh based rendering allows the creation of very complex higher dimensional objects. \citet{bosch_n-dimensional_2020} built a novel game engine implementing four dimensional rigid body dynamics, and several complex shapes, for example, a 4D klein bottle.
-On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software built for two and three dimensions.
+On the other hand, \citet{tianli_4d_2018} used the readily available Unity game engine to construct a hyper-cube and hyper-tetrahedron, demonstrating the flexibility of existing software intended for two and three dimensions.
 \vskip 0.5em
 There are two main drawbacks to mesh based rendering: The time taken to construct 4D objects, and the complexity of translating four dimensional geometry to 3D. 
 %
@@ -342,7 +342,7 @@ Intuitive manipulation of virtual objects in three dimensions is challenging. Ex
 %
 One common method of rotating a 3D object through a 2D screen is with the use of swiping. Swipe-based rotations are very common on touch screen devices, utilising multi-touch as a secondary input to switch dimensions. 
 Assuming the $z$ axis protrudes from the screen, swiping left or right will rotate about the $xz$ plane, up and down will rotate about the $yz$ plane. Two fingers rotating clockwise or anti-clockwise will perform a rotation about the $xy$ plane. 
-Swipe-based rotation is limited to performing rotations relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it not being used in professional 3D development software.
+Swipe-based rotation is limited to performing rotations only relative to the global axes, opposed to the local axes of a rotated object on screen. As a result, fine tuned manipulation is somewhat challenging, hence it is not common in professional 3D development software.
 \vskip 0.5em
 Alternatively, the most common method of rotating an object takes rotations relative to a local axis. This local axis can be assigned to world space, or rotate objects relative to their real time pose. The method of rotation, despite its popularity, appears unnamed. It will be referred to as a grab ball. The grab ball is made up of 3 arcs. An arc can be selected, restricting the plane of rotation parallel to the arc. The user may drag the mouse to rotate the object, and grab ball, along this plane of rotation. As the grab ball rotates with the object, the user is in control of the objects rotation relative to its local axis at all times. 
 The grab ball provides an efficient method of rotation, but is implemented in different ways throughout various software. For example, \textit{Blender} allows the user to rotate whilst moving the cursor along the path of the arc. \textit{Unity} however requires the user to move the mouse along the path tangent to the arc.
@@ -352,7 +352,7 @@ The grab ball provides an efficient method of rotation, but is implemented in di
 Whilst this projects implementation for manipulating geometry is software focused, it is worth noting the research into hardware based solutions. The \textit{Rockin'Mouse} \citep{balakrishnan_rockinmouse_1997} is an example of a hardware centered approach in assisting users with 3D interaction. 
 A regular mouse allows a user to control two translational degrees of freedom (DoF). As a result, a method of switching between dimensions is required in order to fully manipulate geometry in 3D.
 The \textit{Rockin'Mouse} is a four DoF input device that can be tilted in two DoF. Being in control of four DoF simultaneously, allows users to manipulate geometry in all three dimensions without the need for a secondary input. Results indicate that this hardware allows users to manipulate geometry in 3D 30\% faster than with the use of a traditional mouse. 
-The main drawbacks of hardware focused methods of interaction is the expense and lack of accessability.
+The main drawbacks of hardware focused methods of interaction is the expense and lack of accessibility.
 
 \subsection*{Novel Software-based Approaches}
 
@@ -382,7 +382,7 @@ A primitive solution proposed by \citet{kageyama_keyboard-based_2005} explores t
 \label{teaching_and_eval}
 
 In order to evaluate the effectiveness of each extension to a 3D cross section of a 4D object, a participant should have an understanding of what four dimensional geometry is, and how it behaves.
-For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space, prior to conducting the experiment. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, Theorises that their are five levels of understanding geometry, where a student will progress from one level to the next: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
+For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space, prior to conducting the experiment. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, theorises that their are five levels of understanding geometry, where a student will progress from one level to the next: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
 Level 0 focuses on the identification and recognition of geometry using simple language. The properties that define a geometry need not be identified.
 Level 1: students begin basic analysis and identification of geometry, without a need for proofs.
 Level 2: students create meaningful definitions and are able to justify and reason their understanding of geometry.
@@ -391,14 +391,14 @@ Level 4: students have an understanding of several proofs and can comprehend Euc
 \vskip 0.5em
 \citet{safrankova_van_2012} outlines the five stages of the learning process to comprehensively cover the material and reaffirm a students understanding; as outlined in the van Hiele model.
 \textit{Information inquiry} is where students receive the material and discover the structure of the information they are handling. At this stage a teacher should use familiar language to help a student relate what they already understand to the new material.
-\textit{Guided or directed orientation} deals with the exploration of relationships within the material. A teacher may suggest activities enabling students to recognise the properties of a new concept. Discussion is encourage between the student and the teacher to assist in discovering relationships between properties of the material.
+\textit{Guided or directed orientation} deals with the exploration of relationships within the material. A teacher may suggest activities enabling students to recognise the properties of a new concept. Discussion is encouraged between the student and the teacher to assist in discovering relationships between properties of the material.
 \textit{Explanation or Explication}: Students formulate what they have discovered. New terminology is introduced whilst the student shares their thoughts on the relationships discovered. Here a teacher can ensure the correct terminology is being used.
 The \textit{Free orientation} stage allows for students to solve more complex tasks independently to master the network of relationships within the content. A student may develop their understanding of the properties of geometry as well as develop their understanding of the material in a variety of scenarios.
 Finally, \textit{Integration} involves the student summarising what they have learned. No new material is presented in this stage.
 \vskip 0.5em
 For the purposes of this experiment, only levels 0 to 2 of \textit{The van Hiele Model of Geometric Thinking} will be explored. A rule of the model is that a student may not progress to level \(N\) without having first tackled level $N-1$. 
 In order to best evaluate the effectiveness of an extension to the 3D cross section of a 4D object, a participant of the investigation should understand the geometry they are working with.
-Unfortunately, given the limited time to conduct the investigation, and that of an individual experiment, participants will not be able to sufficiently progress through each level, whilst also covering each of the five stages of the learning process. 
+Unfortunately, given the limited time to conduct the investigation, and that of an individual experiment, participants would not be able to sufficiently progress through each level, whilst also covering each of the five stages of the learning process. 
 To provide a participant with the best possible foundations for understanding four dimensions, tutorials and question and answer sessions before and after each stage in the experiment were conducted. The experiment was designed around the structure of the five stage learning process as is expanded upon in the experimental design section (\cref{experimental_design}) of this paper.
 
 %==================================================================================================================================
@@ -1266,7 +1266,8 @@ The active planes of continuous rotation were stored as a $1 \times 6$ boolean a
 With each iteration of a new representation, there appears to be a steady increase in accuracy, indicated by the quantity of perfect answers, and the similarity using the jaccard index (\cref{fig:rot_stats}).
 Furthermore, the time taken to answer clearly decreases as users spend more time with the 4D shapes.
 \vskip 0.5em
-%
+% Representations
+
 
 TODO: rotation matching
 
