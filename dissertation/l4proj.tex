@@ -1209,7 +1209,7 @@ Of the 11 participants, 3 had never heard of four dimensions before. 5 participa
 \subsection*{Shape Matching}
 
 %correct over time
-As the participant spends more time dealing with 4D shapes, it makes sense that they become more familiar with these shapes. As shown in  \cref{fig:shape_stats}, participants tend to answer more accurately over time; where each iteration follows the introduction of a new representation in random order.
+As the participant spends more time dealing with 4D shapes, they become more familiar with these shapes. As shown in  \cref{fig:shape_stats}, participants tend to answer more accurately over time; where each iteration follows the introduction of a new representation in random order.
 %submission time over time
 Following this, \cref{fig:shape_stats} also shows that participants tend to submit their answer earlier with each iteration of a new representation.
 \vskip 0.5em
@@ -1255,7 +1255,7 @@ On the other hand, participants tended to use the w-axis slider more, and rotate
 
 \subsection*{Rotation Matching}
 
-The active planes of continuous rotation were stored as a $1 \times 6$ boolean array. Two boolean arrays were collected: The loaded active planes of rotation, and the planes of rotation a participants suspected to be active. The similarity of two boolean arrays, $A$ and $B$, can be calculated using the jaccard index \cref{jaccard}, \citep{glen_jaccard_2022}.
+The active planes of continuous rotation were recorded as a $1 \times 6$ boolean array. Two boolean arrays were collected: The loaded active planes of rotation, and the planes of rotation a participants suspected to be active. The similarity of two boolean arrays, $A$ and $B$, can be calculated using the jaccard index \cref{jaccard}, \citep{glen_jaccard_2022}.
 %
 \begin{equation}
   \label{jaccard}
@@ -1267,23 +1267,11 @@ With each iteration of a new representation, there appears to be a steady increa
 Furthermore, the time taken to answer clearly decreases as users spend more time with the 4D shapes.
 \vskip 0.5em
 % Representations
-
-
-TODO: rotation matching
-
-least correct with multi-view
- - people seeing patterns in how shapes behave and get mislead - takes a more professional eye
-
-best with 3D to 4D abstraction
- - does give away answer - debatable whether people understood it or just got answer
- - shortest time to answer
- - most correct
-
-timeline worse than control - does not provide extra info for rotation, plus extra info on screen
-
-multiview does not help compared to control, but is better than timeline
-
-multi-view takes longest - more information (less than timeline) but does explain rotation, so people try absorb that
+The 4D to 3D rotational abstraction performed better than any other representation for all three metrics: totally correct answers, similarity of an answer, and the time taken to answer (\cref{fig:rot_stats}). Whilst this representation proved most effective at conveying the active planes of rotation, there is a debate to be had whether a user understood what they were seeing on screen, or if the representation just gives the answer away without the need for critical thinking.
+\vskip 0.5em
+On the other hand, the multi-view representation has a notably lower quantity of totally correct answers compared to the other representations. This trend can also be seen when looking at the jaccard index. Discussion with participants yielded a common theme: Given four objects rotating on screen, where some rotate in 3D and some in 4D, participants were often mislead, seeing patterns in objects rotations, but drawing the incorrect conclusions. It would seem that it takes a more professional eye, and more time and experience with the representation to take advantage of it. Participants also took a longer time to answer when using the multi-view representation. 
+\vskip 0.5em
+The w-axis timeline did not seem particularly better or worse than the control representation. The timeline representation does not provide any extra information on the rotations of a 4D object, and as such has not seemed to benefit users in interpreting the active planes of continuous rotation.
 
 \begin{figure}
   \centering
