@@ -1304,57 +1304,54 @@ Generally a participants correctness was not affected by the shape on screen, al
 
 \subsection*{Pose Matching}
 
-TODO: pose matching
-\cref{fig:pos_stats}
-\cref{fig:pos_corr}
+The accuracy of a participants submitted pose of a primary object, relative to the final orientation of a secondary object, is measured by the smallest angle of rotation between the two (\cref{alg:angle}).
+\vskip 0.5em
+Looking at \cref{fig:pos_stats}, the accuracy participants achieved over each representation followed, roughly, a normal distribution. There is some skewness in the data showing some of the most accurate submissions to be outliers. The average minimum angle, indicating accuracy, sit around $80^{\circ}$ for each representation.
+No representation appears definitively better than another, although there is likely not enough data to draw any firm conclusions. From what can be seen in \cref{fig:pos_stats}, the 4D to 3D rotational abstraction has the highest variance and the control representation has the lowest variance. This may suggest that the representations do have some impact on a participants performance, but again, there is most likely not enough data to say for sure.
 
-hard to draw conclusions
-
-generally less accurate with 3D-4D and timeline
-
-control had tightest range
-
-3D-4D had the biggest range, but much fewer outliers, more common higher accuracy
-
-more information, more time taken
-
-very varied - alot of outliers
-
-lower upper bounds over time
-
-first 2 iterations take alot longer
-
-faster over time
-
-
-
-=============
-
-ease lower as accuracy higher - odd
-
-longer time means less easy
-time taken has small increase with accuracy
-
-more rotation when more accurate
-
-time was longer if initial rotation was further away from a 90deg intervals
-more swiping as initial rotation further from 90deg
-
-ease higher if user had to swipe less - verified ease factor
-
-
-less accurate and more time with box
-more accurate with torus
-
-less rotations with capsule and less time taken
-more rotations with pentachoron
-
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/pose_matching_correlations.png}
   \caption{Pose matching correlations. "W Count": number of interactions with the $w$ axis slider. "Swipe Count": number of rotations applied to the object. "Initial Rotation": The distance from $90^{\circ}$ of the angle of the initial pose relative to no rotation.}
   \label{fig:pos_corr}
 \end{figure}
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon
+  
+  \KwData{\\
+    \quad $v$ a random vector;\\
+    \quad $R_a$ the rotor defining the pose of one object;\\
+    \quad $R_b$ the rotor defining the pose of a second object;
+  }
+  \KwResult{\\
+    \quad $\theta$ Minimum angle required to rotate one entity to another. $0_{rads} < \theta < \pi_{rads}$
+  }
+  \Begin{
+      $v_a = R_a v R_a^{\dagger}$\\
+      $v_b = R_b v R_b^{\dagger}$\\
+      $\theta = \arccos{\frac{a \cdot b}{|a||b|}}$
+  }
+\caption{Obtain the minimum angle required to rotate one entity to another}\label{alg:angle}
+\end{algorithm}
+
+\vskip 0.5em
+With each iteration of a new representation, it can be seen that users perform a little worse earlier on, and submit their answer faster after gathering practice over time (\cref{fig:pos_stats}).
+After submitting their final pose, each participant is asked to rate how easily they felt they were able to match the pose of the two objects (rated on a scale of 0 to 10).
+% ease with time spent and swipe count
+As might be expected, if a participant had to interact with the object less, and therefore spend less time manipulating the object, participants would rate the challenge to be easier (\cref{fig:pos_corr}).
+% ease and accuracy
+Counterintuitively, there is a fairly strong correlation suggesting that a users accuracy increased if they found it to be less easy. This could be the case if a participant believed a shape to be in the correct pose, but was in fact far from it. Another suggestion could be that a participant spent more time on a shape in a difficult pose, which subsequently lead to an increase in accuracy following an increase in time spent manipulating the objects. This, however, is speculation.
+\vskip 0.5em
+% time and accuracy
+As shown in \cref{fig:pos_corr}, the more time a user spent manipulating the object the more accurate they were. 
+% initial pose and ease
+If the initial pose of the randomly oriented secondary object was closer to $90^{\circ}$, the participants tended to spend more time interacting with the object, and generally rated it a harder challenge to match the orientation of the two objects.
+\vskip 0.5em
+The 4D hyper-cube proved the hardest shape to manipulate, with participants scoring lower accuracies when dealing with it. Participants also took more time to submit their final pose compared to other shapes. 
+On the other hand, participants were more accurate, and found it easier to manipulate the torus. 
+The capsule had faster submission times and required less interaction for participants to be satisfied with the pose of the shape.
+The pentachoron was found to be the least easy object to manipulate, and required more interaction that any other shape.
 
 \subsection{Qualitative Results}
 
