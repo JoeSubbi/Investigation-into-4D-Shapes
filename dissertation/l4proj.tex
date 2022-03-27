@@ -1230,9 +1230,8 @@ These two elements are backed up by the time taken to answer per representation 
 % correctness and confidence
 Encouragingly, a positive correlation can be seen between a participants correct answers and their confidence and understanding of their submission (\cref{fig:shape_corr}). Their confidence was rated on a scale of 0 to 10, and their understanding was a binary answer: "yes" or "no".
 This correlation suggests that participants were not making blind guesses.
-\vskip 0.5em
 % time taken
-A strong correlation can be seen between a participants confidence and how long they took to answer the question; suggesting a participant took longer to submit their answer if they were not confident in it.
+A strong correlation can also be seen between a participants confidence and how long they took to answer the question; suggesting a participant took longer to submit their answer if they were not confident in it.
 Following this, a decrease in correctness and understanding correlates with an increased time to answer (\cref{fig:shape_corr}).
 \vskip 0.5em
 % correlations per shape
@@ -1262,26 +1261,33 @@ The active planes of continuous rotation were recorded as a $1 \times 6$ boolean
   J(A, B) = \frac{|A \cap B|}{|A \cup B|}
 \end{equation}
 
-% per iteration
-With each iteration of a new representation, there appears to be a steady increase in accuracy, indicated by the quantity of perfect answers, and the similarity using the jaccard index (\cref{fig:rot_stats}).
-Furthermore, the time taken to answer clearly decreases as users spend more time with the 4D shapes.
-\vskip 0.5em
-% Representations
-Participant performance when using the 4D to 3D rotational abstraction proved better than any other representation for all three metrics: totally correct answers, similarity of an answer, and the time taken to answer (\cref{fig:rot_stats}). Furthermore, participants were more confident in their answers whilst using this representation. Whilst this representation proved most effective in assisting users to identify the active planes of rotation, There is a debate to be had as to whether this representation just gives the answer away, or if participants actually critically considered what they were seeing on screen.
-\vskip 0.5em
-On the other hand, the multi-rotational view representation has a notably lower quantity of totally correct answers compared to the other representations. This trend can also be seen when analysing the similarity of users answers (\cref{fig:rot_stats}). Moreover, participant confidence is generally worse whilst using this representation (\cref{fig:rot_corr}). Discussion with participants yielded a common theme: Given four objects rotating on screen, where some rotate in 3D and some in 4D, participants were often mislead, seeing patterns in the rotation of different cross sections, but drawing incorrect conclusions. Participants also took longer to answer when using the multi-view representation. 
-It seems that users require more time and experience with this representation to take advantage of the behaviour exhibited by each perspective. 
-\vskip 0.5em
-The w-axis timeline did not seem notably better or worse with comparison to the control representation. The timeline representation does not provide any extra information on the rotations of a 4D object, and as such has not seemed to benefit users in interpreting the active planes of continuous rotation.
-\vskip 0.5em
-
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_stats.png}
   \caption{Rotation matching correctness and timings}
   \label{fig:rot_stats}
 \end{figure}
 
+% per iteration
+With each iteration of a new representation, there appears to be a slight increase in accuracy, indicated by the quantity of perfect answers, and the similarity using the jaccard index (\cref{fig:rot_stats}).
+Furthermore, the time taken to answer clearly decreases as users spent more time with 4D shapes.
+\vskip 0.5em
+% Representations
+Participant performance when using the 4D to 3D rotational abstraction proved better than any other representation for all three metrics: totally correct answers, similarity of an answer, and the time taken to answer (\cref{fig:rot_stats}). 
+Furthermore, participants were more confident in their answers whilst using this representation. Whilst this representation proved most effective in assisting users to identify the active planes of rotation, there is a debate as to whether this representation just gave the answer away, or if participants critically considered what they were seeing on screen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_correlations.png}
+  \caption{Rotation matching correlations. "Number of Rotations": The number of active planes of continuous rotation.}
+  \label{fig:rot_corr}
+\end{figure}
+
+On the other hand, the multi-rotational view representation has a notably lower quantity of totally correct answers compared to the other representations. This trend can also be seen when analysing the similarity of users answers (\cref{fig:rot_stats}). Moreover, participant confidence is generally worse whilst using this representation (\cref{fig:rot_corr}). Discussion with participants yielded a common theme: Given four objects rotating on screen, where some rotate in 3D and some in 4D, participants were often mislead, seeing patterns in the rotation of different cross sections, but drawing incorrect conclusions. Participants also took longer to answer when using the multi-view representation. 
+It seems that users require more time and experience with this representation to take advantage of the behaviour exhibited by each perspective. 
+\vskip 0.5em
+The w-axis timeline did not seem notably better or worse with comparison to the control representation. The timeline representation does not provide any extra information on the rotations of a 4D object, and as such has not seemed to benefit users in interpreting the active planes of continuous rotation.
+\vskip 0.5em
 Unlike with the shape matching task, there is very little correlation between a participants level of confidence; measured on a scale of 0 to 10, and the correctness of their answer; measured using the jaccard index. This suggests that participants where likely, to some degree, guessing rather than being sure of their answers.
 Participants did show that they felt they had a level of understanding (rated on a trinary scale of "yes", "sort of" and "no") that correlated with their level of confidence in their answers (\cref{fig:rot_corr}).
 \vskip 0.5em
@@ -1291,14 +1297,16 @@ Generally a participants correctness was not affected by the shape on screen, al
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\textwidth]{images/results/rotation_matching_correlations.png}
-  \caption{Rotation matching correlations. "Number of Rotations": The number of active planes of continuous rotation.}
-  \label{fig:rot_corr}
+  \includegraphics[width=0.8\textwidth]{images/results/pose_matching_stats.png}
+  \caption{Pose matching correctness and timings}
+  \label{fig:pos_stats}
 \end{figure}
 
 \subsection*{Pose Matching}
 
 TODO: pose matching
+\cref{fig:pos_stats}
+\cref{fig:pos_corr}
 
 hard to draw conclusions
 
@@ -1318,12 +1326,7 @@ first 2 iterations take alot longer
 
 faster over time
 
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/results/pose_matching_stats.png}
-  \caption{Pose matching correctness and timings}
-  \label{fig:pos_stats}
-\end{figure}
+
 
 =============
 
