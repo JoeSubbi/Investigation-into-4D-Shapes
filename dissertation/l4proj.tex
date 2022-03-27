@@ -1209,15 +1209,15 @@ Of the 11 participants, 3 had never heard of four dimensions before. 5 participa
 \subsection*{Shape Matching}
 
 %correct over time
-As the participant spends more time dealing with 4D shapes, they become more familiar with these shapes. As shown in  \cref{fig:shape_stats}, participants tend to answer more accurately over time; where each iteration follows the introduction of a new representation in random order.
+Each participant become more familiar with the geometry of 4D shapes as they spent more time with them. As shown in  \cref{fig:shape_stats}, participants answered more accurately over time; where each iteration follows the introduction of a new representation in random order.
 %submission time over time
-Following this, \cref{fig:shape_stats} also shows that participants tend to submit their answer earlier with each iteration of a new representation.
+Following this, \cref{fig:shape_stats} shows that participants were quicker to answer with each iteration of a new representation.
 \vskip 0.5em
 %correctness per representation
 What is surprising; participants were most correct when using the control representation, and performed worst with the w-axis timeline.
 Whilst running the experiment in browser, the performance would decrease as the complexity of a ray marched scene increased.
 Furthermore, through discussion with participants, it appears a common theme that they felt they performed worse if there is more content to digest.
-These two elements are backed up by the time taken per representation (\cref{fig:shape_stats}), where participants were much more likely to expire the twenty second time limit when interacting with representations rendering more content.
+These two elements are backed up by the time taken to answer per representation (\cref{fig:shape_stats}), where participants were much more likely to expire the twenty second time limit when interacting with representations rendering more content.
 \vskip 0.5em
 
 \begin{figure}
@@ -1228,11 +1228,11 @@ These two elements are backed up by the time taken per representation (\cref{fig
 \end{figure}
 
 % correctness and confidence
-Encouragingly, a positive correlation can be seen between a participants correct answers and their confidence and understanding of their submission (\cref{fig:shape_corr}). Their confidence was rated on a scale of 0 to 10, and their understanding was a binary answer of "yes" or "no".
+Encouragingly, a positive correlation can be seen between a participants correct answers and their confidence and understanding of their submission (\cref{fig:shape_corr}). Their confidence was rated on a scale of 0 to 10, and their understanding was a binary answer: "yes" or "no".
 This correlation suggests that participants were not making blind guesses.
 \vskip 0.5em
 % time taken
-A strong correlation can be seen between a participants confidence and how long they took to answer the question. As expected, a participant took longer to submit their answer if they were unsure of the correct answer.
+A strong correlation can be seen between a participants confidence and how long they took to answer the question; suggesting a participant took longer to submit their answer if they were not confident in it.
 Following this, a decrease in correctness and understanding correlates with an increased time to answer (\cref{fig:shape_corr}).
 \vskip 0.5em
 % correlations per shape
@@ -1261,17 +1261,19 @@ The active planes of continuous rotation were recorded as a $1 \times 6$ boolean
   \label{jaccard}
   J(A, B) = \frac{|A \cap B|}{|A \cup B|}
 \end{equation}
-%
+
 % per iteration
 With each iteration of a new representation, there appears to be a steady increase in accuracy, indicated by the quantity of perfect answers, and the similarity using the jaccard index (\cref{fig:rot_stats}).
 Furthermore, the time taken to answer clearly decreases as users spend more time with the 4D shapes.
 \vskip 0.5em
 % Representations
-The 4D to 3D rotational abstraction performed better than any other representation for all three metrics: totally correct answers, similarity of an answer, and the time taken to answer (\cref{fig:rot_stats}). Whilst this representation proved most effective at conveying the active planes of rotation, there is a debate to be had whether a user understood what they were seeing on screen, or if the representation just gives the answer away without the need for critical thinking.
+Participant performance when using the 4D to 3D rotational abstraction proved better than any other representation for all three metrics: totally correct answers, similarity of an answer, and the time taken to answer (\cref{fig:rot_stats}). Furthermore, participants were more confident in their answers whilst using this representation. Whilst this representation proved most effective in assisting users to identify the active planes of rotation, There is a debate to be had as to whether this representation just gives the answer away, or if participants actually critically considered what they were seeing on screen.
 \vskip 0.5em
-On the other hand, the multi-view representation has a notably lower quantity of totally correct answers compared to the other representations. This trend can also be seen when looking at the jaccard index. Discussion with participants yielded a common theme: Given four objects rotating on screen, where some rotate in 3D and some in 4D, participants were often mislead, seeing patterns in objects rotations, but drawing the incorrect conclusions. It would seem that it takes a more professional eye, and more time and experience with the representation to take advantage of it. Participants also took a longer time to answer when using the multi-view representation. 
+On the other hand, the multi-rotational view representation has a notably lower quantity of totally correct answers compared to the other representations. This trend can also be seen when analysing the similarity of users answers (\cref{fig:rot_stats}). Moreover, participant confidence is generally worse whilst using this representation (\cref{fig:rot_corr}). Discussion with participants yielded a common theme: Given four objects rotating on screen, where some rotate in 3D and some in 4D, participants were often mislead, seeing patterns in the rotation of different cross sections, but drawing incorrect conclusions. Participants also took longer to answer when using the multi-view representation. 
+It seems that users require more time and experience with this representation to take advantage of the behaviour exhibited by each perspective. 
 \vskip 0.5em
-The w-axis timeline did not seem particularly better or worse than the control representation. The timeline representation does not provide any extra information on the rotations of a 4D object, and as such has not seemed to benefit users in interpreting the active planes of continuous rotation.
+The w-axis timeline did not seem notably better or worse with comparison to the control representation. The timeline representation does not provide any extra information on the rotations of a 4D object, and as such has not seemed to benefit users in interpreting the active planes of continuous rotation.
+\vskip 0.5em
 
 \begin{figure}
   \centering
@@ -1280,18 +1282,12 @@ The w-axis timeline did not seem particularly better or worse than the control r
   \label{fig:rot_stats}
 \end{figure}
 
-=============
-
-basically not correlation between confidence and correctness - partially luck
-
-confidence decreased as they spent more time watching it - if they couldnt tell early on, they probably didnt understand It
-
-confidence higher with capsule, lower with pentachoron
-time taken lower for capsule
-
-correctness didn't very between shapes much
-
-confidence higher with 4D -3D, lower with multi-view
+Unlike with the shape matching task, there is very little correlation between a participants level of confidence; measured on a scale of 0 to 10, and the correctness of their answer; measured using the jaccard index. This suggests that participants where likely, to some degree, guessing rather than being sure of their answers.
+Participants did show that they felt they had a level of understanding (rated on a trinary scale of "yes", "sort of" and "no") that correlated with their level of confidence in their answers (\cref{fig:rot_corr}).
+\vskip 0.5em
+As might be expected, users confidence in their answer tended to decrease as they took longer to answer (\cref{fig:rot_corr}). It is likely that if a participant could not identify the active planes of rotation early on, they felt much less confident in their answer.
+\vskip 0.5em
+Generally a participants correctness was not affected by the shape on screen, although (\cref{fig:rot_corr}) suggests that users felt more confident whilst handling the capsule, and less so when dealing with the pentachoron. Interestingly however, participants took longer to answer when the object under rotation was the capsule.
 
 \begin{figure}
   \centering
@@ -1361,11 +1357,16 @@ more rotations with pentachoron
 
 TODO: qualitative results
 
+At the end of the experiment, participants were asked to complete the final section of the questionnaire (\cref{questionnaire}) they had started at the beginning of the experiment. 
+This stage of the questionnaire probed users on their opinions of each extension to the 3D cross section they had interacted with during the course of the experiment. 
+The summary of their opinions are listed below.
+
 \subsubsection{w-axis Timeline}~
 \vskip 0.2em
 + simple representation of geometry
 + indication of what will occur before interacting with slider
 + saved time identifying shapes
+\vskip 0.5em
 - hard to understand in small time frame
 - lagged in browsers
 - no help for rotation
@@ -1375,6 +1376,7 @@ TODO: qualitative results
 \vskip 0.2em
 + helpful for understanding which planes of rotation occured
 + interesting
+\vskip 0.5em
 - too much info
 - lagged in browsers
 - new users can misinterpret rotation - 3D can look like 4D from other perspectives and visa versa
@@ -1385,6 +1387,7 @@ TODO: qualitative results
 + easy, simple
 + helps with rotation
 + easier to differentiate between multiple rotations
+\vskip 0.5em
 - often didnt pay attention to it except in rotation match, not to help with accuracy of pose match
 
 \subsection{Analysis and Discussion}
