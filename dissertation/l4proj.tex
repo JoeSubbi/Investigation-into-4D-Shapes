@@ -100,7 +100,7 @@ Handling four dimensional space presents a number of opportunities and challenge
 \vskip 0.4em
 To understand the orientation of an object, a user needs to be able to differentiate similar faces of that object from each other. Colour, patterns and textures can be applied to an object in order to assist in comprehending the current pose of an object in comparison to an otherwise visually similar counterpart. An example of this is a cube rotated 90 degrees (\(\frac{\pi}{2}\) radians) and the same cube rotated by 270 degrees (\(\frac{3\pi}{2}\) radians). The un-textured cubes would appear to be the same despite not being in the same orientation.
 \vskip 0.4em
-In this paper several methods will be applied in an attempt to assist a users understanding of higher dimensional space. Users will be provided with a series of extensions to the visualisation of four dimensional geometry. Such methods include: viewing the object from other angles, attempts to visualise the object in its entirety spanning along the \(w\) axis, and abstractions of the rotation of an object in order to help interpret higher dimensional rotations.
+In this paper several methods will be applied in an attempt to assist a users understanding of higher dimensional space. Users will be provided with a series of extensions to the visualisation of four dimensional geometry. Such methods include: viewing the object from other angles; attempts to visualise the object in its entirety spanning along the \(w\) axis; and, abstractions of the rotation of an object in order to help interpret higher dimensional rotations.
 
 \section{Motivation}
 
@@ -111,7 +111,7 @@ This supposed tidiness has lead to misconceptions that are so heavily rooted in 
 %
 In the 3D world, these misconceptions do not matter, and the mathematics is still sound. Quaternions, the most common method of controlling or interpreting rotation, is heavily used in gyroscopic devices, interactive digital 3D environments, animation and robotics. More abstract practices such as physics or mathematics, however, often need to consider geometry in higher dimensional spaces.
 \vskip 0.4em
-A variety of fields within science and engineering utilise the visualisation of higher dimensional spaces to tackle a variety of problems. To more intuitively understand a given problem defined in \(n\) dimensional space it is often suitable to reduce the dimensionality of the problem. However, when a problem is reduced to $\mathbb{R}^3$ or $\mathbb{R}^2$ it may become somewhat trivial. Visualisation of 4D objects can often server as the "bridge from the 'trivial cases' to the 'nontrivial cases'", \citep{zhou_visualization_1991}. Such problems that utilise the visualisation of four dimensional space include: Analysis of differential geometry, collision detection, analysis of 3D objects in motion, and scalar-fields in 3D space; among others \citep{zhou_visualization_1991}.
+A variety of fields within science and engineering utilise the visualisation of higher dimensional spaces to tackle a variety of problems. To more intuitively understand a given problem defined in \(n\) dimensional space it is often suitable to reduce the dimensionality of the problem. However, when a problem is reduced to $\mathbb{R}^3$ or $\mathbb{R}^2$ it may become somewhat trivial. Visualisation of 4D objects can often serve as the "bridge from the 'trivial cases' to the 'nontrivial cases'", \citep{zhou_visualization_1991}. Such problems that utilise the visualisation of four dimensional space include: Analysis of differential geometry; collision detection; analysis of 3D objects in motion; and, scalar-fields in 3D space; among others \citep{zhou_visualization_1991}.
 %\vskip 0.4em
 %
 %TODO: what is the benefit of trying to teach people about it?\\
@@ -122,11 +122,11 @@ A variety of fields within science and engineering utilise the visualisation of 
 % wide range of 4 Dimensional shape. variety of ways to display. As such the usability of each representation will be experimentally validated in order to find the most intuitive and effective way to represent higher dimensional shapes. The accuracy of which the user can identify these properties and act accordingly will be measured against the representation being shown to them.
 
 This paper aims to answer questions related to which representation of 4D space, presented as an extension to the 3D cross section, is the most effective in conveying the properties of four dimensional geometry to a user with limited experience. Which representation is the most effective at representing the surface of a 4D object? And which representation is more effective at conveying the rotational pose of an object in $\mathbb{R}^4$?
-Furthermore, Does a users understanding and ability to manipulate 4D objects increase with practice? And can advantages of each representation be realised and digested by potentially inexperienced users?
+Furthermore, does a users understanding and ability to manipulate 4D objects increase with practice? And can advantages of each representation be realised and digested by potentially inexperienced users?
 \vskip 0.4em
-As per the motivation for this project; an effective tutorial was compiled in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects was developed in Unity, with the capability to showcase a wide variety of 4D shapes using ray marching. Research into intuitive methods of user interaction was explored, and a system to rotate an object without gimbal lock was employed.
+As per the motivation for this project, an effective tutorial was compiled in order to explain the foundations of four dimensional geometry. A system to view and interact with 4D objects was developed in Unity, with the capability to showcase a wide variety of 4D shapes using ray marching. Research into intuitive methods of user interaction was explored, and a system to rotate an object without gimbal lock was employed.
 \vskip 0.4em
-This paper proposes several extensions to taking a 3D cross section of a four dimensional objects. Each extensions is designed to emphasise a different aspect of geometry. The project evaluation explores the effectiveness of each extension in assisting users to interpret higher dimensional spaces, and understand the surface, rotation and pose of a 4D object. 
+This paper proposes several extensions to taking 3D cross section of a four dimensional objects. Each extension is designed to emphasise a different aspect of geometry. The project evaluation explores the effectiveness of each extension in assisting users to interpret higher dimensional spaces, and understand the surface, rotation and pose of a 4D object. 
 %
 Given a series of challenges, a study was conducted that allowed users to manipulate several 4D objects in order to evaluate their understanding of geometry, and compare their understanding against each representation of a 3D cross section. 
 Metrics such as time taken, confidence and accuracy were measured, with each metric being applied to several tasks; with each task focusing on a different aspect of geometry in order to evaluate a users understanding of how a cross section of a four dimensional object changes under rotation.
@@ -197,7 +197,7 @@ Rendering three dimensional shapes on a 2D screen is an art that has evolved ove
 Similar films of that era, such as \textit{Dune} (1984) or \textit{Star Wars} (the Original Trilogy) (1977-1983) often used a mix of practical effects and physically modifying film, using techniques such as rotoscoping and double exposure. The team behind \textit{Tron}, however, opted to take advantage of machines to do some heavy lifting. In-spite of the technological limitations the team were able to build a system to combine and render simple but smooth primitive objects. They used a system called Ray Marching \citep{sheppard_tron_2010}.
 \vskip 0.4em
 Today, it is standard to use triangle meshes to build and even render complex models in real time; not just for film, but for real time interactive media such as video games.
-A mesh consists of vertices, edges and faces. A vertex is a point on the surface of an object that edges connect to. A face is formed by a closed loop of edges. Generally, a face will be made up of three vertices and three edges, creating the most simple 2D shape: A triangle; which form a part of the surface of a 3D mesh.
+A mesh consists of vertices, edges and faces. A vertex is a point on the surface of an object that edges connect to. A face is formed by a closed loop of edges. Generally, a face will be made up of three vertices and three edges, creating the most simple 2D shape - a triangle - which form a part of the surface of a 3D mesh.
 
 \subsection{Mesh Based Rendering}
 
@@ -209,7 +209,7 @@ On the other hand, \citet{tianli_4d_2018} used the readily available Unity game 
 There are two main drawbacks to mesh based rendering: The time taken to construct 4D objects, and the complexity of translating four dimensional geometry to 3D. 
 %
 Simple 4D Platonic solids \citep{parker_things_2014} such as the hyper-tetrahedron (5-cell), hyper-cube (8-cell) and hyper-octahedron (16-cell) are fairly straightforward. Developing complex shapes such as a the hyper-dodecahedron (120-cell) or the hyper-iscosahedron (600-cell) becomes a complex and time consuming task. 
-This complexity only increase when trying to develop curve faced shapes such as a hyper-sphere, torus or cone, which are smooth. Smooth geometry generally requires hundreds of vertices as well as smooth surface shading that only add to computational load and development time.
+This complexity only increases when trying to develop curve faced shapes such as a hyper-sphere, torus or cone, which are smooth. Smooth geometry generally requires hundreds of vertices as well as smooth surface shading that only add to computational load and development time.
 \vskip 0.4em
 In order to render a three dimensional slice of a four dimensional object, an algorithm must be employed such that a point along an edge that connects two vertices is found and connected, by edges, to all other points that sit along edges of the same object, all lying on the same four dimensional hyperplane. This is a fairly complex task, and only gets more complex when calculating what faces of the slice of the object in order to render a cohesive three dimensional slice. 
 \citet{tianli_2d_2018} demonstrates how to find the cross section of an object and the problems associated with it.
@@ -300,17 +300,17 @@ Rotating an object in $\mathbb{R}^2$ is somewhat trivial. Given a vector $v_{xy}
 %
 Rotating an object in a space greater than two dimensions immediately becomes a nontrivial problem due to its non-commutativity. In higher dimensions, rotation matrices can be composed into a homogeneous rotation matrix. Multiplying a vector with a such a matrix will rotate a vector, but doing so will likely encounter gimbal lock. Gimbal lock occurs when considering each plane of rotation independent to one another. As a result, if a particular plane becomes parallel to another, a degree of rotation is lost and the vector will not rotate as expected.
 \vskip 0.4em
-Introducing the quaternion; an extension of the complex number system. A quaternion has 4 components: \(x\), \(y\) and \(z\) which describe the axis of rotation, and \(w\) which describes the amount of rotation. Quaternions do not suffer from gimbal lock and can be applied to each other to perform several rotations in series.
+Introducing the quaternion: an extension of the complex number system. A quaternion has 4 components: \(x\), \(y\) and \(z\) which describe the axis of rotation, and \(w\) which describes the amount of rotation. Quaternions do not suffer from gimbal lock and can be applied to each other to perform several rotations in series.
 \vskip 0.4em
-Quaternions have a problem: They consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating within two dimensions as rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
+Quaternions have a problem: they consider rotations as a rotation about an axis. As discussed by \citet{bosch_lets_nodate}, axial rotations are not appropriate as a generalised method of rotation across dimensions. For example, you would not consider a 2D object rotating within two dimensions as rotating about the \(z\) axis. It makes far more sense to stay within $\mathbb{R}^2$ and rotate about the \(xy\) plane.
 
 \subsection{Geometric Algebra and The Rotor}
 \label{ga_and_rotor}
 
 Geometric Algebra (or Clifford Algebra) is a field of mathematics describing vector space. Vector space is populated by multivectors, graded by their vector components. Multivectors are defined by their associative, distributive and anti-commutative properties \citep{baker_maths_nodate}.
-A grade 0 multivector is a scalar number. a grade 1 multivector is just a vector. Grade 2 multivectors are known as bivectors, which build the foundation for the rotor. A trivector is a grade 3 multivector forming a parallelepiped from three vectors. Finally in $\mathbb{R}^4$ a grade 4 multivector is known as a pseudo-scalar.
+A grade 0 multivector is a scalar number. A grade 1 multivector is just a vector. Grade 2 multivectors are known as bivectors, which build the foundation for the rotor. A trivector is a grade 3 multivector forming a parallelepiped from three vectors. Finally in $\mathbb{R}^4$ a grade 4 multivector is known as a pseudo-scalar.
 \vskip 0.4em
-A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\). Its two vector components define its orientation in space. The bivector is also defined by two important properties: The direction of rotation, from \(a\) to \(b\), and the area of the parallelogram formed by its two vector components as illustrated by \citet{slehar_clifford_2014}. A bivector in the reverse direction, i.e from \(b\) to \(a\) fulfills the anti-commutative property such that $b_{ba} = -b_{ab}$. 
+A bivector $b_{ab}$ is made up of two vectors \(a\) and \(b\). Its two vector components define its orientation in space. The bivector is also defined by two important properties: The direction of rotation, from \(a\) to \(b\); and, the area of the parallelogram formed by its two vector components as illustrated by \citet{slehar_clifford_2014}. A bivector in the reverse direction, i.e from \(b\) to \(a\) fulfills the anti-commutative property such that $b_{ba} = -b_{ab}$. 
 % TODO: Wedge Product similar to Cross Product
 \vskip 0.4em
 As mentioned above, a rotation should be considered as a rotation about a plane. A bivector defines the plane for a vector to rotate about. As demonstrated by \citet{mathoma_geometric_2017}, a rotor can rotate a vector following the principle that a double reflection forms a rotation \citep{mathoma_geometric_2016-2}.
@@ -388,14 +388,14 @@ A primitive solution proposed by \citet{kageyama_keyboard-based_2005} explores t
 \label{teaching_and_eval}
 
 In order to evaluate the effectiveness of each extension to a 3D cross section of a 4D object, a participant should have an understanding of what four dimensional geometry is, and how it behaves.
-For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space, prior to conducting the experiment. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, theorises that their are five levels of understanding geometry, where a student will progress from one level to the next: Visualisation, Analysis, Abstraction, Deduction and Rigor, numbered 0 to 4 respectively.
+For this investigation, it was a priority to ensure this complex mathematical topic can be well communicated to individuals with little-to-no experience of higher dimensional space, prior to conducting the experiment. \textit{The van Hiele Model of Geometric Thinking}, \citep{safrankova_van_2012}, theorises that their are five levels of understanding geometry, where a student will progress from one level to the next: Visualisation; Analysis; Abstraction; Deduction; and, Rigor, numbered 0 to 4 respectively.
 Level 0 focuses on the identification and recognition of geometry using simple language. The properties that define a geometry need not be identified.
 Level 1: students begin basic analysis and identification of geometry, without a need for proofs.
 Level 2: students create meaningful definitions and are able to justify and reason their understanding of geometry.
 Level 3: students are able to provide deductive geometry proofs, showing their understanding of formal definitions and theorems.
 Level 4: students have an understanding of several proofs and can comprehend Euclidean and non-Euclidean geometry.
 \vskip 0.4em
-\citet{safrankova_van_2012} outlines the five stages of the learning process to comprehensively cover the material and reaffirm a students understanding; as outlined in the van Hiele model.
+\citet{safrankova_van_2012} outlines the five stages of the learning process to comprehensively cover the material and reaffirm a students understanding, as outlined in the van Hiele model.
 \textit{Information inquiry} is where students receive the material and discover the structure of the information they are handling. At this stage a teacher should use familiar language to help a student relate what they already understand to the new material.
 \textit{Guided or directed orientation} deals with the exploration of relationships within the material. A teacher may suggest activities enabling students to recognise the properties of a new concept. Discussion is encouraged between the student and the teacher to assist in discovering relationships between properties of the material.
 \textit{Explanation or Explication}: Students formulate what they have discovered. New terminology is introduced whilst the student shares their thoughts on the relationships discovered. Here a teacher can ensure the correct terminology is being used.
@@ -414,19 +414,19 @@ To provide a participant with the best possible foundations for understanding fo
 
 The core of this project focuses on the development of a system capable of rendering several different types of four dimensional objects, and be able to view these objects through a series of extensions to the 3D cross section in order to evaluate their effectiveness in teaching potentially inexperienced users about complex geometry.
 \vskip 0.4em
-For a successful investigation, a focus was placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment was to be clear and concise. Both quantitative and qualitative metrics were obtained. To properly evaluate each representations of an objects cross section, the experiment required tests probing a participant on the surface, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$.
+For a successful investigation, a focus was placed on the visualisation of 4D geometry, as well as how users learn and interpret this geometry. It is important that the experiment was to be clear and concise. Both quantitative and qualitative metrics were obtained. To properly evaluate each representation of an objects cross section, the experiment required tests probing a participant on the surface, behaviour under rotation and identification of the rotational pose of an object in $\mathbb{R}^4$.
 
 \section{Limitations}
 
-The scope of the project was limited by two main factors: The time that can be spent on development, and the quantity to quality ratio of experimentation. 
-The project is primarily separated into three components: Research, development and experimentation. The development phase took the most time with so many areas for exploration. Such areas include the creation, stable rotation, and manipulation of 4D geometry. To evaluate the effectiveness of the representations that need to be developed however, plenty of time needed to be put aside to plan and run appropriate experiments.
+The scope of the project was limited by two main factors: The time that can be spent on development; and, the quantity to quality ratio of experimentation. 
+The project is primarily separated into three components: Research; development; and, experimentation. The development phase took the most time with so many areas for exploration. Such areas include the creation, stable rotation, and manipulation of 4D geometry. To evaluate the effectiveness of the representations that need to be developed however, plenty of time needed to be put aside to plan and run appropriate experiments.
 Experimentation is, more often than not, limited by the number of participants that choose to be involved. To encourage the greatest number of potential participants to enroll in the experiment, the time commitment and effort cannot be so great that it deters them. Alongside the conscious effort to sign up, the experiment cannot run for such a period of time that it may effect a participants performance. As such, the amount of data that can be collected in one sitting was to be maximised within a limited time frame.
 
 \section{The Framework}
 \label{requirements_framework}
 
 The project was developed in the Unity game engine using ray marching shaders. Unity is readily available to anyone for free; and allows for quick and simple application deployment for web based hosting using WebGL and HTML5. 
-Given the COVID-19 pandemic at the time of the experiment, online hosting was an important consideration to allow for a more accessible experiment in a world where people are having to self isolate. Not only does this allow for a participants safety, but the potential size of the audience can be increased. Online hosting reduces the commitment a participant has to make, making the experiment more appealing. Time to commute and costs of travel that potential participants would otherwise have to make, now no longer factor into the considerations made by a potential participant when signing up for the experiment.
+Given the COVID-19 pandemic at the time of the experiment, online hosting was an important consideration to allow for a more accessible experiment in a world where people were having to self-isolate. Not only does this allow for a participants safety, but the potential size of the audience can be increased. Online hosting reduces the commitment a participant has to make, making the experiment more appealing. Time to commute and costs of travel that potential participants would otherwise have to make, now no longer factor into the considerations made by a potential participant when signing up for the experiment.
 \vskip 0.4em
 Ray marching was used rather than mesh based rendering given its comparative ease. Several 4D shapes can be written fairly quickly using ray marching. Although complex geometry with defined faces, such as the 120-cell is a struggle to write using ray marching, render curved geometry using mesh based rendering requires the development of a smooth shading rendering effect. 
 Moreover, the experiment only intended to test users with 4D primitive objects given they are easier to understand and relate to three dimensions. 
@@ -435,11 +435,11 @@ Generally, ray marching is more suitable to this project in exploring primitive 
 
 \section{Prioritisation of Requirements Using MoSCoW}
 
-MoSCoW is a prioritisation technique used in project planning. The purpose of MoSCoW is to separate the requirements of a project into four levels of priority: Must have, Should have, Could have and Won't have this time. This process may be revisited several times during a projects development lifecycle; different requirements are often re-prioritised based on project progress or a change in direction.
+MoSCoW is a prioritisation technique used in project planning. The purpose of MoSCoW is to separate the requirements of a project into four levels of priority: Must have, Should have, Could have and Won't have this time. This process may be revisited several times during a project's development lifecycle; different requirements are often re-prioritised based on project progress or a change in direction.
 
 \subsection*{Must Have}
 
-The following requirements are necessary in order to conduct a successful evaluation and were compiled and refined throughout the projects development:
+The following requirements are necessary in order to conduct a successful evaluation and were compiled and refined throughout the project's development:
 
 A system must be developed that is capable of rendering 4D shapes. As such, several 4D shapes must be created. 
 In order to test a persons understanding, of the 4D shapes that are to be developed, they must not all be immediately distinguishable from one another. For example, a hyper-cube and a hyper-sphere will never look similar to each other, whereas, the 3D cross section of a 4D hyper-cone in a particular pose will look identical to the 3D cross section of a 4D hyper-sphere.
@@ -448,7 +448,7 @@ The aims of the project focus on the development of several extensions to the 3D
 \vskip 0.4em
 To distinguish the faces of shapes, the objects will need to be coloured such that given two objects in a different pose, both objects can be distinguished from one another even if their surface shape appears identical. 
 \vskip 0.4em
-In order to prepare participants for the experiment, an introductory tutorial video will need to be assembled to teach and explain to them about the complexities and features of the fourth dimension. This tutorial video must cover the behaviour of geometry in $\mathbb{R}^4$, with appropriate references to the similarities when reducing three dimensional space to a two dimensional cross section. 
+In order to prepare participants for the experiment, an introductory tutorial video will need to be assembled to teach and explain the complexities and features of the fourth dimension. This tutorial video must cover the behaviour of geometry in $\mathbb{R}^4$, with appropriate references to the similarities when reducing three dimensional space to a two dimensional cross section. 
 Moreover, the video must explain rotation in four dimensions, as well as an explanation for the behaviour that occurs when rotating an object outside of the dimensions it is being viewed within. The video must have relevant diagrams and animations to appropriately depict the behaviour of 4D shapes in such a way that is related to the following experiment.
 
 \pagebreak
@@ -462,10 +462,10 @@ Finally the experiment must have multiple stages of testing to evaluate a person
 Whilst not a necessity, the following requirements would enhance the investigation, allowing the further exploration of the four dimensional world.
 
 "Free orientation", as stated by \citet{safrankova_van_2012}, is an important aspect in a students learning and understanding of the definition and behaviour of geometry. In order for a participant to master the complexities of geometry in $\mathbb{R}^4$ they should be able to handle 4D objects directly.
-Evaluating a participants understanding of a shape, its surface and its behaviour under rotation can be conducted without directly interacting with or manipulating an object; however a system should be developed allowing a participant to directly interact with 4D objects in order to perceive, first hand, the effect they have on the cross section o the geometry.
+Evaluating a participants understanding of a shape, its surface and its behaviour under rotation can be conducted without directly interacting with or manipulating an object; however a system should be developed allowing a participant to directly interact with 4D objects in order to perceive, first hand, the effect they have on the cross section of the geometry.
 For direct manipulation in four dimensions, a 4D Rotor must be implemented to allow for stable interaction, without fear of gimbal lock.
 \vskip 0.4em
-Following the implementation of a system to freely rotate 4D geometry, a challenge should be implemented evaluating a participants understanding of the geometry through the use of the manipulation of objects on screen.
+Following the implementation of a system to freely rotate 4D geometry, a challenge should be implemented evaluating a participant's understanding of the geometry through the use of the manipulation of objects on screen.
 
 \subsection*{Could Have}
 
@@ -476,7 +476,7 @@ It would be desirable to implement a series of tools for manipulation, allowing 
 %==================================================================================================================================
 \chapter{Design}
 
-Given this investigation revolves around a participants understanding of complex geometry, it is important that they are familiar with the behaviour of this geometry prior to completing the main portion of the experiment:
+Given this investigation revolves around a participant's understanding of complex geometry, it is important that they are familiar with the behaviour of this geometry prior to completing the main portion of the experiment:
 Each extension to the 3D cross section will be evaluated against a series of tasks a user must complete. Prior to this phase, the user will be trained on the complexities of the fourth dimension. Elements will be taken from the \textit{van Hiele model of geometric thinking} as discussed in \cref{teaching_and_eval}. 
 %
 The different portions of the experiment heavily encouraged discussion with the teacher/observer in order to ensure the best understanding a participant may have of four dimensions prior to and during the experiment.
@@ -484,15 +484,15 @@ The different portions of the experiment heavily encouraged discussion with the 
 \section{Tutorial}
 \label{tutorial}
 
-A brief discussion was conducted with each participant following their introduction to the experiment and what the experiment would entail. This discussion focused around a participants prior knowledge with the concepts of 4D.
+A brief discussion was conducted with each participant following their introduction to the experiment and what the experiment would entail. This discussion focused around a participant's prior knowledge with the concepts of 4D.
 As per the first stage of van Hiele's requirements for teaching, \textit{information inquiry}, students are to receive the material and discover the structure of the geometry presented in this stage. This introduction should use familiar, well-known and understood language.
 The material received by the students at this stage was compiled in the form of a video tutorial, linked here: 
 \url{https://www.youtube.com/watch?v=fhnhK7w67_s}
 \vskip 0.4em
-The tutorial was structured such that the world of four dimensions could be built upon piece by piece in hopes that students would better digest each component of $\mathbb{R}^4$ in turn without feeling too overwhelmed.
+The tutorial was structured such that the world of four dimensions could be built upon piece by piece in hope that students would better digest each component of $\mathbb{R}^4$ in turn without feeling too overwhelmed.
 To begin with, the concept of a fourth perpendicular axis was introduced, with emphasis that this could not be visualised, and instead a method of viewing 4D geometry would be with the use of a 3D cross section. 
 The 2D cross sections of some primitive 3D shapes, namely the hyper-sphere and a hyper-cube, were showcased. 
-To complement the behaviour of a shapes cross section, the geometry of a hyper-sphere and a hyper-cube were described independent to their cross sections.
+To complement the behaviour of a shape's cross section, the geometry of a hyper-sphere and a hyper-cube were described independent to their cross sections.
 \vskip 0.4em
 The rotation of 4D geometry is a more complex subject. As such, the rotation was broken down into several stages.
 Rotation in \(n\) dimensions must be considered a planar rotation, opposed to axial rotations as most people are used to. 
@@ -504,16 +504,16 @@ To emphasise how planar rotations work in \(n\) dimensions, a 2D cross section o
 \label{experimental_design}
 
 %discuss video - explanation or explication - integration
-An informal discussion took place after the tutorial video to elaborate on the participants understanding. This discussion would utilise the \textit{explanation or explication} and \textit{integration} phases of the learning process; where a student is asked to formulate what they have learned, and share their opinions on the relationships they have discovered. Here the teacher may correct terminology. Towards the end of the discussion, the participant would summarise what they have learned ensuring adequate preparation for the coming experiment.
+An informal discussion took place after the tutorial video to elaborate on the participant's understanding. This discussion would utilise the \textit{explanation or explication} and \textit{integration} phases of the learning process; where a student is asked to formulate what they have learned, and share their opinions on the relationships they have discovered. Here, the teacher may correct terminology. Towards the end of the discussion, the participant would summarise what they have learned ensuring adequate preparation for the coming experiment.
 \vskip 0.4em
 Given the limited time to conduct an experiment, the remainder of the experiment took guidance from the \textit{free orientation} and \textit{guided or directed orientation} stages of van Hiele's learning process, effectively merging them into a single orientation phase.  
 %play with a 4D shape, get the hang of controls - free orientation
 Participants were provided with a 4D hypercube, and a summary of the controls to manipulate the shape. The participant was allowed to spend time observing how the shape may change when undergoing different rotations, as well as how the shape may change when moving it through the hyper plane. 
-Informal tasks were proposed to the participants allowing them to connect relationships of the geometry. An example of such a task included: Rotating the shape with the use of a 4D rotation such that the colours of two opposing faces of the 3D cross section switch sides of the object. Here participants may learn basic properties of rotations in $\mathbb{R}^4$.
+Informal tasks were proposed to the participants allowing them to connect relationships of the geometry. An example of such a task included rotating the shape with the use of a 4D rotation such that the colours of two opposing faces of the 3D cross section switch sides of the object. Here participants may learn basic properties of rotations in $\mathbb{R}^4$.
 \vskip 0.4em
 %testing - guided or directed orientation
-Of the developed extensions to the 3D cross section of four dimensional space, different extensions may have different strengths and weaknesses. Some extensions may excel in describing the surface geometry of an object, whilst others may better convey the rotation of an object in $\mathbb{R}^4$. Therefore the main portion of the experiment was broken down into a series of three tasks, repeated for each representation. Each of the three tasks focuses on a different aspect of geometry: understanding the shape of a 4D object, understanding the rotation of a 4D object, and the ability to manipulate a 4D object.
-First, the participant was be tested on their understanding of the surface of a shape. Given a cross section of a 4D object, the participant should be able to identify the shape on screen.
+Of the developed extensions to the 3D cross section of four dimensional space, different extensions may have different strengths and weaknesses. Some extensions may excel in describing the surface geometry of an object, whilst others may better convey the rotation of an object in $\mathbb{R}^4$. Therefore the main portion of the experiment was broken down into a series of three tasks, repeated for each representation. Each of the three tasks focuses on a different aspect of geometry: understanding the shape of a 4D object; understanding the rotation of a 4D object; and, the ability to manipulate a 4D object.
+First, the participant was to be tested on their understanding of the surface of a shape. Given a cross section of a 4D object, the participant should be able to identify the shape on screen.
 Second, the participant was tested on their understanding of any rotations a 4D object may undergo. Given a 4D object under continuous rotation, the participant should be able to identify the active planes of rotation.
 Finally, the participant was tested on their ability to manipulate 4D geometry. Given a second object in a random pose, the participant is tasked with matching the primary objects orientation, with that of the secondary object. The randomly orientated object is only randomly oriented along 4D planes of rotation, allowing a user to manipulate both shapes simultaneously in 3D to view all sides of the objects in question.
 
@@ -564,7 +564,7 @@ As a result, an intuitive system has been developed, allowing users manipulate o
 
 \noindent
 \begin{minipage}[c]{0.45\linewidth}
-  To conduct the investigation, four main components had to be developed (\cref{fig:components}): Building and rendering 4D shapes, rotating and manipulating these shapes, building and running the experiment, and collecting and analysing the data from the experiments.
+  To conduct the investigation, four main components had to be developed (\cref{fig:components}): Building and rendering 4D shapes; rotating and manipulating these shapes; building and running the experiment; and, collecting and analysing the data from the experiments.
   There would be no project without the ability to render 4D shapes, so of course this was developed first. The experimental tasks were built up alongside the development of the rotor, and of course the rotor was required in order to manipulate the 4D shapes. After the experiment was assembled, data analysis tools could be developed independently, as experiments were run.
 \end{minipage} 
 \hspace{0.8cm}
@@ -602,8 +602,8 @@ When extending the ray marcher to four dimensions, the majority of the process w
 With the standard ray marcher implemented the shader can only interpret whether a ray hits a surface or not. The only information of a 3D shape that can be gathered from this binary value will be its 2D shadow. In order to render a 3D component of the object, we need light and shadows. 
 Two basic methods of shading include angle dependant light falloff - lambertian diffuse elimination - and shadows cast by other objects obstructing a light source \cref{lst:rm_light}. 
 A surface normal is a vector that is perpendicular to a point on the surface and can be used to measure the angle of the surface relative to another vector. 
-Using the surface normal an lambertian diffuse elimination can be implemented such that a surfaces light value will be lower if the difference between the surface normal and the vector to the light source is higher.
-A shadow cast by on to a surface can be taken by ray marching from a surface in the direction of the light source to check if there is another surface obstructing the path. If there is, the surfaces light value can be lowered.
+Using the surface normal, a lambertian diffuse elimination can be implemented such that a surface's light value will be lower if the difference between the surface normal and the vector to the light source is higher.
+A shadow cast by on to a surface can be taken by ray marching from a surface in the direction of the light source, to check if there is another surface obstructing the path. If there is, the surface's light value can be lowered.
 
 \begin{lstlisting}[language=glsl, caption={Given a light position \texttt{lightPos}, shade the surface based on the fall off angle and cast a shadow, if a surface is obstructing another surface from the light source}, label=lst:rm_light]
 float4 GetNormal(float4 p)
@@ -639,7 +639,7 @@ float GetLight(float4 p, float4 lightPos)
 \subsection{Derivation of 4D Shapes}
 
 Ray marching excels at creating infinitely complex shapes, such as high dimensional fractals. 
-Participants of the experiment may have little to no experience with higher dimensional geometry. To effectively evaluate each extension to the 3D cross section, the participant needs to understand the information they are seeing on screen. The best way to convey complex ideas is with simple examples; ergo, using geometric primitives, rather than complex geometry.
+Participants of the experiment may have little to no experience with higher dimensional geometry. To effectively evaluate each extension to the 3D cross section, the participant needs to understand the information they are seeing on screen. The best way to convey complex ideas is with simple examples: ergo, using geometric primitives, rather than complex geometry.
 \vskip 0.4em
 Of the 3D SDFs derived by \citet{quilez_distance_nodate} and \citet{the_art_of_code_ray_2019}, the sphere, box, and capsule were fairly trivial to translate directly to four dimensional space.
 A \textbf{4D hyper sphere} takes a radius, with the surface spanning equally along all four axes.
@@ -803,6 +803,7 @@ Each extension to the 3D cross section took advantage of colouring different sha
 The simplest extension to a 3D cross section of 4D space is to render several cross sections at once, each offset by a multiple of the distance $\delta_1$ along the \(w\) axis, with each cross section being separated by a distance of $\delta_2$ along the \(x\) axis. 
 The core of this concept has been explored by \citet{kageyama_visualization_2015}. In order to avoid the aforementioned problems with scaling, each cross section was built to exist side by side one another as shown in \cref{fig:exti}. 
 Throughout the project, this representation has been referred to as the \textit{w-axis timeline}. Given an object under translation, passing through the hyper-plane, over time, by definition labels each cross section as a glimpse into the past or future, with respect to the primary central cross section.
+
 A drawback of showcasing cross sections side by side is that fewer cross sections can be shown on screen at one time, in comparison to the elliptical design presented by \citet{kageyama_visualization_2015}. This problem is generally less significant for primitive shapes, such as the ones implemented for this project. The problem becomes more significant when visualising complex shapes with unpredictably changing surfaces.
 Given this representation provides more information about the geometry of an object over $\mathbb{R}^4$ it is reasonable to expect that it would most effective in shape identification. The \textit{w-axis timeline} may also provide some benefit a user to predictably manipulating a four dimensional object, or identify a rotation more accurately, although this is likely to be not particularly significant, if it all.
 
@@ -811,13 +812,13 @@ Given this representation provides more information about the geometry of an obj
 Taking inspiration from 2D animation, for its time in development, the following extension was referred to as the \textit{onion skin} representation. In 2D animation, the animator may enable the onion skin tool to see a set number of frames before and after the current frame so that they may see how the animation will progress as they move forward in time. 
 This representation aims for a similar approach, where the user may see backwards and forward along the \(w\) axis, rather than time. This approach follows a similar vein of thinking to the \textit{w-axis Timeline}. 
 The differing factor between the two is that the \textit{onion skin} representation overlays two translucent cross sections, forward and backward along \(w\), around the main cross section as shown in 
-\cref{fig:rep_onion}. The goal was to emphasise the geometry of a single object in a more cohesive manor.
+\cref{fig:rep_onion}. The goal was to emphasise the geometry of a single object in a more cohesive manner.
 The transparency of the cross sections were achieved by ray marching over 2 different distance functions. The first SDF contains all three cross sections. The second SDF just contains the central object. Two renders of the scene will be produced. By halving the colour values of both renders and overlaying them above each other, the full colour range is regained and anything that was hidden by one of the translucent objects will now be visible.
 
 The \textit{onion skin} representation was not carried forwards to the experiment phase. Each representation was placed under trial during informal discussions with peers. The participants of this discussion generally had limited experience of the fourth dimension. The purpose of this discussion was to evaluate if a representation had potential before carrying it through to the final experiments. 
 During discussions of objects under rotation whilst this representation was active showed it to be confusing and hard to follow. 
 Originally the translucent cross sections were set to be a consistent distance along \(w\) from the main object, as with the \textit{w-axis Timeline}. It was found that it was not obvious that the central cross section would become either of the other cross sections as it moved along \(w\), as expected. 
-In an attempt to rectify this problem, the translucent cross sections were set exist at fixed intervals along the \(w\) axis. Using this, the central cross section could be observed directly to become the translucent cross section when translated in its direction along \(w\). When the central cross section reached a translucent cross sections position along \(w\), the translucent cross sections would be shifted by a fixed amount such that the central cross section would again be directly in between the two translucent cross sections.
+In an attempt to rectify this problem, the translucent cross sections were set exist at fixed intervals along the \(w\) axis. Using this, the central cross section could be observed directly to become the translucent cross section when translated in its direction along \(w\). When the central cross section reaches the same position along the \(w\) axis as a translucent cross section, the translucent cross sections would be shifted by a fixed amount such that the central cross section would again be directly in between the two translucent cross sections.
 Despite these efforts, this representation was still deemed to confusing for users as was subsequently set aside for the rest of development.
 
 \subsection{\textit{Multi-rotational View}}
@@ -825,8 +826,8 @@ Despite these efforts, this representation was still deemed to confusing for use
 \textit{Polyvision}, proposed by \citet{matsumoto_polyvision_2019} extends a 3D shadow wireframe of a 4D object by introducing the ability to view the object from multiple angles. Viewing an object from multiple angles at once provides a great deal of insight into the geometry, and also in identifying the rotations it may undergo.
 A similar representation of 4D geometry was applied during this project over 3D cross sections of 4D objects. Throughout the duration investigation this representation has been referred as the \textit{multi-rotational view} or \textit{multi-view} for short.
 In order to view the same cross section from three other angles, the SDFs for four objects are rendered in total, with the three of the objects oriented $90^{\circ}$ about the $xw$, $yw$, $zw$ planes respectively. 
-In order to differentiate they four cross sections they were coloured differently. Conventionally, the \(x\), \(y\) and \(z\) axes are coloured red, green and blue respectively. Therefore the cross section that was rotated about the $xw$ plane was coloured red, the cross section that was rotated about the $yw$ plane was coloured green and the cross section that was rotated about the $zw$ plane was coloured blue; as shown in \cref{fig:rep_multi}.
-One of the biggest strengths of the \textit{multi-view} representation its ability to clearly convey the behaviour of a slice of 4D geometry under rotation; although it can be challenging to comprehend at first.
+In order to differentiate the four cross sections they were coloured differently. Conventionally, the \(x\), \(y\) and \(z\) axes are coloured red, green and blue respectively. Therefore the cross section that was rotated about the $xw$ plane was coloured red, the cross section that was rotated about the $yw$ plane was coloured green and the cross section that was rotated about the $zw$ plane was coloured blue; as shown in \cref{fig:rep_multi}.
+One of the biggest strengths of the \textit{multi-view} representation is its ability to clearly convey the behaviour of a slice of 4D geometry under rotation; although it can be challenging to comprehend at first.
 Another positive of the \textit{multi-view} representation is its ability to effectively provide enough information to determine the shape that is being viewed, without requiring a user to first interaction with the object to verify their hypothesis.
 
 \subsection{\textit{4D to 3D Abstraction}}
@@ -847,7 +848,7 @@ As discussed in \cref{ga_and_rotor}, geometric algebra provides a platform for s
 The rotor is straightforward to work with when considering the abstract multivectors as single entities. Implementing a rotor in code, on the other hand, is a more complex task. 
 A rotor is made up of three multivectors: A scalar, a bivector and a pseudo-scalar. To perform arithmetic operations on non-scalar multivectors, they must be broken down into projections. 
 \vskip 0.4em
-In $\mathbb{R}^4$ a grade 1 multivector (Vector) \(a\) can be broken down into four components. Each component is the vector projected onto one of the four axes (\cref{eq:vec_components}). One of the four projections is therefore a scalar value describing the vectors distance along an axis (\cref{fig:vec_proj}).
+In $\mathbb{R}^4$ a grade 1 multivector (Vector) \(a\) can be broken down into four components. Each component is the vector projected onto one of the four axes (\cref{eq:vec_components}). One of the four projections is therefore a scalar value describing the vector's distance along an axis (\cref{fig:vec_proj}).
 %
 \begin{equation}
   \label{eq:vec_components}
@@ -876,7 +877,7 @@ As stated above, a rotor in $\mathbb{R}^4$ is comprised of a grade 0 multivector
 \end{equation}
 %
 \citet{bosch_4d_2011} provides a code template written in C++ for a \texttt{Rotor4} in his initial blog post describing the rotor. Following his interactive article - an Introduction to Rotors - describing properties of geometric algebra in detail \citep{bosch_lets_nodate} Bosch provides a completed \texttt{Rotor3} class, compared against a Quaternion implementation \citep{bosch_code_nodate}. With this wealth of information, the foundations for the rotor could be implemented in Unity, C\#. The 4D rotor however was incomplete. 
-Whilst Bosch provided a completed \texttt{Rotor3} class, the $\mathbb{R}^4$ rotor-rotor product, and the $\mathbb{R}^4$ rotor-vector-sandwich product (the rotation of a vector) where not. 
+Whilst Bosch provided a completed \texttt{Rotor3} class, the $\mathbb{R}^4$ rotor-rotor product, and the $\mathbb{R}^4$ rotor-vector-sandwich product (the rotation of a vector) were not. 
 \vskip 0.4em
 
 \begin{figure}
@@ -913,11 +914,11 @@ A multivector is considered as a sum of its projections, as shown above. In orde
   \end{split}
 \end{equation}
 %
-Initially the equations for the rotor-rotor product and the rotation of a vector where derived by hand, using the same process as \cref{eq:geo_prod}. 
+Initially the equations for the rotor-rotor product and the rotation of a vector were derived by hand, using the same process as \cref{eq:geo_prod}. 
 When testing the rotation of 4D objects however, there were consistent errors in their behaviour. Examples of these issues include: dramatic scaling, surface errors with ray marching, objects not rotating along the expected planes of rotation. These issues were focused around the vector produced from the rotor-vector sandwich product (\cref{eq:sandwich_a}). 
 \vskip 0.4em
 Deriving the sandwich product by hand proved challenging, given that order matters as per the anti-commutative properties of multivectors. The process also produces grade 3 trivectors, which have influence over the rotated vector. 
-\texttt{GAlgebra} is a package for symbolic geometric algebra calculus in python. The package was used to derive the appropriate equations for the rotor. This method of derivation proved far more reliable, although translating the equations to C\# proved very tedious. The code to produce the equations can be found in \cref{lst:rotor_derivation}.
+\texttt{GAlgebra} is a package for symbolic geometric algebra calculus in python. The package was used to derive the appropriate equations for the rotor. This method of derivation proved far more reliable, although translating the equations to C\# proved very laborious. The code to produce the equations can be found in \cref{lst:rotor_derivation}.
 The final equations are grouped into their multivector components. The final equation to rotate a vector (\cref{eq:vec_components}) using a rotor (\cref{eq:rotor_components}) and its reverse (\cref{eq:rotor_rev}) is grouped into the four components that make up the rotated vector. The equation to rotate a vector: \cref{eq:rotate_vec}. The geometric product of two rotors \(a\) and \(b\) produces the equation (\cref{eq:rotate_rotor}) and is grouped by a rotors eight components.
 
 \section{Methods of Rotation}
@@ -925,7 +926,7 @@ The final equations are grouped into their multivector components. The final equ
 
 The first challenge in rotating ray marched 4D shapes was passing the information to the shader. Unity's shader lab allows the programmer to implement and adjust properties of the shader. This is normally used for changing the colour or roughness. The shader properties used to manipulate ray marched objects included the $(x,y,z,w)$ translation of the origin point, as well as the eight components of the Rotor used to rotate the object. \cref{eq:rotate_vec} was implemented in the shader to rotate any vector in the scene according to the eight rotor component shader properties.
 \vskip 0.4em
-Two methods of rotation were developed; only swipe based input was implemented. 
+Two methods of rotation were developed - only swipe based input was implemented. 
 Swipe based input takes mouse delta values and keyboard inputs to rotate an object in the direction of mouse movement, allowing a user to restrict the plane of rotation through a keyboard input.
 Grab ball rotation was an attempt to expand upon the most commonly employed method of 3D rotation. Three arcs, or in the case of 4D: six hyper tori, each controlling a different plane of local rotation for the object.
 \vskip 0.4em
@@ -937,14 +938,14 @@ Whilst it would have been desirable to explore manipulation tools such as arcbal
 
 Swipe based rotation mechanics are simple to implement and straightforward to understand. Restricting the plane of rotation allows users to be deliberate in the actions they take. A disadvantage of swipe based rotation in comparison with arcball or the virtual sphere, is requiring a secondary input to switch between dimensions.
 \vskip 0.4em
-Beginning with 3D swipe based rotation. Left clicking the mouse button and dragging it across the screen yields a delta value; a \texttt{Vector2} describing the difference in the $x$ and $y$ mouse positions between the current and previous frame.
+Beginning with 3D swipe based rotation. Left clicking the mouse button and dragging it across the screen yields a delta value: a \texttt{Vector2} describing the difference in the $x$ and $y$ mouse positions between the current and previous frame.
 Using this information, the plane of rotation may be specified: an upward swipe ($y$) will rotate about the $yz$ plane, and a sideways swipe ($x$) will rotate about the $xz$ plane. 
 Taking the mouse delta values and multiplying them by a \texttt{speed} constant allows them to be used as the input angle of rotation.
 The implementation allows a user to hold the \texttt{x} and \texttt{y} keys to restrict the plane of rotation about the $x$ and $y$ axes ($yz$ and $xz$ planes) respectively. 
 To rotate about the $z$ axis ($xy$ plane), the user may hold the \texttt{z} key.
 To calculate the angle of rotation, the screen is divided into vertical and horizontal halves to produce a basic equation for translating circular motion to linear values. The user may then rotate the mouse in a circle about the center of the screen to produce the matching rotation.
 \vskip 0.4em
-The 3D rotation controls may extended to four dimensions, keeping 3D rotation to the same as before; using the left mouse button. The right mouse button is then in control of 4D rotation. The mouse delta values are again used to control rotation in the $xw$ and $yw$ planes, respective to the $x$ and $y$ delta values.
+The 3D rotation controls may be extended to four dimensions, keeping 3D rotation to the same as before; using the left mouse button. The right mouse button is then in control of 4D rotation. The mouse delta values are again used to control rotation in the $xw$ and $yw$ planes, respective to the $x$ and $y$ delta values.
 A user may restrict the planes of rotation using the same keys as before. Holding the \texttt{x} key will restrict the rotation to the $xw$ plane, and holding the \texttt{y} will restrict the rotation to the $yw$ plane. Holding the \texttt{z} key allows the user to rotate about the $zw$ plane, where a user may move the cursor, again in a circular motion, to rotate the object.
 \vskip 0.4em
 Although the resulting rotation mechanic does not give the user control relative to the objects local axes, it received a warm reception during informal discussions with participants. It appears intuitive and easy to grasp. 
@@ -952,11 +953,11 @@ Separating the left and right click of the mouse to three and four dimensional r
 
 \subsection{4D Grab Ball - Rotation About The Local Axes}
 
-The most commonly employed method of controlling the rotation of an object, is with the use of a grab ball (as it is referred to in this paper). The grab ball provides a user with control over an objects rotation, relative to the objects local axis. The grab ball is well suited to a 2D interface, allowing a user to rotate an object without the need for a secondary input to switch dimensions.
+The most commonly employed method of controlling the rotation of an object, is with the use of a grab ball (as it is referred to in this paper). The grab ball provides a user with control over an object's rotation, relative to the object's local axis. The grab ball is well suited to a 2D interface, allowing a user to rotate an object without the need for a secondary input to switch dimensions.
 \vskip 0.4em
 In $\mathbb{R}^3$ dragging the mouse across each of the three arcs controls each of the three planes of rotation independently.
 Different software approaches the method of interaction in different ways. 
-Unity's rotation tool appears to rotate geometry as the cursor follows the path tangent to the arc, from the point at which the user clicked on the arc. This tangent line is not indicated to a developer, and therefore rotation can sometimes feels rather clunky.
+Unity's rotation tool appears to rotate geometry as the cursor follows the path tangent to the arc, from the point at which the user clicked on the arc. This tangent line is not indicated to a developer, and therefore rotation can sometimes feel rather clunky.
 \vskip 0.4em
 Initial exploration of the grab ball, began with an implementation in $\mathbb{R}^3$. As with Unity's implementation, the system was designed such that a rotation occurs as the cursor is dragged along the tangent relative to the point of contact with an arc. To improve upon Unity's implementation, a tangent line is rendered to the screen in order to guide the users actions, as shown in \cref{fig:grab1}. 
 To rotate the grab ball itself, Unity's \texttt{transform} was used,rotating the ball with the use of quaternions.
@@ -1074,7 +1075,7 @@ A common method of representing the surface normal in 3D is to map the three com
 Three methods of distinguishing the shapes were explored in this project: \textit{RGBW}, \textit{Directionally coloured patterns} and \textit{RGBW coloured patterns}; alongside the un-coloured diffuse lighting. 
 \textit{RGBW} (\cref{fig:tex1}) builds upon the RGB colouration method of distinguishing faces. Given there are four components of the normal vector in $\mathbb{R}^4$, but only 3 primary colours, a surface facing the $w$ axis will be coloured white.
 To more clearly emphasise the difference between the direction of a surface of an object, a pattern can be projected along each axis. 
-Four different patterns patterns where developed, and projected along each axes. To distinguish the positive and negative directions of the surface normal, the patterns must be multiplied by a colour. One colour scheme implemented was to colour the negative direction blue and the positive direction red (\cref{fig:tex2}). The other was to mix the \textit{RGBW} colour scheme with the patterns (\cref{fig:tex3}).
+Four different patterns were developed, and projected along each axes. To distinguish the positive and negative directions of the surface normal, the patterns must be multiplied by a colour. One colour scheme implemented was to colour the negative direction blue and the positive direction red (\cref{fig:tex2}). The other was to mix the \textit{RGBW} colour scheme with the patterns (\cref{fig:tex3}).
 
 \section{Collecting Data}
 
@@ -1090,7 +1091,7 @@ During runtime, the data is stored to a persistent data path. This worked well f
 \vskip 0.4em
 \subsubsection{Collecting Data via Automatic Email}~
 \vskip 0.2em
-An attempt was made to sending the data file through email upon the completion of the experiment. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
+An attempt was made to send the data file through email upon the completion of the experiment. Unfortunately, some online hosting platforms, browsers and network configurations do not allow the sending of an anonymous email through a third party server for the sake of security. 
 \vskip 0.4em
 \subsubsection{Collecting Data via Copy \& Paste}~
 \vskip 0.2em
@@ -1102,7 +1103,7 @@ The data was collected remotely from users via a copy/paste text box that would 
 
 \section{Aims} 
 
-This investigation aims to evaluate the effectiveness of each of the three extensions to the 3D cross section of 4D geometry. Each extension has the potential to benefit a viewers understanding with respect to different aspects of geometry. Therefore the goal of the investigation is to evaluate what aspect of geometry, if at any, each of the three representations may assist a user in interpreting. To reiterate \cref{aims}: Which representation is more effective at conveying the surface geometry, the rotational pose, or assisting a users in manipulate geometry in $\mathbb{R}^4$ ?
+This investigation aims to evaluate the effectiveness of each of the three extensions to the 3D cross section of 4D geometry. Each extension has the potential to benefit a viewers understanding with respect to different aspects of geometry. Therefore the goal of the investigation is to evaluate what aspect of geometry, if any, each of the three representations may assist a user in interpreting. To reiterate \cref{aims}: Which representation is more effective at conveying the surface geometry, the rotational pose, or assisting a users in manipulate geometry in $\mathbb{R}^4$ ?
 
 \section{Preliminary Research}
 
@@ -1161,7 +1162,7 @@ Given a random object, in a random pose, positioned randomly along the $w$ axis,
 To encourage users to interact with the object, and not make premature assumptions, the cone and capsule were biased such that their cross sections would appear as a sphere 35\% of the time.
 The participant was allotted twenty seconds to play with and identify the shape on screen.
 
-The cross section of different objects, such as the hyper-cube and pentachoron may appear similar. When textured, however, will have distinct colours or patterns, making them more easily identifiable. As such, the objects on screen where coloured exclusively white with diffuse lighting as to avoid bias where a user may identify a relationship between the patterns and shapes. 
+The cross section of different objects, such as the hyper-cube and pentachoron may appear similar. When textured, however, will have distinct colours or patterns, making them more easily identifiable. As such, the objects on screen were coloured exclusively white with diffuse lighting so as to avoid bias where a user may identify a relationship between the patterns and shapes. 
 All of the developed shapes were included in this task, summing to six 3D objects, analogous to seven 4D objects.
 
 After each attempt at the task, the participant was asked how confident they were in their answer. The participant was also asked if they felt they could relate what they saw in the 3D cross section of a 4D object to an analogous 3D to 2D example. These metrics would assist in differentiating blind guesses from an actual understanding.
@@ -1171,10 +1172,10 @@ After each attempt at the task, the participant was asked how confident they wer
 The goal of rotation matching is to evaluate a representations effectiveness conveying to a user the rotations a 4D object may undergo; allowing a user to identify any active planes of continuous rotation.
 A given random object may rotate in up to three planes of rotation at once. There is a 100\% chance of at least one 4D rotation (involving the \(w\) axis), approximately a 33\% chance of a second 4D rotation, and a 30\% chance of a 3D rotation.
 A user may select from a menu on the left hand side all of the planes of rotation they believe may be active. (\cref{fig:task_r}).
-The participant was informed prior to this task that their may be between one and three planes of rotation, with a maximum of one 3D rotation at a given time.
+The participant was informed prior to this task that there may be between one and three planes of rotation, with a maximum of one 3D rotation at a given time.
 The participant was allotted sixty seconds to play with and identify the shape on screen.
 The sphere was not included for this experiment as its cross section does not change shape under rotation. 
-Furthermore, all objects where textured given it may be impossible to identify a rotation if an object has no surface imperfections.
+Furthermore, all objects were textured given it may be impossible to identify a rotation if an object has no surface imperfections.
 
 As with the shape matching task, after each attempt the participant was quizzed on their confidence and understanding.
 
