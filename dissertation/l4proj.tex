@@ -13,7 +13,8 @@
 
 %==============================================================================
 %% METADATA
-\title{Evaluating the Effectiveness of Extensions to 3D Cross Sections of 4D Geometry in the Teaching and Manipulation of this Geometry}
+\title{Developing and Evaluating Extensions to the 3D Cross Section of 4D Geometry}
+%{Evaluating the Effectiveness of Extensions to 3D Cross Sections of 4D Geometry in the Teaching and Manipulation of this Geometry}
 %\title{An Investigation into Extending a 3D Cross Section of 4D Geometry and Evaluate an Extensions Effectiveness in Teaching Users to Manipulating This Geometry}
 \author{Joe Subbiani}
 \date{March 18, 2022}
@@ -33,14 +34,15 @@
     3D cross sections of 4D objects provides a platform to develop extended visualisations to provide a user with more information about a 4D object. Such extensions have been explored in other literature. 
     This paper aims to evaluate the effectiveness of a series of extensions to 3D cross sections of 4D objects; each representation providing the user with more information in order to help them interpret and manipulate the object they are handling.
     \vskip 0.4em
-    To allow users to fully explore four dimensional geometry, a 4D rotor was developed, allowing for the stable rotation of geometry in $\mathbb{R}^4$.
+    To properly evaluate each extension of the 3D cross section, a system to rotate objects in $\mathbb{R}^4$ without gimbal lock was employed.
+    With the use of the rotor, an entity from the geometric algebra, participants of the experiment were capable of rotating 4D objects in all six degrees of rotational freedom.
     \vskip 0.4em
-
-    TODO: Results of Experiment
-    It was found that ...
-
-    %users work better with less information
-    %novice users cannot take advantage of pros, and cons become more obvious
+    Following the experiments, it was found that the limited time of an experiment was likely too harsh. Given more time, an experiment could be run allowing participants to build a more sturdy foundation in understand 4D geometry, in order to properly explore and evaluate each proposed extension to the 3D cross section.
+    \vskip 0.4em
+    From the data, it can be concluded that extensions to the 3D cross section that display less information on screen are preferred by novice users. representations of geometry with higher overheads tend to overwhelm users with limited experience with geometry in $\mathbb{R}^4$.
+    An abstraction of 4D rotation to 3D rotation, serves as a good tool for teaching users to differentiate the different planes of 4D rotation, however it has very limited use outside of this.
+    Viewing objects from other angles proved to mislead users, as without proper training, they tended to incorrectly identify patterns in the geometry when under continuous rotation.
+    Viewing several cross sections of the same object simultaneously was a preferred extension by participants, but there is not enough good data to conclude as to whether it actually benefited a users understanding of 4D geometry.
     
 \end{abstract}
 
@@ -48,7 +50,7 @@
 %% ACKNOWLEDGEMENTS
 \renewcommand{\abstractname}{Acknowledgements}
 \begin{abstract}
-    I would like to thank my supervisor, Dr. John Williamson for the constant support and advice throughout the project, within and outside of the weekly meetings. Thanks to his guidance and support, I was able to take this project as far as I have, and fully explore the complexities of the fourth dimension.
+    I would like to thank my supervisor, Dr. John Williamson for the constant support and advice throughout the project, within and outside of our weekly meetings. Thanks to his guidance and support, I was able to take this project as far as I have, and fully explore the complexities of the fourth dimension.
 \end{abstract}
 %==============================================================================
 
@@ -1397,46 +1399,41 @@ During the pose matching task, participants felt that the rotations the cube wou
 
 \subsection{Analysis and Discussion}
 
-From the collected quantitative data from the experiments, combined with the qualitative data collected via the experiments survey, ...
-
-confidence / understanding and correctness were well correlated
- - not just blind guessing
-
-TODO: analysis and discussion
+% limited learning
+From the collected quantitative data from the experiments, combined with the qualitative data collected via the experimental survey, it can be concluded that: without an adequate foundation in the understanding of higher dimensional geometry, the benefits of some extensions to the 3D cross section cannot be fully realised.
+As proposed in the van-Hiele model of geometric thinking \citep{safrankova_van_2012}, a student cannot progress to level $N$ without first having completed level $N-1$. It is likely that extending a 3D cross section of a 4D object, before users have mastered the behaviour of the standard 3D cross section is what resulted in such feelings of being overwhelmed with information.
+% getting better data
+\vskip 0.2em
+As participants interacted with objects more, their accuracy increased.
+Removing the boundary of a time limit would very likely yield better data. Such an experiment would require volunteers to commit a relatively large portion of time, in order for them to build an adequate foundation, before evaluating these extensions further. Running such an experiment, however, would likely provide better data, allowing for deeper analysis into the advantages and disadvantages of each proposed representation.
+\vskip 0.2em
+% confidence
+We can at the very least, draw the conclusion that the data has some validity given the correlation between a participants confidence and understanding, with their accuracy. This suggests that participants were not just guessing blindly, and, as such, the data is indicative of what may occur in a larger scale experiment.
 
 \subsubsection{Extensions to the 3D Cross Section}~
 \vskip 0.2em
-new users dont have enough experience to take advantage
- - more info on screen, more time taken
- - confidence was higher with less info on screen
-
-3d to 4d good intro to differentiate 3D to 4D rotations to new users - kinda cheaty
-
-timeline and multi-view perform worse
- - laggy in browsers
- - mostly too much info given limited time
-
-not much beenfit when manipulating shapes
- - focus on main object
-
-shape match - control took this least time - further indicating less info can be better
-
-
-less correct if more happening on screen
+% overall
+The duration of a single experiment was relatively short. Even with a tutorial video, participants generally had very limited experience with 4D space. 
+%multi view
+As such, complex extensions, such as multi-view, caused participants to feel overwhelmed with information.
+With no experience with such representations prior to the experiment, participants were, for the most part, unable to take advantage of the benefits they offer.
+Confidence was higher when utilising a representation that displayed less information at a given time, and generally participants were more accurate, and answered in less time. 
+The experiment would likely have benefited if participants were provided with time to explore each representation prior to evaluating it through testing.
+%4D to 3D
+\vskip 0.4em
+The 4D to 3D abstraction successfully allowed users to differentiate 3D and 4D rotations. Given its low overhead, it was not overwhelming for novice users. 
+However, this representation is limited by its lack of versatility. Participants commented that they very rarely used the extension outside of the rotation matching task. The 4D to 3D abstraction could be used in tandem with another extension, but this approaches the problem of overloading users with too much information.
+\vskip 0.4em
+%timeline
+Participants seemed to prefer the w-axis timeline representation, despite it lagging in browsers. The quantitative data however, does not indicate any benefit to users in identifying the surface geometry of 4D shapes with comparison to the control representation. The shape matching task, where this representation was expected to shine, had a grossly underestimated time limit. Perhaps with more time, different results may have been uncovered.
+\vskip 0.4em
+Of the three representations, none seemed to benefit users in the manipulation of 4D geometry in a notable way. From the questionnaire and through discussion with participants, it would seem that as they were aiming to match the main object to a secondary object, they payed little attention to any other objects in the scene.
 %
 \vskip 0.4em
 \subsubsection{Performance Over Time}~
 \vskip 0.2em
-correctness increase over time
- - less so for pose matching
-
-answers would be submitted faster over time
-
-indication that timelimit may have been too harsh for shape match
-
-More interaction with objects increased accuracy
-
-spending more time increased accuracy, although short timelimits did result in a trade off of good data
+%
+In each challenge there are clear improvements over time. As participants spent more time with the 4D geometry, their accuracy often increased, and their time to answer decreased. These trends are less notable for the shape matching task.
 
 %==================================================================================================================================
 \chapter{Conclusion}   
@@ -1485,6 +1482,8 @@ Finally, it could be of interest to conduct research into more complex visualisa
 \begin{appendices}
 
 \chapter{Appendices}
+
+\section{Rotor Equation Derivation}
 
 %\begin{itemize}
 %\item
@@ -1580,7 +1579,10 @@ Finally, it could be of interest to conduct research into more complex visualisa
   & + \left ( a^{xw}_{b} b^{yz}_{b} + a^{xy}_{b} b^{zw}_{b} - a^{xz}_{b} b^{yw}_{b} - a^{yw}_{b} b^{xz}_{b} + a^{yz}_{b} b^{xw}_{b} + a^{zw}_{b} b^{xy}_{b} + a^{xyzw}_{p} b_{s} + a_{s} b^{xyzw}_{p}\right ) \boldsymbol{e}_{x}\wedge \boldsymbol{e}_{y}\wedge \boldsymbol{e}_{z}\wedge \boldsymbol{e}_{w}  \end{aligned}
 \end{equation}
 
-\begin{lstlisting}[language=java, float, caption={
+\pagebreak
+\section{Data Collection: JSON Schema}
+
+\begin{lstlisting}[language=java, caption={
   JSON schema for data collection
 }, label=lst:json]
 {
@@ -1596,24 +1598,24 @@ Finally, it could be of interest to conduct research into more complex visualisa
       final_rotor,
       w_count,          // interactions with the hyperplane slider
       swipe_count,      // number of applied rotations
-    }
+    },
     shape_match_i_survey
     {
       confidence,       // users confidence
       understanding,    // users understanding
-    }
+    },
     rotation_match_i:
     {
       loaded_shape,
       loaded_rotation,    // boolean array of active planes of continuous rotation
       selected_rotation,  // answer of suspected planes of rotation
       time,               // time taken
-    }
+    },
     rotation_match_i_survey:
     {
       confidence,       // users confidence
       understanding,    // users understanding
-    }
+    },
     pose_match_i:
     {
       loaded_shape,
@@ -1623,20 +1625,22 @@ Finally, it could be of interest to conduct research into more complex visualisa
       initial_match_object_rotor, // initial pose of the object to be matched
       w_count,                    // interactions with the hyperplane slider
       swipe_count                 // number of applied rotations
-    }
+    },
     pose_match_i_survey:
     {
       ease,             // user rated ease
-    }
-  }
+    },
+  },
 }
 \end{lstlisting}
 
-\pagebreak
-
 %Questionnaire
+\section{Questionnaire}\enlargethispage{5\baselineskip}
 \label{questionnaire}
-\includepdf[width=1.1\linewidth, pages={1-4}]{images/4d_shapes_questionnaire.pdf}
+
+\hspace*{-1.5cm}
+\includegraphics[page=1, height=\textheight]{images/4d_shapes_questionnaire.pdf}
+\includepdf[height=\textheight, pages={2-4}]{images/4d_shapes_questionnaire.pdf}
 
 \end{appendices}
 
