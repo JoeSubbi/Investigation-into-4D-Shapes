@@ -1105,7 +1105,7 @@ The data was collected remotely from users via a copy/paste text box that would 
 
 \section{Aims} 
 
-This investigation aims to evaluate the effectiveness of each of the three extensions to the 3D cross section of 4D geometry. Each extension has the potential to assist in a viewers understanding with respect to different aspects of geometry. To reiterate \cref{aims}: The evaluation focuses on which representation, if any, is most effective at conveying the surface geometry, the rotational pose, or assisting a users in manipulate geometry in $\mathbb{R}^4$ ? These will be measured through participants accuracy, confidence and time to answer, among other metrics.
+This investigation aims to evaluate the effectiveness of each of the three extensions to the 3D cross section of 4D geometry. Each extension has the potential to assist in a viewers understanding with respect to different aspects of geometry. To reiterate \cref{aims}: The evaluation focuses on which representation, if any, is most effective at conveying the surface geometry, the rotational pose, or assisting a users in manipulate geometry in $\mathbb{R}^4$. These will be measured through participants accuracy, confidence and time to answer, among other metrics.
 
 \section{Preliminary Research}
 
@@ -1116,7 +1116,7 @@ As expected, many participants had little or no experience in 4D geometry, as pe
 The tutorial video was structured with the goal of effectively teaching inexperienced participants prior to the experiment (\cref{tutorial}). The script for the video was drafted and tested several times with peers to tune the descriptions and explanations of complex topics to be clear and concise. 
 The explanation for the rotation of geometry within and outside of the dimensions of the cross section is a notable example of a portion of the script that underwent several rewrites before viewers felt it was adequate.
 \vskip 0.4em
-During the development of each representation, preliminary evaluations were conducted to see if each extension had potential in assisting users in their interpretation of geometry. As discussed, the \textit{onion skin} representation proved unintuitive and too complex to digest for inexperienced users. Peers favoured the \textit{w-axis timeline} as a less confusing alternative. As such, only three of the four developed representations were carried forward to experimentation.
+During the development of each representation, preliminary evaluations with peers were conducted to see if each extension had potential in assisting users in their interpretation of geometry. As discussed, the \textit{onion skin} representation proved unintuitive and too complex to digest for inexperienced users. Peers favoured the \textit{w-axis timeline} as a less confusing alternative. As such, only three of the four developed representations were carried forward to experimentation.
 
 \subsection{Repeated Preliminary Experiments}
 
@@ -1164,7 +1164,7 @@ Given a random object, in a random pose, positioned randomly along the $w$ axis,
 To encourage users to interact with the object, and not make premature assumptions, the cone and capsule were biased such that their cross sections would appear as a sphere 35\% of the time.
 The participant was allotted twenty seconds to play with and identify the shape on screen.
 
-The cross section of different objects, such as the hyper-cube and pentachoron may appear similar. When textured, however, have distinct colours or patterns, making them more easily identifiable. As such, the objects on screen were coloured exclusively white with diffuse lighting so as to avoid bias where a user may identify a relationship between the patterns and shapes. 
+The cross section of different objects, such as the hyper-cube and pentachoron, may appear similar. When textured, however, have distinct colours or patterns, making them more easily identifiable. As such, the objects on screen were coloured exclusively white with diffuse lighting so as to avoid bias where a user may identify a relationship between the patterns and shapes. 
 All of the developed shapes were included in this task, summing to six 3D objects, analogous to seven 4D objects.
 
 After each attempt at the task, the participant was asked how confident they were in their answer. The participant was also asked if they felt they could relate what they saw in the 3D cross section of a 4D object to an analogous 3D to 2D example. These metrics would assist in differentiating blind guesses from an actual understanding.
@@ -1177,14 +1177,14 @@ A user may select from a menu on the left hand side all of the planes of rotatio
 The participant was informed prior to this task that there may be between one and three planes of rotation, with a maximum of one 3D rotation at a given time.
 The participant was allotted sixty seconds to play with and identify the shape on screen.
 The sphere was not included for this experiment as its cross section does not change shape under rotation. 
-Furthermore, all objects were textured given it may be impossible to identify a rotation if an object has no surface imperfections.
+Furthermore, all objects were textured given it may be impossible to identify a rotation if a symmetric objects surfaces are otherwise identical.
 
 As with the shape matching task, after each attempt the participant was quizzed on their confidence and understanding.
 
 \subsection{Pose Matching}
 
 The goal of pose matching is to evaluate a representations effectiveness in assisting a user when manipulating geometry.
-Given a primary object in the same on-screen position as with the other tasks, and a secondary randomly oriented object in the top of the screen, a user must rotate the primary object to match the pose of the secondary object. (\cref{fig:task_p}).
+Given a primary object in the same on-screen position as with the other tasks, and a secondary randomly oriented object at the top of the screen, a user must rotate the primary object to match the pose of the secondary object. (\cref{fig:task_p}).
 The secondary object is randomly rotated exclusively along the 4D planes of rotation. 
 Rotating the primary object using 3D rotation will simultaneously rotate the secondary object in 3D. The purpose of this is to allow a user to check all sides of the two shapes match, otherwise they may be restricted to looking at a single side of the secondary object, with no hint of similarity between the two objects.
 The participant was allotted three minutes to manipulate the shapes on screen to match their orientation as closely as possible.
@@ -1209,8 +1209,8 @@ Furthermore, the data may be biased against participants who participated remote
 
 \section{Results}
 
-The following data is compiled from a total of 11 participants. All participants remained anonymous and provided explicit permission for their data to be analysed. Of the 11 participants, 5 attended in person. The remaining 6 participants attend the experiment remotely, and as such were subject to potentially limited browser performance.
-During the experiment participants were asked to answer questionnaire (\ref{questionnaire}).
+The following data is compiled from a total of 11 participants. All participants remained anonymous and provided explicit permission for their data to be analysed. Of the 11 participants, 5 attended in person. The remaining 6 participants attended the experiment remotely, and as such were subject to potentially limited browser performance.
+During the experiment participants were asked to answer questionnaire \ref{questionnaire}.
 When asked how a participant learns best; 5 participants identified as a kinesthetic learner, 4 as a visual learner, and the remaining 2 learn best through reading and writing.
 Of the 11 participants, 3 had never heard of four dimensions before. 5 participants had briefly explored the concept through a personal interest. The remaining 3 were familiar with higher dimensionality in the form of data science and mathematics.
 
@@ -1264,7 +1264,7 @@ On the other hand, participants tended to use the w-axis slider more, and rotate
 
 \subsection*{Rotation Matching}
 
-The active planes of continuous rotation were recorded using a $1 \times 6$ boolean array. Two boolean arrays were collected: The loaded active planes of rotation, and the planes of rotation a participants suspected to be active. The similarity of two boolean arrays, $A$ and $B$, can be calculated using the jaccard index \cref{jaccard}, \citep{glen_jaccard_2022}.
+The active planes of continuous rotation were recorded using a $1 \times 6$ boolean array. Two boolean arrays were collected: The actual active planes of rotation, and the planes of rotation a participants suspected to be active. The similarity of two boolean arrays, $A$ and $B$, can be calculated using the jaccard index \cref{jaccard}, \citep{glen_jaccard_2022}.
 %
 \begin{equation}
   \label{jaccard}
@@ -1316,7 +1316,7 @@ Generally a participants correctness was not affected by the shape on screen, al
 
 The accuracy of a participants submitted pose of a primary object, relative to the final orientation of a secondary object, is measured by the smallest angle of rotation between the two (\cref{alg:angle}).
 \vskip 0.4em
-Looking at \cref{fig:pos_stats}, the accuracy participants achieved over each representation followed, roughly, a normal distribution. There is some skewness in the data showing some of the most accurate submissions to be outliers. The average minimum angle, indicating accuracy, sit around $80^{\circ}$ for each representation.
+Looking at \cref{fig:pos_stats}, the accuracy participants achieved over each representation followed, roughly, a normal distribution. There is some skewness in the data showing some of the most accurate submissions to be outliers. The average minimum angle, indicating accuracy, sits around $80^{\circ}$ for each representation.
 No representation appears definitively better than another, although there is likely not enough data to draw any firm conclusions. From what can be seen in \cref{fig:pos_stats}, the 4D to 3D rotational abstraction has the highest variance and the control representation has the lowest variance. This may suggest that the representations do have some impact on a participants performance, but again, there is most likely not enough data to say for sure.
 
 \begin{figure}[H]
@@ -1346,12 +1346,12 @@ No representation appears definitively better than another, although there is li
 \end{algorithm}
 
 \vskip 0.4em
-With each iteration of a new representation, it can be seen that users perform a little worse earlier on, and submit their answer faster after gathering practice over time (\cref{fig:pos_stats}).
+With each iteration of a new representation, it can be seen that users perform a little worse earlier on, and submit their answer faster after gaining practice over time (\cref{fig:pos_stats}).
 After submitting their final pose, each participant is asked to rate how easily they felt they were able to match the pose of the two objects (rated on a scale of 0 to 10).
 % ease with time spent and swipe count
 As might be expected, if a participant had to interact with the object less, and therefore spend less time manipulating the object, participants would rate the challenge to be easier (\cref{fig:pos_corr}).
 % ease and accuracy
-Counterintuitively, there is a fairly strong correlation suggesting that a users accuracy increased if they found a challenge to be less easy. This could be the case if a participant believed a shape to be in the correct pose, but was in fact far from it. Another suggestion could be that a participant spent more time on a shape in a difficult pose, which subsequently lead to an increase in accuracy following an increase in time spent manipulating the objects. This, however, is speculation.
+Counterintuitively, there is a fairly strong correlation suggesting that a users accuracy increased if they found a challenge to be more difficult. This could be the case if a participant believed a shape to be in the correct pose, but was in fact far from it. Another suggestion could be that a participant spent more time on a shape in a difficult pose, which subsequently lead to an increase in accuracy following an increase in time spent manipulating the objects. This, however, is speculation.
 \vskip 0.4em
 % time and accuracy
 As shown in \cref{fig:pos_corr}, the more time a user spent manipulating the object the more accurate they were. 
@@ -1361,7 +1361,7 @@ If the initial pose of the randomly oriented secondary object was closer to $90^
 The 4D hyper-cube proved the hardest shape to manipulate, with participants scoring lower accuracies when dealing with it. Participants also took more time to submit their final pose compared to the other shapes. 
 On the other hand, participants were more accurate, and found it easier to manipulate the torus. 
 The capsule had faster submission times and required less interaction for participants to be satisfied with the pose of the shape.
-The pentachoron was found to be the least easy object to manipulate, and required more interaction that any other.
+The pentachoron was found to be the most difficult object to manipulate, and required more interaction that any other.
 
 \subsection{Qualitative Results}
 
@@ -1425,7 +1425,7 @@ The 4D to 3D abstraction successfully allowed users to differentiate 3D and 4D r
 However, this representation is limited by its lack of versatility. Participants commented that they very rarely used the extension outside of the rotation matching task. The 4D to 3D abstraction could be used in tandem with another extension, but this approaches the problem of overloading users with too much information.
 \vskip 0.4em
 %timeline
-Participants seemed to prefer the w-axis timeline representation, despite it lagging in browsers. The quantitative data however, does not indicate any benefit to users in identifying the surface geometry of 4D shapes with comparison to the control representation. The shape matching task, where this representation was expected to shine, had a grossly underestimated time limit. Perhaps with more time, different results may have been uncovered.
+Participants seemed to prefer the w-axis timeline representation, despite it lagging in browsers. The quantitative data however, does not indicate any benefit to users in identifying the surface geometry of 4D shapes with comparison to the control representation. The shape matching task, where this representation was expected to show a benefit, had a grossly underestimated time limit. Perhaps with more time, different results may have been uncovered.
 \vskip 0.4em
 Of the three representations, none seemed to benefit users in the manipulation of 4D geometry in a notable way. From the questionnaire and through discussion with participants, it would seem that as they were aiming to match the main object to a secondary object, they payed little attention to any other objects in the scene.
 %
